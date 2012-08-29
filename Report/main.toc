@@ -7,14 +7,14 @@
 \contentsline {section}{\numberline {2.1}Formal Statement}{4}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Singular Value Decomposition}{5}{subsection.2.1.1}
 \contentsline {section}{\numberline {2.2}PCA Application to Blind Source Separation}{6}{section.2.2}
-\contentsline {chapter}{\numberline {3}Independent Component Analysis}{8}{chapter.3}
-\contentsline {section}{\numberline {3.1}Limitations of the ICA Model}{8}{section.3.1}
-\contentsline {section}{\numberline {3.2}ICA in the Linear Mixing Model}{8}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{8}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Maximum Likelihood Derivation}{9}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}FastICA}{9}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{9}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}BSS by ICA}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{10}{section.3.4}
-\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{12}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{13}{chapter.5}
+\contentsline {chapter}{\numberline {3}Independent Component Analysis}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Limitations of the ICA Model}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}ICA in the Linear Mixing Model}{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{9}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Maximum Likelihood Derivation}{10}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}FastICA}{10}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{10}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}BSS by ICA}{11}{section.3.3}
+\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{11}{section.3.4}
+\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{14}{chapter.5}
