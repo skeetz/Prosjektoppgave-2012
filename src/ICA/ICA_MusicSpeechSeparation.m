@@ -4,11 +4,10 @@ x1 =x1(1:109936);
 x2 =x2(1:109936);
 s = [x1 x2]';
 
-a = [1 2;2 1];
+a = rand(2);
 mix = a*s;
 
-[wd,wm,uwm,mx] = preprocess(mix);
-[y,w] = ica(wd, 1000, .1, .0001);
+[y,w] = ica(mix);
 
 
 
@@ -19,12 +18,12 @@ mix = a*s;
 % sound(y(2,:), 16384)
 
 figure;
-
 subplot(321), plot(s(1,:)), axis tight, grid on, title('Original Signals')
 subplot(322), plot(s(2,:)), axis tight, grid on
-
 subplot(323), plot(mix(1,:)), axis tight, grid on, title('Mixed Signals')
 subplot(324), plot(mix(2,:)), axis tight, grid on
-
 subplot(325), plot(y(1,:)), axis tight, grid on, title('Recovered Signals')
 subplot(326), plot(y(2,:)), axis tight, grid on
+
+
+norm(s(1,:)-y(1,:))+norm(s(2,:) - y(2,:))

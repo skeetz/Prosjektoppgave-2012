@@ -265,20 +265,15 @@ The lower part of Figure \ref{pca_time_series} shows the recovered signal\footno
 
 \chapter{Independent Component Analysis}
 
-We have seen that PCA finds the basis of a subspace in which the variance is
+PCA finds the basis of a subspace in which the variance is
 maximized in the direction of the basis vectors and the covariance
-between the data is zero. ICA on the other hand, seeks to find basis
-vectors that are statistically independent. This is a stronger
+between the data is zero. ICA seeks to find basis
+vectors that are statistically independent, which is a stronger
 property than simply being uncorrelated as independence implies
-uncorrelatedness, while the opposite is not true. 
-
-ICA in contrast to PCA does not have analytic solutions in the general case, 
+uncorrelatedness, while the opposite is not true. ICA in contrast to PCA does not have analytic solutions in the general case, 
 so a numerical optimization method is usually applied in computing the ICA transform.
 
 \section{Limitations of the ICA Model}\label{ICA_restrictions}
-
-Blabla
-
 
 \begin{itemize}
   \item Non-Gaussian..
@@ -322,7 +317,7 @@ The unmixing matrix is the target parameter of our maximum likelihood approach. 
   l(W) =\log Prob(X|W)= \Sigma_{t=1}^T \log p_s(WX)+\log |W|
 \end{equation}
 
-As the ICA is incompatible with a Gaussian source distribution, a common choice for specifying $P_s$ is either the sigmoid $p_s(s) = \frac{1}{1+e^{-s}}$, or the laplacian $p_s(s) = \frac{1}{2}e^{-|s|}$.
+As the ICA is incompatible with a Gaussian source distribution, common choices for specifying $P_s$ include the sigmoid $p_s(s) = \frac{1}{1+e^{-s}}$ and hyperbolic tangent ($\tanh(s)$).
 
 \begin{figure}[!htpb]
   \begin{lstlisting}[frame=single]
@@ -332,16 +327,6 @@ As the ICA is incompatible with a Gaussian source distribution, a common choice 
   \label{mlica_code}
 \end{figure}
 
-
-\subsection{FastICA}\label{fastICA}
-
-\begin{figure}[!htpb]
-  \begin{lstlisting}[frame=single]
-    code here...?
-  \end{lstlisting}
-  \caption{\textsc{Matlab} code for FastICA algorithm.}
-  \label{mlica_code}
-\end{figure}
 
 
 \subsection{Preprocessing}\label{ica_preprocessing}

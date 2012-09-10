@@ -1,24 +1,52 @@
-function [y,w] = ica(x, max_iter, learn_rate, epsilon)
+function [y,w] = Ica(x,alpha,Niter,Blocks)
 
-  %% checks here
-  
-  [nSignals,nObs] = size(x);
+switch nargin
+    case 0
+        error('Too few input args.')
+    case 1
+        alpha = 0.005; 
+        Niter = 20000;
+        Blocks = 50; 
+    case 2
+        Niter = 20000;
+        Blocks = 50; 
+    case 3
+        Blocks = 50;
+end
+        
 
-  w = eye(nSignals).*randn(nSignals);  w_old = randn(nSignals);
-  f = @(x) x.*exp(-.5*x.^2); f_diff = @(x) -x.^2*exp(-.5*x.^2);
-  
-  for i = 1:max_iter
-    if norm(w-w_old)<epsilon, break, end;
-    w = w/sqrt(norm(w*w'));
-    w = 3/2*w -1/2 * w*w'*w;
-    
-  end
-  if(i<max_iter)
-    fprintf('Converged after %d iterations.\n', i);
-  else
-    fprintf('Search terminated after %d iterations.\n', i);
-  end
-			  
-  y = w*x;
-  
+N=size(x,1); P=size(x,2); M=N;
+wz = whiteningMat(x);
+xx=inv(wz)*x;
+
+w=eye(N); 
+perm=randperm(P); 
+Id=eye(M);
+
+
+for i = Niter
+    w = update(x,w);
+end
+
+y=w*wz*xx;
+
+    function wz = whiteningMat(x)
+        %% Whitening transform
+        mx=mean(x,2)';
+        x=x-(ones(P,1)*mx)';
+        c=cov(x');
+        wz=2*inv(sqrtm(c));        
+    end
+
+    function w = update(x,w)
+        %% main update
+        x=x(:,perm);
+        t=1;
+        noblocks=fix(P/Blocks);
+        BlocksI=Blocks*Id;
+        for t=t:Blocks:t-1+noblocks*Blocks,
+          u=w*x(:,t:t+Blocks-1); 
+          w=w+alpha * ( BlocksI + (1-2*(1./(1+exp(-u))))*u') * w;
+        end;
+    end
 end

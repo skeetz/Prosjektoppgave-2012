@@ -110,7 +110,7 @@ In the next chapters we will be looking at a few different algorithms for solvin
 
 \chapter{Principal Component Analysis}
 
-Principal component analysis (PCA) is a eigenvector-based,
+Principal component analysis \cite{pearson1901} (PCA) is a eigenvector-based,
 non-probabilistic technique that uses orthogonal projection to
 represent data in a lower dimensional subspace spanned by the $k$
 first eigenvectors of the covariance matrix. The eigenvectors form an
@@ -209,9 +209,33 @@ BSS, and what assumptions it requires us to make about the data.
 
 
 
-\section{Application to Blind Source Separation}
+\section{PCA Application to Blind Source Separation}\label{pca_bss}
+% TODO: update graphs to newest version
 
-Blabla..
+The top graph of Figure \ref{pca_time_series} shows two periodic signals $s_1$ and $s_2$ contaminated by an additive Gaussian white noise with standard deviation $\sigma = .2$.
+
+\begin{equation}
+      \begin{array}{lll}
+        s_1 = & \sin(\pi x) & 0<x<5\\
+        s_2 = & \cos(7 \pi x) & 0<5<x\\
+    \end{array}
+\end{equation}
+
+The signals are subsequently mixed, as shown in the middle part of Figure \ref{pca_time_series} by the matrix:
+
+\begin{equation}
+  A = \begin{bmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{bmatrix}
+\end{equation}
+
+where $\alpha = \pi/4$. Here the mixing matrix $A$ corresponds to a rotation operator that will rotate the data by $\alpha$ radians in counterclockwise direction. 
+
+The lower part of Figure \ref{pca_time_series} shows the recovered signal\footnote{The estimated unmixing matrix here is $\hat{W} = \hat{A}^{-1} = \begin{bmatrix} .7071 & .7071 \\ -.7071 & .7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for the value of $\alpha$ above.}.
+
+\begin{itemize}
+  \item Example where it works - why
+  \item Example where it fails - why
+\end{itemize}
+
 
 
 \begin{figure}
@@ -220,6 +244,7 @@ Blabla..
   \includegraphics[width = .9\textwidth]{Figures/pca_signal_time_series}
   \hrule
   \caption{PCA Source Separation.}
+  \label{pca_time_series}
 \end{figure}
 
 \begin{figure}
@@ -323,6 +348,8 @@ As the ICA is incompatible with a Gaussian source distribution, a common choice 
 
 Whitening transform...
 
+STFT?
+
 \section{BSS by ICA}\label{BSS_ICA}
 
 
@@ -347,7 +374,7 @@ Whitening transform...
 
 \section{Limitations and Comparison with PCA}\label{ica_conclusions}
 
-
+Refer to section \ref{pca_bss} in discussion.
 
 
 \chapter{Single Sensor Blind Source Separation}\label{ssbss_chap}
@@ -356,7 +383,13 @@ todo.
 
 \chapter{Conclusion}
 
+todo.
+
 \begin{thebibliography}{9}
+
+\bibitem{pearson1901}{Pearson, K. (1901). "On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine 2 (6): 559–572.}
+
+
   
 \end{thebibliography}
 
