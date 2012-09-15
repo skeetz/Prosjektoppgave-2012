@@ -89,7 +89,7 @@ can be recovered. This is to say that the estimate of the original
 signal $j$ at time $t$ is computed as the $j$th row of $W$ times the
 $t$th column of $X$.
 
-From Equation \ref{linear_mixing_model}, we can see that the blind source separation problem, even in this simplest case, is ill-poised, that is we are trying to determine both $A$ and $S$ given only $X$. This implies that we need to impose certain assumptions on the nature of the data. As will be made apparent later, which assumptions are made, gives rise to different solution approaches. For the purpose of this study, we will be quite restrictive in terms of the assumptions we make, hence the term \emph{blind} source separation. The type of assumptions made are primarily related to statistical properties of the sources, such as for instance statistically independence, an assumption that leads to the ICA solution.
+From Equation \ref{linear_mixing_model}, we can see that the blind source separation problem, even in the simplest case, is ill-poised, as we are trying to determine $M\times T + N\times M$ parameters (both $A$ and $S$) given only $N\times T$ ($X$). This implies that we need to impose some kind of assumptions on the nature of the data. These assumptions, often called the \emph{generative model}, state something about the nature of the signals and how they are mixed. As will be made apparent later, which assumptions are made, gives rise to different solution approaches. For the purpose of this study, we will be quite restrictive in what assumptions we are willing make, hence the term \emph{blind} source separation. The type of assumptions made are primarily related to statistical properties of the sources. The textbook assumptions are uncorrelated and independendent sources, leading to the PCA and ICA solutions, respectively\footnote{Under the assumptions that the number of observations are greater than or equal to the number of sources.}.
 
 \section{Overview}
 
@@ -373,6 +373,25 @@ todo.
 
 \appendix
 \chapter{Some Mathematical Concepts}
+
+In this appendix we will provide a brief background on some of the mathematical notions that are central to understanding the methods used in this report. 
+
+\section{Linear Algebra}
+
+% the easy stuff
+
+
+\section{Statistics and Optimization}
+
+% ML-estimation + gradient descent
+
+
+
+
+
+\section{Spectral Analysis}
+
+% short term fourier.
 
 
 
