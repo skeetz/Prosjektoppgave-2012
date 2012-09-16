@@ -13,12 +13,18 @@ mix = a*s;
 figure, plot(mix)
 sound(mix, Fs)
 
-%% Do the magic
-window = 100;
-noverlap = 10;
-nfft = nextpow2(window);
+%% Do the magic 1. short term fourier
 
-[S,F,T,P] = spectrogram(mix, window,noverlap, nfft, Fs);
+window = 1024;
+noverlap = 1000;
+nfft = 1024;
+[S,F,T,P] = spectrogram(mix,window,noverlap,nfft);
 surf(T,F,10*log10(P),'edgecolor','none'); axis tight; 
 view(0,90);
 xlabel('Time (Seconds)'); ylabel('Hz');
+
+%%  HMMBSS
+
+% training on original data (x1, x2), separate HMMs
+
+% recover mix
