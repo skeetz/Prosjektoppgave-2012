@@ -7,7 +7,7 @@ x2 =x2(1:109936);
 s = [x1 x2]';
 
 %% Mix
-a = rand(1,2);
+a = randn(1,2);
 mix = a*s;
 
 figure(3), subplot(311), plot(x1), title('Original - count 1-10')
@@ -23,7 +23,7 @@ noverlap = 1000;
 nfft = 1024;
 [S,F,T,P] = spectrogram(mix,window,noverlap,nfft);
 [S0,F0,T0,P0] = spectrogram(x1,window,noverlap,nfft);
-
+[S1,F1,T1,P1] = spectrogram(x2,window,noverlap,nfft);
 
 
 figure(1), clf, subplot(311),
@@ -34,7 +34,6 @@ xlabel('Time (Seconds)'); ylabel('Hz'); title('Mix')
 % short term fourier ( source1 )
 
 % short term fourier ( source2 )
-[S1,F1,T1,P1] = spectrogram(x2,window,noverlap,nfft);
 
 subplot(312)
 surf(T0,F0,10*log10(P0),'edgecolor','none'); axis tight; 
@@ -50,12 +49,37 @@ xlabel('Time (Seconds)'); ylabel('Hz');title('Original - music')
 % training on original data (x1, x2), separate HMMs
 
 % todo: slice and dice in freq, t direction
+P0 = scbss_slice(P0, 128);
+F0 = F0(1:128);
+P1 = scbss_slice(P1, 128);
+F1 = F1(1:128);
+figure(15)
+surf(10*log10(P0),'edgecolor','none'); axis tight; 
+view(0,90);
 
-trans_guess = randn(10); est_guess = randn(10); 
+figure(11)
+surf(10*log10(P1),'edgecolor','none'); axis tight; 
+view(0,90);
+
+trans_guess_speaker = randn(128); est_guess_speaker = randn(128);
+trans_guess_music = randn(128); est_guess_music = randn(128);
+for(i=1:128)
+    est_guess_speaker(i,:) = est_guess_speaker(i,:)./sum(est_guess_speaker(i,:));
+    trans_guess_speaker(i,:) = trans_guess_speaker(i,:)./sum(trans_guess_speaker(i,:));
+    est_guess_music(i,:) = est_guess_music(i,:)./sum(est_guess_music(i,:));
+    trans_guess_music(i,:) = trans_guess_music(i,:)./sum(trans_guess_music(i,:));
+end
+P0Max = max(max(P0));
+P1Max = max(max(P1));
+P0 = ceil(P0*128/P0Max);
+P1 = ceil(P1*128/P1Max);
 % set size according to no of states and make a better guess
 
-[trans0, sensor0] = hmmtrain(P0, trans_guess, est_guess);
-[trans1, sensor1] = hmmtrain(P1, trans_guess, est_guess);
+[trans0_speaker, sensor0_speaker] = hmmtrain(P0, trans_guess_speaker, est_guess_speaker);
+[trans1_music, sensor1_music] = hmmtrain(P1, trans_guess_music, est_guess_music);
 
-
+trans0_speaker
+sensor0_speaker
+trans1_music
+sensor1_music
 % recover mix..
