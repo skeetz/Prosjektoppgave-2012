@@ -421,12 +421,21 @@ The solution to an optimzation problem is the same under any monotonous transfor
 Any mathematical optimization problem falls in either of two broad categories; global or constrained optimization problems. The first kind consists in solving
 
 \begin{equation}
-  \arg \max_x f(\boldmath{x})
+  \max f(\boldmath{X})
 \end{equation}
 
 i.e. determining the global maximum or minimum of a function.
 
 The second kind is on the form
+
+\begin{equation}
+  \begin{aligned}
+    & \underset{x}{\text{minimize}}
+    & & f_0(x) \\
+    & \text{subject to}
+    & & f_i(x) \leq b_i, \; i = 1, \ldots, m.
+  \end{aligned}
+\end{equation}
 
 \subsubsection{The Lagrange Multiplier Method}
 

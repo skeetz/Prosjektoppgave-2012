@@ -10,21 +10,51 @@ s = [x1 x2]';
 a = rand(1,2);
 mix = a*s;
 
-figure, plot(mix)
-sound(mix, Fs)
+figure(3), subplot(311), plot(x1), title('Original - count 1-10')
+subplot(312), plot(x2), title('Original - music')
+subplot(313), plot(mix), title('Mix')
+%sound(mix, Fs)
 
-%% Do the magic 1. short term fourier
+%% Do the magic 
+% short term fourier ( mix )
 
 window = 1024;
 noverlap = 1000;
 nfft = 1024;
 [S,F,T,P] = spectrogram(mix,window,noverlap,nfft);
+[S0,F0,T0,P0] = spectrogram(x1,window,noverlap,nfft);
+
+
+
+figure(1), clf, subplot(311),
 surf(T,F,10*log10(P),'edgecolor','none'); axis tight; 
 view(0,90);
-xlabel('Time (Seconds)'); ylabel('Hz');
+xlabel('Time (Seconds)'); ylabel('Hz'); title('Mix')
+
+% short term fourier ( source1 )
+
+% short term fourier ( source2 )
+[S1,F1,T1,P1] = spectrogram(x2,window,noverlap,nfft);
+
+subplot(312)
+surf(T0,F0,10*log10(P0),'edgecolor','none'); axis tight; 
+view(0,90);
+xlabel('Time (Seconds)'); ylabel('Hz'); title('Original - count')
+subplot(313)
+surf(T1,F1,10*log10(P1),'edgecolor','none'); axis tight; 
+view(0,90);
+xlabel('Time (Seconds)'); ylabel('Hz');title('Original - music')
 
 %%  HMMBSS
 
 % training on original data (x1, x2), separate HMMs
 
-% recover mix
+% todo: slice and dice in freq, t direction
+
+trans_guess = 0; 
+
+[trans0, sensor0] = hmmtrain(
+[trans1, sensor1] = hmmtrain(
+
+
+% recover mix..
