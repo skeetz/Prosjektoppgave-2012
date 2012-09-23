@@ -63,9 +63,9 @@ We now provide a notation leading to a mathematical statement of the blind sourc
 
 As only the observed value $\boldsymbol{X}$ is known, we need to determine the inverse $f^{-1}(\boldsymbol{S},t)$, that is, the \emph{unmixing model}.
 
-\subsection{Single Sensor Blind Source Separation}
+\subsection*{Single Sensor Blind Source Separation}
 
-A particular instance of the BSS problem, is the single sensor blind source separation (SSBSS) problem, to which we will devote particular attention. In the SSMSS problem, we have one or more source signals, but the observed signal $\boldsymbol{X}(t)$ is a scalar. This introduces problems as this instance does not lend itself to solutions by means of the ``standard'' methods we consider in the standard BSS problem. Chapter \ref{ssbss_chap} is devoted to the SSBSS problem.
+A particular instance of the BSS problem, is the single sensor blind source separation (SSBSS) problem, to which we will devote particular attention. In the SSBSS problem, we have one or more source signals, but the observed signal $\boldsymbol{X}(t)$ is a scalar. This introduces problems as this instance does not lend itself to solutions by means of the ``standard'' methods we consider in the standard BSS problem. Chapter \ref{ssbss_chap} is devoted to the SSBSS problem.
 
 \subsection{A Linear Mixing Model}
 
@@ -73,7 +73,7 @@ The simplest mixing model is a noiseless, stationary linear mixing model. The st
 
 
 \begin{equation}\label{linear_mixing_model}
-  X = AS
+ \boldsymbol{X} = \boldsymbol{A}\boldsymbol{S}
 \end{equation}
 
 With $\boldsymbol{}X \in \mathbf{R}^{N\times T}$, $\boldsymbol{A} \in \mathbf{R}^{N\times M}$
@@ -89,7 +89,7 @@ can be recovered. This is to say that the estimate of the original
 signal $j$ at time $t$ is computed as the $j$th row of $\boldsymbol{W}$ times the
 $t$th column of $X$.
 
-From Equation \ref{linear_mixing_model}, we can see that the blind source separation problem, even in the simplest case, is ill-poised, as we are trying to determine $M\times T + N\times M$ parameters (both $A$ and $S$) given only $N\times T$ ($\boldsymbol{X}$). This implies that we need to impose some kind of assumptions on the nature of the data. These assumptions, often called the \emph{generative model}, state something about the nature of the signals and how they are mixed. As will be made apparent later, which assumptions are made, gives rise to different solution approaches. For the purpose of this study, we will be quite restrictive in what assumptions we are willing make, hence the term \emph{blind} source separation. The type of assumptions made are primarily related to statistical properties of the sources. The textbook assumptions are uncorrelated and independendent sources, leading to the PCA and ICA solutions, respectively\footnote{Under the assumptions that the number of observations are greater than or equal to the number of sources.}.
+From Equation \ref{linear_mixing_model}, we can see that the blind source separation problem, even in the simplest case, is ill-poised, as we are trying to determine $M\times T + N\times M$ parameters (both $\boldsymbol{A}$ and $\boldsymbol{S}$) given only $N\times T$ ($\boldsymbol{X}$). This implies that we need to impose some kind of assumptions on the nature of the data. These assumptions, often called the \emph{generative model}, state something about the nature of the signals and how they are mixed. As will be made apparent later, which assumptions are made, gives rise to different solution approaches. For the purpose of this study, we will be quite restrictive in what assumptions we are willing make, hence the term \emph{blind} source separation. The type of assumptions made are primarily related to statistical properties of the sources. The textbook assumptions are uncorrelated and independendent sources, leading to the PCA and ICA solutions, respectively\footnote{Under the assumptions that the number of observations are greater than or equal to the number of sources.}.
 
 \section{Overview}
 
@@ -100,7 +100,7 @@ In the next chapters we will be looking at a few different algorithms for solvin
     \begin{tabular}{ | l | l | l | p{5cm} |}
       \hline
       \textbf{Data characteristic} & \textbf{Method} & \textbf{Description} \\ \hline
-      Uncorrelated sources. & PCA & Blablabla \\ 
+      Uncorrelated sources. & PCA & Blabla \\ 
       Independent, non-gaussian sources. & ICA & blabla \\
       Fewer sources than observations. & HMM & blabla \\
       \hline
@@ -138,8 +138,8 @@ using the method of Lagrange multipliers, and subsequently by singular
 value decomposition which. The latter is the more computationally
 efficient, and the rationale for this approach is easy to see once the
 first perspective is known. We then proceed to looking at how PCA can
-be applied to the blind source problem, before we finally look at a
-non-linear extension of PCA.
+be applied to the blind source problem and how the assumptions made
+about the data affect the results of a real-world mixing case.
 
 
 \section{Formal Statement}
@@ -148,8 +148,8 @@ Let $\boldsymbol{x}_i \in \mathbf{R}^n$ denote the $i$'th observation of a datas
 of $m$ observations. We now want to project our data onto a vector $\boldsymbol{u}$
 in $\mathbf{R}^n$ so as to maximize the variance of the resulting
 projection $\sum_{i=1}^m \boldsymbol{x}_i^T \boldsymbol{u}$ subject to the constraint
-$|\boldsymbol{u}|=1$. Under the assumption that $\boldsymbol{X}$ is standardized to zero mean
-and unit variance, the Lagrangian is then given by Equation \ref{pca_lagrangian}:
+$|\boldsymbol{u}|=1$. Under the assumption that $\boldsymbol{X}$ is
+standardized to zero mean and unit variance, the Lagrangian is then given by Equation \ref{pca_lagrangian}:
 
   \begin{equation}
     \label{pca_lagrangian}
@@ -277,12 +277,37 @@ so a numerical optimization method is usually applied in computing the ICA trans
 
 \section{Limitations of the ICA Model}\label{ICA_restrictions}
 
-\begin{itemize}
-  \item Non-Gaussian..
-  \item Ordering of signals..
-  \item ``Sign reversal'' (rotational invariance??)..
-  \item Blabla..
-\end{itemize}
+ICA imposes a few critical assumptions about the nature of the sources
+and the extentent to which they can be recovered. As in PCA, we cannot
+recover the original ordering of the signals; i.e. the rows of the
+source matrix $\boldsymbol{S}$ may be swapped in the resulting
+$\hat{\boldsymbol{S}}$. Furthermore, the correct scaling of the source
+compents, including their sign cannot be recovered. This can be seen
+in that $\boldsymbol{X} = \boldsymbol{A}\boldsymbol{S} = (.5
+\boldsymbol{A})(2 \boldsymbol{S})$.
+
+The final limitation of ICA is that the source signals must be
+non-Gaussian. To see why this must hold, we rely on the fact that the
+multivariate gaussian distribution is rotationally symmetric, and that
+to fully recover the sources, we must be able to ``undo'' any rotation
+caused by applying the mixing operator. Consider a single observation
+$\boldsymbol{x} = \boldsymbol{x}(t) =\boldsymbol{A}\boldsymbol{s}(t) = \boldsymbol{A}\boldsymbol{s}$. The covariance matrix of $\boldsymbol{x}$ is 
+
+    \begin{equation}
+      \mathbb{E}(\boldsymbol{x}\boldsymbol{x}^T) = \boldsymbol{A}\boldsymbol{s}(\boldsymbol{A}\boldsymbol{s})^T = \boldsymbol{A}\boldsymbol{s}\boldsymbol{s}^T\boldsymbol{A}^T=\boldsymbol{A}\boldsymbol{A}^T      
+    \end{equation}
+
+Now, let $\boldsymbol{R}$ be a rotation operator and $\boldsymbol{A}' = \boldsymbol{AR}$.
+
+
+
+
+% \begin{itemize}
+%   \item Non-Gaussian..
+%   \item Ordering of signals..
+%   \item ``Sign reversal'' (rotational invariance??)..
+%   \item Blabla..
+% \end{itemize}
 
 
 \section{ICA in the Linear Mixing Model}
@@ -299,7 +324,7 @@ ICA can be derived by several different approaches:
 
 
 
-\subsection{Maximum Likelihood Derivation}\label{ml_ica}
+\subsection{Derivation of ICA Log Likelihood Function}\label{ml_ica}
 
 Let $p_s(s_i)$ be the probability density function for source $i$, then, assuming the sources are independent the joint distribution of all the $n$ sources is given by the product of the marginals:
 
@@ -315,17 +340,39 @@ We now substitute in the unmixing model (Equation \ref{linear_unmixing_model}) a
 
 The unmixing matrix is the target parameter of our maximum likelihood approach. That is, we seek set the coefficients of the unmixing matrix so as to maximize the likelihood of observing the actual data. If our dataset consists of $T$ observations $X = \{x_1,x_2,...,x_T\}$, the log-likehliood function is:
 
-\begin{equation}
+\begin{equation}\label{ica_loglikelihood}
   l(W) =\log Prob(X|W)= \Sigma_{t=1}^T \log p_s(WX)+\log |W|
 \end{equation}
 
 As the ICA is incompatible with a Gaussian source distribution, common choices for specifying $P_s$ include the sigmoid $p_s(s) = \frac{1}{1+e^{-s}}$ and hyperbolic tangent ($\tanh(s)$).
 
-\begin{figure}[!htpb]
+\subsection{Derivation of Stochastic Gradient Descent for ICA}
+
+Given the log likelihood function of Equation \ref{ica_loglikelihood},
+we will now show how this can be maxmimized by stochastic gradient
+descent. This derivation leads directly to a working \textsc{Matlab}
+implementation shown in Figure \ref{ica_listing}.
+
+
+\begin{figure}[!htpb]\label{ica_listing}
   \begin{lstlisting}[frame=single]
-    code here...?
+for i = 1:Niter
+  w = update(x,w);
+end
+
+function w = update(x,w)
+  x=x(:,perm);
+  t=1;
+  noblocks=fix(P/Blocks);
+  BlocksI=Blocks*Id;
+  for t=t:Blocks:t-1+noblocks*Blocks,
+   u=w*x(:,t:t+Blocks-1); 
+   w=w+alpha * ( BlocksI + ...
+     (1-2*(1./(1+exp(-u))))*u') * w;
+ end
+end
   \end{lstlisting}
-  \caption{\textsc{Matlab} code for ML ICA by gradient descent.}
+  \caption{\textsc{Matlab} code for ML ICA by stochastic block gradient descent.}
   \label{mlica_code}
 \end{figure}
 
@@ -366,11 +413,27 @@ Refer to section \ref{pca_bss} in discussion.
 
 \chapter{Single Sensor Blind Source Separation}\label{ssbss_chap}
 
-todo.
+Single sensor BSS\footnote{Also called single channel BSS.} is a
+particularly importnat case of the BSS problem where the observed
+signal consists of only a scalar value at any point in time as if the
+source signals were recorded a sole microphone. This presents us with
+particular challenges, and we often need to make further assumptions
+about the data generating process -- i.e. we need a more complex
+generative model.
 
+In this chapter we present  a solution to the single sensor BSS
+problem proposed by Roweis (XXXX)\cite{roweis} that relies on a
+factoral hidden markov model system. The key idea put forward by
+Roweis is to learn the transition and sensor models for every source
+separately using a (redundant) spectral representation of the original signal.
 
+This chapter is structured as follows. 
+
+\section{Spectral Representation}
 
 \section{Inference in Hidden Markov Models}
+
+
 
 
 
@@ -381,7 +444,7 @@ todo.
 
 
 \appendix
-\chapter{Some Mathematical Concepts}
+\chapter{Mathematical Concepts}
 
 In this appendix we will provide a brief background on some of the mathematical notions that are central to understanding the methods used in this report. 
 
@@ -389,22 +452,31 @@ In this appendix we will provide a brief background on some of the mathematical 
 
 % the easy stuff
 In this section we will define a few important concepts that are
-necessary, in particular for the PCA method.
+necessary. These concepts are particularly important for understanding
+PCA, but are also relevant in the analysis of markov models. With
+stationary transition probabilities, the steady state distribution of
+the system is the solution to the eigenvector-eigenvalue problem.
 
-\subsubsection{T}
+\subsubsection{The Eigenvector - Eigenvalue Problem}
+
+\subsubsection{Singular Value Decomposition}
+
 
 \section{Statistics and Optimization}
 
 % ML-estimation + gradient descent
 A large portion of machine learning relies on statistical
-methods; the methods considered in this report being no exception. And
-as the learning problems having relevance in practical life are often
+methods; the methods considered in this report being no exception. As the learning problems having relevance in practical life are often
 far too complex to describe by analytic formulae, we therefore often
 need mathematical methods to find models that have the best fit to the
-observed data. In this section, we therefore consider one very
-important method for finding ``optimal'' parameters in a given model,
-the maximum likelihood method, as well as studying approaches to
-solving it, both analytically and numerically.
+observed data. 
+
+In this section, we therefore consider one very
+important method for finding ``optimal'' parameters in a given model;
+the maximum likelihood method which is presented in Section
+\ref{ml-estimation}. We then proceed to show how to actually solve
+the resulting maximzation in Section \ref{optimization}.
+
 
 \subsection{Maximum Likelihood Estimation}\label{ml-estimation}
 
@@ -433,17 +505,11 @@ likelihood function $f$ as Equation \ref{ml-iid}.
 The solution to an optimzation problem is the same under any monotone transformation. Therefore it is often times useful to deal with the log-likelihood function instead of $f$ directly.
 
 
-\subsection{Some Notions in Mathematical Optimization}
-
-
+\subsection{Mathematical Optimization}\label{optimization}
 
 \subsubsection{The Lagrange Multiplier Method}
 
-
-
 \subsubsection{Gradient Descent}
-
-
 
 
 \section{Spectral Analysis}
@@ -486,10 +552,60 @@ is defined as the squared magnitude ofthe STFD (Equation \ref{spectrogram}).
   \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
 \end{equation}
 
+\section{Hidden Markov Models}
+%% Ref Norvig
+A hidden markov model (HMM) is a probabilistic model relating two sequences of
+discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
+$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. Here, we will refer to
+$\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
+$\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
+is some causal relationship whereby the hidden variable affects the
+observable, but this does not need be the case. 
+
+A HMM consists of two probabilistic statement; the \emph{transition}
+model:
+
+\begin{equation}
+\mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
+\end{equation}
+
+
+and the \emph{sensor} or \emph{observation} model:
+
+\begin{equation}
+\mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+S_1, X_1)
+\end{equation}
+
+
+ The order of a markov model is the number of realizations
+of $\mathcal{S}$ conditioned on in the transition model. In order to
+make HMMs computationally tractable, we often operate with 1st order
+markov models:
+
+\begin{equation}\label{1st_order_markov}
+  \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
+\end{equation}
+
+This can be stated as as ``the future being conditionally independent of
+the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
+
+
+\begin{equation}
+  \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+  S_1, X_1) = \mathbb{P}(X_t|S_t)  
+\end{equation}
+
+The sensor markov assumption states that the sensor is independent of
+everything else given the current value of the hidden variable.
+
 \begin{thebibliography}{9}
 
-\bibitem{pearson1901}{Pearson, K. (1901). "On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine 2 (6): 559–572.}
-
+\bibitem{pearson1901}{Pearson, K. (1901). ``On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine 2 (6): 559–572.}
+\bibitem{roweis}{Roweis, S. T. (XXXX). ``One Microphone Source
+  Separation''. ????}
+\bibitem{norvig_russel}{Russell, S. and Norvig, P. (XXX). ``Artificial
+    Intelligence: A Modern Approach''. XXXX}
 
   
 \end{thebibliography}
