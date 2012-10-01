@@ -56,10 +56,12 @@ To systematically review current technology for blind source separation (BSS), w
 The blind source separation problem consists transforming a set of observed signals that has undergone some particular mixing process back to the original unobserved signals. The ``blind'' part of the problem refers to the fact that the nature of the mixing process is unknown. 
 
 \section{Background}
+The blind source separation problem consists transforming a set of observed signals that has undergone some particular mixing process back to the original unobserved signals. The “blind” part of the problem refers to the fact that the nature of the mixing process is unknown. From original research on the blind source separation problem, focus has shifted from the case where with as many, or more recording channels than original sources, to the case of fewer channels than original sources. An important subproblem that we wish to focus on is where we have only one recording and attempt to recover multiple sources.
+
+Our approach is two-fold: firstly we wish to look at studies about the performance of current single channel separation methods. Secondly, we wish to gain a broader overview over the state of research on BSS.
 
 
-
-\subsection*{Research Question}
+\section{Research Questions}
 \begin{enumerate}
   \item What are the state-of-the-art approaches to blind source separation; with particular emphasis on single channel BSS.
   \item Investigate the properties of the techniques identified in Question 1, what assumptions do they make about the nature of the sources and the mixing process?
@@ -69,8 +71,15 @@ The blind source separation problem consists transforming a set of observed sign
 
 
 \section{Search Strategy}
+In reviewing the BSS literature we conduct a search of the below databases based on a set of keywords listed below. To filter the results we introduce a set of criteria to judge the relevance and quality of the results.
 
 \subsection{Databases}
+
+\begin{itemize}
+ \item \href{www.springerlink.com}{SpringerLink}
+ \item \href {www.citeseerx}{CiteSeerX}
+ \item \href{scholar.google.com}{Google Scholar}
+\end{itemize}
 
 \subsection{Search Terms}
 
@@ -82,8 +91,50 @@ The blind source separation problem consists transforming a set of observed sign
   \item single microphone blind source separation
 \end{itemize}
 
+OR
+
+\begin{itemize}
+ \item blind source separation [literature] [review/survery] [methods]
+ \item single [channel/microphone/mixture] blind source separation
+ \item "placeholder"[pca/ica/principal component analysis/independent component analysis] blind source separation
+ \item empirical [results/comparison] blind source separation [algorithms]
+\end{itemize}
+
+
 
 \subsection{Inclusion and Quality Criteria}
+We wish to study how various methods and/or approaches by which blind source problem is solved, which constraints are imposed by these methods, and how well a BSS system based on these ideas perform on real-life data. To filter out the most important studies to this end, we adopt the following criteria.
+
+\begin{description}
+	\item[Inclusion Criteria] "placeholder"
+		\begin{enumerate}
+			\item The main concern of the study is the BSS problem.
+			\item The algorithmic design decisions in the study must be justified.
+			\item The study describes a reproducible algorithm/method.
+			\item The study focuses on blind source separation of auditory signals.
+		\end{enumerate}
+	\item[Quality Criteria] "placeholder"
+		\begin{enumerate}
+			\item The study presents empirical results.
+			\item More recent studies are preferred.
+			\item The described test data set is reproducible.
+			\item Literature reviews should discuss single channel blind source separation.
+			\item The study should describe which other algorithms/methods the proposed solution can be compared with and the performance measure used in comparison.
+		\end{enumerate}
+\end{description}
+
+\section {Results}
+\begin{itemize}
+	\item Jang, G., and Lee, T. (2003). A Maximum Likelihood Approach to Single-channel Source Separation, 4, 1365–1392.
+	\item Ma, H.-G., Jiang, Q.-B., Liu, Z.-Q., Liu, G., and Ma, Z.-Y. (2010). A novel blind source separation method for single-channel signal. Signal Processing, 90(12), 3232–3241. doi:10.1016/j.sigpro.2010.05.029 
+	\item Schutz, A., and Slock, D. (2010). Single-Microphone Blind Audio Source Separation via Gaussian Short+Long Term AR Models, (March), 3–5.
+	\item Bell, a J., and Sejnowski, T. J. (1995). An information-maximization approach to blind separation and blind deconvolution. Neural computation, 7(6), 1129–59. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/7584893 
+	\item Taelman, J., and Huffel, S. V. (2010). Source Separation From Single-Channel Recordings by Combining Empirical-Mode Decomposition and, 57(9), 2188–2196.
+	\item Davies, M. E., and James, C. J. (2007). Source separation using single channel ICA. Signal Processing, 87(8), 1819–1832. doi:10.1016/j.sigpro.2007.01.011
+	\item Park, H., and Lee, S. (2005). Blind Source Separation and Independent Component Analysis :, 6(1), 1–57.
+	\item Bensaid, S., Schutz, A., and Slock, D. T. M. (2010). Separation Using EM-Kalman Filter and Short + Long Term AR Modeling, 106–113.
+	\item Roweis, S. T. (n.d.). One Microphone Source Separation
+\end{itemize}
 
 
 \end{document}
