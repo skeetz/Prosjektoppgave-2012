@@ -51,6 +51,33 @@ Blabla..
 
 \section{Introduction}
 
+The blind source separation problem refers to the process of recovering one or more signals that have been mixed in some unknown manner and possibly also contamined by noise. Without any assumptions on the mixing process, this problem is ill-poised. In practice therefore, all BSS methods rely on some stylized fact about the nature of the signals and/or the mixing process. It is therefore useful to dichotomize BSS methods by these assumptions.
+
+Arguably, two of the most important facts characterizing a mixing process, are its temporal dynamics and the number of degrees of freedom. The first point refers to whether the nature of the mixing process changes over time, that is if the mixing matrix at time $t+k$ is different from that at time $t$ for $k>0$. The number of degrees of freedom is the same concept as in linear algebra - the connection is apparent by seeing the mixing process as a system of linear equations. If $m$ is the number of observed signals and $n$ the number of sources, the system is said to be \emph{underdetermined} if $m<n$ and conversely \emph{overdetermined} if $m>n$. 
+
+We can also differentiate between method based on the nature of input data. Early BSS research often considered the case of $n=m$, which allows one to work with data in the time domain. For undetermined systems, it is commonplace to work with some transformation of the data, which in the case of audio data a time-frequency representation. Common methods include the \emph{short-term Fourier transform} and the \emph{wavelet transform}.
+
+\section{Literature Review Process}
+
+
+
+\section{Literature Overview}
+
+
+\section{Conclusion}
+
+\theappendix
+
+\section{Protocol}
+
+
+\begin{thebibliography}{99}
+
+
+  
+\end{thebibliography}
+
+
 
 
 \end{document}
