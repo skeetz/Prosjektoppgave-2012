@@ -68,29 +68,40 @@ We can also differentiate between method based on the nature of input data. Earl
 
 %% Standard ICA
 Among the most common approaches to blind source separation is
-independent component analysis. Presented first by \ref{comon94}, the
-classical approach has been reinterpreted in different ways, as well
-as extended to handle more general cases. 
+independent component analysis (ICA). Common definitions of ICA use
+either the maximization of independence or minimization of mutual information between the source
+signals\footnote{It should be noted that while this text presents ICA
+  in terms of blind source separation, the method is applicable to a
+  wide array of machine learning problems including dimension
+  reduction, classification, and de-noising.}. 
 
-Common definitions of ICA use either the maximization of independence
-or minimization of mutual information between the source
-signals. Computationally, ICA can be stated in many different forms,
-hereunder neural networks and  maximum likelihood.
+The classical reference on ICA
+is \ref{comon94}, where the method of minimization of mutual
+information between sources is presented. \ref{comon94} also presents an
+analysis of the ambiguities and limitations of ICA, hereunder the permutation of
+sources, scaling and non-gaussianity. 
 
+Computationally, ICA can be stated in many different forms,
+hereunder neural networks (Bell and Sejnowski \ref{bellSejnowski95}),
+maximum likelihood (\ref{pearlmutterParra}) and maximization of
+non-gausianity as measured by excess kurtosis, which is used in the
+popular FastICA algorithm (\ref{fastICA}).
 
+For a thorough survey on the classical literature on ICA, see \ref{hyvarinen2001}.
 
-Bell+ andre folk: An information-maximization approach, Fast Blind
-source separation based on information theory
-Hyvarinen: Independent component analysis: algorithms and applications
 
 %% Extensions to Single Channel Mix
-Bach Blind one-microphone speech separation a spectral learning approach
+
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
 
 
 \subsection{Wavelets} %Ulf
+
+
+
+
 Ichir Hidden markov models
 
 \section{Conclusion}
@@ -101,7 +112,21 @@ Ichir Hidden markov models
 
 
 \begin{thebibliography}{99}
-\bibitem{comon94} Comon, Pierre (1994): "Independent Component Analysis: a new concept?", Signal Processing, 36(3):287–314
+
+\bibitem{comon94} Comon, P. (1994). 
+``Independent Component Analysis: a new concept?'', 
+Signal Processing, 36(3):287–314
+
+\bibitem{bellSejnowski95} Bell, A.J. and Sejnowski, T.J. (1995). 
+``An information maximization approach to blind separation and blind deconvolution'', 
+Neural Computation, 7, 1129-1159
+
+\bibitem{pearlmutterParra}Pearlmutter, B. A. and Parra, L. C.(YYYY),
+``A Context-Sensitive Generalization of ICA''. 
+
+\bibitem{hyvarinen2001}Hyvarinen A (2001).
+``Independent Component Analysis'',
+Neural Computing Surveys, Neural Computing Surveys, vol 2.
 
   
 \end{thebibliography}
