@@ -57,12 +57,30 @@ Arguably, two of the most important facts characterizing a mixing process, are i
 
 We can also differentiate between method based on the nature of input data. Early BSS research often considered the case of $n=m$, which allows one to work with data in the time domain. For undetermined systems, it is commonplace to work with some transformation of the data, which in the case of audio data a time-frequency representation. Common methods include the \emph{short-term Fourier transform} and the \emph{wavelet transform}.
 
-\section{Literature Review Process}
+\section{Literature Review Process} % Anders
 
 
 
 \section{Literature Overview}
 
+
+\subsection{Independent Component Analysis} %% Ulf
+
+%% Standard ICA
+
+Bell+ andre folk: An information-maximization approach, Fast Blind
+source separation based on information theory
+Hyvarinen: Independent component analysis: algorithms and applications
+
+%% Extensions to Single Channel Mix
+Bach Blind one-microphone speech separation a spectral learning approach
+
+
+\subsection{Factoral Hidden Markov Models} %% Anders
+
+
+\subsection{Wavelets} %Ulf
+Ichir Hidden markov models
 
 \section{Conclusion}
 
