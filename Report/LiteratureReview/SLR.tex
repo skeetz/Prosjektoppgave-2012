@@ -73,25 +73,57 @@ either the maximization of independence or minimization of mutual information be
 signals\footnote{It should be noted that while this text presents ICA
   in terms of blind source separation, the method is applicable to a
   wide array of machine learning problems including dimension
-  reduction, classification, and de-noising.}. 
+  reduction, classification, and de-noising.}. Formally, we can state
+the ICA problem in terms of a generative model of the observed signals
+$\mathbf{x}$, and the unknown a mixing matrix $\mathbf{W}$ and source
+signals $\mathbf{s}$:
+
+
+\begin{equation}
+  \mathbf{x} =   \mathbf{W}  \mathbf{s}
+\end{equation}
+
+The AIM of the ICA process is to estimate the inverse mixing process
+along with the original signals.
 
 The classical reference on ICA
-is \ref{comon94}, where the method of minimization of mutual
-information between sources is presented. \ref{comon94} also presents an
+is \cite{comon94}, where the method of minimization of mutual
+information between sources is presented. \cite{comon94} also presents an
 analysis of the ambiguities and limitations of ICA, hereunder the permutation of
 sources, scaling and non-gaussianity. 
 
 Computationally, ICA can be stated in many different forms,
-hereunder neural networks (Bell and Sejnowski \ref{bellSejnowski95}),
-maximum likelihood (\ref{pearlmutterParra}) and maximization of
+hereunder neural networks (\cite{bellSejnowski95}),
+maximum likelihood (\cite{pearlmutterParra}) and maximization of
 non-gausianity as measured by excess kurtosis, which is used in the
-popular FastICA algorithm (\ref{fastICA}).
+popular FastICA algorithm (\cite{fastICA}). For a much more thorough survey on the classical literature on ICA, see \cite{hyvarinen2001}.
 
-For a thorough survey on the classical literature on ICA, see \ref{hyvarinen2001}.
+\subsection{ICA in Underdetermined Systems}
+The classic studies on ICA focus to a large extent on developing the
+formal framework for ICA, and examples are largely centered on time
+domain analysis in systems of an equal number of sensors and
+sources. ICA has however been extended to underdetermined systems and
+the extreme case of single sensor systems. This involves transforming
+the observed signals from the time domain to some other basis, the
+most common of which are the frequency domain (Fourier transform), the
+time-frequency domain (short-term Fourier transform) and the wavelet domain.
 
 
-%% Extensions to Single Channel Mix
-
+\begin{table}[position specifier]
+  \centering
+  \begin{tabular}{|l|l|l|p{5cm}|}
+    \hline
+    \textbf{Study} & \textbf{Method} & \textbf{Data} & \textbf{Description} \\
+    \hline
+    Comon (94) & ICA & Time domain & Blabla.. \\
+    Bell and Sejnowski (95) & ICA & Time domain & Joint entropy
+    maximization by gradient descent.\\
+    
+    \hline
+  \end{tabular}
+  \caption{This table shows some data}
+  \label{tab:myfirsttable}
+\end{table}
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
@@ -106,7 +138,7 @@ Ichir Hidden markov models
 
 \section{Conclusion}
 
-\theappendix
+\appendix
 
 \section{Protocol}
 
@@ -129,6 +161,10 @@ Neural Computation, 7, 1129-1159
 Neural Computing Surveys, Neural Computing Surveys, vol 2.
 
   
+\bibitem{davies2007}Davies, M.E. and James, C.J. (2007).
+``Source separation using single channel ICA'',
+Signal Process., vol. 87, no. 8, pp. 1819–1832, 2007.
+
 \end{thebibliography}
 
 
