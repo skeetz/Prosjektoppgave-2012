@@ -1,15 +1,15 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}Literature Review Process}{2}{section.2}
-\contentsline {section}{\numberline {3}Literature Overview}{2}{section.3}
-\contentsline {subsection}{\numberline {3.1}Independent Component Analysis}{2}{subsection.3.1}
+\contentsline {section}{\numberline {2}Literature Review Process}{3}{section.2}
+\contentsline {section}{\numberline {3}Literature Overview}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Independent Component Analysis}{3}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}ICA in Underdetermined Systems}{3}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Factoral Hidden Markov Models}{3}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Wavelets}{3}{subsection.3.4}
-\contentsline {section}{\numberline {4}Conclusion}{3}{section.4}
-\contentsline {section}{\numberline {A}Research Agenda}{3}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Background}{3}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Research Questions}{4}{subsection.A.2}
-\contentsline {subsection}{\numberline {A.3}Search Strategy}{4}{subsection.A.3}
-\contentsline {subsubsection}{\numberline {A.3.1}Databases}{4}{subsubsection.A.3.1}
-\contentsline {subsubsection}{\numberline {A.3.2}List of Search Terms}{4}{subsubsection.A.3.2}
-\contentsline {subsubsection}{\numberline {A.3.3}Inclusion and Quality Criteria}{5}{subsubsection.A.3.3}
+\contentsline {subsection}{\numberline {3.4}Wavelets}{4}{subsection.3.4}
+\contentsline {section}{\numberline {4}Conclusion}{4}{section.4}
+\contentsline {section}{\numberline {A}Research Agenda}{4}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Background}{5}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Research Questions}{5}{subsection.A.2}
+\contentsline {subsection}{\numberline {A.3}Search Strategy}{5}{subsection.A.3}
+\contentsline {subsubsection}{\numberline {A.3.1}Databases}{5}{subsubsection.A.3.1}
+\contentsline {subsubsection}{\numberline {A.3.2}List of Search Terms}{6}{subsubsection.A.3.2}
+\contentsline {subsubsection}{\numberline {A.3.3}Inclusion and Quality Criteria}{6}{subsubsection.A.3.3}

@@ -166,7 +166,15 @@ time-frequency domain (short-term Fourier transform) and the wavelet domain.
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
-test
+The Hidden Markov modelling has been around since the late 1960s. Sam Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
+
+Training speaker dependent HMMs on isolated data from the sources to be separated, these models are then combined together in an architecture called factorial-max HMMs. The different HMMs evolve independently and for each observation vector produced at time t by each HMM, the elementwise maximum is chosen to create an observation. This is because the log magnitude spectrogram of a mixture of sources is very similar to the elementwise maximum of the individual spectrograms\footnote{This example was performed on two speakers. $a_{x_{t}}$ is the observation vector for speaker $x$ at time $t$, likewise is $b_{z_{t}}$ the observation vector for speaker $z$ at time $t$}. Separation is performed by setting the various masking signals to 1 or 0, depending on the observation vector at time $t$ for frequency band $i$.
+The full generative model can be written as:\newline
+\(p(x_{t}=j|x_{t-1}=i)=T_{ij} \)\newline
+\(p(z_{t}=j|z_{t-1}=i)=U_{ij} \)\newline
+\( p(y_{t}|x_{t},z_{t})=N(max[a_{x_{t}},b_{z_{t}}], R)\)
+
+
 
 \subsection{Wavelets} %Ulf
 
@@ -267,6 +275,9 @@ Neural Computation, 7, 1129-1159
 ``Independent Component Analysis'',
 Neural Computing Surveys, Neural Computing Surveys, vol 2.
 
+\bibitem{roweisOneMic}Sam T. Roweis(2001).
+``Neural Information Processing Systems 13" (NIPS'00).
+pp. 793-799
   
 \bibitem{davies2007}Davies, M.E. and James, C.J. (2007).
 ``Source separation using single channel ICA'',
