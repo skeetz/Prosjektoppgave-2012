@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.10.4)  30 OCT 2012 23:03
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.10.4)  31 OCT 2012 18:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -662,29 +662,36 @@ Overfull \hbox (50.76178pt too wide) in paragraph at lines 114--124
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 173.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 173.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 177.
+
+ (/usr/local/texlive/2010/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 177.
+ [4] [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
+
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
  (./SLR.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 173.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
 Package rerunfilecheck Info: File `SLR.out' has not changed.
-(rerunfilecheck)             Checksum: FBCD53B74FA062E719AE7F98316D8B3D;543.
+(rerunfilecheck)             Checksum: 924867FCE08995158265AD9756546A9D;985.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 8319 strings out of 493747
- 122828 string characters out of 3143546
- 225736 words of memory out of 3000000
- 11437 multiletter control sequences out of 15000+200000
+ 8367 strings out of 493747
+ 123478 string characters out of 3143546
+ 225774 words of memory out of 3000000
+ 11459 multiletter control sequences out of 15000+200000
  14817 words of font info for 56 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,10n,42p,683b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,42p,683b,424s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -694,11 +701,12 @@ sr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 ocal/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
 l/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
-ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on SLR.pdf (3 pages, 131069 bytes).
+ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
+ve/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on SLR.pdf (6 pages, 149232 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 111 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

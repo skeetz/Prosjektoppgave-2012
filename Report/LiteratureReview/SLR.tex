@@ -38,7 +38,7 @@
    showspaces=false,
    showstringspaces=false}
 
-\title{Blind Source Separation\\--\\Literature Search Protocol}
+\title{Blind Source Separation\\--\\A Literature Review}
 \author{Anders Røsæg Pedersen\\Ulf Nore}
 \date{NTNU, Fall 2012}    % type date between braces
 \maketitle
@@ -51,17 +51,48 @@ Blabla..
 
 \section{Introduction}
 
-The blind source separation problem refers to the process of recovering one or more signals that have been mixed in some unknown manner and possibly also contamined by noise. Without any assumptions on the mixing process, this problem is ill-poised. In practice therefore, all BSS methods rely on some stylized fact about the nature of the signals and/or the mixing process. It is therefore useful to dichotomize BSS methods by these assumptions.
+The blind source separation problem refers to the process of
+recovering one or more signals that have been mixed in some unknown
+manner and possibly also contamined by noise. Without any assumptions
+on the mixing process, this problem is ill-poised. In practice
+therefore, all BSS methods rely on some stylized fact about the nature
+of the signals and/or the mixing process. It is therefore useful to
+dichotomize BSS methods by these assumptions.
 
-Arguably, two of the most important facts characterizing a mixing process, are its temporal dynamics and the number of degrees of freedom. The first point refers to whether the nature of the mixing process changes over time, that is if the mixing matrix at time $t+k$ is different from that at time $t$ for $k>0$. The number of degrees of freedom is the same concept as in linear algebra - the connection is apparent by seeing the mixing process as a system of linear equations. If $m$ is the number of observed signals and $n$ the number of sources, the system is said to be \emph{underdetermined} if $m<n$ and conversely \emph{overdetermined} if $m>n$. 
 
-We can also differentiate between method based on the nature of input data. Early BSS research often considered the case of $n=m$, which allows one to work with data in the time domain. For undetermined systems, it is commonplace to work with some transformation of the data, which in the case of audio data a time-frequency representation. Common methods include the \emph{short-term Fourier transform} and the \emph{wavelet transform}.
+Arguably, two of the most important facts characterizing a mixing
+process, are its temporal dynamics and the number of degrees of
+freedom. The first point refers to whether the nature of the mixing
+process changes over time, that is if the mixing matrix at time $t+k$
+is different from that at time $t$ for $k>0$. The number of degrees of
+freedom is the same concept as in linear algebra - the connection is
+apparent by seeing the mixing process as a system of linear
+equations. If $m$ is the number of observed signals and $n$ the number
+of sources, the system is said to be \emph{underdetermined} if $m<n$
+and conversely \emph{overdetermined} if $m>n$. 
 
-\section{Literature Review Process} % Anders
+
+We can also differentiate between method based on the nature of input
+data. Early BSS research often considered the case of $n=m$, which
+allows one to work with data in the time domain. For undetermined
+systems, it is commonplace to work with some transformation of the
+data, which in the case of audio data a time-frequency
+representation. Common methods include the \emph{short-term Fourier
+  transform} and the \emph{wavelet transform}.
+
+
+The organization of this study is as follows. Section
+\ref{reviewProcess} will briefly summarize the literature review
+process, which is further documented by the underlying research
+protocol given in Appendix \ref{protocol}. Section \ref{overview} is
+an 
+
+\section{Literature Review Process}\label{reviewProcess} % Anders
 
 
 
-\section{Literature Overview}
+\section{Literature Overview}\label{overview}
+
 
 
 \subsection{Independent Component Analysis} %% Ulf
@@ -140,8 +171,76 @@ Ichir Hidden markov models
 
 \appendix
 
-\section{Protocol}
 
+\section{Research Agenda}
+The aim of this study is to systematically review current technology
+for blind source separation (BSS), with particular emphasis on the
+particular subproblem of single channel blind source separation
+(SCBSS); that is, the recovery of several source signals from one observed signals.
+
+
+\subsection{Background}
+The blind source separation problem consists transforming a set of observed signals that has undergone some particular mixing process back to the original unobserved signals. The “blind” part of the problem refers to the fact that the nature of the mixing process is unknown. From original research on the blind source separation problem, focus has shifted from the case where with as many, or more recording channels than original sources, to the case of fewer channels than original sources. An important subproblem that we wish to focus on is where we have only one recording and attempt to recover multiple sources.
+
+Our approach is two-fold: firstly we wish to look at studies about the performance of current single channel separation methods. Secondly, we wish to gain a broader overview over the state of research on BSS.
+
+\subsection{Research Questions}
+\begin{enumerate}
+  \item What are the different variations on the blind source
+    separation problem, in particular as pertains to audio data.
+  \item Which methodologies and algorithms are applied to the
+    different variations of the blind source separation problem as identified in Question 1.
+  \item What are the theoretical properties of the techniques
+    identified in Question 2, and  what assumptions do they make about the nature of the sources and the mixing process?
+  \item What empirical evidence is there to document the performance
+    of the techniques identified in Question 2 as applied to the
+    problems identified in Question 1?
+\end{enumerate}
+
+
+
+\subsection{Search Strategy}
+In reviewing the BSS literature we conduct a search of the below databases based on a set of keywords listed below. To filter the results we introduce a set of criteria to judge the relevance and quality of the results.
+
+\subsubsection{Databases}
+
+\begin{itemize}
+ \item \href{www.springerlink.com}{SpringerLink}
+ \item \href {www.citeseerx}{CiteSeerX}
+ \item \href{scholar.google.com}{Google Scholar}
+\end{itemize}
+
+\subsubsection{List of Search Terms}
+
+\emph{blind source separation, single channel blind source separation, single mixture blind source separation, hidden markov blind source, single microphone blind source separation, blind source separation review, blind source separation survey, pca blind source separation, ica blind source separation, principal component analysis blind source separation, independent component analysis blind source separation}.
+
+
+
+\subsubsection{Inclusion and Quality Criteria}
+We wish to study how various methods and/or approaches by which blind source problem is solved, which constraints are imposed by these methods, and how well a BSS system based on these ideas perform on real-life data. To filter out the most important studies to this end, we adopt the following criteria.
+
+\begin{description}
+	\item Inclusion Criteria
+		\begin{enumerate}
+			\item The main concern of the study is the BSS
+                          problem.
+			\item The algorithmic design decisions in the study must be justified.
+			\item The study describes a reproducible algorithm/method.
+			\item The study focuses on blind source separation of auditory signals.
+		\end{enumerate}
+	\item Quality Criteria
+		\begin{enumerate}
+			\item The study presents empirical results.
+			\item More recent studies are preferred.
+			\item The described test data set is
+                          reproducible.
+                        \item The study should present novel
+                          theoretical approaches/methodologies OR
+                          empirical results about previously known methods. 
+			\item Literature reviews should discuss single channel blind source separation.
+			\item The study should describe which other algorithms/methods the proposed solution can be compared with and the performance measure used in comparison.
+		\end{enumerate}
+\end{description}
 
 \begin{thebibliography}{99}
 
