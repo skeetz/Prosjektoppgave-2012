@@ -4,7 +4,7 @@
 \contentsline {subsection}{\numberline {3.1}Independent Component Analysis}{3}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}ICA in Underdetermined Systems}{3}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Factoral Hidden Markov Models}{4}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Wavelets}{4}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Other Approaches}{5}{subsection.3.4}
 \contentsline {section}{\numberline {4}Conclusion}{5}{section.4}
 \contentsline {section}{\numberline {A}Research Agenda}{6}{appendix.A}
 \contentsline {subsection}{\numberline {A.1}Background}{6}{subsection.A.1}

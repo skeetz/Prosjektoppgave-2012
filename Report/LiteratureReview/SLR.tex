@@ -165,7 +165,7 @@ time-frequency domain (short-term Fourier transform) and the wavelet domain.
     maximization by gradient descent.\\
     Hyvarinen (01) & FastICA & Time domain & Fixed point negentropy
     minization \\
-    Roweis (01) & Factoral HMM & Time-frequency domain & Blabla \\
+    Roweis (01) & Factoral HMM & Time-frequency domain & Masking signals on frequency spectrum  \\
 
     \hline
   \end{tabular}
@@ -177,7 +177,27 @@ time-frequency domain (short-term Fourier transform) and the wavelet domain.
 \subsection{Factoral Hidden Markov Models} %% Anders
 The Hidden Markov modelling has been around since the late 1960s. Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
 
+\begin{figure}[h]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{hmm}
+  \hrule
+  \caption{Hidden Markov Model}
+  \label{hmm_figure}
+\end{figure}
+
+
+
 Training speaker dependent HMMs on isolated data from the sources to be separated, these models are then combined together in an architecture called factorial-max HMMs. The different HMMs evolve independently and for each observation vector produced at time t by each HMM, the elementwise maximum is chosen to create an observation. This is because the log magnitude spectrogram of a mixture of sources is very similar to the elementwise maximum of the individual spectrograms\footnote{This example was performed on two speakers. $a_{x_{t}}$ is the observation vector for speaker $x$ at time $t$, likewise is $b_{z_{t}}$ the observation vector for speaker $z$ at time $t$}. Separation is performed by setting the various masking signals to 1 or 0, depending on the observation vector at time $t$ for frequency band $i$.
+
+\begin{figure}[h]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{f_hmm}
+  \hrule
+  \caption{Factorial Hidden Markov Model}
+  \label{fhmm_figure}
+\end{figure}
 
 The full generative model is given in Equations \ref{roweisEqn1} - \ref{roweisEqn3}.
 
