@@ -38,7 +38,7 @@
    showspaces=false,
    showstringspaces=false}
 
-\title{Blind Source Separation\\--\\Literature Search Protocol}
+\title{Blind Source Separation\\--\\A Literature Review}
 \author{Anders Røsæg Pedersen\\Ulf Nore}
 \date{NTNU, Fall 2012}    % type date between braces
 \maketitle
@@ -51,48 +51,238 @@ Blabla..
 
 \section{Introduction}
 
-The blind source separation problem refers to the process of recovering one or more signals that have been mixed in some unknown manner and possibly also contamined by noise. Without any assumptions on the mixing process, this problem is ill-poised. In practice therefore, all BSS methods rely on some stylized fact about the nature of the signals and/or the mixing process. It is therefore useful to dichotomize BSS methods by these assumptions.
+The blind source separation problem refers to the process of
+recovering one or more signals that have been mixed in some unknown
+manner and possibly also contamined by noise. Without any assumptions
+on the mixing process, this problem is ill-poised. In practice
+therefore, all BSS methods rely on some stylized fact about the nature
+of the signals and/or the mixing process. It is therefore useful to
+dichotomize BSS methods by these assumptions.
 
-Arguably, two of the most important facts characterizing a mixing process, are its temporal dynamics and the number of degrees of freedom. The first point refers to whether the nature of the mixing process changes over time, that is if the mixing matrix at time $t+k$ is different from that at time $t$ for $k>0$. The number of degrees of freedom is the same concept as in linear algebra - the connection is apparent by seeing the mixing process as a system of linear equations. If $m$ is the number of observed signals and $n$ the number of sources, the system is said to be \emph{underdetermined} if $m<n$ and conversely \emph{overdetermined} if $m>n$. 
 
-We can also differentiate between method based on the nature of input data. Early BSS research often considered the case of $n=m$, which allows one to work with data in the time domain. For undetermined systems, it is commonplace to work with some transformation of the data, which in the case of audio data a time-frequency representation. Common methods include the \emph{short-term Fourier transform} and the \emph{wavelet transform}.
+Arguably, two of the most important facts characterizing a mixing
+process, are its temporal dynamics and the number of degrees of
+freedom. The first point refers to whether the nature of the mixing
+process changes over time, that is if the mixing matrix at time $t+k$
+is different from that at time $t$ for $k>0$. The number of degrees of
+freedom is the same concept as in linear algebra - the connection is
+apparent by seeing the mixing process as a system of linear
+equations. If $m$ is the number of observed signals and $n$ the number
+of sources, the system is said to be \emph{underdetermined} if $m<n$
+and conversely \emph{overdetermined} if $m>n$. 
 
-\section{Literature Review Process} % Anders
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{ica_simple}
+  \hrule
+  \caption{Stationary linear mixing process and separation.}
+  \label{pca_time_series}
+\end{figure}
+
+We can also differentiate between method based on the nature of input
+data. Early BSS research often considered the case of $n=m$, which
+allows one to work with data in the time domain. For undetermined
+systems, it is commonplace to work with some transformation of the
+data, which in the case of audio data a time-frequency
+representation. Common methods include the \emph{short-term Fourier
+  transform} and the \emph{wavelet transform}.
+
+
+The organization of this study is as follows. Section
+\ref{reviewProcess} will briefly summarize the literature review
+process, which is further documented by the underlying research
+protocol given in Appendix \ref{protocol}. Section \ref{overview} is
+an 
+
+\section{Literature Review Process}\label{reviewProcess} % Anders
 
 
 
-\section{Literature Overview}
+\section{Literature Overview}\label{overview}
+
 
 
 \subsection{Independent Component Analysis} %% Ulf
 
 %% Standard ICA
+Among the most common approaches to blind source separation is
+independent component analysis (ICA). Common definitions of ICA use
+either the maximization of independence or minimization of mutual information between the source
+signals\footnote{It should be noted that while this text presents ICA
+  in terms of blind source separation, the method is applicable to a
+  wide array of machine learning problems including dimension
+  reduction, classification, and de-noising.}. Formally, we can state
+the ICA problem in terms of a generative model of the observed signals
+$\mathbf{x}$, and the unknown a mixing matrix $\mathbf{W}$ and source
+signals $\mathbf{s}$:
 
-Bell+ andre folk: An information-maximization approach, Fast Blind
-source separation based on information theory
-Hyvarinen: Independent component analysis: algorithms and applications
 
-%% Extensions to Single Channel Mix
-Bach Blind one-microphone speech separation a spectral learning approach
+\begin{equation}
+  \mathbf{x} =   \mathbf{W}  \mathbf{s}
+\end{equation}
+
+The AIM of the ICA process is to estimate the inverse mixing process
+along with the original signals.
+
+The classical reference on ICA
+is \cite{comon94}, where the method of minimization of mutual
+information between sources is presented. \cite{comon94} also presents an
+analysis of the ambiguities and limitations of ICA, hereunder the permutation of
+sources, scaling and non-gaussianity. 
+
+Computationally, ICA can be stated in many different forms,
+hereunder neural networks (\cite{bellSejnowski95}),
+maximum likelihood (\cite{pearlmutterParra}) and maximization of
+non-gausianity as measured by excess kurtosis, which is used in the
+popular FastICA algorithm (\cite{fastICA}). For a much more thorough survey on the classical literature on ICA, see \cite{hyvarinen2001}.
+
+\subsection{ICA in Underdetermined Systems}
+The classic studies on ICA focus to a large extent on developing the
+formal framework for ICA, and examples are largely centered on time
+domain analysis in systems of an equal number of sensors and
+sources. ICA has however been extended to underdetermined systems and
+the extreme case of single sensor systems. This involves transforming
+the observed signals from the time domain to some other basis, the
+most common of which are the frequency domain (Fourier transform), the
+time-frequency domain (short-term Fourier transform) and the wavelet domain.
+
+
+\begin{table}[position specifier]
+  \centering
+  \begin{tabular}{|l|l|l|p{5cm}|}
+    \hline
+    \textbf{Study} & \textbf{Method} & \textbf{Data} & \textbf{Description} \\
+    \hline
+    Comon (94) & ICA & Time domain & Blabla.. \\
+    Bell and Sejnowski (95) & ICA & Time domain & Joint entropy
+    maximization by gradient descent.\\
+    
+    \hline
+  \end{tabular}
+  \caption{This table shows some data}
+  \label{tab:myfirsttable}
+\end{table}
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
+The Hidden Markov modelling has been around since the late 1960s. Sam Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
+
+Training speaker dependent HMMs on isolated data from the sources to be separated, these models are then combined together in an architecture called factorial-max HMMs. The different HMMs evolve independently and for each observation vector produced at time t by each HMM, the elementwise maximum is chosen to create an observation. This is because the log magnitude spectrogram of a mixture of sources is very similar to the elementwise maximum of the individual spectrograms\footnote{This example was performed on two speakers. $a_{x_{t}}$ is the observation vector for speaker $x$ at time $t$, likewise is $b_{z_{t}}$ the observation vector for speaker $z$ at time $t$}. Separation is performed by setting the various masking signals to 1 or 0, depending on the observation vector at time $t$ for frequency band $i$.
+The full generative model can be written as:\newline
+\(p(x_{t}=j|x_{t-1}=i)=T_{ij} \)\newline
+\(p(z_{t}=j|z_{t-1}=i)=U_{ij} \)\newline
+\( p(y_{t}|x_{t},z_{t})=N(max[a_{x_{t}},b_{z_{t}}], R)\)
+
 
 
 \subsection{Wavelets} %Ulf
+
+
+
+
 Ichir Hidden markov models
 
 \section{Conclusion}
 
-\theappendix
+\appendix
 
-\section{Protocol}
 
+\section{Research Agenda}
+The aim of this study is to systematically review current technology
+for blind source separation (BSS), with particular emphasis on the
+particular subproblem of single channel blind source separation
+(SCBSS); that is, the recovery of several source signals from one observed signals.
+
+
+\subsection{Background}
+The blind source separation problem consists transforming a set of observed signals that has undergone some particular mixing process back to the original unobserved signals. The “blind” part of the problem refers to the fact that the nature of the mixing process is unknown. From original research on the blind source separation problem, focus has shifted from the case where with as many, or more recording channels than original sources, to the case of fewer channels than original sources. An important subproblem that we wish to focus on is where we have only one recording and attempt to recover multiple sources.
+
+Our approach is two-fold: firstly we wish to look at studies about the performance of current single channel separation methods. Secondly, we wish to gain a broader overview over the state of research on BSS.
+
+\subsection{Research Questions}
+\begin{enumerate}
+  \item What are the different variations on the blind source
+    separation problem, in particular as pertains to audio data.
+  \item Which methodologies and algorithms are applied to the
+    different variations of the blind source separation problem as identified in Question 1.
+  \item What are the theoretical properties of the techniques
+    identified in Question 2, and  what assumptions do they make about the nature of the sources and the mixing process?
+  \item What empirical evidence is there to document the performance
+    of the techniques identified in Question 2 as applied to the
+    problems identified in Question 1?
+\end{enumerate}
+
+
+
+\subsection{Search Strategy}
+In reviewing the BSS literature we conduct a search of the below databases based on a set of keywords listed below. To filter the results we introduce a set of criteria to judge the relevance and quality of the results.
+
+\subsubsection{Databases}
+
+\begin{itemize}
+ \item \href{www.springerlink.com}{SpringerLink}
+ \item \href {www.citeseerx}{CiteSeerX}
+ \item \href{scholar.google.com}{Google Scholar}
+\end{itemize}
+
+\subsubsection{List of Search Terms}
+
+\emph{blind source separation, single channel blind source separation, single mixture blind source separation, hidden markov blind source, single microphone blind source separation, blind source separation review, blind source separation survey, pca blind source separation, ica blind source separation, principal component analysis blind source separation, independent component analysis blind source separation}.
+
+
+
+\subsubsection{Inclusion and Quality Criteria}
+We wish to study how various methods and/or approaches by which blind source problem is solved, which constraints are imposed by these methods, and how well a BSS system based on these ideas perform on real-life data. To filter out the most important studies to this end, we adopt the following criteria.
+
+\begin{description}
+	\item Inclusion Criteria
+		\begin{enumerate}
+			\item The main concern of the study is the BSS
+                          problem.
+			\item The algorithmic design decisions in the study must be justified.
+			\item The study describes a reproducible algorithm/method.
+			\item The study focuses on blind source separation of auditory signals.
+		\end{enumerate}
+	\item Quality Criteria
+		\begin{enumerate}
+			\item The study presents empirical results.
+			\item More recent studies are preferred.
+			\item The described test data set is
+                          reproducible.
+                        \item The study should present novel
+                          theoretical approaches/methodologies OR
+                          empirical results about previously known methods. 
+			\item Literature reviews should discuss single channel blind source separation.
+			\item The study should describe which other algorithms/methods the proposed solution can be compared with and the performance measure used in comparison.
+		\end{enumerate}
+\end{description}
 
 \begin{thebibliography}{99}
 
+\bibitem{comon94} Comon, P. (1994). 
+``Independent Component Analysis: a new concept?'', 
+Signal Processing, 36(3):287–314
 
+\bibitem{bellSejnowski95} Bell, A.J. and Sejnowski, T.J. (1995). 
+``An information maximization approach to blind separation and blind deconvolution'', 
+Neural Computation, 7, 1129-1159
+
+\bibitem{pearlmutterParra}Pearlmutter, B. A. and Parra, L. C.(YYYY),
+``A Context-Sensitive Generalization of ICA''. 
+
+\bibitem{hyvarinen2001}Hyvarinen A (2001).
+``Independent Component Analysis'',
+Neural Computing Surveys, Neural Computing Surveys, vol 2.
+
+\bibitem{roweisOneMic}Sam T. Roweis(2001).
+``Neural Information Processing Systems 13" (NIPS'00).
+pp. 793-799
   
+\bibitem{davies2007}Davies, M.E. and James, C.J. (2007).
+``Source separation using single channel ICA'',
+Signal Process., vol. 87, no. 8, pp. 1819–1832, 2007.
+
 \end{thebibliography}
 
 
