@@ -131,11 +131,17 @@ information between sources is presented. \cite{comon94} also presents an
 analysis of the ambiguities and limitations of ICA, hereunder the permutation of
 sources, scaling and non-gaussianity. 
 
-Computationally, ICA can be stated in many different forms,
-hereunder neural networks (\cite{bellSejnowski95}),
-maximum likelihood (\cite{pearlmutterParra}) and maximization of
-non-gausianity as measured by excess kurtosis, which is used in the
-popular FastICA algorithm (\cite{fastICA}). For a much more thorough survey on the classical literature on ICA, see \cite{hyvarinen2001}.
+There are several equivalent statements of ICA, which yields different
+interpretations and computational models.
+\cite{bellSejnowski95} proposes minimizing mutual information between
+sources, as measured by \emph{differential entropy}. In this
+implementation a feed-forward neural network structure is proposed.
+Other approaches include conventional maximum likelihood (\cite{pearlmutterParra}) and maximization of
+non-gausianity as measured by excess kurtosis. A popular approach is
+the  FastICA algorithm (\cite{fastICA}) that minimizes mutual
+information expressed by \emph{negentropy} by a fixed point method. 
+
+For a much more thorough survey on the classical literature on ICA, see \cite{hyvarinen2001}.
 
 \subsection{ICA in Underdetermined Systems}
 The classic studies on ICA focus to a large extent on developing the
@@ -157,34 +163,68 @@ time-frequency domain (short-term Fourier transform) and the wavelet domain.
     Comon (94) & ICA & Time domain & Blabla.. \\
     Bell and Sejnowski (95) & ICA & Time domain & Joint entropy
     maximization by gradient descent.\\
-    
+    Hyvarinen (01) & FastICA & Time domain & Fixed point negentropy
+    minization \\
+    Roweis (01) & Factoral HMM & Time-frequency domain & Masking signals on frequency spectrum  \\
+
     \hline
   \end{tabular}
-  \caption{This table shows some data}
+  \caption{Overview over blind source separation methods}
   \label{tab:myfirsttable}
 \end{table}
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
-The Hidden Markov modelling has been around since the late 1960s. Sam Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
+The Hidden Markov modelling has been around since the late 1960s. Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
+
+\begin{figure}[h]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{hmm}
+  \hrule
+  \caption{Hidden Markov Model}
+  \label{hmm_figure}
+\end{figure}
+
+
 
 Training speaker dependent HMMs on isolated data from the sources to be separated, these models are then combined together in an architecture called factorial-max HMMs. The different HMMs evolve independently and for each observation vector produced at time t by each HMM, the elementwise maximum is chosen to create an observation. This is because the log magnitude spectrogram of a mixture of sources is very similar to the elementwise maximum of the individual spectrograms\footnote{This example was performed on two speakers. $a_{x_{t}}$ is the observation vector for speaker $x$ at time $t$, likewise is $b_{z_{t}}$ the observation vector for speaker $z$ at time $t$}. Separation is performed by setting the various masking signals to 1 or 0, depending on the observation vector at time $t$ for frequency band $i$.
-The full generative model can be written as:\newline
-\(p(x_{t}=j|x_{t-1}=i)=T_{ij} \)\newline
-\(p(z_{t}=j|z_{t-1}=i)=U_{ij} \)\newline
-\( p(y_{t}|x_{t},z_{t})=N(max[a_{x_{t}},b_{z_{t}}], R)\)
 
+\begin{figure}[h]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{f_hmm}
+  \hrule
+  \caption{Factorial Hidden Markov Model}
+  \label{fhmm_figure}
+\end{figure}
 
+The full generative model is given in Equations \ref{roweisEqn1} - \ref{roweisEqn3}.
 
-\subsection{Wavelets} %Ulf
+\begin{equation}\label{roweisEqn1}
+  p(x_{t}=j|x_{t-1}=i)=T_{ij}
+\end{equation}
 
+\begin{equation}\label{roweisEqn2}
+  p(z_{t}=j|z_{t-1}=i)=U_{ij}  
+\end{equation}
 
+\begin{equation}\label{roweisEqn3}
+  p(y_{t}|x_{t},z_{t})=N(max[a_{x_{t}},b_{z_{t}}], R)  
+\end{equation}
 
+\subsection{Other Approaches}
 
-Ichir Hidden markov models
+The abovementioned approaches represent a select set of common
+approaches to the  BSS problem. Other approaches rely to a larger
+extent on direct application of knowledge about the human auditory
+system. \cite{bach} focuses on the problem on single channel speech
+separation in the spectral domain by means of feature maps. 
+
 
 \section{Conclusion}
 
+\newpage
 \appendix
 
 
@@ -264,16 +304,26 @@ We wish to study how various methods and/or approaches by which blind source pro
 ``Independent Component Analysis: a new concept?'', 
 Signal Processing, 36(3):287–314
 
-\bibitem{bellSejnowski95} Bell, A.J. and Sejnowski, T.J. (1995). 
+\bibitem{bellSejnowski95} Bell, A.J. and Sejnowski, T.J. (1995).,
 ``An information maximization approach to blind separation and blind deconvolution'', 
 Neural Computation, 7, 1129-1159
 
 \bibitem{pearlmutterParra}Pearlmutter, B. A. and Parra, L. C.(YYYY),
 ``A Context-Sensitive Generalization of ICA''. 
 
-\bibitem{hyvarinen2001}Hyvarinen A (2001).
+\bibitem{hyvarinen2001}Hyvarinen A (2001),
 ``Independent Component Analysis'',
 Neural Computing Surveys, Neural Computing Surveys, vol 2.
+
+\bibitem{bach} Bach, F.R. and Jordan, M.I. (2004),
+``Blind One-Microphone Speech Separation: A Spectral Learning
+  Approach''.
+
+
+\bibitem{fastICA}Hyvärinen, A. (1999),
+``Fast and Robust Fixed-Point Algorithms for Independent Component
+  Analysis''. 
+IEEE Transactions on Neural Networks 10(3):626-634, 1999.
 
 \bibitem{roweisOneMic}Sam T. Roweis(2001).
 ``Neural Information Processing Systems 13" (NIPS'00).

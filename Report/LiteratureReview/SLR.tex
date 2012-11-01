@@ -141,18 +141,34 @@ non-gausianity as measured by excess kurtosis. A popular approach is
 the  FastICA algorithm (\cite{fastICA}) that minimizes mutual
 information expressed by \emph{negentropy} by a fixed point method. 
 
-For a much more thorough survey on the classical literature on ICA, see \cite{hyvarinen2001}.
-
-\subsection{ICA in Underdetermined Systems}
 The classic studies on ICA focus to a large extent on developing the
 formal framework for ICA, and examples are largely centered on time
 domain analysis in systems of an equal number of sensors and
-sources. ICA has however been extended to underdetermined systems and
-the extreme case of single sensor systems. This involves transforming
+sources\footnote{For a much more thorough survey on the classical literature 
+on ICA, see \cite{hyvarinen2001}.}. ICA has however been extended to underdetermined systems and
+the extreme case of single sensor systems. 
+
+Many of these extensions are to a lesser extent changes to the
+previously known algorithms; rather they involve transforming
 the observed signals from the time domain to some other basis, the
 most common of which are the frequency domain (Fourier transform), the
-time-frequency domain (short-term Fourier transform) and the wavelet domain.
+time-frequency domain (short-term Fourier transform) and the wavelet
+domain. Compared to the time domain, the two latter are redundant
+representations, but they transform the data so as to be suited for
+ICA. \cite{mijovic2010} surveys variations on ICA as applied to single
+channel recordings, hereunder single channel ICA (SCICA) and wavelet
+ICA (WICA), in addition to proposing an algorithm that combines ICA
+with empirical mode decompostion (EMD). EMD decomposes a signal into
+independent components in the spectral domain and can be viewed as
+similar to STFT.
 
+The abovementioned approaches represent a select set of common
+approaches to the  BSS problem. Other approaches rely to a larger
+extent on direct application of knowledge about the human auditory
+system. As an example \cite{bach} focuses on the problem on single channel speech
+separation in the spectral domain by means of feature
+maps where the features roughly corresponds to ``audible'' features such
+as common onset, pitch, timbre and so forth. 
 
 \begin{table}[position specifier]
   \centering
@@ -213,16 +229,21 @@ The full generative model is given in Equations \ref{roweisEqn1} - \ref{roweisEq
   p(y_{t}|x_{t},z_{t})=N(max[a_{x_{t}},b_{z_{t}}], R)  
 \end{equation}
 
-\subsection{Other Approaches}
-
-The abovementioned approaches represent a select set of common
-approaches to the  BSS problem. Other approaches rely to a larger
-extent on direct application of knowledge about the human auditory
-system. \cite{bach} focuses on the problem on single channel speech
-separation in the spectral domain by means of feature maps. 
-
 
 \section{Conclusion}
+
+In this survey we have provided an overview over some techniques in
+blind source separation. Early work on blind source separation focused
+to a large extent on time domain ICA. In extending the BSS problem to
+multiple sources, the classical ICA method has been augmented by
+adopting different signal representations, where the time-frequency
+domain is particularly common. Different methods have also been
+introduced, some borrowing from the human auditory system attempting
+to hard-code domain specific knowledge. Others adopt different
+algorithms; one important example here being hidden markov models
+(HMMs). This is a very flexible approach to BSS as it allows for
+non-stationary mixing, and relaxes many of the stringent assumptions
+of classical ICA. 
 
 \newpage
 \appendix
@@ -319,19 +340,28 @@ Neural Computing Surveys, Neural Computing Surveys, vol 2.
 ``Blind One-Microphone Speech Separation: A Spectral Learning
   Approach''.
 
-
 \bibitem{fastICA}Hyvärinen, A. (1999),
 ``Fast and Robust Fixed-Point Algorithms for Independent Component
   Analysis''. 
 IEEE Transactions on Neural Networks 10(3):626-634, 1999.
 
 \bibitem{roweisOneMic}Sam T. Roweis(2001).
-``Neural Information Processing Systems 13" (NIPS'00).
+``Neural Information Processing Systems 13'' (NIPS'00).
 pp. 793-799
   
 \bibitem{davies2007}Davies, M.E. and James, C.J. (2007).
 ``Source separation using single channel ICA'',
 Signal Process., vol. 87, no. 8, pp. 1819–1832, 2007.
+
+\bibitem{cardoso98}Cardoso, J. L.(1998),
+``Multidimensional Independent Component Analysis'',
+Proceedings of ICASSP 1998.
+
+\bibitem{mijovic2010} Mijovic, B. De Vos, M.,  Gligorijevic, I.,
+  Taelman, J. and Van Huffel, S. (2010),
+``Source Separation From Single-Channel Recordings by Combining
+  Empirical-Mode Decomposition and Independent Component Analysis'',
+IEEE Transactions on Biomedical Engineering, vol. 57, no. 9, September 2010
 
 \end{thebibliography}
 
