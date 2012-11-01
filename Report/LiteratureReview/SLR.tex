@@ -43,12 +43,9 @@
 \date{NTNU, Fall 2012}    % type date between braces
 \maketitle
 
-\begin{abstract}
-Blabla..
-\end{abstract}
 
 \tableofcontents
-
+\newpage
 \section{Introduction}
 
 The blind source separation problem refers to the process of
@@ -93,11 +90,28 @@ The organization of this study is as follows. Section
 \ref{reviewProcess} will briefly summarize the literature review
 process, which is further documented by the underlying research
 protocol given in Appendix \ref{protocol}. Section \ref{overview} is
-an 
+a short description of the different techniques and methodologies found, summarised in section \ref{conclusion}.
 
 \section{Literature Review Process}\label{reviewProcess} % Anders
+The literature review process was conducted by searching the listed databases for published articles containing the predefined search terms.
+The table below shows the amount of results presented to us when  using the more general of our search terms.
 
+\begin{table}[h]
+\centering
+	\begin{tabular}{|l|l|l|l|}
+	\hline
+	\textbf{Search term} & \textbf{CiteSeerX} & \textbf{Google Scholar} & \textbf{SpringerLink} \\
+	\hline
+	blind source separation & 292581 & 698000 & 13143\\
+	blind audio source separation & 28612 & 26000 & 1072\\
+	single channel blind source separation & 275543 & 78600 & 5024\\
+	\hline
+	\end{tabular}
+\caption{Magnitude of hits on the most general terms}
+\label{tab:myfirsttable}
+\end{table}
 
+Since the search terms we had defined gave us a large amount of results, we prioritized newer papers over older ones as per the Appendix \ref{protocol}. 
 
 \section{Literature Overview}\label{overview}
 
@@ -170,26 +184,9 @@ separation in the spectral domain by means of feature
 maps where the features roughly corresponds to ``audible'' features such
 as common onset, pitch, timbre and so forth. 
 
-\begin{table}[position specifier]
-  \centering
-  \begin{tabular}{|l|l|l|p{5cm}|}
-    \hline
-    \textbf{Study} & \textbf{Method} & \textbf{Data} & \textbf{Description} \\
-    \hline
-    Comon (94) & ICA & Time domain & Blabla.. \\
-    Bell and Sejnowski (95) & ICA & Time domain & Joint entropy
-    maximization by gradient descent.\\
-    Hyvarinen (01) & FastICA & Time domain & Fixed point negentropy
-    minization \\
-    Roweis (01) & Factoral HMM & Time-frequency domain & Masking signals on frequency spectrum  \\
-
-    \hline
-  \end{tabular}
-  \caption{Overview over blind source separation methods}
-  \label{tab:myfirsttable}
-\end{table}
 
 
+\newpage
 \subsection{Factoral Hidden Markov Models} %% Anders
 The Hidden Markov modelling has been around since the late 1960s. Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
 
@@ -230,7 +227,7 @@ The full generative model is given in Equations \ref{roweisEqn1} - \ref{roweisEq
 \end{equation}
 
 
-\section{Conclusion}
+\section{Conclusion}\label{conclusion}
 
 In this survey we have provided an overview over some techniques in
 blind source separation. Early work on blind source separation focused
@@ -249,7 +246,7 @@ of classical ICA.
 \appendix
 
 
-\section{Research Agenda}
+\section{Research Agenda}\label{protocol}
 The aim of this study is to systematically review current technology
 for blind source separation (BSS), with particular emphasis on the
 particular subproblem of single channel blind source separation
