@@ -1,33 +1,34 @@
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
-\contentsline {section}{\numberline {1.1}Formal Problem Statement}{2}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}A Linear Mixing Model}{2}{subsection.1.1.1}
-\contentsline {section}{\numberline {1.2}Overview}{3}{section.1.2}
-\contentsline {chapter}{\numberline {2}Principal Component Analysis}{4}{chapter.2}
-\contentsline {section}{\numberline {2.1}Formal Statement}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Singular Value Decomposition}{5}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}PCA Application to Blind Source Separation}{6}{section.2.2}
-\contentsline {chapter}{\numberline {3}Independent Component Analysis}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Limitations of the ICA Model}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}ICA in the Linear Mixing Model}{10}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{10}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Derivation of ICA Log Likelihood Function}{10}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Derivation of Stochastic Gradient Descent for ICA}{10}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{10}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}BSS by ICA}{11}{section.3.3}
-\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{11}{section.3.4}
-\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Spectral Representation}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Inference in Hidden Markov Models}{13}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusion}{14}{chapter.5}
-\contentsline {chapter}{\numberline {A}Mathematical Concepts}{15}{appendix.A}
-\contentsline {section}{\numberline {A.1}Linear Algebra}{15}{section.A.1}
-\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{15}{section*.11}
-\contentsline {subsubsection}{Singular Value Decomposition}{15}{section*.12}
-\contentsline {section}{\numberline {A.2}Statistics and Optimization}{15}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{16}{subsection.A.2.1}
-\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{16}{subsection.A.2.2}
-\contentsline {subsubsection}{The Lagrange Multiplier Method}{16}{section*.13}
-\contentsline {subsubsection}{Gradient Descent}{16}{section*.14}
-\contentsline {section}{\numberline {A.3}Spectral Analysis}{16}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Formal statement}{16}{subsection.A.3.1}
-\contentsline {section}{\numberline {A.4}Hidden Markov Models}{17}{section.A.4}
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Formal Problem Statement}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}A Linear Mixing Model}{3}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Overview}{4}{section.1.2}
+\contentsline {chapter}{\numberline {2}Principal Component Analysis}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Formal Statement}{6}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Singular Value Decomposition}{6}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}PCA Application to Blind Source Separation}{7}{section.2.2}
+\contentsline {chapter}{\numberline {3}Independent Component Analysis}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}Limitations of the ICA Model}{10}{section.3.1}
+\contentsline {section}{\numberline {3.2}ICA in the Linear Mixing Model}{11}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{11}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Derivation of ICA Log Likelihood Function}{11}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Derivation of Stochastic Gradient Descent for ICA}{11}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{11}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}BSS by ICA}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{12}{section.3.4}
+\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{14}{section.4.1}
+\contentsline {section}{\numberline {4.2}Factoral Hidden Markov Model for BSS}{15}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Initialization}{15}{subsection.4.2.1}
+\contentsline {chapter}{\numberline {5}Conclusion}{16}{chapter.5}
+\contentsline {chapter}{\numberline {A}Mathematical Concepts}{17}{appendix.A}
+\contentsline {section}{\numberline {A.1}Linear Algebra}{17}{section.A.1}
+\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{17}{section*.12}
+\contentsline {subsubsection}{Singular Value Decomposition}{17}{section*.13}
+\contentsline {section}{\numberline {A.2}Statistics and Optimization}{17}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{18}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{18}{subsection.A.2.2}
+\contentsline {subsubsection}{The Lagrange Multiplier Method}{18}{section*.14}
+\contentsline {subsubsection}{Gradient Descent}{18}{section*.15}
+\contentsline {section}{\numberline {A.3}Spectral Analysis}{18}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Formal statement}{18}{subsection.A.3.1}
+\contentsline {section}{\numberline {A.4}Hidden Markov Models}{19}{section.A.4}
