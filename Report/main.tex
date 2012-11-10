@@ -427,9 +427,12 @@ factoral hidden markov model system. The key idea put forward by
 Roweis is to learn the transition and sensor models for every source
 separately using a time-frequency  representation of the original signal.
 
-This chapter is structured as follows. [TODO]
+This chapter is structured as follows. Section \ref{timeFreqRep}
+provides an introduction to the time-frequency domain signal
+representation which is common in most single channel audio separation
+models. Section \ref{fhmm} then 
 
-\section{Time Frequency Signal Representation}
+\section{Time Frequency Signal Representation}\label{timeFreqRep}
 A time frequency representation (TFR) is a redundant signal
 representation in comparison to a simple time domain representation that
 contains only the amplitude values at given point in time. A TFR
@@ -438,8 +441,7 @@ domain representation as the latter contains no information about the
 temporal location of events.
 
 
-
-\begin{figure}[!htpb]\label{ica_listing}
+\begin{figure}[!htpb]\label{matlab_stft}
   \begin{lstlisting}[frame=single]
 window = 256; noverlap=250; nfft=256; Freq = 16000;
 [S,F,T,P] = spectrogram(s1,window,noverlap,nfft,Freq);
@@ -453,10 +455,9 @@ window = 256; noverlap=250; nfft=256; Freq = 16000;
 
 [....]
 
-\section{Factoral Hidden Markov Model for BSS}
+\section{Factoral Hidden Markov Model for BSS}\label{fhmm}
 
-[...]
-tekst og figurer...
+
 
 
 
