@@ -430,7 +430,11 @@ separately using a time-frequency  representation of the original signal.
 This chapter is structured as follows. Section \ref{timeFreqRep}
 provides an introduction to the time-frequency domain signal
 representation which is common in most single channel audio separation
-models. Section \ref{fhmm} then 
+models. Section \ref{fhmm} then describes the factoral hidden
+markov for blind source separation in terms of a two signal mixture
+before we conclude by looking at some results from our implementation
+of the model.
+
 
 \section{Time Frequency Signal Representation}\label{timeFreqRep}
 A time frequency representation (TFR) is a redundant signal
@@ -457,7 +461,35 @@ window = 256; noverlap=250; nfft=256; Freq = 16000;
 
 \section{Factoral Hidden Markov Model for BSS}\label{fhmm}
 
+We will now describe the factoral HMM for blind source separation as
+put forward by Roweis in a two signal setting. We adopt the following
+notation: for each timestep $t \in \{1,2,3,...,T\}$, $\mathbf{X}_t$
+denotes the $M$-dimensional spectral vector of power spectral
+intensities over the finite set of frequency values $\mathcal{F}$. We
+note that while the set of frequencies are discrete, the intensities
+$x_{it}$ are real-valued, hence we adopt a real valued emission
+model, as discussed later. 
 
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/spectrogram_count}
+  \hrule
+  \caption{Spectrogram of male voice counting from one to ten.}
+\end{figure}
+
+
+The FHMM is essentially a supervised learning method, and the learning
+process consists in estimating a separate HMM based on separate (clean) recordings of the
+particular source. That is to say, the learning part consists entirely
+in learning a probability model of each source. 
+
+For a given source, the training phase then consists in
+training a HMM with a discrete (latent) state space $\mathcal{Z}$, and
+a continuous emission distribution $\mathbf{P(X|Z)}$. The emissions
+model will produce intensity vectors $\mathbf{X}_t$ as described in
+the preceding paragraph.
 
 
 
@@ -482,6 +514,19 @@ density value) in each frequency band given that the system is in
 state $i$. The pair $(\{\mathbf{\mu}_i\}, \Sigma)$ then forms the initial
 parametrization of the emissions model.
 
+
+\subsection{Separation}
+
+Next, consider the problem of recovering the orignial
+sources\footnote{For simplicity, we will here frame the problem in
+  terms of two sources.} $\mathbf{S} =
+\{S_1, S_2\}$ given the observed sequence $\{\mathbf{X}(t)\}$, $t \in \{1,2,3,...,T\}$ which we
+take to be spectral vectors as discussed above. As before, we let
+$z_{it}$, $i \in \{1,2\}$ denote the value of the latent variable for
+each HMM. 
+
+
+\section{Results}
 
 
 
@@ -593,17 +638,43 @@ or gaussian. The window determines which part of the signal $x$ is to
 be included in the spectrogram near $m$. In practice, the STFT is
 computed using the fast fourier transform (FFT). To better allow for
 visualization of the STFT, which is a complex number, the spectrogram
-is defined as the squared magnitude ofthe STFD (Equation \ref{spectrogram}).
+is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
 
 \begin{equation}\label{spectrogram}
   \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
 \end{equation}
 
-\section{Hidden Markov Models}
+
+\section{Gaussian Mixture Models}\label{gmm_appendix}
+A gaussian mixture model (GMM) is latent variable model that gives a
+tractable representation of high-dimensional probability
+distribution. Let $Z$ be a multinomial random variable taking on
+values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
+be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
+har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
+has a gaussian mixture distribution:
+
+\begin{equation}\label{gaussmix_eqn}
+  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
+  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
+\end{equation}
+
+Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
+gaussian distribution with expectation vector $\mathbf{\mu}$ and
+covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
+an $N$-valued multinomial distribution.
+
+A common interpretretation of the gaussian mixture model is for $Z$ to
+represent a latent or hidden variable describing the state of a
+system, while $X$ is some observable quantity depending on the state
+of the system. 
+
+
+\section{Hidden Markov Models}\label{hmm_appendix}
 %% Ref Norvig
 A hidden markov model (HMM) is a probabilistic model relating two sequences of
 discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
-$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. Here, we will refer to
+$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
 $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
 $\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
 is some causal relationship whereby the hidden variable affects the

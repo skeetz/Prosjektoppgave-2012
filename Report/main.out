@@ -19,12 +19,15 @@
 \BOOKMARK [1][-]{section.4.1}{Time Frequency Signal Representation}{chapter.4}% 19
 \BOOKMARK [1][-]{section.4.2}{Factoral Hidden Markov Model for BSS}{chapter.4}% 20
 \BOOKMARK [2][-]{subsection.4.2.1}{Initialization}{section.4.2}% 21
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 22
-\BOOKMARK [0][-]{appendix.A}{Mathematical Concepts}{}% 23
-\BOOKMARK [1][-]{section.A.1}{Linear Algebra}{appendix.A}% 24
-\BOOKMARK [1][-]{section.A.2}{Statistics and Optimization}{appendix.A}% 25
-\BOOKMARK [2][-]{subsection.A.2.1}{Maximum Likelihood Estimation}{section.A.2}% 26
-\BOOKMARK [2][-]{subsection.A.2.2}{Mathematical Optimization}{section.A.2}% 27
-\BOOKMARK [1][-]{section.A.3}{Spectral Analysis}{appendix.A}% 28
-\BOOKMARK [2][-]{subsection.A.3.1}{Formal statement}{section.A.3}% 29
-\BOOKMARK [1][-]{section.A.4}{Hidden Markov Models}{appendix.A}% 30
+\BOOKMARK [2][-]{subsection.4.2.2}{Separation}{section.4.2}% 22
+\BOOKMARK [1][-]{section.4.3}{Results}{chapter.4}% 23
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 24
+\BOOKMARK [0][-]{appendix.A}{Mathematical Concepts}{}% 25
+\BOOKMARK [1][-]{section.A.1}{Linear Algebra}{appendix.A}% 26
+\BOOKMARK [1][-]{section.A.2}{Statistics and Optimization}{appendix.A}% 27
+\BOOKMARK [2][-]{subsection.A.2.1}{Maximum Likelihood Estimation}{section.A.2}% 28
+\BOOKMARK [2][-]{subsection.A.2.2}{Mathematical Optimization}{section.A.2}% 29
+\BOOKMARK [1][-]{section.A.3}{Spectral Analysis}{appendix.A}% 30
+\BOOKMARK [2][-]{subsection.A.3.1}{Formal statement}{section.A.3}% 31
+\BOOKMARK [1][-]{section.A.4}{Gaussian Mixture Models}{appendix.A}% 32
+\BOOKMARK [1][-]{section.A.5}{Hidden Markov Models}{appendix.A}% 33

@@ -18,17 +18,20 @@
 \contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{14}{chapter.4}
 \contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{14}{section.4.1}
 \contentsline {section}{\numberline {4.2}Factoral Hidden Markov Model for BSS}{15}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Initialization}{15}{subsection.4.2.1}
-\contentsline {chapter}{\numberline {5}Conclusion}{16}{chapter.5}
-\contentsline {chapter}{\numberline {A}Mathematical Concepts}{17}{appendix.A}
-\contentsline {section}{\numberline {A.1}Linear Algebra}{17}{section.A.1}
-\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{17}{section*.12}
-\contentsline {subsubsection}{Singular Value Decomposition}{17}{section*.13}
-\contentsline {section}{\numberline {A.2}Statistics and Optimization}{17}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{18}{subsection.A.2.1}
-\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{18}{subsection.A.2.2}
-\contentsline {subsubsection}{The Lagrange Multiplier Method}{18}{section*.14}
-\contentsline {subsubsection}{Gradient Descent}{18}{section*.15}
-\contentsline {section}{\numberline {A.3}Spectral Analysis}{18}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Formal statement}{18}{subsection.A.3.1}
-\contentsline {section}{\numberline {A.4}Hidden Markov Models}{19}{section.A.4}
+\contentsline {subsection}{\numberline {4.2.1}Initialization}{16}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Separation}{16}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Results}{16}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclusion}{17}{chapter.5}
+\contentsline {chapter}{\numberline {A}Mathematical Concepts}{18}{appendix.A}
+\contentsline {section}{\numberline {A.1}Linear Algebra}{18}{section.A.1}
+\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{18}{section*.13}
+\contentsline {subsubsection}{Singular Value Decomposition}{18}{section*.14}
+\contentsline {section}{\numberline {A.2}Statistics and Optimization}{18}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{19}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{19}{subsection.A.2.2}
+\contentsline {subsubsection}{The Lagrange Multiplier Method}{19}{section*.15}
+\contentsline {subsubsection}{Gradient Descent}{19}{section*.16}
+\contentsline {section}{\numberline {A.3}Spectral Analysis}{19}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Formal statement}{19}{subsection.A.3.1}
+\contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{20}{section.A.4}
+\contentsline {section}{\numberline {A.5}Hidden Markov Models}{20}{section.A.5}
