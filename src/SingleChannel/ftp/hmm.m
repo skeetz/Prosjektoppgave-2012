@@ -17,15 +17,16 @@
 % Iterates until a proportional change < tol in the log likelihood 
 % or cyc steps of Baum-Welch
 
-function [Mu,Cov,P,Pi,LL]=hmm(X,T,K,cyc,tol)
+function [Mu,Cov,P,Pi,LL]=hmm(X,K,T,cyc,tol)
 
 p=length(X(1,:));
 N=length(X(:,1));
 
 if nargin<5   tol=0.0001; end;
 if nargin<4   cyc=100; end;
-if nargin<3   K=2; end;
-if nargin<2   T=N; end;
+if nargin<3   T=N; end;
+if nargin<2   K=2; end;
+
 
 if (rem(N,T)~=0)
   disp('Error: Data matrix length must be multiple of sequence length T');
@@ -141,7 +142,7 @@ for cycle=1:cyc
     likbase=lik;
   elseif (lik<(oldlik - 1e-6)) 
     fprintf('violation');
-  elseif ((lik-likbase)<(1 + tol)*(oldlik-likbase)|~finite(lik)) 
+  elseif ((lik-likbase)<(1 + tol)*(oldlik-likbase)|~isfinite(lik)) 
     fprintf('\n');
     break;
   end;
