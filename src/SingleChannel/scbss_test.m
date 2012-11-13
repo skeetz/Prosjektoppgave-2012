@@ -43,19 +43,14 @@ surf(T,F,10*log10(P),'edgecolor','none'); axis tight;
 view(0,90);
 xlabel('Time (Seconds)'); ylabel('Hz'); title('speaker1')
 
-%% Ghahramani
-%HMM for ssm1
-[Mu,Cov,P,Pi,LL] = hmm(-log(P)', 20);
-
 
 
 %% gmm
 
-%p0 = -log(P);
-%gmm1 = gmdistribution.fit(p0', 50, 'SharedCov', true);
+p0 = -log(P);
+gmm1 = gmdistribution.fit(p0', 50, 'SharedCov', true);
 
-%mus = gmm1.mu;
-%cvmat = gmm1.SharedCov;
+
 
 
 %trans1 = rand(10);
