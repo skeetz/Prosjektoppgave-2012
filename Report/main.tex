@@ -18,6 +18,9 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{subfig}
+\usepackage{standalone}
+
+\graphicspath{{Figures/}}
 
 \begin{document}
 
@@ -553,8 +556,12 @@ approximation, see [REFERANSER].
 
 todo.
 
-
 \appendix
+
+\chapter{Literature Review}
+%SLR
+\input{./LiteratureReview/SLR.tex}
+
 \chapter{Mathematical Concepts}
 
 In this appendix we will provide a brief background on some of the mathematical notions that are central to understanding the methods used in this report. 
@@ -735,6 +742,7 @@ the past given the present''. Another common simplification is known as the \emp
 
 The sensor markov assumption states that the sensor is independent of
 everything else given the current value of the hidden variable.
+
 
 \begin{thebibliography}{9}
 
