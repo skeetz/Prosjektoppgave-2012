@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  17 NOV 2012 14:09
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  17 NOV 2012 14:22
 entering extended mode
  %&-line parsing enabled.
-**main.tex
+**main.tex test.pdf
 (./main.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -630,10 +630,7 @@ Chapter 1.
 ] [4]
 Chapter 2.
 
-LaTeX Warning: Citation `pearson1901' on page 5 undefined on input line 118.
-
-
-Overfull \hbox (17.05939pt too wide) in paragraph at lines 118--125
+Overfull \hbox (22.06299pt too wide) in paragraph at lines 118--125
 \OT1/cmr/m/n/10.95 Principal com-po-nent anal-y-sis [[]] (PCA) is a eigenvector
 -based, non-probabilistic
  []
@@ -649,15 +646,15 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 191.
  [6]
-<Figures/pca_signal_time_series.png, id=253, 449.68pt x 337.26pt>
+<Figures/pca_signal_time_series.png, id=294, 449.68pt x 337.26pt>
 File: Figures/pca_signal_time_series.png Graphic file (type png)
 
 <use Figures/pca_signal_time_series.png>
-<Figures/pca_data_eigs.png, id=254, 449.68pt x 337.26pt>
+<Figures/pca_data_eigs.png, id=295, 449.68pt x 337.26pt>
 File: Figures/pca_data_eigs.png Graphic file (type png)
 
 <use Figures/pca_data_eigs.png>
-<Figures/pca_eig_projection.png, id=255, 449.68pt x 337.26pt>
+<Figures/pca_eig_projection.png, id=296, 449.68pt x 337.26pt>
 File: Figures/pca_eig_projection.png Graphic file (type png)
 
 <use Figures/pca_eig_projection.png> [7] [8 <./Figures/pca_signal_time_series.p
@@ -674,11 +671,11 @@ See the caption package documentation for explanation.
 
 LaTeX Warning: Reference `ica_listing' on page 11 undefined on input line 357.
 
-<Figures/ica_simple.png, id=293, 1497.595pt x 803.803pt>
+<Figures/ica_simple.png, id=334, 1497.595pt x 803.803pt>
 File: Figures/ica_simple.png Graphic file (type png)
 
 <use Figures/ica_simple.png> [11]
-<Figures/ica_music_speech.png, id=306, 1497.595pt x 803.803pt>
+<Figures/ica_music_speech.png, id=347, 1497.595pt x 803.803pt>
 File: Figures/ica_music_speech.png Graphic file (type png)
 
 <use Figures/ica_music_speech.png> [12] [13 <./Figures/ica_simple.png (PNG copy
@@ -694,7 +691,7 @@ Overfull \hbox (12.51892pt too wide) in paragraph at lines 454--455
 
 [14
 
-] <Figures/spectrogram_count.png, id=343, 578.16pt x 433.62pt>
+] <Figures/spectrogram_count.png, id=384, 578.16pt x 433.62pt>
 File: Figures/spectrogram_count.png Graphic file (type png)
 
 <use Figures/spectrogram_count.png> [15] [16 <./Figures/spectrogram_count.png (
@@ -725,10 +722,10 @@ Overfull \hbox (6.26776pt too wide) in paragraph at lines 143--144
  1960s. Roweis[[]]
  []
 
-<Figures/hmm.jpg, id=410, 490.83376pt x 236.38312pt>
+<Figures/hmm.jpg, id=451, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
  <use Figures/hmm.jpg>
-<Figures/f_hmm.png, id=412, 510.40688pt x 328.97906pt>
+<Figures/f_hmm.png, id=453, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
  <use Figures/f_hmm.png>
 
@@ -752,26 +749,10 @@ identifier (name{section.A.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.592 \section{Statistics and Optimization}
-                                           
+                                            [26
 
-LaTeX Warning: Reference `ml-estimation' on page 26 undefined on input line 604
-.
-
-
-LaTeX Warning: Reference `optimization' on page 26 undefined on input line 605.
-
-
-
-LaTeX Warning: Reference `ml-generic' on page 26 undefined on input line 616.
-
-[26
-
-]
-
-LaTeX Warning: Reference `ml-iid' on page 27 undefined on input line 625.
-
-pdfTeX warning (ext4): destination with the same identifier (name{section.A.3})
- has been already used, duplicate ignored
+]pdfTeX warning (ext4): destination with the same identifier (name{section.A.3}
+) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.642 \section{Spectral Analysis}
@@ -781,12 +762,9 @@ me identifier (name{subsection.A.3.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.661 \subsection{Formal statement}
-                                   
+                                   pdfTeX warning (ext4): destination with the 
+same identifier (name{equation.A.3.3}) has been already used, duplicate ignored
 
-LaTeX Warning: Reference `stft' on page 27 undefined on input line 663.
-
-pdfTeX warning (ext4): destination with the same identifier (name{equation.A.3.
-3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.666 \begin{equation}
@@ -805,12 +783,9 @@ ame identifier (name{equation.A.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.666 \begin{equation}
-                      \label{stft} [27]
-
-LaTeX Warning: Reference `spectrogram' on page 28 undefined on input line 676.
-
-pdfTeX warning (ext4): destination with the same identifier (name{equation.A.3.
-4}) has been already used, duplicate ignored
+                      \label{stft} [27]pdfTeX warning (ext4): destination with 
+the same identifier (name{equation.A.3.4}) has been already used, duplicate ign
+ored
 <to be read again> 
                    \relax 
 l.678 \begin{equation}
@@ -839,11 +814,6 @@ red
                    \relax 
 l.683 \section{Gaussian Mixture Models}
                                        \label{gmm_appendix}
-
-LaTeX Warning: Reference `gaussmix_eqn' on page 28 undefined on input line 689.
-
-
-
 Overfull \hbox (33.31973pt too wide) in paragraph at lines 710--717
 \OT1/cmr/m/n/10.95 quences of dis-crete ran-dom vari-ables $\OMS/cmsy/m/n/10.95
  S \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 S[]; S[]; :::;
@@ -869,13 +839,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8426 strings out of 495061
- 118924 string characters out of 1182621
- 220611 words of memory out of 3000000
- 11273 multiletter control sequences out of 15000+50000
+ 8429 strings out of 495061
+ 118973 string characters out of 1182621
+ 221237 words of memory out of 3000000
+ 11276 multiletter control sequences out of 15000+50000
  18993 words of font info for 70 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,42p,1126b,1217s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,42p,1135b,1217s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
@@ -897,9 +867,9 @@ cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/t
 exmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (33 pages, 799526 bytes).
+Output written on main.pdf (33 pages, 805368 bytes).
 PDF statistics:
- 617 PDF objects out of 1000 (max. 8388607)
+ 661 PDF objects out of 1000 (max. 8388607)
  174 named destinations out of 1000 (max. 500000)
- 329 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 401 words of extra memory for PDF output out of 10000 (max. 10000000)
 
