@@ -17,34 +17,35 @@
 \contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{12}{section.3.4}
 \contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{14}{chapter.4}
 \contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{14}{section.4.1}
-\contentsline {section}{\numberline {4.2}Factoral Hidden Markov Model for BSS}{15}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Initialization}{16}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Separation}{16}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Results}{16}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusion}{17}{chapter.5}
-\contentsline {chapter}{\numberline {A}Literature Review}{18}{appendix.A}
-\contentsline {section}{\numberline {A.1}Introduction}{18}{section.A.1}
-\contentsline {section}{\numberline {A.2}Literature Review Process}{19}{section.A.2}
-\contentsline {section}{\numberline {A.3}Literature Overview}{19}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{19}{subsection.A.3.1}
-\contentsline {subsection}{\numberline {A.3.2}Factoral Hidden Markov Models}{21}{subsection.A.3.2}
-\contentsline {section}{\numberline {A.4}Conclusion}{22}{section.A.4}
-\contentsline {section}{\numberline {.1}Research Agenda}{23}{section.Alph0.1}
-\contentsline {subsection}{\numberline {.1.1}Background}{23}{subsection.Alph0.1.1}
-\contentsline {subsection}{\numberline {.1.2}Research Questions}{23}{subsection.Alph0.1.2}
-\contentsline {subsection}{\numberline {.1.3}Search Strategy}{23}{subsection.Alph0.1.3}
-\contentsline {subsubsection}{Databases}{24}{section*.17}
-\contentsline {subsubsection}{List of Search Terms}{24}{section*.18}
-\contentsline {subsubsection}{Inclusion and Quality Criteria}{24}{section*.19}
+\contentsline {section}{\numberline {4.2}A Latent Variable Model for BSS}{15}{section.4.2}
+\contentsline {section}{\numberline {4.3}Factoral Hidden Markov Model for BSS}{15}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Initialization}{15}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Separation}{16}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Results}{17}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{18}{chapter.5}
+\contentsline {chapter}{\numberline {A}Literature Review}{19}{appendix.A}
+\contentsline {section}{\numberline {A.1}Introduction}{19}{section.A.1}
+\contentsline {section}{\numberline {A.2}Literature Review Process}{20}{section.A.2}
+\contentsline {section}{\numberline {A.3}Literature Overview}{20}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{20}{subsection.A.3.1}
+\contentsline {subsection}{\numberline {A.3.2}Factoral Hidden Markov Models}{22}{subsection.A.3.2}
+\contentsline {section}{\numberline {A.4}Conclusion}{23}{section.A.4}
+\contentsline {section}{\numberline {.1}Research Agenda}{24}{section..1}
+\contentsline {subsection}{\numberline {.1.1}Background}{24}{subsection..1.1}
+\contentsline {subsection}{\numberline {.1.2}Research Questions}{24}{subsection..1.2}
+\contentsline {subsection}{\numberline {.1.3}Search Strategy}{24}{subsection..1.3}
+\contentsline {subsubsection}{Databases}{25}{section*.17}
+\contentsline {subsubsection}{List of Search Terms}{25}{section*.18}
+\contentsline {subsubsection}{Inclusion and Quality Criteria}{25}{section*.19}
 \contentsline {chapter}{\numberline {A}Mathematical Concepts}{26}{appendix.A}
 \contentsline {section}{\numberline {A.1}Linear Algebra}{26}{section.A.1}
-\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{26}{section*.21}
-\contentsline {subsubsection}{Singular Value Decomposition}{26}{section*.22}
+\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{26}{section*.20}
+\contentsline {subsubsection}{Singular Value Decomposition}{26}{section*.21}
 \contentsline {section}{\numberline {A.2}Statistics and Optimization}{26}{section.A.2}
 \contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{27}{subsection.A.2.1}
 \contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{27}{subsection.A.2.2}
-\contentsline {subsubsection}{The Lagrange Multiplier Method}{27}{section*.23}
-\contentsline {subsubsection}{Gradient Descent}{27}{section*.24}
+\contentsline {subsubsection}{The Lagrange Multiplier Method}{27}{section*.22}
+\contentsline {subsubsection}{Gradient Descent}{27}{section*.23}
 \contentsline {section}{\numberline {A.3}Spectral Analysis}{27}{section.A.3}
 \contentsline {subsection}{\numberline {A.3.1}Formal statement}{27}{subsection.A.3.1}
 \contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{28}{section.A.4}

@@ -462,6 +462,15 @@ window = 256; noverlap=250; nfft=256; Freq = 16000;
 
 [....]
 
+\section{A Latent Variable Model for BSS}
+
+Before proceding to the full FHMM model, we will consider a simpler model without the temporal dynamics given by the markov transition model. We will refer to this as a \emph{two-level latent variable model}\footnote{Roweis [XXXX] uses the term \emph{max vector quantization} or MAXVQ for these models.}. This will also provide a ground for discussing the complexity issues of traditional inference methods as pertains to BSS, and a proposed solution to these problems.
+
+
+
+
+
+
 \section{Factoral Hidden Markov Model for BSS}\label{fhmm}
 
 We will now describe the factoral HMM for blind source separation as
@@ -743,17 +752,8 @@ the past given the present''. Another common simplification is known as the \emp
 The sensor markov assumption states that the sensor is independent of
 everything else given the current value of the hidden variable.
 
+\input{./LiteratureReview/bibl.tex}
 
-\begin{thebibliography}{9}
-
-\bibitem{pearson1901}{Pearson, K. (1901). ``On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine 2 (6): 559–572.}
-\bibitem{roweis}{Roweis, S. T. (XXXX). ``One Microphone Source
-  Separation''. ????}
-\bibitem{norvig_russel}{Russell, S. and Norvig, P. (XXX). ``Artificial
-    Intelligence: A Modern Approach''. XXXX}
-
-  
-\end{thebibliography}
 
 \end{document}
 
