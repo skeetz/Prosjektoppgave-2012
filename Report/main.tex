@@ -486,11 +486,32 @@ The model is trained in an unsupervised manner by estimating a gaussian mixture 
 
 \subsection{Inference}
 
+As computing joint probabilities over the latent variables given the observed $x$ is computationally untractable, we focus on the issue of computing the maximum aposteriori probability (MAP) estimate of the latent variables given the observed. To reduce the model complexity, Roweis [[xxx]] describes a branch-and-bound procedure based on estimating an upper ound on the log likelihood of the latent variables given the observed data.
 
 
 
 
-\section{Factoral Hidden Markov Model for BSS}\label{fhmm}
+
+
+
+%% Once we have computed the MAP (or approximate) setting
+%% of z, we can use this to estimate the refiltering masking signals as
+%% follows: for each (overlapping) frame of the input spectrogram,
+%% set the masking signal to unity for every frequency at which the
+%% output proposed by the model corresponding to the source to be
+%% recovered is the maximum proposal over all models. Other fre-
+%% quencies have their masks set to zero. Actual refiltering is then
+%% performed by retaining the phase from the spectrogram of the
+%% original (noisy/mixed) recording, applying the (binary) masking
+%% signals to the log magnitude of each frequency, and reconstitut-
+%% ing the clean signal using overlap-and-add reconstruction. The
+%% windowing function used to compute the original spectrogram
+%% must be known (or estimated) in order to remove its effect prop-
+%% erly during refiltering.
+
+
+
+\section{Factorial Hidden Markov Model for BSS}\label{fhmm}
 
 We will now describe the factoral HMM for blind source separation as
 put forward by Roweis in a two signal setting. We adopt the following
