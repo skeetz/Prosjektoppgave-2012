@@ -18,6 +18,8 @@
 \BOOKMARK [0][-]{chapter.4}{Single Sensor Blind Source Separation}{}
 \BOOKMARK [1][-]{section.4.1}{Time Frequency Signal Representation}{chapter.4}
 \BOOKMARK [1][-]{section.4.2}{A Latent Variable Model for BSS}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{Generative Model and Estimation}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{Inference}{section.4.2}
 \BOOKMARK [1][-]{section.4.3}{Factoral Hidden Markov Model for BSS}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.3.1}{Initialization}{section.4.3}
 \BOOKMARK [2][-]{subsection.4.3.2}{Separation}{section.4.3}

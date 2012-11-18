@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  17 NOV 2012 14:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  18 NOV 2012 13:46
 entering extended mode
  %&-line parsing enabled.
-**main.tex test.pdf
+**main.tex
 (./main.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -616,7 +616,7 @@ l.51 \end{abstract}
 same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...idden Markov Models}{22}{subsection.A.3.2}
+l.31 ... Component Analysis}{20}{subsection.A.3.1}
                                                    [1
 
 ])
@@ -646,15 +646,15 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 191.
  [6]
-<Figures/pca_signal_time_series.png, id=294, 449.68pt x 337.26pt>
+<Figures/pca_signal_time_series.png, id=299, 449.68pt x 337.26pt>
 File: Figures/pca_signal_time_series.png Graphic file (type png)
 
 <use Figures/pca_signal_time_series.png>
-<Figures/pca_data_eigs.png, id=295, 449.68pt x 337.26pt>
+<Figures/pca_data_eigs.png, id=300, 449.68pt x 337.26pt>
 File: Figures/pca_data_eigs.png Graphic file (type png)
 
 <use Figures/pca_data_eigs.png>
-<Figures/pca_eig_projection.png, id=296, 449.68pt x 337.26pt>
+<Figures/pca_eig_projection.png, id=301, 449.68pt x 337.26pt>
 File: Figures/pca_eig_projection.png Graphic file (type png)
 
 <use Figures/pca_eig_projection.png> [7] [8 <./Figures/pca_signal_time_series.p
@@ -671,11 +671,11 @@ See the caption package documentation for explanation.
 
 LaTeX Warning: Reference `ica_listing' on page 11 undefined on input line 357.
 
-<Figures/ica_simple.png, id=334, 1497.595pt x 803.803pt>
+<Figures/ica_simple.png, id=339, 1497.595pt x 803.803pt>
 File: Figures/ica_simple.png Graphic file (type png)
 
 <use Figures/ica_simple.png> [11]
-<Figures/ica_music_speech.png, id=347, 1497.595pt x 803.803pt>
+<Figures/ica_music_speech.png, id=352, 1497.595pt x 803.803pt>
 File: Figures/ica_music_speech.png Graphic file (type png)
 
 <use Figures/ica_music_speech.png> [12] [13 <./Figures/ica_simple.png (PNG copy
@@ -684,14 +684,9 @@ Chapter 4.
 
 LaTeX Warning: Citation `roweis' on page 14 undefined on input line 428.
 
-
-Overfull \hbox (12.51892pt too wide) in paragraph at lines 454--455
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
 [14
 
-] <Figures/spectrogram_count.png, id=384, 578.16pt x 433.62pt>
+] <Figures/spectrogram_count.png, id=389, 578.16pt x 433.62pt>
 File: Figures/spectrogram_count.png Graphic file (type png)
 
 <use Figures/spectrogram_count.png> [15] [16 <./Figures/spectrogram_count.png (
@@ -722,10 +717,10 @@ Overfull \hbox (6.26776pt too wide) in paragraph at lines 143--144
  1960s. Roweis[[]]
  []
 
-<Figures/hmm.jpg, id=451, 490.83376pt x 236.38312pt>
+<Figures/hmm.jpg, id=454, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
  <use Figures/hmm.jpg>
-<Figures/f_hmm.png, id=453, 510.40688pt x 328.97906pt>
+<Figures/f_hmm.png, id=456, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
  <use Figures/f_hmm.png>
 
@@ -736,85 +731,85 @@ xt4): destination with the same identifier (name{appendix.A}) has been already
 used, duplicate ignored
 <to be read again> 
                    \relax 
-l.574 \chapter{Mathematical Concepts}
+l.592 \chapter{Mathematical Concepts}
                                      
 Appendix A.
 pdfTeX warning (ext4): destination with the same identifier (name{section.A.1})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.578 \section{Linear Algebra}
+l.596 \section{Linear Algebra}
                               pdfTeX warning (ext4): destination with the same 
 identifier (name{section.A.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.592 \section{Statistics and Optimization}
+l.610 \section{Statistics and Optimization}
                                             [26
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{section.A.3}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.642 \section{Spectral Analysis}
+l.660 \section{Spectral Analysis}
                                  pdfTeX warning (ext4): destination with the sa
 me identifier (name{subsection.A.3.1}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.661 \subsection{Formal statement}
+l.679 \subsection{Formal statement}
                                    pdfTeX warning (ext4): destination with the 
 same identifier (name{equation.A.3.3}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.684 \begin{equation}
                       \label{stft}pdfTeX warning (ext4): destination with the s
 ame identifier (name{equation.A.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.684 \begin{equation}
                       \label{stft}pdfTeX warning (ext4): destination with the s
 ame identifier (name{equation.A.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.684 \begin{equation}
                       \label{stft}pdfTeX warning (ext4): destination with the s
 ame identifier (name{equation.A.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.684 \begin{equation}
                       \label{stft} [27]pdfTeX warning (ext4): destination with 
 the same identifier (name{equation.A.3.4}) has been already used, duplicate ign
 ored
 <to be read again> 
                    \relax 
-l.678 \begin{equation}
+l.696 \begin{equation}
                       \label{spectrogram}pdfTeX warning (ext4): destination wit
 h the same identifier (name{equation.A.3.4}) has been already used, duplicate i
 gnored
 <to be read again> 
                    \relax 
-l.678 \begin{equation}
+l.696 \begin{equation}
                       \label{spectrogram}pdfTeX warning (ext4): destination wit
 h the same identifier (name{equation.A.3.4}) has been already used, duplicate i
 gnored
 <to be read again> 
                    \relax 
-l.678 \begin{equation}
+l.696 \begin{equation}
                       \label{spectrogram}pdfTeX warning (ext4): destination wit
 h the same identifier (name{equation.A.3.4}) has been already used, duplicate i
 gnored
 <to be read again> 
                    \relax 
-l.678 \begin{equation}
+l.696 \begin{equation}
                       \label{spectrogram}pdfTeX warning (ext4): destination wit
 h the same identifier (name{section.A.4}) has been already used, duplicate igno
 red
 <to be read again> 
                    \relax 
-l.683 \section{Gaussian Mixture Models}
+l.701 \section{Gaussian Mixture Models}
                                        \label{gmm_appendix}
-Overfull \hbox (33.31973pt too wide) in paragraph at lines 710--717
+Overfull \hbox (33.31973pt too wide) in paragraph at lines 728--735
 \OT1/cmr/m/n/10.95 quences of dis-crete ran-dom vari-ables $\OMS/cmsy/m/n/10.95
  S \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 S[]; S[]; :::;
  S[]\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/10.95 and $\OMS/cmsy/m/n/10.95 X \OT1/c
@@ -839,37 +834,39 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8429 strings out of 495061
- 118973 string characters out of 1182621
- 221237 words of memory out of 3000000
- 11276 multiletter control sequences out of 15000+50000
- 18993 words of font info for 70 fonts, out of 3000000 for 9000
+ 8421 strings out of 495061
+ 118909 string characters out of 1182621
+ 221288 words of memory out of 3000000
+ 11269 multiletter control sequences out of 15000+50000
+ 18648 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 44i,10n,42p,1135b,1217s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-mi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (33 pages, 805368 bytes).
+ 44i,10n,42p,1126b,1217s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{figure.caption.13} has been referenced but does n
+ot exist, replaced by a fixed one
+
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi
+5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
+sy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (33 pages, 798073 bytes).
 PDF statistics:
  661 PDF objects out of 1000 (max. 8388607)
  174 named destinations out of 1000 (max. 500000)
- 401 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 409 words of extra memory for PDF output out of 10000 (max. 10000000)
 
