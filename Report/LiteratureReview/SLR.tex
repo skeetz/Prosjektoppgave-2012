@@ -136,6 +136,32 @@ separation in the spectral domain by means of feature
 maps where the features roughly corresponds to ``audible'' features such
 as common onset, pitch, timbre and so forth. 
 
+\newpage
+\subsection{Hidden Markov Model Decomposition of Speech and Noise}
+One of the earlier examples of using hidden Markov models for speech separation, are presented by A.P. Varga and R.K. Moore (citation). 
+The approach described in this paper attempts to obtain the best estimate likelihood of an input observation conditioned on a particular state of the model and given the knowledge available about the contaminating noise. This is achieved with the use of parallel hidden Markov models, one for each of the components in the mixture signal to be decomposed. Given a two-component signal, the output generated from the model can be modelled as:
+
+\begin{equation}\label{vargasEqn1}
+Observational Probability = P(Observation|Hmm_1 \otimes Hmm_2)
+\end{equation}
+
+Recognition is carried out by extending the normal Viterbi equation to include the components desired to be decomposed:
+\newline
+\begin{equation}\label{vargasEqn2}
+P_t(i,j) = \max_{u,v} P_{t-1} (u, v) a1_{u,i} a2_{v,j} b1_i \otimes b2_j (O_t)
+\end{equation}
+
+By using this form of the Viterbi algorithm, this framework is able to simultaneously recognise different components of a mixture. It should be noted that this approach may be computationally difficult as the state search space grows in dimension for each component added.
+Utilizing the fact that components rarely overlap in a certain frequency band, evaluation of the observation probability is approximated by:
+
+\begin{equation}\label{vargasEqn3}
+\begin{array}{lcl}
+b1_i \otimes b2_j(O_t) &=&  P(max(O1_t, O2_t|i,j)) \\
+\\ &  = &  C(O1_t,\mu1_i,\sigma1^2_i)N(O2_t, \mu2_j,\sigma2^2_j) + C(O2_t,\mu2_i,\sigma2^2_i)N(O1_t, \mu1_j,\sigma1^2_j)\\
+\end{array}
+\end{equation}
+
+
 
 
 \newpage
