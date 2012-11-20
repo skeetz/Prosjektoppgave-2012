@@ -44,9 +44,11 @@ process, which is further documented by the underlying research
 protocol given in Appendix \ref{protocol}. Section \ref{overview} is
 a short description of the different techniques and methodologies found, summarised in section \ref{conclusion}.
 
+\clearpage
+
 \section{Literature Review Process}\label{reviewProcess} % Anders
-The literature review process was conducted by searching the listed databases for published articles containing the predefined search terms.
-The table below shows the amount of results presented to us when  using the more general of our search terms.
+The literature review process was conducted by manually searching searching the listed databases for published articles containing the predefined search terms.
+The table below shows the amount of results presented to us when  using the more general of our search terms. Since the search terms we had defined gave us a large amount of results, we prioritized newer papers over older ones as per the Appendix \ref{protocol}.
 
 \begin{table}[h]
 \centering
@@ -63,8 +65,30 @@ The table below shows the amount of results presented to us when  using the more
 \label{tab:myfirsttable}
 \end{table}
 
-Since the search terms we had defined gave us a large amount of results, we prioritized newer papers over older ones as per the Appendix \ref{protocol}. 
+After screening the results against the different criteria set in appendix \ref{protocol}, these papers were brought on for further consideration.
 
+\begin{table} [ht]
+    \begin{tabular}{|p{6cm}|p{4cm}|p{2cm}|}
+        \hline
+        \textbf{Title} & \textbf{Author} & \textbf{Published} \\ \hline
+        Independent Component Analysis: a new concept? & Comon, P. & 1994\\ \hline
+        An information maximization approach to blind separation and blind deconvolution  & Bell, A.J. and Sejnowski, T.J. & 1995\\ \hline
+        A Context-Sensitive Generalization of ICA & Pearlmutter, B. A. and Parra, L. C. & 1996\\ \hline
+        Independent Component Analysis & Hyvärinen, A. & 2001\\ \hline
+        Blind One-Microphone Speech Separation: A Spectral Learning Approach & Bach, F.R. and Jordan, M.I. & 2004\\ \hline
+        Fast and Robust Fixed-Point Algorithms for Independent Component Analysis & Hyvärinen, A. & 1999\\ \hline
+        One Mincrophone Source Separation & Roweis, Sam T. & 2001\\ \hline
+        Source separation using single channel ICA & Davies, M.E. and James, C.J. & 2007 \\ \hline
+        Multidimensional Independent Component Analysis& Cardoso, J. L. & 1998\\ \hline
+        Source Separation From Single-Channel Recordings by Combining Empirical-Mode Decomposition and Independent Component Analysis & Mijovic, B. De Vos, M., Gligorijevic, I., Taelman, J. and Van Huffel, S. & 2010\\ \hline
+        Hidden Markov model decomposition of speech and noise & Varga, A. P., and R. K. Moore & 1990\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+
+\clearpage
 \section{Literature Overview}\label{overview}
 
 
@@ -138,7 +162,7 @@ as common onset, pitch, timbre and so forth.
 
 \newpage
 \subsection{Hidden Markov Model Decomposition of Speech and Noise}
-One of the earlier examples of using hidden Markov models for speech separation, are presented by A.P. Varga and R.K. Moore (citation). 
+One of the earlier examples of using hidden Markov models for speech separation, are presented by A.P. Varga and R.K. Moore \cite{VargaHMMDecomp}. 
 The approach described in this paper attempts to obtain the best estimate likelihood of an input observation conditioned on a particular state of the model and given the knowledge available about the contaminating noise. This is achieved with the use of parallel hidden Markov models, one for each of the components in the mixture signal to be decomposed. Given a two-component signal, the output generated from the model can be modelled as:
 
 \begin{equation}\label{vargasEqn1}
