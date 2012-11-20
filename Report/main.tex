@@ -488,38 +488,20 @@ The model is trained in an unsupervised manner by estimating a gaussian mixture 
 
 As computing joint probabilities over the latent variables given the observed $x$ is computationally untractable, we focus on the issue of computing the maximum aposteriori probability (MAP) estimate of the latent variables given the observed. To reduce the model complexity, Roweis [[xxx]] describes a branch-and-bound procedure based on estimating an upper ound on the log likelihood of the latent variables given the observed data.
 
-For source/latent variable combination $(q,z)$, given each observation
+For source/latent variable combination $(m,k)$, given each observation
 vector, $\mathbf{x}$, we compute the following bound.
 
 \begin{equation}\label{bound}
-  B_{q,z)} = -\frac{1}{2}\sum_d\[x^d - v_m^d\] - \frac{D}{2}\log|D|-\log \pi_m
+  B_{m,k} = -\frac{1}{2}\sum_d \max(x^d - v_m^d,0)^2 - \frac{D}{2}\log|D|-\log \pi_m
 \end{equation}
 
-Next, let $z_m^{*} = \arg \min B_{q,z}$, and let $\mathcal{l}^{*}$ be
-the log likelihood associated with $z_m^{*}$.
-
-
-Using (\ref{bound}), we can then state the inference algorithm as:
-
-\begin{figure}[!htpb]
-  \begin{lstlisting}[frame=single]
-for x = 1:ncols(spectrogram)
-
-  B = computeBound(spectrogram(x), gmms)
-  z = argmin(B)
-  
-
-end
-  \end{lstlisting}
-  \caption{Pseudocode for inference in MAXVQ model..}
-  \label{bound_code}
-\end{figure}
-
-
-\begin{figure}
-  
-\end{figure}
-
+Next, let $z_m^{*} = \arg \min B_{m,k}$, and let $l^{*}$ be
+the log likelihood associated with $z_m^{*}$. For all sources $m$, we
+eliminate latent variables $k$ such that $B_{mk}<l^{*}$. For the
+remaining source/latent variable combinations, we evalutate the log
+likelihood by the model specified in \ref{maxvq_eqn}. If a new lower
+bound is discovered, we reiterate the pruning procedure, otherwise, we
+compute log likelihoods until all remaining are evaluated.
 
 
 
