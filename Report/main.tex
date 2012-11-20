@@ -488,7 +488,33 @@ The model is trained in an unsupervised manner by estimating a gaussian mixture 
 
 As computing joint probabilities over the latent variables given the observed $x$ is computationally untractable, we focus on the issue of computing the maximum aposteriori probability (MAP) estimate of the latent variables given the observed. To reduce the model complexity, Roweis [[xxx]] describes a branch-and-bound procedure based on estimating an upper ound on the log likelihood of the latent variables given the observed data.
 
+For source $m$, the log likelihood of observing a vector $\mathbf{x}$
+is bounded above by (\ref{bound}).
 
+\begin{equation}\label{bound}
+  B_{m} = -\frac{1}{2}\sum_d\[x^d - v_m^d\] - \frac{D}{2}\log|D|-\log \pi_m
+\end{equation}
+
+Using (\ref{bound}), we can then state the inference algorithm as:
+
+\begin{figure}[!htpb]
+  \begin{lstlisting}[frame=single]
+for x = 1:ncols(spectrogram)
+
+  B = computeBound(spectrogram(x), gmms)
+  z = argmin(B)
+  
+
+end
+  \end{lstlisting}
+  \caption{Pseudocode for inference in MAXVQ model..}
+  \label{bound_code}
+\end{figure}
+
+
+\begin{figure}
+  
+\end{figure}
 
 
 

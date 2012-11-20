@@ -18,6 +18,9 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{subfig}
+\usepackage{standalone}
+
+\graphicspath{{Figures/}}
 
 \begin{document}
 
@@ -425,16 +428,175 @@ In this chapter we present  a solution to the single sensor BSS
 problem proposed by Roweis (XXXX)\cite{roweis} that relies on a
 factoral hidden markov model system. The key idea put forward by
 Roweis is to learn the transition and sensor models for every source
-separately using a (redundant) spectral representation of the original signal.
+separately using a time-frequency  representation of the original signal.
 
-This chapter is structured as follows. 
+This chapter is structured as follows. Section \ref{timeFreqRep}
+provides an introduction to the time-frequency domain signal
+representation which is common in most single channel audio separation
+models. Section \ref{fhmm} then describes the factoral hidden
+markov for blind source separation in terms of a two signal mixture
+before we conclude by looking at some results from our implementation
+of the model.
 
-\section{Spectral Representation}
 
-\section{Inference in Hidden Markov Models}
+\section{Time Frequency Signal Representation}\label{timeFreqRep}
+A time frequency representation (TFR) is a redundant signal
+representation in comparison to a simple time domain representation that
+contains only the amplitude values at given point in time. A TFR
+is often preferred to a perfect frequency or Fourier
+domain representation as the latter contains no information about the
+temporal location of events.
+
+
+%% \begin{figure}[!htpb]\label{matlab_stft}
+%%   \begin{lstlisting}[frame=single]
+%% window = 256; noverlap=250; nfft=256; Freq = 16000;
+%% [S,F,T,P] = spectrogram(s1,window,noverlap,nfft,Freq);
+%%   \end{lstlisting}
+%%   \caption{\textsc{Matlab} code for computing the short term Fourier
+%%     transform of a signal sampled at $16$kHz with given
+%%     parameter. P is here the power spectral density (PSD) of
+%%     the signal.}
+%%   \label{mlica_code}
+%% \end{figure}
+
+[....]
+
+\section{A Latent Variable Model for BSS}
+
+Before proceding to the full FHMM model, we will consider a simpler model without the temporal dynamics given by the markov transition model. While we are essentially dealing with a \emph{two-level latent variable model}, we follow standard terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for this class of models. This will also provide a ground for discussing the complexity issues of traditional inference methods as pertains to BSS, and a proposed solution to these problems.
+
+\subsection{Generative Model and Estimation}
+
+Let $\mathcal{Q} = \{q_1, q_2, .. , q_M\}$ denote the set of speakers\footnote{For simplicity, we assume $M=2$.}, and $Q$ be a multinomial random variable over $\mathcal{Q}$, $\mathcal{Z}_m  = \{z_1^m, z_2^m, .. , z_N^m\}$ be the set of states for the latent variable $Z^m$ for source $m$. Finally, we let $\mathbb{x} = (x_1,x_2,...,x_D)$ be an \emph{observed} $D$-dimensional frequency vector. The generative model for a given frequency band $d$ is then:
+
+\begin{equation}
+  \label{maxvq_eqn}
+  \begin{array}{lcl}
+    \mathbf{P}(q)   = Mn_M(q) \\
+    \mathbf{P}(z|q) = Mn_N^q(z) \\ 
+    z^d_{max} = \max_mz_{md} \\
+    \mathbf{P}(x_d|z) = \Phi(x^d|z^d_{max},\sigma) \\
+  \end{array}
+\end{equation}
+
+where $Mn_M(\cdot)$ refers to an $M$-valued multinomial distribution, and $\Phi(\cdot|\mu,\Sigma)$ the normal distribution. The idea can be expressed as follows: \emph{Each source $m$ selects a latent variable $z$ which in turn produces an intensity vector $\mathbf{x}_m$ according to the distribution $\mathbb{P}(\mathbf{x}|z)$. The final output $\mathbf{x}$ is the elementwise maximum over all vectors $\{\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_M\}$}.
+
+The model is trained in an unsupervised manner by estimating a gaussian mixture to a training dataset where sources are separated. More recently, attempts have been made at estimation directly on mixed signals [REFERANSE]. The canonical training method used in these models is the expectation maximization (EM) algorithm as described in appendix [[[REF]]]. 
+
+\subsection{Inference}
+
+As computing joint probabilities over the latent variables given the observed $x$ is computationally untractable, we focus on the issue of computing the maximum aposteriori probability (MAP) estimate of the latent variables given the observed. To reduce the model complexity, Roweis [[xxx]] describes a branch-and-bound procedure based on estimating an upper ound on the log likelihood of the latent variables given the observed data.
 
 
 
+
+
+
+
+%% Once we have computed the MAP (or approximate) setting
+%% of z, we can use this to estimate the refiltering masking signals as
+%% follows: for each (overlapping) frame of the input spectrogram,
+%% set the masking signal to unity for every frequency at which the
+%% output proposed by the model corresponding to the source to be
+%% recovered is the maximum proposal over all models. Other fre-
+%% quencies have their masks set to zero. Actual refiltering is then
+%% performed by retaining the phase from the spectrogram of the
+%% original (noisy/mixed) recording, applying the (binary) masking
+%% signals to the log magnitude of each frequency, and reconstitut-
+%% ing the clean signal using overlap-and-add reconstruction. The
+%% windowing function used to compute the original spectrogram
+%% must be known (or estimated) in order to remove its effect prop-
+%% erly during refiltering.
+
+
+
+\section{Factorial Hidden Markov Model for BSS}\label{fhmm}
+
+We will now describe the factoral HMM for blind source separation as
+put forward by Roweis in a two signal setting. We adopt the following
+notation: for each timestep $t \in \{1,2,3,...,T\}$, $\mathbf{X}_t$
+denotes the $M$-dimensional spectral vector of power spectral
+intensities over the finite set of frequency values $\mathcal{F}$. We
+note that while the set of frequencies are discrete, the intensities
+$x_{it}$ are real-valued, hence we adopt a real valued emission
+model, as discussed later. 
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/spectrogram_count}
+  \hrule
+  \caption{Spectrogram of male voice counting from one to ten.}
+\end{figure}
+
+
+The FHMM is essentially a supervised learning method, and the learning
+process consists in estimating a separate HMM based on separate (clean) recordings of the
+particular source. That is to say, the learning part consists entirely
+in learning a probability model of each source. 
+
+For a given source, the training phase then consists in
+training a HMM with a discrete (latent) state space $\mathcal{Z}$, and
+a continuous emission distribution $\mathbf{P(X|Z)}$. The emissions
+model will produce intensity vectors $\mathbf{X}_t$ as described in
+the preceding paragraph.
+
+
+
+\subsection{Initialization}
+
+The factoral hidden markov model consists of one HMM per speaker which
+is trained on separate non-mixed training data for each source. 
+
+The initialization of the FHMM training consists in estimating the
+emission probabilities $P(X|Z)$ (see figure, lag figur). While Roweis
+operates with a finite state model for the latent variables, the
+observable variables are real valued intensities. This indicates that
+a mixture model may be appropriate in the inital estimate of the
+emission model (vis til andre artikler med samme greier ). 
+
+We follow Roweis in estimating a Gaussian mixture model with a single
+shared covariance matrix $\mathbf{\Sigma}$. For a spectrogram with $N$ frequency bands,
+our approach is to estimate a GMM with $k$ $N$-dimensional components
+or latent variables. The mean vector $\mathbf{\mu}_i\in\mathbb{R}^N$ for
+each component $i$ represents the expected intensity (power spectral
+density value) in each frequency band given that the system is in
+state $i$. The pair $(\{\mathbf{\mu}_i\}, \Sigma)$ then forms the initial
+parametrization of the emissions model.
+
+\subsection{Separation}
+
+Next, consider the problem of recovering the orignial
+sources\footnote{For simplicity, we will here frame the problem in
+  terms of two sources.} $\mathbf{S} =
+\{S_1, S_2\}$ given the observed sequence $\{\mathbf{Y}(t)\}$, $t \in \{1,2,3,...,T\}$ which we
+take to be spectral vectors as discussed above. As before, we let
+$z_k(t)$, $i \in \{1,2\}$ denote the value of the latent variable for
+each HMM. 
+
+A key question in the separation process is how the observable signal
+generated by full FHMM relates to the observable values for each of
+the underlying HMMs. This question adresses a property of the
+\emph{data generating model}, and must reflect properties of the
+physical system we are trying to model. In the case of auditory
+signals, Roweis argues for model whereby the observed value equals the
+maximum value of the observable values $\mathbf{X}_k(t)$ of the
+underlying HMMs with an additive gaussian noise:
+
+
+\begin{equation}
+  \mathbf{Y}(t) = \Phi(\{\mathbf{X}_1(t), \mathbf{X}_2(t)\}^{+}, \Sigma)
+\end{equation}
+
+For a further discussion on the rationale behind the log-max
+approximation, see [REFERANSER].
+
+
+
+
+\section{Results}
 
 
 
@@ -442,8 +604,12 @@ This chapter is structured as follows.
 
 todo.
 
-
 \appendix
+
+\chapter{Literature Review}
+%SLR
+\input{./LiteratureReview/SLR.tex}
+
 \chapter{Mathematical Concepts}
 
 In this appendix we will provide a brief background on some of the mathematical notions that are central to understanding the methods used in this report. 
@@ -546,17 +712,43 @@ or gaussian. The window determines which part of the signal $x$ is to
 be included in the spectrogram near $m$. In practice, the STFT is
 computed using the fast fourier transform (FFT). To better allow for
 visualization of the STFT, which is a complex number, the spectrogram
-is defined as the squared magnitude ofthe STFD (Equation \ref{spectrogram}).
+is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
 
 \begin{equation}\label{spectrogram}
   \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
 \end{equation}
 
-\section{Hidden Markov Models}
+
+\section{Gaussian Mixture Models}\label{gmm_appendix}
+A gaussian mixture model (GMM) is latent variable model that gives a
+tractable representation of high-dimensional probability
+distribution. Let $Z$ be a multinomial random variable taking on
+values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
+be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
+har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
+has a gaussian mixture distribution:
+
+\begin{equation}\label{gaussmix_eqn}
+  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
+  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
+\end{equation}
+
+Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
+gaussian distribution with expectation vector $\mathbf{\mu}$ and
+covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
+an $N$-valued multinomial distribution.
+
+A common interpretretation of the gaussian mixture model is for $Z$ to
+represent a latent or hidden variable describing the state of a
+system, while $X$ is some observable quantity depending on the state
+of the system. 
+
+
+\section{Hidden Markov Models}\label{hmm_appendix}
 %% Ref Norvig
 A hidden markov model (HMM) is a probabilistic model relating two sequences of
 discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
-$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. Here, we will refer to
+$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
 $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
 $\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
 is some causal relationship whereby the hidden variable affects the
@@ -599,16 +791,8 @@ the past given the present''. Another common simplification is known as the \emp
 The sensor markov assumption states that the sensor is independent of
 everything else given the current value of the hidden variable.
 
-\begin{thebibliography}{9}
+\input{./LiteratureReview/bibl.tex}
 
-\bibitem{pearson1901}{Pearson, K. (1901). ``On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine 2 (6): 559–572.}
-\bibitem{roweis}{Roweis, S. T. (XXXX). ``One Microphone Source
-  Separation''. ????}
-\bibitem{norvig_russel}{Russell, S. and Norvig, P. (XXX). ``Artificial
-    Intelligence: A Modern Approach''. XXXX}
-
-  
-\end{thebibliography}
 
 \end{document}
 
