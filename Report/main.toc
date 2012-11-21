@@ -27,29 +27,29 @@
 \contentsline {chapter}{\numberline {5}Conclusion}{19}{chapter.5}
 \contentsline {chapter}{\numberline {A}Literature Review}{20}{appendix.A}
 \contentsline {section}{\numberline {A.1}Introduction}{20}{section.A.1}
-\contentsline {section}{\numberline {A.2}Literature Review Process}{22}{section.A.2}
-\contentsline {section}{\numberline {A.3}Literature Overview}{24}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{24}{subsection.A.3.1}
-\contentsline {subsection}{\numberline {A.3.2}Hidden Markov Model Decomposition of Speech and Noise}{26}{subsection.A.3.2}
-\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{27}{subsection.A.3.3}
-\contentsline {section}{\numberline {A.4}Conclusion}{28}{section.A.4}
-\contentsline {section}{\numberline {.1}Research Agenda}{29}{section.Alph0.1}
-\contentsline {subsection}{\numberline {.1.1}Background}{29}{subsection.Alph0.1.1}
-\contentsline {subsection}{\numberline {.1.2}Research Questions}{29}{subsection.Alph0.1.2}
-\contentsline {subsection}{\numberline {.1.3}Search Strategy}{29}{subsection.Alph0.1.3}
-\contentsline {subsubsection}{Databases}{30}{section*.17}
-\contentsline {subsubsection}{List of Search Terms}{30}{section*.18}
-\contentsline {subsubsection}{Inclusion and Quality Criteria}{30}{section*.19}
-\contentsline {chapter}{\numberline {A}Mathematical Concepts}{31}{appendix.A}
-\contentsline {section}{\numberline {A.1}Linear Algebra}{31}{section.A.1}
-\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{31}{section*.20}
-\contentsline {subsubsection}{Singular Value Decomposition}{31}{section*.21}
-\contentsline {section}{\numberline {A.2}Statistics and Optimization}{31}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{32}{subsection.A.2.1}
-\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{32}{subsection.A.2.2}
-\contentsline {subsubsection}{The Lagrange Multiplier Method}{32}{section*.22}
-\contentsline {subsubsection}{Gradient Descent}{32}{section*.23}
-\contentsline {section}{\numberline {A.3}Spectral Analysis}{32}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Formal statement}{32}{subsection.A.3.1}
-\contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{33}{section.A.4}
-\contentsline {section}{\numberline {A.5}Hidden Markov Models}{33}{section.A.5}
+\contentsline {section}{\numberline {A.2}Literature Review Process}{21}{section.A.2}
+\contentsline {section}{\numberline {A.3}Literature Overview}{23}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{23}{subsection.A.3.1}
+\contentsline {subsection}{\numberline {A.3.2}Hidden Markov Model Decomposition of Speech and Noise}{25}{subsection.A.3.2}
+\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{26}{subsection.A.3.3}
+\contentsline {section}{\numberline {A.4}Conclusion}{27}{section.A.4}
+\contentsline {section}{\numberline {.1}Research Agenda}{28}{section.Alph0.1}
+\contentsline {subsection}{\numberline {.1.1}Background}{28}{subsection.Alph0.1.1}
+\contentsline {subsection}{\numberline {.1.2}Research Questions}{28}{subsection.Alph0.1.2}
+\contentsline {subsection}{\numberline {.1.3}Search Strategy}{28}{subsection.Alph0.1.3}
+\contentsline {subsubsection}{Databases}{29}{section*.17}
+\contentsline {subsubsection}{List of Search Terms}{29}{section*.18}
+\contentsline {subsubsection}{Inclusion and Quality Criteria}{29}{section*.19}
+\contentsline {chapter}{\numberline {A}Mathematical Concepts}{30}{appendix.A}
+\contentsline {section}{\numberline {A.1}Linear Algebra}{30}{section.A.1}
+\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{30}{section*.20}
+\contentsline {subsubsection}{Singular Value Decomposition}{30}{section*.21}
+\contentsline {section}{\numberline {A.2}Statistics and Optimization}{30}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{31}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{31}{subsection.A.2.2}
+\contentsline {subsubsection}{The Lagrange Multiplier Method}{31}{section*.22}
+\contentsline {subsubsection}{Gradient Descent}{31}{section*.23}
+\contentsline {section}{\numberline {A.3}Spectral Analysis}{31}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Formal statement}{31}{subsection.A.3.1}
+\contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{32}{section.A.4}
+\contentsline {section}{\numberline {A.5}Hidden Markov Models}{32}{section.A.5}

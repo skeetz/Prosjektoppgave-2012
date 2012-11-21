@@ -44,7 +44,6 @@ process, which is further documented by the underlying research
 protocol given in Appendix \ref{protocol}. Section \ref{overview} is
 a short description of the different techniques and methodologies found, summarised in section \ref{conclusion}.
 
-\clearpage
 
 \section{Literature Review Process}\label{reviewProcess} % Anders
 The literature review process was conducted by manually searching searching the listed databases for published articles containing the predefined search terms.
@@ -85,7 +84,6 @@ After screening the results against the different criteria set in appendix \ref{
         \hline
     \end{tabular}
 \end{table}
-
 
 
 \clearpage
@@ -172,8 +170,9 @@ Observational Probability = P(Observation|Hmm_1 \otimes Hmm_2)
 Recognition is carried out by extending the normal Viterbi equation to include the components desired to be decomposed:
 \newline
 \begin{equation}\label{vargasEqn2}
-P_t(i,j) = \max_{u,v} P_{t-1} (u, v) a1_{u,i} a2_{v,j} b1_i \otimes b2_j (O_t)
+P_t(i,j) = \max_{u,v} P_{t-1} (u, v) a1_{u,i} a2_{v,j} b1_i \otimes b2_j (O_t)  \footnotemark
 \end{equation}
+
 
 By using this form of the Viterbi algorithm, this framework is able to simultaneously recognise different components of a mixture. It should be noted that this approach may be computationally difficult as the state search space grows in dimension for each component added.
 Utilizing the fact that components rarely overlap in a certain frequency band, evaluation of the observation probability is approximated by:
@@ -181,16 +180,18 @@ Utilizing the fact that components rarely overlap in a certain frequency band, e
 \begin{equation}\label{vargasEqn3}
 \begin{array}{lcl}
 b1_i \otimes b2_j(O_t) &=&  P(max(O1_t, O2_t|i,j)) \\
-\\ &  = &  C(O1_t,\mu1_i,\sigma1^2_i)N(O2_t, \mu2_j,\sigma2^2_j) + C(O2_t,\mu2_i,\sigma2^2_i)N(O1_t, \mu1_j,\sigma1^2_j)\\
+\\ &  = &  C(O1_t,\mu1_i,\sigma1^2_i)N(O2_t, \mu2_j,\sigma2^2_j) + C(O2_t,\mu2_i,\sigma2^2_i)N(O1_t, \mu1_j,\sigma1^2_j)\footnotemark\\
 \end{array}
 \end{equation}
 
 
-
+Initialization of the system consisted of supervised training on components, here being spoken numbers and noise. Utilizing a previously published algorithm for connected word recognition, the system was able to correctly classify speech contaminated with noise in the range -21 to + 15 dB. 
+\footnotetext{$P_t(i, j)$ is the probability at time $t$ of the first component being in state $i$ and the second component in state $j$. $a1_{u,i}$ is the tranitional probability for the first component, likewise $a2_{v,j}$ is the transitional probability for the second component. $b1_i \otimes b2_j (O_t)$ is the observation probability}
+\footnotetext{$C(O_t, \mu, \sigma)$ is the cumulative probability of all observation levels less than $O_t$ coming from a Normal distribution with mean $\mu$ and variance $\sigma^2$. Similarly $N(O_t, \mu, \sigma^2)$ is the probability of observation $O_t$ coming from a Normal distribution with mean $\mu$ and variance $\sigma^2$.}
 
 \newpage
 \subsection{Factoral Hidden Markov Models} %% Anders
-The Hidden Markov modelling has been around since the late 1960s. Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset.
+The Hidden Markov modelling has been around since the late 1960s. Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset. 
 
 \begin{figure}[h]
   \centering
