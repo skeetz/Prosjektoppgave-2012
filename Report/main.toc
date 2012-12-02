@@ -1,55 +1,55 @@
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Formal Problem Statement}{3}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}A Linear Mixing Model}{3}{subsection.1.1.1}
-\contentsline {section}{\numberline {1.2}Overview}{4}{section.1.2}
-\contentsline {chapter}{\numberline {2}Principal Component Analysis}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Formal Statement}{6}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Singular Value Decomposition}{6}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}PCA Application to Blind Source Separation}{7}{section.2.2}
-\contentsline {chapter}{\numberline {3}Independent Component Analysis}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}Limitations of the ICA Model}{10}{section.3.1}
-\contentsline {section}{\numberline {3.2}ICA in the Linear Mixing Model}{11}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{11}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Derivation of ICA Log Likelihood Function}{11}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Derivation of Stochastic Gradient Descent for ICA}{11}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{11}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}BSS by ICA}{12}{section.3.3}
-\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{12}{section.3.4}
-\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{14}{chapter.4}
-\contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{14}{section.4.1}
-\contentsline {section}{\numberline {4.2}A Latent Variable Model for BSS}{15}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Generative Model and Estimation}{15}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Inference}{15}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Factorial Hidden Markov Model for BSS}{16}{section.4.3}
+\contentsline {section}{\numberline {1.1}Formal Problem Statement}{4}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}A Linear Mixing Model}{4}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Overview}{5}{section.1.2}
+\contentsline {chapter}{\numberline {2}Principal Component Analysis}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Formal Statement}{7}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Singular Value Decomposition}{7}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}PCA Application to Blind Source Separation}{8}{section.2.2}
+\contentsline {chapter}{\numberline {3}Independent Component Analysis}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Limitations of the ICA Model}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}ICA in the Linear Mixing Model}{12}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{12}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Derivation of ICA Log Likelihood Function}{12}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Derivation of Stochastic Gradient Descent for ICA}{12}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{12}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}BSS by ICA}{13}{section.3.3}
+\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{13}{section.3.4}
+\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{15}{section.4.1}
+\contentsline {section}{\numberline {4.2}A Latent Variable Model for BSS}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Generative Model and Estimation}{16}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Inference}{16}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Factorial Hidden Markov Model for BSS}{17}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Initialization}{17}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Separation}{17}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Results}{18}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{19}{chapter.5}
-\contentsline {chapter}{\numberline {A}Literature Review}{20}{appendix.A}
-\contentsline {section}{\numberline {A.1}Introduction}{20}{section.A.1}
-\contentsline {section}{\numberline {A.2}Literature Review Process}{21}{section.A.2}
-\contentsline {section}{\numberline {A.3}Literature Overview}{23}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{23}{subsection.A.3.1}
-\contentsline {subsection}{\numberline {A.3.2}Hidden Markov Model Decomposition of Speech and Noise}{25}{subsection.A.3.2}
-\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{26}{subsection.A.3.3}
-\contentsline {section}{\numberline {A.4}Conclusion}{27}{section.A.4}
-\contentsline {section}{\numberline {.1}Research Agenda}{28}{section.Alph0.1}
-\contentsline {subsection}{\numberline {.1.1}Background}{28}{subsection.Alph0.1.1}
-\contentsline {subsection}{\numberline {.1.2}Research Questions}{28}{subsection.Alph0.1.2}
-\contentsline {subsection}{\numberline {.1.3}Search Strategy}{28}{subsection.Alph0.1.3}
-\contentsline {subsubsection}{Databases}{29}{section*.17}
-\contentsline {subsubsection}{List of Search Terms}{29}{section*.18}
-\contentsline {subsubsection}{Inclusion and Quality Criteria}{29}{section*.19}
-\contentsline {chapter}{\numberline {A}Mathematical Concepts}{30}{appendix.A}
-\contentsline {section}{\numberline {A.1}Linear Algebra}{30}{section.A.1}
-\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{30}{section*.20}
-\contentsline {subsubsection}{Singular Value Decomposition}{30}{section*.21}
-\contentsline {section}{\numberline {A.2}Statistics and Optimization}{30}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{31}{subsection.A.2.1}
-\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{31}{subsection.A.2.2}
-\contentsline {subsubsection}{The Lagrange Multiplier Method}{31}{section*.22}
-\contentsline {subsubsection}{Gradient Descent}{31}{section*.23}
-\contentsline {section}{\numberline {A.3}Spectral Analysis}{31}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Formal statement}{31}{subsection.A.3.1}
-\contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{32}{section.A.4}
-\contentsline {section}{\numberline {A.5}Hidden Markov Models}{32}{section.A.5}
+\contentsline {subsection}{\numberline {4.3.2}Separation}{18}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Results}{19}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{20}{chapter.5}
+\contentsline {chapter}{\numberline {A}Literature Review}{21}{appendix.A}
+\contentsline {section}{\numberline {A.1}Introduction}{21}{section.A.1}
+\contentsline {section}{\numberline {A.2}Literature Review Process}{22}{section.A.2}
+\contentsline {section}{\numberline {A.3}Literature Overview}{24}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{24}{subsection.A.3.1}
+\contentsline {subsection}{\numberline {A.3.2}Hidden Markov Model Decomposition of Speech and Noise}{26}{subsection.A.3.2}
+\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{27}{subsection.A.3.3}
+\contentsline {section}{\numberline {A.4}Conclusion}{28}{section.A.4}
+\contentsline {section}{\numberline {.1}Research Agenda}{29}{section..1}
+\contentsline {subsection}{\numberline {.1.1}Background}{29}{subsection..1.1}
+\contentsline {subsection}{\numberline {.1.2}Research Questions}{29}{subsection..1.2}
+\contentsline {subsection}{\numberline {.1.3}Search Strategy}{29}{subsection..1.3}
+\contentsline {subsubsection}{Databases}{30}{section*.17}
+\contentsline {subsubsection}{List of Search Terms}{30}{section*.18}
+\contentsline {subsubsection}{Inclusion and Quality Criteria}{30}{section*.19}
+\contentsline {chapter}{\numberline {A}Mathematical Concepts}{31}{appendix.A}
+\contentsline {section}{\numberline {A.1}Linear Algebra}{31}{section.A.1}
+\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{31}{section*.20}
+\contentsline {subsubsection}{Singular Value Decomposition}{31}{section*.21}
+\contentsline {section}{\numberline {A.2}Statistics and Optimization}{31}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{32}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{32}{subsection.A.2.2}
+\contentsline {subsubsection}{The Lagrange Multiplier Method}{32}{section*.22}
+\contentsline {subsubsection}{Gradient Descent}{32}{section*.23}
+\contentsline {section}{\numberline {A.3}Spectral Analysis}{32}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Formal statement}{32}{subsection.A.3.1}
+\contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{33}{section.A.4}
+\contentsline {section}{\numberline {A.5}Hidden Markov Models}{33}{section.A.5}

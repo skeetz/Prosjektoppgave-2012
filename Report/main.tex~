@@ -486,10 +486,37 @@ The model is trained in an unsupervised manner by estimating a gaussian mixture 
 
 \subsection{Inference}
 
-As computing joint probabilities over the latent variables given the observed $x$ is computationally untractable, we focus on the issue of computing the maximum aposteriori probability (MAP) estimate of the latent variables given the observed. To reduce the model complexity, Roweis [[xxx]] describes a branch-and-bound procedure based on estimating an upper ound on the log likelihood of the latent variables given the observed data.
+The purpose of the inference part of the model is computing the most
+likely sequence of source/gmm component combinations given the
+observed data. By the log-max principle, we assume that only one
+source is active at a given point in time, and for each source, we
+assume there is a single maximum likelihood component. In principle, this problem could be solved by straight
+forward application of the EM algorithm. This, however, is not the
+preferred approach in practice because of the large state space; hence
+we apply a pruning algorithm instead.
 
+Since computing joint probabilities over the latent variables given the
+observed $x$ is clearly  untractable, we look to the issue of
+computing the maximum aposteriori probability (MAP) estimate of the
+latent variables given the observed. To reduce the model complexity,
+Roweis [[xxx]] describes a branch-and-bound procedure based on
+estimating an upper ound on the log likelihood of the latent variables
+given the observed data.
 
+For source/latent variable combination $(m,k)$, given each observation
+vector, $\mathbf{x}$, we compute the following bound.
 
+\begin{equation}\label{bound}
+  B_{m,k} = -\frac{1}{2}\sum_d \max(x^d - v_m^d,0)^2 - \frac{D}{2}\log|D|-\log \pi_m
+\end{equation}
+
+Next, let $z_m^{*} = \arg \min B_{m,k}$, and let $l^{*}$ be
+the log likelihood associated with $z_m^{*}$. For all sources $m$, we
+eliminate latent variables $k$ such that $B_{mk}<l^{*}$. For the
+remaining source/latent variable combinations, we evalutate the log
+likelihood by the model specified in \ref{maxvq_eqn}. If a new lower
+bound is discovered, we reiterate the pruning procedure, otherwise, we
+compute log likelihoods until all remaining are evaluated.
 
 
 
