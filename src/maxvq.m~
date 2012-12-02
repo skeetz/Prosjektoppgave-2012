@@ -15,7 +15,7 @@ for (i = 1:size(X,2))  % Iterate over spectrogram columns
       B{m}{k} = computeBound(); % add args
     end
   end  
-  l0 = loglikelihood(argmin(B)); % add args
+  l0 = loglikelihood(); % add args
   
   
   % Now iterate over all combinations comparing l0 with computed bounds
