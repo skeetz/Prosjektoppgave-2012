@@ -101,11 +101,15 @@ don't hear. Finally, we also use visual clues as a complement to
 auditory functions\footnote{The best example of this is those with
   hearing impairments being able to read lips.}. 
 
-Given the vast amount
-of information we adopt as complements to the auditory system, it is perhaps no wonder that implementing this
-filtering operation separately in a computer system. 
-
-[TODO: structure of project]
+Given the vast amount of information we adopt as complements to the auditory system, it is perhaps no wonder that implementing this
+filtering operation separately in a computer system is challenging. In
+this report we will look at some approaches to this problem. In the
+remainder of this chapter, we will state the blind source separation
+problem in the mathematical notation we will be using throughout this
+report, and provide an overview over some of the methods we will
+explore. Chapters \ref{pca}-\ref{ss_bss} discuss three particular
+methods in greater detail and explores their qualities by considering
+their performance on actual examples.
 
 
 \section{Formal Problem Statement}
@@ -165,7 +169,7 @@ In the next chapters we will be looking at a few different algorithms for solvin
   \end{table}
 \end{center}
 
-\chapter{Principal Component Analysis}
+\chapter{Principal Component Analysis}\label{pca}
 
 Principal component analysis \cite{pearson1901} (PCA) is a eigenvector-based,
 non-probabilistic technique that uses orthogonal projection to
@@ -572,21 +576,47 @@ compute log likelihoods until all remaining are evaluated.
 
 
 
+\begin{figure}[!htpb]
+  \begin{lstlisting}[frame=single]
+    
+% Variables:
+gmms = list()          % holds GMMs 
+spectrogram = matrix() % d x T matrix
 
-%% Once we have computed the MAP (or approximate) setting
-%% of z, we can use this to estimate the refiltering masking signals as
-%% follows: for each (overlapping) frame of the input spectrogram,
-%% set the masking signal to unity for every frequency at which the
-%% output proposed by the model corresponding to the source to be
-%% recovered is the maximum proposal over all models. Other fre-
-%% quencies have their masks set to zero. Actual refiltering is then
-%% performed by retaining the phase from the spectrogram of the
-%% original (noisy/mixed) recording, applying the (binary) masking
-%% signals to the log magnitude of each frequency, and reconstitut-
-%% ing the clean signal using overlap-and-add reconstruction. The
-%% windowing function used to compute the original spectrogram
-%% must be known (or estimated) in order to remove its effect prop-
-%% erly during refiltering.
+for (t = 1:T)
+  
+  X = spectrogram(:,t)
+
+  % initial bound estimate
+  bounds = list()
+  for m = 1:length(gmms)
+    for k = 1:NComponents(gmms{m})
+      bounds{m}{k} = computeBound(X, gmms{m}{k})
+    end
+  end
+
+  % max log likelihood for each source
+  for m = 1:length(gmms)
+    l0{m} = logLikelihood(argmin(bounds{m}))
+  
+  % reduction
+  while(remaining > 0)
+    for m = 1:length(gmms)
+      for k = 1:NComponents(gmms{m})
+        
+      end
+    end
+  
+  end
+ 
+
+
+end
+    
+  \end{lstlisting}
+  \caption{Pseudocode for MAXVQ algorithm.}
+  \label{maxvq_pseudo}
+\end{figure}
 
 
 
@@ -644,6 +674,9 @@ each component $i$ represents the expected intensity (power spectral
 density value) in each frequency band given that the system is in
 state $i$. The pair $(\{\mathbf{\mu}_i\}, \Sigma)$ then forms the initial
 parametrization of the emissions model.
+
+
+
 
 \subsection{Separation}
 
