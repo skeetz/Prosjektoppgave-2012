@@ -135,7 +135,7 @@ for t = 1:T
     mus = mus(:,i);
     bestMu = repmat(bestMu, 1, size(mus,2))';
     masks = sum(bestMu<mus,2);
-    spectOut(:,t) = X(masks==0);
+    spectOut(:,t) = X(masks==0)';
 end
 
 
