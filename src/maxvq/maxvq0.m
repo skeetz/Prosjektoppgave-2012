@@ -60,6 +60,9 @@ B = cell(length(gmms),1);       % Bound
 
 l0 = zeros(length(gmms),1);
 
+
+Pmix = -log(Pmix);
+
 for t = 1:T
     
     X = Pmix(:,t);
@@ -119,8 +122,8 @@ for t = 1:T
     for i = 1:length(gmms)%for i = 1:length(mus)
         mus(:,i) = gmms{i}.mu(minIdx(i),:);
     end
-    i = [1:(bestIdx-1) (bestIdx+1):length(gmms)];
-    mus = mus(i,:);
+%     i = [1:(bestIdx-1) (bestIdx+1):length(gmms)];
+%     mus = mus(i,:);
     bestMu = repmat(bestMu, 1, size(mus,2));
     masks = sum(bestMu<mus,2);
     spectOut(:,t) = X(masks==0);
