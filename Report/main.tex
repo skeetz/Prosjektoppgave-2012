@@ -17,7 +17,8 @@
 % Source code listings (see below begindoc), graphics
 \usepackage{listings}
 \usepackage{graphicx}
-\usepackage{subfig}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{standalone}
 
 \graphicspath{{Figures/}}
@@ -102,7 +103,7 @@ auditory functions\footnote{The best example of this is those with
   hearing impairments being able to read lips.}. 
 
 Given the vast amount of information we adopt as complements to the auditory system, it is perhaps no wonder that implementing this
-filtering operation separately in a computer system is challenging. In
+iltering operation separately in a computer system is challenging. In
 this report we will look at some approaches to this problem. In the
 remainder of this chapter, we will state the blind source separation
 problem in the mathematical notation we will be using throughout this
@@ -148,26 +149,51 @@ can be recovered. This is to say that the estimate of the original
 signal $j$ at time $t$ is computed as the $j$th row of $\boldsymbol{W}$ times the
 $t$th column of $X$.
 
-From Equation \ref{linear_mixing_model}, we can see that the blind source separation problem, even in the simplest case, is ill-poised, as we are trying to determine $M\times T + N\times M$ parameters (both $\boldsymbol{A}$ and $\boldsymbol{S}$) given only $N\times T$ ($\boldsymbol{X}$). This implies that we need to impose some kind of assumptions on the nature of the data. These assumptions, often called the \emph{generative model}, state something about the nature of the signals and how they are mixed. As will be made apparent later, which assumptions are made, gives rise to different solution approaches. For the purpose of this study, we will be quite restrictive in what assumptions we are willing make, hence the term \emph{blind} source separation. The type of assumptions made are primarily related to statistical properties of the sources. The textbook assumptions are uncorrelated and independendent sources, leading to the PCA and ICA solutions, respectively\footnote{Under the assumptions that the number of observations are greater than or equal to the number of sources.}.
+From Equation \ref{linear_mixing_model}, we can see that the blind
+source separation problem, even in the simplest case, is ill-poised,
+as we are trying to determine $M\times T + N\times M$ parameters (both
+$\boldsymbol{A}$ and $\boldsymbol{S}$) given only $N\times T$
+($\boldsymbol{X}$). This implies that we need to impose some kind of
+assumptions on the nature of the data. These assumptions, often called
+the \emph{generative model}, state something about the nature of the
+signals and how they are mixed. As will be made apparent later, which
+assumptions are made, gives rise to different solution approaches. For
+the purpose of this study, we will be quite restrictive in what
+assumptions we are willing make, hence the term \emph{blind} source
+separation. The type of assumptions made are primarily related to
+statistical properties of the sources. The textbook assumptions are
+uncorrelated and independendent sources, leading to the PCA and ICA
+solutions, respectively\footnote{Under the assumptions that the number 
+of observations are greater than or equal to the number of sources.}.
+
+
+
 
 \section{Overview}
 
-In the next chapters we will be looking at a few different algorithms for solving various instances of the BSS problem. Each algorithm has its own merits depending to a large extent on the assumptions we make about the data. An overview of these follow in the Table \ref{overviewTable}.
+In the next chapters we will be looking at a few different algorithms
+for solving various instances of the BSS problem. Each algorithm has
+its own merits depending to a large extent on the assumptions we make
+about the data. Here we present a brief overview.
 
-\begin{center}
-  \begin{table}[h!]
-    \begin{tabular}{ | l | l | l | p{5cm} |}
-      \hline
-      \textbf{Data characteristic} & \textbf{Method} & \textbf{Description} \\ \hline
-      Uncorrelated sources. & PCA & Blabla \\ 
-      Independent, non-gaussian sources. & ICA & blabla \\
-      Fewer sources than observations. & HMM & blabla \\
-      \hline
-    \end{tabular}
-    \caption{Overview over the different approaches to blind source separation covered in this report.}
-    \label{overviewTable}
-  \end{table}
-\end{center}
+Principal component analysis (PCA) (Chapter \ref{pca}) and independent
+component analysis (ICA) (Chapter \ref{ica}) are the textbook approaches to blind source separation. These
+methods work well for analysing time-domain data. Many extensions to
+the ICA framework have been proposed, notable among them are
+short-term and spectral domain ICA which allow for separating
+underdetermined systems (fewer observed signals than sources). 
+
+In single source or single sensor we review two approaches proposed by
+Roweis (REF). The common denominator behind these methods is the use
+of latent variables representing the sources. The first approach uses
+represents each sources by a Gaussian mixture model (GMM) where each component
+of the GMM is an multi-dimensional Gaussian distribution over a
+discretized short-term spectrum. A theoretical weakness of this
+approach is that it does not account for the time-dynamics of the
+signals. Roweis therefore proposes an extended hidden markov approach
+to this model where the latent variables follow a stochastic process. 
+
+
 
 \chapter{Principal Component Analysis}\label{pca}
 
@@ -191,14 +217,66 @@ assumption that the PCs accounting for the smallest portion of
 variance are noise.
 
 
-The next section presents PCA from two different but equivalent
-perspectives; first solving for the direction of maximal variation
+The next sections presents PCA from two different but equivalent
+perspectives; Secion \ref{pca_intuition} presents some intuition
+behind PCA and how we use projections to reduce dimensionality in data
+so as to make it simple to capture the distinctive features of the
+phenomenon we are interested in. We then proceed more
+analytically, first solving for the direction of maximal variation
 using the method of Lagrange multipliers, and subsequently by singular
-value decomposition which. The latter is the more computationally
+value decomposition. The latter is the more computationally
 efficient, and the rationale for this approach is easy to see once the
 first perspective is known. We then proceed to looking at how PCA can
 be applied to the blind source problem and how the assumptions made
 about the data affect the results of a real-world mixing case.
+
+
+\section{Intuition}\label{pca_intuition}
+
+Consider the two dimensional dataset of Figures
+\ref{pca1}-\ref{pca2}. We now want to find a new
+\emph{one-dimensional} representation for
+this data that captures the most of the variation in this data. Figures
+\ref{pca1}-\ref{pca2} illustrate two attempts at doing this by drawing
+twostraight lines through the set of points. Notice the difference
+between the two lines; as the line in Figure \ref{pca1} runs
+almost perfectly through the points, there are only three points that
+differ significantly from the others which lie almost on the line. As for
+the line in Figure \ref{pca2}, we can distinguish between most of the
+points by virtue of their distance from the line\footnote{ While we may not
+guarantee that this particular line will serve as well with future
+points, we can at least say it does a good job with the limited sample
+we have.}.
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca1.png}
+  \hrule
+  \caption{After projecting the data onto the dark line, little
+    variation left in the dataset.}
+  \label{pca1}
+\end{figure}
+
+Now we want to introduce some terminology so we may extend our
+intuition to more complex (and realistic cases). In the example above,
+each of our original data points are \emph{vectors} $\mathbf{v}_i$ in two
+dimensional Euclidean space $\mathbb{R}^2$. The dimensionality
+reduction operation is here a projection $T:
+\mathbb{R}^2\rightarrow\mathbb{R}$. In the general case of PCA we are
+interested in finding such projections $T:
+\mathbb{R}^m\rightarrow\mathbb{R}^n$ for $m<n$. 
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca2.png}
+  \hrule
+  \caption{Projecting the data onto the dark line we reduce
+    dimensionality while keeping a large portion of the variation
+    characterizing the data.}
+  \label{pca2}
+\end{figure}
 
 
 \section{Formal Statement}
