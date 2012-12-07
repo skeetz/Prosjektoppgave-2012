@@ -203,7 +203,9 @@ represent data in a lower dimensional subspace spanned by the $k$
 first eigenvectors of the covariance matrix. The eigenvectors form an
 orthogonal basis for the data such that a projection onto the
 eigenvectors will decorrelate the data. In the next section we will
-derive this result by maximizing the variance of an axis of projection.
+derive this result by maximizing the variance of an axis of
+projection.
+
 
 PCA is useful in several applications, hereunder visualization and
 detection of so-called \emph{latent variables}. The principal
@@ -219,7 +221,11 @@ variance are noise.
 
 The next sections presents PCA from two different but equivalent
 perspectives; Secion \ref{pca_intuition} presents some intuition
-behind PCA and how we use projections to reduce dimensionality in data
+behind PCA and how we use projections to reduce
+dimensionality\footnote{It should be noted that while in many
+  applications of PCA, dimenension reduction is the main aim, in
+  direct applications of  PCA to source separation, we are more
+  interested in the fact that the projected data is uncorrelated.} in data
 so as to make it simple to capture the distinctive features of the
 phenomenon we are interested in. We then proceed more
 analytically, first solving for the direction of maximal variation
@@ -265,7 +271,19 @@ dimensional Euclidean space $\mathbb{R}^2$. The dimensionality
 reduction operation is here a projection $T:
 \mathbb{R}^2\rightarrow\mathbb{R}$. In the general case of PCA we are
 interested in finding such projections $T:
-\mathbb{R}^m\rightarrow\mathbb{R}^n$ for $m<n$. 
+\mathbb{R}^m\rightarrow V$ to maximize the variance of the data
+projected onto a lower dimensional vector space $V$.
+
+
+We characterize a vector space $V$ by its \emph{basis} $B=\{\mathbf{u}_1,...,\mathbf{u}_N\}$, which is a set
+of vectors such that any vector $\mathbf{v}\in V$ can be expressed as a linear
+combination of $B$. The projection operation discussed above can be
+thought of as a change of basis. In the context of Figure \ref{pca2}
+the new basis may be a vector $\mathbf{u} = (1,-1)^T$. $\mathbf{u}$
+would then correspond to a unit vector in the direction of the dark line. For any point $\mathbf{x}_i =
+(x_i^{(1)}, x_i^{(2)})^T$, the only operation we need to express it in the new
+basis is computing the dot product $\mathbf{u}\cdot \mathbf{x}_i$.
+
 
 \begin{figure}
   \centering
@@ -278,12 +296,21 @@ interested in finding such projections $T:
   \label{pca2}
 \end{figure}
 
+In the next sections we will formalize these ideas and look at how we
+actually compute the bases $B$ so as to find the axis of maximum
+variability for a given dimensionality. 
 
 \section{Formal Statement}
 
+In this section we review the PCA problem as a constrained
+maximization problem. We seek to maximize the variance of the
+projected data by means of the method of Lagrange multipliers as
+described in \ref{lagrange}.
+
+
 Let $\boldsymbol{x}_i \in \mathbf{R}^n$ denote the $i$'th observation of a dataset
 of $m$ observations. We now want to project our data onto a vector $\boldsymbol{u}$
-in $\mathbf{R}^n$ so as to maximize the variance of the resulting
+in $\mathbb{R}^n$ so as to maximize the variance of the resulting
 projection $\sum_{i=1}^m \boldsymbol{x}_i^T \boldsymbol{u}$ subject to the constraint
 $|\boldsymbol{u}|=1$. Under the assumption that $\boldsymbol{X}$ is
 standardized to zero mean and unit variance, the Lagrangian is then given by Equation \ref{pca_lagrangian}:
@@ -306,12 +333,26 @@ Here, $\boldsymbol{\Sigma} = \sum_{i = 1}^m \boldsymbol{x}_i \boldsymbol{x}_i^T$
   \nabla_u \mathcal{L}(\boldsymbol{u}, \lambda) = \boldsymbol{\Sigma} \boldsymbol{u} - \lambda \boldsymbol{u} = 0
 \end{equation}
 
-Equation \ref{pca_gradient} shows that the direction of maximum variance $u$, which we will refer to as the first principal component, is the first eigenvector of the covariance matrix of the dataset. By similar means it can be shown that the second eigenvector points in the direction of largest variance \emph{orthogonal} to the first eigenvector and so forth. Finally it is worth noting that the portion of the total variance explained by a principal component is proportional to its associated eigenvalue.
+Equation \ref{pca_gradient} shows that the direction of maximum
+variance $u$, which we will refer to as the first principal component,
+is the first eigenvector of the covariance matrix of the dataset. By
+similar means it can be shown that the second eigenvector points in
+the direction of largest variance \emph{orthogonal} to the first
+eigenvector and so forth. Finally it is worth noting that the portion
+of the total variance explained by a principal component is
+proportional to its associated eigenvalue.
+
 
 \subsection{Singular Value Decomposition}
 
 For a high dimensional dataset (e.g. $n = 10,000$), which is
-frequently the case working with for instance image or video data, the covariance matrix will have $10,000\times 10,000 = 100,000,000$ entries, which is computationally untractable. Hence, PCA is usually implemented in terms of \emph{singular value decomposition} (SVD). For an $m\times n$ matrix $\boldsymbol{X}$, the SVD is a factorization such that:
+frequently the case working with for instance image or video data, the
+covariance matrix will have $10,000\times 10,000 = 100,000,000$
+entries, which is computationally untractable. Hence, PCA is usually
+implemented in terms of \emph{singular value decomposition} (SVD). For
+an $m\times n$ matrix $\boldsymbol{X}$, the SVD is a factorization
+such that:
+
 
 \begin{equation}
   X = US V^{T}
@@ -335,40 +376,58 @@ In \textsc{Matlab}, we can perform SVD by a single line of code
 
 \begin{figure}[!htpb]
   \begin{lstlisting}[frame=single]
-   [U,S,V] = svd(X' * X);
+    [U,S,V] = svd(X' * X);
   \end{lstlisting}
   \caption{\textsc{Matlab} code for SVD.}
   \label{svd_code}
 \end{figure}
 
-We will not go into the derivation of this result as SCD is covered
+We will not go into the derivation of this result as SVD is covered
 in most textbooks on linear algebra or basic numerical
-mathematics. Rather, we will proceed to show how PCA can be applied to
+mathematics (see for instance ####REF). Rather, we will proceed to show how PCA can be applied to
 BSS, and what assumptions it requires us to make about the data.
 
 
 
 \section{PCA Application to Blind Source Separation}\label{pca_bss}
-% TODO: update graphs to newest version
 
-The top graph of Figure \ref{pca_time_series} shows two periodic signals $s_1$ and $s_2$ contaminated by an additive Gaussian white noise with standard deviation $\sigma = .2$.
+We have so far looked at PCA as a method of transforming data from
+$N$-dimensional Euclidean space onto a set of \emph{principal components}
+which is the basis of a new vector space $V$. A key property of $V$ is
+that the data is now linearly uncorrelated. This is in turn the key
+idea to take into account in blind source separation - for 
+
+The top graph of Figure \ref{pca_time_series} shows two periodic
+signals $s_1$ and $s_2$ contaminated by an additive Gaussian white
+noise with standard deviation $\sigma = .2$.
+
 
 \begin{equation}
       \begin{array}{lll}
         s_1 = & \sin(\pi x) & 0<x<5\\
-        s_2 = & \cos(7 \pi x) & 0<5<x\\
+        s_2 = & \cos(7 \pi x) & 0<x<5\\
     \end{array}
 \end{equation}
 
-The signals are subsequently mixed, as shown in the middle part of Figure \ref{pca_time_series} by the matrix:
+The signals are subsequently mixed, as shown in the middle part of
+Figure \ref{pca_time_series} by the matrix:
+
 
 \begin{equation}
   A = \begin{bmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{bmatrix}
 \end{equation}
 
-where $\alpha = \pi/4$. Here the mixing matrix $A$ corresponds to a rotation operator that will rotate the data by $\alpha$ radians in counterclockwise direction. 
+where $\alpha = \pi/4$. Here the mixing matrix $A$ corresponds to a
+rotation operator that will rotate the data by $\alpha$ radians in
+counterclockwise direction. 
 
-The lower part of Figure \ref{pca_time_series} shows the recovered signal\footnote{The estimated unmixing matrix here is $\hat{W} = \hat{A}^{-1} = \begin{bmatrix} .7071 & .7071 \\ -.7071 & .7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for the value of $\alpha$ above.}.
+
+The lower part of Figure \ref{pca_time_series} shows the recovered
+signal\footnote{The estimated unmixing matrix here is $\hat{W} =
+  \hat{A}^{-1} = \begin{bmatrix} .7071 & .7071 \\ -.7071 &
+    .7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for
+  the value of $\alpha$ above.}.
+
 
 \begin{itemize}
   \item Example where it works - why
@@ -863,7 +922,7 @@ The solution to an optimzation problem is the same under any monotone transforma
 
 \subsection{Mathematical Optimization}\label{optimization}
 
-\subsubsection{The Lagrange Multiplier Method}
+\subsubsection{The Lagrange Multiplier Method}\label{lagrange}
 
 \subsubsection{Gradient Descent}
 
