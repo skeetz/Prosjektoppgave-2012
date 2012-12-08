@@ -742,16 +742,13 @@ distributions at a given point in time. We should also not that the use of logar
 it accentuates the differences between signals.
 
 
-
-
-\section{A Latent Variable Model for BSS}
+\section{Latent Variable BSS}
 
 While we are essentially dealing with a \emph{two-level latent variable model}, we follow
 Roweis' terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for 
 this class of models. This will also provide a ground for discussing the complexity issues
 of traditional inference methods as pertains to factorial BSS models, and a proposed solution
 to these problems.
-
 
 
 
@@ -874,7 +871,11 @@ for (t = 1:T)
   while(remaining > 0)
     for m = 1:length(gmms)
       for k = 1:NComponents(gmms{m})
-        
+        if B{m}{k} < l0
+          
+        else if 
+          
+        end
       end
     end
   
