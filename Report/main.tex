@@ -304,8 +304,7 @@ variability for a given dimensionality.
 
 In this section we review the PCA problem as a constrained
 maximization problem. We seek to maximize the variance of the
-projected data by means of the method of Lagrange multipliers as
-described in \ref{lagrange}.
+projected data by means of the method of Lagrange multipliers. 
 
 
 Let $\boldsymbol{x}_i \in \mathbf{R}^n$ denote the $i$'th observation of a dataset
@@ -313,7 +312,9 @@ of $m$ observations. We now want to project our data onto a vector $\boldsymbol{
 in $\mathbb{R}^n$ so as to maximize the variance of the resulting
 projection $\sum_{i=1}^m \boldsymbol{x}_i^T \boldsymbol{u}$ subject to the constraint
 $|\boldsymbol{u}|=1$. Under the assumption that $\boldsymbol{X}$ is
-standardized to zero mean and unit variance, the Lagrangian is then given by Equation \ref{pca_lagrangian}:
+standardized to zero mean and unit variance, the Lagrangian is then
+given by Equation \ref{pca_lagrangian}:
+
 
   \begin{equation}
     \label{pca_lagrangian}
@@ -326,7 +327,10 @@ standardized to zero mean and unit variance, the Lagrangian is then given by Equ
     \end{array}
   \end{equation}
 
-Here, $\boldsymbol{\Sigma} = \sum_{i = 1}^m \boldsymbol{x}_i \boldsymbol{x}_i^T$ is the covariance matrix. Setting the gradient of \ref{pca_lagrangian} equal to zero yields Equation \ref{pca_gradient}:
+Here, $\boldsymbol{\Sigma} = \sum_{i = 1}^m \boldsymbol{x}_i
+\boldsymbol{x}_i^T$ is the covariance matrix. Setting the gradient of
+\ref{pca_lagrangian} equal to zero yields Equation \ref{pca_gradient}:
+
 
 \begin{equation}
   \label{pca_gradient}
@@ -358,9 +362,11 @@ such that:
   X = US V^{T}
 \end{equation}
 
+
 Here, $U \in \mathbf{R}^{m\times m}$, $S \in \mathbf{R}^{m\times n}$,
 and $U \in \mathbf{R}^{n\times n}$. The SVD relates to the eigenvalue
 problem (Equation \ref{pca_gradient}) as follows:
+
 
 \begin{itemize}
 \item The columns of $U$ form the projections of $X$ onto the
@@ -371,8 +377,10 @@ problem (Equation \ref{pca_gradient}) as follows:
     $\Sigma = X^T X$
 \end{itemize}
 
+
 In \textsc{Matlab}, we can perform SVD by a single line of code
 (subsequent to standardizing the data to zero mean and unit variance):
+
 
 \begin{figure}[!htpb]
   \begin{lstlisting}[frame=single]
@@ -384,7 +392,7 @@ In \textsc{Matlab}, we can perform SVD by a single line of code
 
 We will not go into the derivation of this result as SVD is covered
 in most textbooks on linear algebra or basic numerical
-mathematics (see for instance ####REF). Rather, we will proceed to show how PCA can be applied to
+mathematics (see for instance REF). Rather, we will proceed to show how PCA can be applied to
 BSS, and what assumptions it requires us to make about the data.
 
 
@@ -633,12 +641,63 @@ of the model.
 
 
 \section{Time Frequency Signal Representation}\label{timeFreqRep}
+
+
 A time frequency representation (TFR) is a redundant signal
 representation in comparison to a simple time domain representation that
-contains only the amplitude values at given point in time. A TFR
-is often preferred to a perfect frequency or Fourier
-domain representation as the latter contains no information about the
-temporal location of events.
+contains only the amplitude values at given point in time. As seen in
+for instance Figure REF, sound signals are often non-stationary,
+which indicates that a windowed or short-term analysis is
+appropriate. 
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .8\textwidth]{Figures/time_signal}
+  \caption{Time domain representation of a male voice counting from
+    one to ten.}
+  \hrule
+\end{figure}
+
+
+
+In working with hidden markov models for blind source separation, we
+rely on a redundant signal representation in the time-frequency
+domain, rather than the standard representations in the time
+domain. Such a representation is advantageous in comparison with a
+pure spectral representation as the latter contains no information on
+when different components of a signal occur in time. While many
+different time-frequency representations exist, our presentation
+relies on the \emph{short-term Fourier transform} (STFT).
+
+The time-frequency representation, often called a \emph{spectrogram} produced by the STFT maps the
+energies in various parts of the spectrum over the timespan of the
+signal. For a low amplitude portion of the signal will have its energy
+concentrated in the upper part of the spectrogram and vice versa. This
+is illustrated in Figure XX.
+
+
+
+Equation \ref{stft} defines the discrete time STFT for the $n$th
+segment (which is centered around $m$):
+
+\begin{equation}\label{stft}
+  \text{STFT}\{x[n]\}(m,\omega)= X(m,\omega) =\sum_{n = -\infty}^{\infty}
+  x[n]\omega[n-m]e^{-i\omega n}
+\end{equation}
+
+Here, $\omega$ is a zero centered window function, typically uniform
+or gaussian. The window determines which part of the signal $x$ is to
+be included in the spectrogram near $m$. In practice, the STFT is
+computed using the fast fourier transform (FFT). To better allow for
+visualization of the STFT, which is a complex number, the spectrogram
+is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
+
+\begin{equation}\label{spectrogram}
+  \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
+\end{equation}
+
 
 
 %% \begin{figure}[!htpb]\label{matlab_stft}
@@ -673,9 +732,22 @@ Let $\mathcal{Q} = \{q_1, q_2, .. , q_M\}$ denote the set of speakers\footnote{F
   \end{array}
 \end{equation}
 
-where $Mn_M(\cdot)$ refers to an $M$-valued multinomial distribution, and $\Phi(\cdot|\mu,\Sigma)$ the normal distribution. The idea can be expressed as follows: \emph{Each source $m$ selects a latent variable $z$ which in turn produces an intensity vector $\mathbf{x}_m$ according to the distribution $\mathbb{P}(\mathbf{x}|z)$. The final output $\mathbf{x}$ is the elementwise maximum over all vectors $\{\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_M\}$}.
+where $Mn_M(\cdot)$ refers to an $M$-valued multinomial distribution,
+and $\Phi(\cdot|\mu,\Sigma)$ the normal distribution. The idea can be
+expressed as follows: \emph{Each source $m$ selects a latent variable
+  $z$ which in turn produces an intensity vector $\mathbf{x}_m$
+  according to the distribution $\mathbb{P}(\mathbf{x}|z)$. The final
+  output $\mathbf{x}$ is the elementwise maximum over all vectors
+  $\{\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_M\}$}.
 
-The model is trained in an unsupervised manner by estimating a gaussian mixture to a training dataset where sources are separated. More recently, attempts have been made at estimation directly on mixed signals [REFERANSE]. The canonical training method used in these models is the expectation maximization (EM) algorithm as described in appendix [[[REF]]]. 
+
+The model is trained in an unsupervised manner by estimating a
+gaussian mixture to a training dataset where sources are
+separated. More recently, attempts have been made at estimation
+directly on mixed signals [REFERANSE]. The canonical training method
+used in these models is the expectation maximization (EM) algorithm as
+described in appendix [[[REF]]]. 
+
 
 \subsection{Inference}
 
@@ -922,50 +994,13 @@ The solution to an optimzation problem is the same under any monotone transforma
 
 \subsection{Mathematical Optimization}\label{optimization}
 
-\subsubsection{The Lagrange Multiplier Method}\label{lagrange}
 
 \subsubsection{Gradient Descent}
 
 
 \section{Spectral Analysis}
 
-In working with hidden markov models for blind source separation, we
-rely on a redundant signal representation in the time-frequency
-domain, rather than the standard representations in the time
-domain. Such a representation is advantageous in comparison with a
-pure spectral representation as the latter contains no information on
-when different components of a signal occur in time. While many
-different time-frequency representations exist, our presentation
-relies on the \emph{short-term Fourier transform} (STFT).
 
-The time-frequency representation, often called a \emph{spectrogram} produced by the STFT maps the
-energies in various parts of the spectrum over the timespan of the
-signal. For a low amplitude portion of the signal will have its energy
-concentrated in the upper part of the spectrogram and vice versa. This
-is illustrated in Figure XX.
-
-[[[[[[[[[[ FIGURE HERE!!! ]]]]]]]]]
-
-\subsection{Formal statement}
-
-Equation \ref{stft} defines the discrete time STFT for the $n$th
-segment (which is centered around $m$):
-
-\begin{equation}\label{stft}
-  \text{STFT}\{x[n]\}(m,\omega)= X(m,\omega) =\sum_{n = -\infty}^{\infty}
-  x[n]\omega[n-m]e^{-i\omega n}
-\end{equation}
-
-Here, $\omega$ is a zero centered window function, typically uniform
-or gaussian. The window determines which part of the signal $x$ is to
-be included in the spectrogram near $m$. In practice, the STFT is
-computed using the fast fourier transform (FFT). To better allow for
-visualization of the STFT, which is a complex number, the spectrogram
-is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
-
-\begin{equation}\label{spectrogram}
-  \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
-\end{equation}
 
 
 \section{Gaussian Mixture Models}\label{gmm_appendix}

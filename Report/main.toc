@@ -18,39 +18,37 @@
 \contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{16}{section.3.4}
 \contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{18}{chapter.4}
 \contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{18}{section.4.1}
-\contentsline {section}{\numberline {4.2}A Latent Variable Model for BSS}{19}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Generative Model and Estimation}{19}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Inference}{19}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Factorial Hidden Markov Model for BSS}{20}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Initialization}{20}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Separation}{22}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Results}{23}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{24}{chapter.5}
-\contentsline {chapter}{\numberline {A}Literature Review}{25}{appendix.A}
-\contentsline {section}{\numberline {A.1}Introduction}{25}{section.A.1}
-\contentsline {section}{\numberline {A.2}Literature Review Process}{26}{section.A.2}
-\contentsline {section}{\numberline {A.3}Literature Overview}{28}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{28}{subsection.A.3.1}
-\contentsline {subsection}{\numberline {A.3.2}Hidden Markov Model Decomposition of Speech and Noise}{30}{subsection.A.3.2}
-\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{31}{subsection.A.3.3}
-\contentsline {section}{\numberline {A.4}Conclusion}{32}{section.A.4}
-\contentsline {section}{\numberline {.1}Research Agenda}{33}{section..1}
-\contentsline {subsection}{\numberline {.1.1}Background}{33}{subsection..1.1}
-\contentsline {subsection}{\numberline {.1.2}Research Questions}{33}{subsection..1.2}
-\contentsline {subsection}{\numberline {.1.3}Search Strategy}{33}{subsection..1.3}
-\contentsline {subsubsection}{Databases}{34}{section*.19}
-\contentsline {subsubsection}{List of Search Terms}{34}{section*.20}
-\contentsline {subsubsection}{Inclusion and Quality Criteria}{34}{section*.21}
-\contentsline {chapter}{\numberline {A}Mathematical Concepts}{35}{appendix.A}
-\contentsline {section}{\numberline {A.1}Linear Algebra}{35}{section.A.1}
-\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{35}{section*.22}
-\contentsline {subsubsection}{Singular Value Decomposition}{35}{section*.23}
-\contentsline {section}{\numberline {A.2}Statistics and Optimization}{35}{section.A.2}
-\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{36}{subsection.A.2.1}
-\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{36}{subsection.A.2.2}
-\contentsline {subsubsection}{The Lagrange Multiplier Method}{36}{section*.24}
-\contentsline {subsubsection}{Gradient Descent}{36}{section*.25}
-\contentsline {section}{\numberline {A.3}Spectral Analysis}{36}{section.A.3}
-\contentsline {subsection}{\numberline {A.3.1}Formal statement}{36}{subsection.A.3.1}
+\contentsline {section}{\numberline {4.2}A Latent Variable Model for BSS}{20}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Generative Model and Estimation}{20}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Inference}{20}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Factorial Hidden Markov Model for BSS}{21}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Initialization}{23}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Separation}{23}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Results}{24}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{25}{chapter.5}
+\contentsline {chapter}{\numberline {A}Literature Review}{26}{appendix.A}
+\contentsline {section}{\numberline {A.1}Introduction}{26}{section.A.1}
+\contentsline {section}{\numberline {A.2}Literature Review Process}{27}{section.A.2}
+\contentsline {section}{\numberline {A.3}Literature Overview}{29}{section.A.3}
+\contentsline {subsection}{\numberline {A.3.1}Independent Component Analysis}{29}{subsection.A.3.1}
+\contentsline {subsection}{\numberline {A.3.2}Hidden Markov Model Decomposition of Speech and Noise}{31}{subsection.A.3.2}
+\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{32}{subsection.A.3.3}
+\contentsline {section}{\numberline {A.4}Conclusion}{33}{section.A.4}
+\contentsline {section}{\numberline {.1}Research Agenda}{34}{section..1}
+\contentsline {subsection}{\numberline {.1.1}Background}{34}{subsection..1.1}
+\contentsline {subsection}{\numberline {.1.2}Research Questions}{34}{subsection..1.2}
+\contentsline {subsection}{\numberline {.1.3}Search Strategy}{34}{subsection..1.3}
+\contentsline {subsubsection}{Databases}{35}{section*.20}
+\contentsline {subsubsection}{List of Search Terms}{35}{section*.21}
+\contentsline {subsubsection}{Inclusion and Quality Criteria}{35}{section*.22}
+\contentsline {chapter}{\numberline {A}Mathematical Concepts}{36}{appendix.A}
+\contentsline {section}{\numberline {A.1}Linear Algebra}{36}{section.A.1}
+\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{36}{section*.23}
+\contentsline {subsubsection}{Singular Value Decomposition}{36}{section*.24}
+\contentsline {section}{\numberline {A.2}Statistics and Optimization}{36}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{37}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{37}{subsection.A.2.2}
+\contentsline {subsubsection}{Gradient Descent}{37}{section*.25}
+\contentsline {section}{\numberline {A.3}Spectral Analysis}{37}{section.A.3}
 \contentsline {section}{\numberline {A.4}Gaussian Mixture Models}{37}{section.A.4}
-\contentsline {section}{\numberline {A.5}Hidden Markov Models}{37}{section.A.5}
+\contentsline {section}{\numberline {A.5}Hidden Markov Models}{38}{section.A.5}
