@@ -1,0 +1,23 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces After projecting the data onto the dark line, little variation left in the dataset.\relax }}{9}{figure.caption.4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax }}{10}{figure.caption.5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces \textsc {Matlab} code for SVD.\relax }}{12}{figure.caption.6}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces PCA Source Separation.\relax }}{13}{figure.caption.7}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{13}{figure.caption.8}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{14}{figure.caption.9}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{17}{figure.caption.10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{18}{figure.caption.11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. \relax }}{18}{figure.caption.12}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{20}{figure.caption.13}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Log-max approximation.\relax }}{21}{figure.caption.14}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{24}{figure.caption.15}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{25}{figure.caption.16}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{29}{figure.caption.17}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Hidden Markov Model\relax }}{34}{figure.caption.20}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{35}{figure.caption.21}
+\addvspace {10\p@ }

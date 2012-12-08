@@ -52,6 +52,7 @@
 \end{abstract}
 
 \tableofcontents
+\listoffigures
 
 \chapter{Introduction}
 
@@ -469,15 +470,16 @@ signal\footnote{The estimated unmixing matrix here is $\hat{W} =
   \caption{Standardized data projected onto eigenvectors.}
 \end{figure}
 
-\chapter{Independent Component Analysis}
+\chapter{Independent Component Analysis}\label{ica}
+
 
 PCA finds the basis of a subspace in which the variance is
 maximized in the direction of the basis vectors and the covariance
 between the data is zero. ICA seeks to find basis
 vectors that are statistically independent, which is a stronger
 property than simply being uncorrelated as independence implies
-uncorrelatedness, while the opposite is not true. ICA in contrast to PCA does not have analytic solutions in the general case, 
-so a numerical optimization method is usually applied in computing the ICA transform.
+uncorrelatedness, while the opposite is not true. ICA in contrast to PCA does not have analytic solutions in the general case, so a numerical optimization method is usually applied in computing the ICA transform.
+
 
 \section{Limitations of the ICA Model}\label{ICA_restrictions}
 
@@ -627,17 +629,21 @@ generative model.
 
 In this chapter we present  a solution to the single sensor BSS
 problem proposed by Roweis (XXXX)\cite{roweis} that relies on a
-factoral hidden markov model system. The key idea put forward by
-Roweis is to learn the transition and sensor models for every source
-separately using a time-frequency  representation of the original signal.
+latent variable model (mixture of gaussians). This metod has two 
+phases; a training phase where the mixture models are estimated
+one clean recordings of each source. The subsequent inference 
+phase where mixed signals are separated rely on two important ideas: an
+approximation for determining which source is active at a given time,
+and an efficient pruning method to reduce the computational cost
+of the model.
 
+
+% TODO!!
 This chapter is structured as follows. Section \ref{timeFreqRep}
 provides an introduction to the time-frequency domain signal
 representation which is common in most single channel audio separation
-models. Section \ref{fhmm} then describes the factoral hidden
-markov for blind source separation in terms of a two signal mixture
-before we conclude by looking at some results from our implementation
-of the model.
+models. 
+
 
 
 \section{Time Frequency Signal Representation}\label{timeFreqRep}
@@ -662,10 +668,10 @@ appropriate.
 
 
 
-In working with hidden markov models for blind source separation, we
+In working with underdetermined blind source separation, we
 rely on a redundant signal representation in the time-frequency
 domain, rather than the standard representations in the time
-domain. Such a representation is advantageous in comparison with a
+domain. Time-frequency representation is advantageous in comparison with a
 pure spectral representation as the latter contains no information on
 when different components of a signal occur in time. While many
 different time-frequency representations exist, our presentation
@@ -676,8 +682,6 @@ energies in various parts of the spectrum over the timespan of the
 signal. For a low amplitude portion of the signal will have its energy
 concentrated in the upper part of the spectrogram and vice versa. This
 is illustrated in Figure XX.
-
-
 
 Equation \ref{stft} defines the discrete time STFT for the $n$th
 segment (which is centered around $m$):
@@ -712,11 +716,69 @@ is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
 %%   \label{mlica_code}
 %% \end{figure}
 
-[....]
+\section{Log Max Approximation}
+
+An important observation underlying the inference model discussed in this chapter is the following.
+If two signals $s_1(t)$ and $s_2(t)$ are mixed \emph{additively} in the time domain so that 
+$x(t) = s_1(t) + s_2(t)$, then the mixture log spectrogram $\log F(x)$ is almost equal to the 
+element-wise maximum of the source log spectrograms, that is 
+$\log (F(s_1) + F(s_2)) \simeq \max(\log (F(s_1)) + \log (F(s_2))$. The relationship is illustrated in Figure
+\ref{logmax_fig}.
+
+\begin{figure}[h!]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/logmax}
+  \hrule
+  \label{logmax_fig}
+  \caption{Log-max approximation.}
+\end{figure}
+
+There is a simple intuition behind this approximation; in the spectral domain, a signal is characterized
+by how energy is distributed over different frequency bands, and particular sounds have a ``signature''
+according to which frequencies have the highest energies. Hence, if we allow for the assumption that
+the signals are more or less independent, \emph{different} signals are likely to have different energy 
+distributions at a given point in time. We should also not that the use of logarithms is important here as 
+it accentuates the differences between signals.
+
+
+
 
 \section{A Latent Variable Model for BSS}
 
-Before proceding to the full FHMM model, we will consider a simpler model without the temporal dynamics given by the markov transition model. While we are essentially dealing with a \emph{two-level latent variable model}, we follow standard terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for this class of models. This will also provide a ground for discussing the complexity issues of traditional inference methods as pertains to BSS, and a proposed solution to these problems.
+While we are essentially dealing with a \emph{two-level latent variable model}, we follow
+Roweis' terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for 
+this class of models. This will also provide a ground for discussing the complexity issues
+of traditional inference methods as pertains to factorial BSS models, and a proposed solution
+to these problems.
+
+
+
+
+\section{Gaussian Mixture Models}\label{gmm_appendix}
+A gaussian mixture model (GMM) is latent variable model that gives a
+tractable representation of high-dimensional probability
+distribution. Let $Z$ be a multinomial random variable taking on
+values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
+be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
+har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
+has a gaussian mixture distribution:
+
+\begin{equation}\label{gaussmix_eqn}
+  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
+  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
+\end{equation}
+
+Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
+gaussian distribution with expectation vector $\mathbf{\mu}$ and
+covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
+an $N$-valued multinomial distribution.
+
+A common interpretretation of the gaussian mixture model is for $Z$ to
+represent a latent or hidden variable describing the state of a
+system, while $X$ is some observable quantity depending on the state
+of the system. 
+
 
 \subsection{Generative Model and Estimation}
 
@@ -1003,77 +1065,55 @@ The solution to an optimzation problem is the same under any monotone transforma
 
 
 
-\section{Gaussian Mixture Models}\label{gmm_appendix}
-A gaussian mixture model (GMM) is latent variable model that gives a
-tractable representation of high-dimensional probability
-distribution. Let $Z$ be a multinomial random variable taking on
-values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
-be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
-har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
-has a gaussian mixture distribution:
-
-\begin{equation}\label{gaussmix_eqn}
-  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
-  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
-\end{equation}
-
-Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
-gaussian distribution with expectation vector $\mathbf{\mu}$ and
-covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
-an $N$-valued multinomial distribution.
-
-A common interpretretation of the gaussian mixture model is for $Z$ to
-represent a latent or hidden variable describing the state of a
-system, while $X$ is some observable quantity depending on the state
-of the system. 
 
 
-\section{Hidden Markov Models}\label{hmm_appendix}
-%% Ref Norvig
-A hidden markov model (HMM) is a probabilistic model relating two sequences of
-discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
-$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
-$\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
-$\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
-is some causal relationship whereby the hidden variable affects the
-observable, but this does not need be the case. 
 
-A HMM consists of two probabilistic statement; the \emph{transition}
-model:
+%% \section{Hidden Markov Models}\label{hmm_appendix}
+%% %% Ref Norvig
+%% A hidden markov model (HMM) is a probabilistic model relating two sequences of
+%% discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
+%% $\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
+%% $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
+%% $\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
+%% is some causal relationship whereby the hidden variable affects the
+%% observable, but this does not need be the case. 
 
-\begin{equation}
-\mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
-\end{equation}
+%% A HMM consists of two probabilistic statement; the \emph{transition}
+%% model:
 
-
-and the \emph{sensor} or \emph{observation} model:
-
-\begin{equation}
-\mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
-S_1, X_1)
-\end{equation}
+%% \begin{equation}
+%% \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
+%% \end{equation}
 
 
- The order of a markov model is the number of realizations
-of $\mathcal{S}$ conditioned on in the transition model. In order to
-make HMMs computationally tractable, we often operate with 1st order
-markov models:
+%% and the \emph{sensor} or \emph{observation} model:
 
-\begin{equation}\label{1st_order_markov}
-  \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
-\end{equation}
-
-This can be stated as as ``the future being conditionally independent of
-the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
+%% \begin{equation}
+%% \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+%% S_1, X_1)
+%% \end{equation}
 
 
-\begin{equation}
-  \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
-  S_1, X_1) = \mathbb{P}(X_t|S_t)  
-\end{equation}
+%%  The order of a markov model is the number of realizations
+%% of $\mathcal{S}$ conditioned on in the transition model. In order to
+%% make HMMs computationally tractable, we often operate with 1st order
+%% markov models:
 
-The sensor markov assumption states that the sensor is independent of
-everything else given the current value of the hidden variable.
+%% \begin{equation}\label{1st_order_markov}
+%%   \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
+%% \end{equation}
+
+%% This can be stated as as ``the future being conditionally independent of
+%% the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
+
+
+%% \begin{equation}
+%%   \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+%%   S_1, X_1) = \mathbb{P}(X_t|S_t)  
+%% \end{equation}
+
+%% The sensor markov assumption states that the sensor is independent of
+%% everything else given the current value of the hidden variable.
 
 \input{./LiteratureReview/bibl.tex}
 
