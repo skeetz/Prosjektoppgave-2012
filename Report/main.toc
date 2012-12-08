@@ -19,7 +19,7 @@
 \contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{19}{chapter.4}
 \contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Log Max Approximation}{21}{section.4.2}
-\contentsline {section}{\numberline {4.3}A Latent Variable Model for BSS}{21}{section.4.3}
+\contentsline {section}{\numberline {4.3}Latent Variable BSS}{21}{section.4.3}
 \contentsline {section}{\numberline {4.4}Gaussian Mixture Models}{22}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Generative Model and Estimation}{22}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Inference}{23}{subsection.4.4.2}

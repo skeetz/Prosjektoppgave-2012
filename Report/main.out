@@ -19,7 +19,7 @@
 \BOOKMARK [0][-]{chapter.4}{Single Sensor Blind Source Separation}{}
 \BOOKMARK [1][-]{section.4.1}{Time Frequency Signal Representation}{chapter.4}
 \BOOKMARK [1][-]{section.4.2}{Log Max Approximation}{chapter.4}
-\BOOKMARK [1][-]{section.4.3}{A Latent Variable Model for BSS}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Latent Variable BSS}{chapter.4}
 \BOOKMARK [1][-]{section.4.4}{Gaussian Mixture Models}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.4.1}{Generative Model and Estimation}{section.4.4}
 \BOOKMARK [2][-]{subsection.4.4.2}{Inference}{section.4.4}

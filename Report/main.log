@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  8 DEC 2012 12:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  8 DEC 2012 13:14
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -692,7 +692,7 @@ File: Figures/time_signal.png Graphic file (type png)
 
 ] [20 <./Figures/time_signal.png (PNG copy)>]
 
-Package caption Warning: \label before \caption on input line 732.
+Package caption Warning: \label before \caption on input line 733.
 See the caption package documentation for explanation.
 
 
@@ -775,10 +775,10 @@ Overfull \hbox (6.26776pt too wide) in paragraph at lines 194--195
  1960s. Roweis[[]]
  []
 
-<Figures/hmm.jpg, id=628, 490.83376pt x 236.38312pt>
+<Figures/hmm.jpg, id=632, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
  <use Figures/hmm.jpg>
-<Figures/f_hmm.png, id=630, 510.40688pt x 328.97906pt>
+<Figures/f_hmm.png, id=634, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
  <use Figures/f_hmm.png>
 
@@ -789,26 +789,26 @@ xt4): destination with the same identifier (name{appendix.A}) has been already
 used, duplicate ignored
 <to be read again> 
                    \relax 
-l.996 \chapter{Mathematical Concepts}
+l.997 \chapter{Mathematical Concepts}
                                      
 Appendix A.
 pdfTeX warning (ext4): destination with the same identifier (name{section.A.1})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1000 \section{Linear Algebra}
+l.1001 \section{Linear Algebra}
                                pdfTeX warning (ext4): destination with the same
  identifier (name{section.A.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1014 \section{Statistics and Optimization}
+l.1015 \section{Statistics and Optimization}
                                              [38
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{section.A.3}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1063 \section{Spectral Analysis}
+l.1064 \section{Spectral Analysis}
                                    (./LiteratureReview/bibl.tex [39]
 Underfull \hbox (badness 1038) in paragraph at lines 36--39
 []\OT1/cmr/m/n/10.95 Cardoso, J. L.(1998), ``Mul-ti-di-men-sional In-de-pen-den
@@ -826,10 +826,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8439 strings out of 495061
- 118966 string characters out of 1182621
- 239472 words of memory out of 3000000
- 11220 multiletter control sequences out of 15000+50000
+ 8444 strings out of 495061
+ 119032 string characters out of 1182621
+ 243472 words of memory out of 3000000
+ 11221 multiletter control sequences out of 15000+50000
  18648 words of font info for 69 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,11n,40p,884b,1232s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -856,9 +856,9 @@ sfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
 sy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (43 pages, 999717 bytes).
+Output written on main.pdf (43 pages, 1000476 bytes).
 PDF statistics:
- 832 PDF objects out of 1000 (max. 8388607)
- 236 named destinations out of 1000 (max. 500000)
+ 836 PDF objects out of 1000 (max. 8388607)
+ 240 named destinations out of 1000 (max. 500000)
  445 words of extra memory for PDF output out of 10000 (max. 10000000)
 

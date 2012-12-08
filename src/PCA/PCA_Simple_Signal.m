@@ -18,10 +18,11 @@ s = s+.2*randn(size(s));
 
 ang = pi/4;%
 ang =rand()*2*pi;
-a = [cos(ang) -sin(ang);sin(ang), cos(ang)];
+%a = [cos(ang) -sin(ang);sin(ang), cos(ang)];
+a = rand(2);
 
-%a = [2 1; 1 2];
-%a = [1 2; 2 1];
+a = [2 1; 1 2];
+a = [1 2; 2 1];
 x = (a*s);
 
 x_std = standardize(x); % standardize
