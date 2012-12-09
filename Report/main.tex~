@@ -52,6 +52,7 @@
 \end{abstract}
 
 \tableofcontents
+\listoffigures
 
 \chapter{Introduction}
 
@@ -304,8 +305,7 @@ variability for a given dimensionality.
 
 In this section we review the PCA problem as a constrained
 maximization problem. We seek to maximize the variance of the
-projected data by means of the method of Lagrange multipliers as
-described in \ref{lagrange}.
+projected data by means of the method of Lagrange multipliers. 
 
 
 Let $\boldsymbol{x}_i \in \mathbf{R}^n$ denote the $i$'th observation of a dataset
@@ -313,7 +313,9 @@ of $m$ observations. We now want to project our data onto a vector $\boldsymbol{
 in $\mathbb{R}^n$ so as to maximize the variance of the resulting
 projection $\sum_{i=1}^m \boldsymbol{x}_i^T \boldsymbol{u}$ subject to the constraint
 $|\boldsymbol{u}|=1$. Under the assumption that $\boldsymbol{X}$ is
-standardized to zero mean and unit variance, the Lagrangian is then given by Equation \ref{pca_lagrangian}:
+standardized to zero mean and unit variance, the Lagrangian is then
+given by Equation \ref{pca_lagrangian}:
+
 
   \begin{equation}
     \label{pca_lagrangian}
@@ -326,7 +328,10 @@ standardized to zero mean and unit variance, the Lagrangian is then given by Equ
     \end{array}
   \end{equation}
 
-Here, $\boldsymbol{\Sigma} = \sum_{i = 1}^m \boldsymbol{x}_i \boldsymbol{x}_i^T$ is the covariance matrix. Setting the gradient of \ref{pca_lagrangian} equal to zero yields Equation \ref{pca_gradient}:
+Here, $\boldsymbol{\Sigma} = \sum_{i = 1}^m \boldsymbol{x}_i
+\boldsymbol{x}_i^T$ is the covariance matrix. Setting the gradient of
+\ref{pca_lagrangian} equal to zero yields Equation \ref{pca_gradient}:
+
 
 \begin{equation}
   \label{pca_gradient}
@@ -358,9 +363,11 @@ such that:
   X = US V^{T}
 \end{equation}
 
+
 Here, $U \in \mathbf{R}^{m\times m}$, $S \in \mathbf{R}^{m\times n}$,
 and $U \in \mathbf{R}^{n\times n}$. The SVD relates to the eigenvalue
 problem (Equation \ref{pca_gradient}) as follows:
+
 
 \begin{itemize}
 \item The columns of $U$ form the projections of $X$ onto the
@@ -371,8 +378,10 @@ problem (Equation \ref{pca_gradient}) as follows:
     $\Sigma = X^T X$
 \end{itemize}
 
+
 In \textsc{Matlab}, we can perform SVD by a single line of code
 (subsequent to standardizing the data to zero mean and unit variance):
+
 
 \begin{figure}[!htpb]
   \begin{lstlisting}[frame=single]
@@ -384,7 +393,7 @@ In \textsc{Matlab}, we can perform SVD by a single line of code
 
 We will not go into the derivation of this result as SVD is covered
 in most textbooks on linear algebra or basic numerical
-mathematics (see for instance ####REF). Rather, we will proceed to show how PCA can be applied to
+mathematics (see for instance REF). Rather, we will proceed to show how PCA can be applied to
 BSS, and what assumptions it requires us to make about the data.
 
 
@@ -461,15 +470,16 @@ signal\footnote{The estimated unmixing matrix here is $\hat{W} =
   \caption{Standardized data projected onto eigenvectors.}
 \end{figure}
 
-\chapter{Independent Component Analysis}
+\chapter{Independent Component Analysis}\label{ica}
+
 
 PCA finds the basis of a subspace in which the variance is
 maximized in the direction of the basis vectors and the covariance
 between the data is zero. ICA seeks to find basis
 vectors that are statistically independent, which is a stronger
 property than simply being uncorrelated as independence implies
-uncorrelatedness, while the opposite is not true. ICA in contrast to PCA does not have analytic solutions in the general case, 
-so a numerical optimization method is usually applied in computing the ICA transform.
+uncorrelatedness, while the opposite is not true. ICA in contrast to PCA does not have analytic solutions in the general case, so a numerical optimization method is usually applied in computing the ICA transform.
+
 
 \section{Limitations of the ICA Model}\label{ICA_restrictions}
 
@@ -619,26 +629,79 @@ generative model.
 
 In this chapter we present  a solution to the single sensor BSS
 problem proposed by Roweis (XXXX)\cite{roweis} that relies on a
-factoral hidden markov model system. The key idea put forward by
-Roweis is to learn the transition and sensor models for every source
-separately using a time-frequency  representation of the original signal.
-
-This chapter is structured as follows. Section \ref{timeFreqRep}
-provides an introduction to the time-frequency domain signal
-representation which is common in most single channel audio separation
-models. Section \ref{fhmm} then describes the factoral hidden
-markov for blind source separation in terms of a two signal mixture
-before we conclude by looking at some results from our implementation
+latent variable model (mixture of gaussians). This metod has two 
+phases; a training phase where the mixture models are estimated
+one clean recordings of each source. The subsequent inference 
+phase where mixed signals are separated rely on two important ideas: an
+approximation for determining which source is active at a given time,
+and an efficient pruning method to reduce the computational cost
 of the model.
 
 
+% TODO!!
+This chapter is structured as follows. Section \ref{timeFreqRep}
+provides an introduction to the time-frequency domain signal
+representation which is common in most single channel audio separation
+models. 
+
+
+
 \section{Time Frequency Signal Representation}\label{timeFreqRep}
+
+
 A time frequency representation (TFR) is a redundant signal
 representation in comparison to a simple time domain representation that
-contains only the amplitude values at given point in time. A TFR
-is often preferred to a perfect frequency or Fourier
-domain representation as the latter contains no information about the
-temporal location of events.
+contains only the amplitude values at given point in time. As seen in
+for instance Figure REF, sound signals are often non-stationary,
+which indicates that a windowed or short-term analysis is
+appropriate. 
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .8\textwidth]{Figures/time_signal}
+  \caption{Time domain representation of a male voice counting from
+    one to ten.}
+  \hrule
+\end{figure}
+
+
+
+In working with underdetermined blind source separation, we
+rely on a redundant signal representation in the time-frequency
+domain, rather than the standard representations in the time
+domain. Time-frequency representation is advantageous in comparison with a
+pure spectral representation as the latter contains no information on
+when different components of a signal occur in time. While many
+different time-frequency representations exist, our presentation
+relies on the \emph{short-term Fourier transform} (STFT).
+
+The time-frequency representation, often called a \emph{spectrogram} produced by the STFT maps the
+energies in various parts of the spectrum over the timespan of the
+signal. For a low amplitude portion of the signal will have its energy
+concentrated in the upper part of the spectrogram and vice versa. This
+is illustrated in Figure XX.
+
+Equation \ref{stft} defines the discrete time STFT for the $n$th
+segment (which is centered around $m$):
+
+\begin{equation}\label{stft}
+  \text{STFT}\{x[n]\}(m,\omega)= X(m,\omega) =\sum_{n = -\infty}^{\infty}
+  x[n]\omega[n-m]e^{-i\omega n}
+\end{equation}
+
+Here, $\omega$ is a zero centered window function, typically uniform
+or gaussian. The window determines which part of the signal $x$ is to
+be included in the spectrogram near $m$. In practice, the STFT is
+computed using the fast fourier transform (FFT). To better allow for
+visualization of the STFT, which is a complex number, the spectrogram
+is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
+
+\begin{equation}\label{spectrogram}
+  \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
+\end{equation}
+
 
 
 %% \begin{figure}[!htpb]\label{matlab_stft}
@@ -653,11 +716,66 @@ temporal location of events.
 %%   \label{mlica_code}
 %% \end{figure}
 
-[....]
+\section{Log Max Approximation}
 
-\section{A Latent Variable Model for BSS}
+An important observation underlying the inference model discussed in this chapter is the following.
+If two signals $s_1(t)$ and $s_2(t)$ are mixed \emph{additively} in the time domain so that 
+$x(t) = s_1(t) + s_2(t)$, then the mixture log spectrogram $\log F(x)$ is almost equal to the 
+element-wise maximum of the source log spectrograms, that is 
+$\log (F(s_1) + F(s_2)) \simeq \max(\log (F(s_1)) + \log (F(s_2))$. The relationship is illustrated in Figure
+\ref{logmax_fig}.
 
-Before proceding to the full FHMM model, we will consider a simpler model without the temporal dynamics given by the markov transition model. While we are essentially dealing with a \emph{two-level latent variable model}, we follow standard terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for this class of models. This will also provide a ground for discussing the complexity issues of traditional inference methods as pertains to BSS, and a proposed solution to these problems.
+\begin{figure}[h!]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/logmax}
+  \hrule
+  \label{logmax_fig}
+  \caption{Log-max approximation.}
+\end{figure}
+
+There is a simple intuition behind this approximation; in the spectral domain, a signal is characterized
+by how energy is distributed over different frequency bands, and particular sounds have a ``signature''
+according to which frequencies have the highest energies. Hence, if we allow for the assumption that
+the signals are more or less independent, \emph{different} signals are likely to have different energy 
+distributions at a given point in time. We should also not that the use of logarithms is important here as 
+it accentuates the differences between signals.
+
+
+\section{Latent Variable BSS}
+
+While we are essentially dealing with a \emph{two-level latent variable model}, we follow
+Roweis' terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for 
+this class of models. This will also provide a ground for discussing the complexity issues
+of traditional inference methods as pertains to factorial BSS models, and a proposed solution
+to these problems.
+
+
+
+\section{Gaussian Mixture Models}\label{gmm_appendix}
+A gaussian mixture model (GMM) is latent variable model that gives a
+tractable representation of high-dimensional probability
+distribution. Let $Z$ be a multinomial random variable taking on
+values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
+be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
+har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
+has a gaussian mixture distribution:
+
+\begin{equation}\label{gaussmix_eqn}
+  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
+  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
+\end{equation}
+
+Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
+gaussian distribution with expectation vector $\mathbf{\mu}$ and
+covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
+an $N$-valued multinomial distribution.
+
+A common interpretretation of the gaussian mixture model is for $Z$ to
+represent a latent or hidden variable describing the state of a
+system, while $X$ is some observable quantity depending on the state
+of the system. 
+
 
 \subsection{Generative Model and Estimation}
 
@@ -673,9 +791,22 @@ Let $\mathcal{Q} = \{q_1, q_2, .. , q_M\}$ denote the set of speakers\footnote{F
   \end{array}
 \end{equation}
 
-where $Mn_M(\cdot)$ refers to an $M$-valued multinomial distribution, and $\Phi(\cdot|\mu,\Sigma)$ the normal distribution. The idea can be expressed as follows: \emph{Each source $m$ selects a latent variable $z$ which in turn produces an intensity vector $\mathbf{x}_m$ according to the distribution $\mathbb{P}(\mathbf{x}|z)$. The final output $\mathbf{x}$ is the elementwise maximum over all vectors $\{\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_M\}$}.
+where $Mn_M(\cdot)$ refers to an $M$-valued multinomial distribution,
+and $\Phi(\cdot|\mu,\Sigma)$ the normal distribution. The idea can be
+expressed as follows: \emph{Each source $m$ selects a latent variable
+  $z$ which in turn produces an intensity vector $\mathbf{x}_m$
+  according to the distribution $\mathbb{P}(\mathbf{x}|z)$. The final
+  output $\mathbf{x}$ is the elementwise maximum over all vectors
+  $\{\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_M\}$}.
 
-The model is trained in an unsupervised manner by estimating a gaussian mixture to a training dataset where sources are separated. More recently, attempts have been made at estimation directly on mixed signals [REFERANSE]. The canonical training method used in these models is the expectation maximization (EM) algorithm as described in appendix [[[REF]]]. 
+
+The model is trained in an unsupervised manner by estimating a
+gaussian mixture to a training dataset where sources are
+separated. More recently, attempts have been made at estimation
+directly on mixed signals [REFERANSE]. The canonical training method
+used in these models is the expectation maximization (EM) algorithm as
+described in appendix [[[REF]]]. 
+
 
 \subsection{Inference}
 
@@ -740,7 +871,11 @@ for (t = 1:T)
   while(remaining > 0)
     for m = 1:length(gmms)
       for k = 1:NComponents(gmms{m})
-        
+        if B{m}{k} < l0
+          
+        else if 
+          
+        end
       end
     end
   
@@ -922,123 +1057,64 @@ The solution to an optimzation problem is the same under any monotone transforma
 
 \subsection{Mathematical Optimization}\label{optimization}
 
-\subsubsection{The Lagrange Multiplier Method}\label{lagrange}
 
 \subsubsection{Gradient Descent}
 
 
 \section{Spectral Analysis}
 
-In working with hidden markov models for blind source separation, we
-rely on a redundant signal representation in the time-frequency
-domain, rather than the standard representations in the time
-domain. Such a representation is advantageous in comparison with a
-pure spectral representation as the latter contains no information on
-when different components of a signal occur in time. While many
-different time-frequency representations exist, our presentation
-relies on the \emph{short-term Fourier transform} (STFT).
-
-The time-frequency representation, often called a \emph{spectrogram} produced by the STFT maps the
-energies in various parts of the spectrum over the timespan of the
-signal. For a low amplitude portion of the signal will have its energy
-concentrated in the upper part of the spectrogram and vice versa. This
-is illustrated in Figure XX.
-
-[[[[[[[[[[ FIGURE HERE!!! ]]]]]]]]]
-
-\subsection{Formal statement}
-
-Equation \ref{stft} defines the discrete time STFT for the $n$th
-segment (which is centered around $m$):
-
-\begin{equation}\label{stft}
-  \text{STFT}\{x[n]\}(m,\omega)= X(m,\omega) =\sum_{n = -\infty}^{\infty}
-  x[n]\omega[n-m]e^{-i\omega n}
-\end{equation}
-
-Here, $\omega$ is a zero centered window function, typically uniform
-or gaussian. The window determines which part of the signal $x$ is to
-be included in the spectrogram near $m$. In practice, the STFT is
-computed using the fast fourier transform (FFT). To better allow for
-visualization of the STFT, which is a complex number, the spectrogram
-is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
-
-\begin{equation}\label{spectrogram}
-  \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
-\end{equation}
 
 
-\section{Gaussian Mixture Models}\label{gmm_appendix}
-A gaussian mixture model (GMM) is latent variable model that gives a
-tractable representation of high-dimensional probability
-distribution. Let $Z$ be a multinomial random variable taking on
-values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
-be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
-har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
-has a gaussian mixture distribution:
-
-\begin{equation}\label{gaussmix_eqn}
-  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
-  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
-\end{equation}
-
-Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
-gaussian distribution with expectation vector $\mathbf{\mu}$ and
-covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
-an $N$-valued multinomial distribution.
-
-A common interpretretation of the gaussian mixture model is for $Z$ to
-represent a latent or hidden variable describing the state of a
-system, while $X$ is some observable quantity depending on the state
-of the system. 
 
 
-\section{Hidden Markov Models}\label{hmm_appendix}
-%% Ref Norvig
-A hidden markov model (HMM) is a probabilistic model relating two sequences of
-discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
-$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
-$\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
-$\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
-is some causal relationship whereby the hidden variable affects the
-observable, but this does not need be the case. 
-
-A HMM consists of two probabilistic statement; the \emph{transition}
-model:
-
-\begin{equation}
-\mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
-\end{equation}
 
 
-and the \emph{sensor} or \emph{observation} model:
+%% \section{Hidden Markov Models}\label{hmm_appendix}
+%% %% Ref Norvig
+%% A hidden markov model (HMM) is a probabilistic model relating two sequences of
+%% discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
+%% $\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
+%% $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
+%% $\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
+%% is some causal relationship whereby the hidden variable affects the
+%% observable, but this does not need be the case. 
 
-\begin{equation}
-\mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
-S_1, X_1)
-\end{equation}
+%% A HMM consists of two probabilistic statement; the \emph{transition}
+%% model:
 
-
- The order of a markov model is the number of realizations
-of $\mathcal{S}$ conditioned on in the transition model. In order to
-make HMMs computationally tractable, we often operate with 1st order
-markov models:
-
-\begin{equation}\label{1st_order_markov}
-  \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
-\end{equation}
-
-This can be stated as as ``the future being conditionally independent of
-the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
+%% \begin{equation}
+%% \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
+%% \end{equation}
 
 
-\begin{equation}
-  \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
-  S_1, X_1) = \mathbb{P}(X_t|S_t)  
-\end{equation}
+%% and the \emph{sensor} or \emph{observation} model:
 
-The sensor markov assumption states that the sensor is independent of
-everything else given the current value of the hidden variable.
+%% \begin{equation}
+%% \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+%% S_1, X_1)
+%% \end{equation}
+
+
+%%  The order of a markov model is the number of realizations
+%% of $\mathcal{S}$ conditioned on in the transition model. In order to
+%% make HMMs computationally tractable, we often operate with 1st order
+%% markov models:
+
+%% \begin{equation}\label{1st_order_markov}
+%%   \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
+%% \end{equation}
+
+%% This can be stated as as ``the future being conditionally independent of
+%% the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
+
+
+%% \begin{equation}
+%%   \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+%%   S_1, X_1) = \mathbb{P}(X_t|S_t)  
+%% \end{equation}
+
+%% The sensor markov assumption states that the sensor is independent of
+%% everything else given the current value of the hidden variable.
 
 \input{./LiteratureReview/bibl.tex}
 

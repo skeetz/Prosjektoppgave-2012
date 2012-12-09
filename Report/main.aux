@@ -1,22 +1,26 @@
 \relax 
-\ifx\hyper@anchor\@undefined
-\global \let \oldcontentsline\contentsline
-\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
-\global \let \oldnewlabel\newlabel
-\gdef \newlabel#1#2{\newlabelxx{#1}#2}
-\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\let \contentsline\oldcontentsline
-\let \newlabel\oldnewlabel}
-\else
-\global \let \hyper@last\relax 
-\fi
-
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Formal Problem Statement}{5}{section.1.1}}
 \newlabel{mixing_model}{{1.1}{5}{Formal Problem Statement\relax }{equation.1.1.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}A Linear Mixing Model}{6}{subsection.1.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Single Sensor Blind Source Separation}{5}{subsection.1.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}A Linear Mixing Model}{6}{subsection.1.1.2}}
 \newlabel{linear_mixing_model}{{1.2}{6}{A Linear Mixing Model\relax }{equation.1.1.2}{}}
 \newlabel{linear_unmixing_model}{{1.3}{6}{A Linear Mixing Model\relax }{equation.1.1.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Overview}{6}{section.1.2}}
@@ -25,25 +29,23 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{pca}{{2}{8}{Principal Component Analysis\relax }{chapter.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces After projecting the data onto the dark line, little variation left in the dataset.\relax }}{9}{figure.caption.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces After projecting the data onto the dark line, little variation left in the dataset.\relax }}{9}{figure.caption.3}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{pca1}{{2.1}{9}{After projecting the data onto the dark line, little variation left in the dataset.\relax \relax }{figure.caption.4}{}}
+\newlabel{pca1}{{2.1}{9}{After projecting the data onto the dark line, little variation left in the dataset.\relax \relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Intuition}{9}{section.2.1}}
 \newlabel{pca_intuition}{{2.1}{9}{Intuition\relax }{section.2.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax }}{10}{figure.caption.5}}
-\newlabel{pca2}{{2.2}{10}{Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax \relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax }}{10}{figure.caption.4}}
+\newlabel{pca2}{{2.2}{10}{Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax \relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Formal Statement}{10}{section.2.2}}
 \newlabel{pca_lagrangian}{{2.1}{11}{Formal Statement\relax }{equation.2.2.1}{}}
 \newlabel{pca_gradient}{{2.2}{11}{Formal Statement\relax }{equation.2.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Singular Value Decomposition}{11}{subsection.2.2.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces \textsc  {Matlab} code for SVD.\relax }}{12}{figure.caption.6}}
-\newlabel{svd_code}{{2.3}{12}{\textsc {Matlab} code for SVD.\relax \relax }{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}PCA Application to Blind Source Separation}{12}{section.2.3}}
 \newlabel{pca_bss}{{2.3}{12}{PCA Application to Blind Source Separation\relax }{section.2.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces PCA Source Separation.\relax }}{13}{figure.caption.7}}
-\newlabel{pca_time_series}{{2.4}{13}{PCA Source Separation.\relax \relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{13}{figure.caption.8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{14}{figure.caption.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces PCA Source Separation.\relax }}{13}{figure.caption.5}}
+\newlabel{pca_time_series}{{2.3}{13}{PCA Source Separation.\relax \relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{13}{figure.caption.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{14}{figure.caption.7}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Independent Component Analysis}{15}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -54,19 +56,19 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Equivalent Specifications of ICA}{16}{subsection.3.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Derivation of ICA Log Likelihood Function}{16}{subsection.3.2.2}}
 \newlabel{ml_ica}{{3.2.2}{16}{Derivation of ICA Log Likelihood Function\relax }{subsection.3.2.2}{}}
-\newlabel{ica_loglikelihood}{{3.4}{16}{Derivation of ICA Log Likelihood Function\relax }{equation.3.2.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Derivation of Stochastic Gradient Descent for ICA}{16}{subsection.3.2.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{16}{subsection.3.2.4}}
-\newlabel{ica_preprocessing}{{3.2.4}{16}{Preprocessing\relax }{subsection.3.2.4}{}}
-\newlabel{ica_listing}{{\caption@xref {ica_listing}{ on input line 563}}{17}{Derivation of Stochastic Gradient Descent for ICA\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsc  {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{17}{figure.caption.10}}
-\newlabel{mlica_code}{{3.1}{17}{\textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax \relax }{figure.caption.10}{}}
+\newlabel{ica_loglikelihood}{{3.5}{17}{Derivation of ICA Log Likelihood Function\relax }{equation.3.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Derivation of Stochastic Gradient Descent for ICA}{17}{subsection.3.2.3}}
+\newlabel{ica_listing}{{\caption@xref {ica_listing}{ on input line 625}}{17}{Derivation of Stochastic Gradient Descent for ICA\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsc  {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{17}{figure.caption.8}}
+\newlabel{mlica_code}{{3.1}{17}{\textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax \relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Preprocessing}{17}{subsection.3.2.4}}
+\newlabel{ica_preprocessing}{{3.2.4}{17}{Preprocessing\relax }{subsection.3.2.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}BSS by ICA}{17}{section.3.3}}
 \newlabel{BSS_ICA}{{3.3}{17}{BSS by ICA\relax }{section.3.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Limitations and Comparison with PCA}{17}{section.3.4}}
 \newlabel{ica_conclusions}{{3.4}{17}{Limitations and Comparison with PCA\relax }{section.3.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref  {ICA_restrictions}).\relax }}{18}{figure.caption.11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. \relax }}{18}{figure.caption.12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref  {ICA_restrictions}).\relax }}{18}{figure.caption.9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. \relax }}{18}{figure.caption.10}}
 \citation{roweis}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Single Sensor Blind Source Separation}{19}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -74,12 +76,12 @@
 \newlabel{ssbss_chap}{{4}{19}{Single Sensor Blind Source Separation\relax }{chapter.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Time Frequency Signal Representation}{19}{section.4.1}}
 \newlabel{timeFreqRep}{{4.1}{19}{Time Frequency Signal Representation\relax }{section.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{20}{figure.caption.13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{20}{figure.caption.11}}
 \newlabel{stft}{{4.1}{20}{Time Frequency Signal Representation\relax }{equation.4.1.1}{}}
 \newlabel{spectrogram}{{4.2}{21}{Time Frequency Signal Representation\relax }{equation.4.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Log Max Approximation}{21}{section.4.2}}
-\newlabel{logmax_fig}{{\caption@xref {logmax_fig}{ on input line 733}}{21}{Log Max Approximation\relax }{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Log-max approximation.\relax }}{21}{figure.caption.14}}
+\newlabel{logmax_fig}{{\caption@xref {logmax_fig}{ on input line 790}}{21}{Log Max Approximation\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Log-max approximation.\relax }}{21}{figure.caption.12}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Latent Variable BSS}{21}{section.4.3}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Gaussian Mixture Models}{22}{section.4.4}}
 \newlabel{gmm_appendix}{{4.4}{22}{Gaussian Mixture Models\relax }{section.4.4}{}}
@@ -90,9 +92,9 @@
 \newlabel{bound}{{4.5}{23}{Inference\relax }{equation.4.4.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Factorial Hidden Markov Model for BSS}{23}{section.4.5}}
 \newlabel{fhmm}{{4.5}{23}{Factorial Hidden Markov Model for BSS\relax }{section.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{24}{figure.caption.15}}
-\newlabel{maxvq_pseudo}{{4.3}{24}{Pseudocode for MAXVQ algorithm.\relax \relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{25}{figure.caption.16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{24}{figure.caption.13}}
+\newlabel{maxvq_pseudo}{{4.3}{24}{Pseudocode for MAXVQ algorithm.\relax \relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{25}{figure.caption.14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Initialization}{25}{subsection.4.5.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Separation}{26}{subsection.4.5.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}Results}{26}{section.4.6}}
@@ -103,12 +105,12 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {A.1}Introduction}{28}{section.A.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{29}{figure.caption.17}}
-\newlabel{pca_time_series}{{A.1}{29}{Stationary linear mixing process and separation.\relax \relax }{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{29}{figure.caption.15}}
+\newlabel{pca_time_series}{{A.1}{29}{Stationary linear mixing process and separation.\relax \relax }{figure.caption.15}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.2}Literature Review Process}{29}{section.A.2}}
 \newlabel{reviewProcess}{{A.2}{29}{Literature Review Process\relax }{section.A.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Magnitude of hits on the most general terms\relax }}{29}{table.caption.18}}
-\newlabel{tab:myfirsttable}{{A.1}{29}{Magnitude of hits on the most general terms\relax \relax }{table.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Magnitude of hits on the most general terms\relax }}{29}{table.caption.16}}
+\newlabel{tab:myfirsttable}{{A.1}{29}{Magnitude of hits on the most general terms\relax \relax }{table.caption.16}{}}
 \citation{comon94}
 \citation{comon94}
 \citation{bellSejnowski95}
@@ -127,13 +129,13 @@
 \newlabel{vargasEqn3}{{A.4}{33}{Hidden Markov Model Decomposition of Speech and Noise\relax }{equation.A.3.4}{}}
 \citation{roweisOneMic}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.3.3}Factoral Hidden Markov Models}{34}{subsection.A.3.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Hidden Markov Model\relax }}{34}{figure.caption.20}}
-\newlabel{hmm_figure}{{A.2}{34}{Hidden Markov Model\relax \relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Hidden Markov Model\relax }}{34}{figure.caption.18}}
+\newlabel{hmm_figure}{{A.2}{34}{Hidden Markov Model\relax \relax }{figure.caption.18}{}}
 \newlabel{roweisEqn1}{{A.5}{34}{Factoral Hidden Markov Models\relax }{equation.A.3.5}{}}
 \newlabel{roweisEqn2}{{A.6}{34}{Factoral Hidden Markov Models\relax }{equation.A.3.6}{}}
 \newlabel{roweisEqn3}{{A.7}{34}{Factoral Hidden Markov Models\relax }{equation.A.3.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{35}{figure.caption.21}}
-\newlabel{fhmm_figure}{{A.3}{35}{Factorial Hidden Markov Model\relax \relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{35}{figure.caption.19}}
+\newlabel{fhmm_figure}{{A.3}{35}{Factorial Hidden Markov Model\relax \relax }{figure.caption.19}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.4}Conclusion}{35}{section.A.4}}
 \newlabel{conclusion}{{A.4}{35}{Conclusion\relax }{section.A.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {.1}Research Agenda}{36}{section..1}}
@@ -141,15 +143,15 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {.1.1}Background}{36}{subsection..1.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {.1.2}Research Questions}{36}{subsection..1.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {.1.3}Search Strategy}{36}{subsection..1.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Databases}{37}{section*.22}}
-\@writefile{toc}{\contentsline {subsubsection}{List of Search Terms}{37}{section*.23}}
-\@writefile{toc}{\contentsline {subsubsection}{Inclusion and Quality Criteria}{37}{section*.24}}
+\@writefile{toc}{\contentsline {subsubsection}{Databases}{37}{section*.20}}
+\@writefile{toc}{\contentsline {subsubsection}{List of Search Terms}{37}{section*.21}}
+\@writefile{toc}{\contentsline {subsubsection}{Inclusion and Quality Criteria}{37}{section*.22}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {A}Mathematical Concepts}{38}{appendix.A}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {A.1}Linear Algebra}{38}{section.A.1}}
-\@writefile{toc}{\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{38}{section*.25}}
-\@writefile{toc}{\contentsline {subsubsection}{Singular Value Decomposition}{38}{section*.26}}
+\@writefile{toc}{\contentsline {subsubsection}{The Eigenvector - Eigenvalue Problem}{38}{section*.23}}
+\@writefile{toc}{\contentsline {subsubsection}{Singular Value Decomposition}{38}{section*.24}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.2}Statistics and Optimization}{38}{section.A.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2.1}Maximum Likelihood Estimation}{39}{subsection.A.2.1}}
 \newlabel{ml-estimation}{{A.2.1}{39}{Maximum Likelihood Estimation\relax }{subsection.A.2.1}{}}
@@ -157,7 +159,7 @@
 \newlabel{ml-iid}{{A.2}{39}{Maximum Likelihood Estimation\relax }{equation.A.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2.2}Mathematical Optimization}{39}{subsection.A.2.2}}
 \newlabel{optimization}{{A.2.2}{39}{Mathematical Optimization\relax }{subsection.A.2.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Gradient Descent}{39}{section*.27}}
+\@writefile{toc}{\contentsline {subsubsection}{Gradient Descent}{39}{section*.25}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.3}Spectral Analysis}{39}{section.A.3}}
 \bibcite{comon94}{1}
 \bibcite{bellSejnowski95}{2}
