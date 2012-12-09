@@ -11,10 +11,9 @@
 \BOOKMARK [0][-]{chapter.3}{Independent Component Analysis}{}
 \BOOKMARK [1][-]{section.3.1}{Equivalent Statements of ICA}{chapter.3}
 \BOOKMARK [1][-]{section.3.2}{Limitations of the ICA Model}{chapter.3}
-\BOOKMARK [1][-]{section.3.3}{ICA in the Linear Mixing Model}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.3.1}{Derivation of ICA Log Likelihood Function}{section.3.3}
-\BOOKMARK [2][-]{subsection.3.3.2}{Derivation of Stochastic Gradient Descent for ICA}{section.3.3}
-\BOOKMARK [2][-]{subsection.3.3.3}{Preprocessing}{section.3.3}
+\BOOKMARK [1][-]{section.3.3}{Maximum Likelihood ICA in the Linear Mixing Model}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{Derivation of Stochastic Gradient Descent for ICA}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Preprocessing}{section.3.3}
 \BOOKMARK [1][-]{section.3.4}{BSS by ICA}{chapter.3}
 \BOOKMARK [1][-]{section.3.5}{Limitations and Comparison with PCA}{chapter.3}
 \BOOKMARK [0][-]{chapter.4}{Single Sensor Blind Source Separation}{}

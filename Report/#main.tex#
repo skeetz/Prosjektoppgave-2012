@@ -1,0 +1,1220 @@
+\documentclass[11pt, oneside, a4paper]{report}  
+
+% Input and math
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+
+% Hyperlinks
+\usepackage{hyperref}
+
+% Colors
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+
+% Source code listings (see below begindoc), graphics
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{standalone}
+
+\graphicspath{{Figures/}}
+
+\begin{document}
+
+% For source code listings
+\lstset{language=Matlab,
+   keywords={break,case,catch,continue,else,elseif,end,for,function,
+      global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily,
+   keywordstyle=\color{blue},
+   commentstyle=\color{red},
+   stringstyle=\color{dkgreen},
+   numbers=left,
+   numberstyle=\tiny\color{gray},
+   stepnumber=1,
+   numbersep=10pt,
+   backgroundcolor=\color{white},
+   tabsize=4,
+   showspaces=false,
+   showstringspaces=false}
+
+\title{Blind Source Separation}
+\author{}
+\date{}    % type date between braces
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+
+\chapter{Introduction}
+
+One of the many truly remarkable facet of human intelligence is our
+ability to \emph{sub-conciously} process the enormous amounts
+of information picked up by our sensory organs at any given moment in
+time. It is worthwhile emphasizing the fact that this is a
+sub-concious process, and that it takes only very little effort on the
+part of the subject\footnote{One can only imagine the durdgery of life
+if it were not!}. As mundane and everyday as this process may seem
+then, one would expect it to be a very trivial problem. However, the
+fact is quite the opposite: vast amount of effort has been undertaken in assimilating this process in
+computers; some progress has been made, but we have still a long way
+to go in reaching the end of human level performance in these tasks.
+
+In this report we are to focus on a particular subset of such
+filtering tasks; we are to consider audio data\footnote{It should be
+ noted that many of the methods described here have been successfully
+applied to visual data as well.}. Furthermore we will focus on a
+particular problem known as \emph{blind source separation} (BSS). The
+textbook example of BSS is the \emph{cocktail party problem} which can
+be states as follows. At a fashionable cocktail party, you are
+standing with fellow guests in one of several cliques, and there are
+several conversations going on in the room in addition to there being
+played music in the background. In this situation, you are receiving a
+large number of auditory stimuli, but still you have no problem of
+following the conversation in which you are parttaking. 
+
+How is it that you are able to solve this problem so well? The human
+auditory system has several clues to rely on: firstly, we are more
+prone to pick up louder signals which are the voices of the people in
+our proximity. Secondly, we learn quickly to recognize features such
+as the pitch and loudness of the voices of those with whom you
+are engaged in a conversation.
+
+Perhaps equally important to the auditory concepts, in this setting you do not only use auditory clues in the
+signal processing task -- there are also several other context
+dependent pieces of information used, which in principle means that we
+are not really doing truly \emph{blind} source separation. If you are discussing the various merits of
+different classification algorithms you are able to follow along that
+conversation because you know what type of information content such a
+discussion should have. By  means of knowing such content, the brain
+complements the auditory system in two ways. Firstly, you
+can effortlessly ignore those behind you talking about the last
+episode of Paradise Hotel, and secondly, the brain assists the
+auditory system by filling in ``blanks'' if there is some word you
+don't hear. Finally, we also use visual clues as a complement to
+auditory functions\footnote{The best example of this is those with
+  hearing impairments being able to read lips.}. 
+
+Given the vast amount of information we adopt as complements to the auditory system, it is perhaps no wonder that implementing this
+iltering operation separately in a computer system is challenging. In
+this report we will look at some approaches to this problem. In the
+remainder of this chapter, we will state the blind source separation
+problem in the mathematical notation we will be using throughout this
+report, and provide an overview over some of the methods we will
+explore. Chapters \ref{pca}-\ref{ss_bss} discuss three particular
+methods in greater detail and explores their qualities by considering
+their performance on actual examples.
+
+
+\section{Formal Problem Statement}
+
+We now provide a notation leading to a mathematical statement of the
+blind source separation (BSS) problem. We let $\boldsymbol{S}(t)\in
+\mathbf{R}^n$ for $t>0, n>0$ denote the signals generated by $n$
+sources. Similarly, let $\boldsymbol{X}(t)\in \mathbf{R}^m$ for $t>0,
+n>0$ the observed sensor readings resulting from the emitted
+signals. A \emph{mixing model} $f(\boldsymbol{S},t)$ defines the
+relationship between source and observed signal:
+
+
+\begin{equation}\label{mixing_model}
+  \boldsymbol{X} = f(\boldsymbol{S},t)
+\end{equation}
+
+As only the observed value $\boldsymbol{X}$ is known, we need to
+determine the inverse $f^{-1}(\boldsymbol{S},t)$, that is, the
+\emph{unmixing model}.
+
+
+\subsection{Single Sensor Blind Source Separation}
+
+A particular instance of the BSS problem, is the single sensor blind
+source separation (SSBSS) problem, to which we will devote particular
+attention. In the SSBSS problem, we have one or more source signals,
+but the observed signal $\boldsymbol{X}(t)$ is a scalar. This
+introduces problems as this instance does not lend itself to solutions
+by means of the ``standard'' methods we consider in the standard BSS
+problem. Chapter \ref{ssbss_chap} is devoted to the SSBSS problem.
+
+
+\subsection{A Linear Mixing Model}
+
+The simplest mixing model is a noiseless, stationary linear mixing
+model. The stationarity assumption means that the mixing model does
+not change as a function of time, so the $t$ argument in Equation
+\ref{mixing_model} can be omitted. With $T$ measurements, $N$ sources,
+and $M$ sensors, this model can be defined as:
+
+
+
+\begin{equation}\label{linear_mixing_model}
+ \boldsymbol{X} = \boldsymbol{A}\boldsymbol{S}
+\end{equation}
+
+With $\boldsymbol{}X \in \mathbf{R}^{N\times T}$, $\boldsymbol{A} \in \mathbf{R}^{N\times M}$
+and $\boldsymbol{S} \in \mathbf{R}^{M\times T}$. The problem of determining the
+unmixing model now consists of computing the inverse $\boldsymbol{W} = \boldsymbol{A}^{-1}$, so
+that the original signal:
+
+\begin{equation}\label{linear_unmixing_model}
+\boldsymbol{S} = \boldsymbol{W}\boldsymbol{X}
+\end{equation}
+
+can be recovered. This is to say that the estimate of the original
+signal $j$ at time $t$ is computed as the $j$th row of $\boldsymbol{W}$ times the
+$t$th column of $X$.
+
+From Equation \ref{linear_mixing_model}, we can see that the blind
+source separation problem, even in the simplest case, is ill-poised,
+as we are trying to determine $M\times T + N\times M$ parameters (both
+$\boldsymbol{A}$ and $\boldsymbol{S}$) given only $N\times T$
+($\boldsymbol{X}$). This implies that we need to impose some kind of
+assumptions on the nature of the data. These assumptions, often called
+the \emph{generative model}, state something about the nature of the
+signals and how they are mixed. As will be made apparent later, which
+assumptions are made, gives rise to different solution approaches. For
+the purpose of this study, we will be quite restrictive in what
+assumptions we are willing make, hence the term \emph{blind} source
+separation. The type of assumptions made are primarily related to
+statistical properties of the sources. The textbook assumptions are
+uncorrelated and independendent sources, leading to the PCA and ICA
+solutions, respectively\footnote{Under the assumptions that the number 
+of observations are greater than or equal to the number of sources.}.
+
+
+
+
+\section{Overview}
+
+In the next chapters we will be looking at a few different algorithms
+for solving various instances of the BSS problem. Each algorithm has
+its own merits depending to a large extent on the assumptions we make
+about the data. Here we present a brief overview.
+
+Principal component analysis (PCA) (Chapter \ref{pca}) and independent
+component analysis (ICA) (Chapter \ref{ica}) are the textbook approaches to blind source separation. These
+methods work well for analysing time-domain data. Many extensions to
+the ICA framework have been proposed, notable among them are
+short-term and spectral domain ICA which allow for separating
+underdetermined systems (fewer observed signals than sources). 
+
+In single source or single sensor we review two approaches proposed by
+Roweis (REF). The common denominator behind these methods is the use
+of latent variables representing the sources. The first approach uses
+represents each sources by a Gaussian mixture model (GMM) where each component
+of the GMM is an multi-dimensional Gaussian distribution over a
+discretized short-term spectrum. A theoretical weakness of this
+approach is that it does not account for the time-dynamics of the
+signals. Roweis therefore proposes an extended hidden markov approach
+to this model where the latent variables follow a stochastic process. 
+
+
+
+\chapter{Principal Component Analysis}\label{pca}
+
+Principal component analysis \cite{pearson1901} (PCA) is a eigenvector-based,
+non-probabilistic technique that uses orthogonal projection to
+represent data in a lower dimensional subspace spanned by the $k$
+first eigenvectors of the covariance matrix. The eigenvectors form an
+orthogonal basis for the data such that a projection onto the
+eigenvectors will decorrelate the data. In the next section we will
+derive this result by maximizing the variance of an axis of
+projection.
+
+
+PCA is useful in several applications, hereunder visualization and
+detection of so-called \emph{latent variables}. The principal
+components (PCs) are the basis of the subspace onto which the data is
+projected, and are such that the variance explained by each component
+is maximized; that is, the first PC explains a higher proportion of
+variance than the second PC and so forth. We can therefore, by
+retaining only the first few components acheive a representation of
+the data containing the most of the variance exhibited by the
+assumption that the PCs accounting for the smallest portion of
+variance are noise.
+
+
+The next sections presents PCA from two different but equivalent
+perspectives; Secion \ref{pca_intuition} presents some intuition
+behind PCA and how we use projections to reduce
+dimensionality\footnote{It should be noted that while in many
+  applications of PCA, dimenension reduction is the main aim, in
+  direct applications of  PCA to source separation, we are more
+  interested in the fact that the projected data is uncorrelated.} in data
+so as to make it simple to capture the distinctive features of the
+phenomenon we are interested in. We then proceed more
+analytically, first solving for the direction of maximal variation
+using the method of Lagrange multipliers, and subsequently by singular
+value decomposition. The latter is the more computationally
+efficient, and the rationale for this approach is easy to see once the
+first perspective is known. We then proceed to looking at how PCA can
+be applied to the blind source problem and how the assumptions made
+about the data affect the results of a real-world mixing case.
+
+
+\section{Intuition}\label{pca_intuition}
+
+Consider the two dimensional dataset of Figures
+\ref{pca1}-\ref{pca2}. We now want to find a new
+\emph{one-dimensional} representation for
+this data that captures the most of the variation in this data. Figures
+\ref{pca1}-\ref{pca2} illustrate two attempts at doing this by drawing
+twostraight lines through the set of points. Notice the difference
+between the two lines; as the line in Figure \ref{pca1} runs
+almost perfectly through the points, there are only three points that
+differ significantly from the others which lie almost on the line. As for
+the line in Figure \ref{pca2}, we can distinguish between most of the
+points by virtue of their distance from the line\footnote{ While we may not
+guarantee that this particular line will serve as well with future
+points, we can at least say it does a good job with the limited sample
+we have.}.
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca1.png}
+  \hrule
+  \caption{After projecting the data onto the dark line, little
+    variation left in the dataset.}
+  \label{pca1}
+\end{figure}
+
+Now we want to introduce some terminology so we may extend our
+intuition to more complex (and realistic cases). In the example above,
+each of our original data points are \emph{vectors} $\mathbf{v}_i$ in two
+dimensional Euclidean space $\mathbb{R}^2$. The dimensionality
+reduction operation is here a projection $T:
+\mathbb{R}^2\rightarrow\mathbb{R}$. In the general case of PCA we are
+interested in finding such projections $T:
+\mathbb{R}^m\rightarrow V$ to maximize the variance of the data
+projected onto a lower dimensional vector space $V$.
+
+
+We characterize a vector space $V$ by its \emph{basis} $B=\{\mathbf{u}_1,...,\mathbf{u}_N\}$, which is a set
+of vectors such that any vector $\mathbf{v}\in V$ can be expressed as a linear
+combination of $B$. The projection operation discussed above can be
+thought of as a change of basis. In the context of Figure \ref{pca2}
+the new basis may be a vector $\mathbf{u} = (1,-1)^T$. $\mathbf{u}$
+would then correspond to a unit vector in the direction of the dark line. For any point $\mathbf{x}_i =
+(x_i^{(1)}, x_i^{(2)})^T$, the only operation we need to express it in the new
+basis is computing the dot product $\mathbf{u}\cdot \mathbf{x}_i$.
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca2.png}
+  \hrule
+  \caption{Projecting the data onto the dark line we reduce
+    dimensionality while keeping a large portion of the variation
+    characterizing the data.}
+  \label{pca2}
+\end{figure}
+
+In the next sections we will formalize these ideas and look at how we
+actually compute the bases $B$ so as to find the axis of maximum
+variability for a given dimensionality. 
+
+\section{Formal Statement}
+
+In this section we review the PCA problem as a constrained
+maximization problem. We seek to maximize the variance of the
+projected data by means of the method of Lagrange multipliers. 
+
+
+Let $\boldsymbol{x}_i \in \mathbf{R}^n$ denote the $i$'th observation of a dataset
+of $m$ observations. We now want to project our data onto a vector $\boldsymbol{u}$
+in $\mathbb{R}^n$ so as to maximize the variance of the resulting
+projection $\sum_{i=1}^m \boldsymbol{x}_i^T \boldsymbol{u}$ subject to the constraint
+$|\boldsymbol{u}|=1$. Under the assumption that $\boldsymbol{X}$ is
+standardized to zero mean and unit variance, the Lagrangian is then
+given by Equation \ref{pca_lagrangian}:
+
+
+  \begin{equation}
+    \label{pca_lagrangian}
+    \begin{array}{lcl}
+      \mathcal{L}(u,\lambda) & = & \frac{1}{m} \sum_{i=1}^m (\boldsymbol{x}_i^T \boldsymbol{u})^2 - \lambda (\boldsymbol{u}^T \boldsymbol{u} -1) \\
+      \\& = & \frac{1}{m} \sum_{i=1}^m (\boldsymbol{u}^T \boldsymbol{x}_i)^T(\boldsymbol{x}_i^T \boldsymbol{u}) - \lambda (\boldsymbol{u}^T \boldsymbol{u} -1) \\
+      \\& = & \frac{1}{m} \sum_{i=1}^m \boldsymbol{u}^T(\boldsymbol{x}_i \boldsymbol{x}_i^T)u - \lambda (\boldsymbol{u}^T \boldsymbol{u} -1) \\
+      \\& = & \frac{1}{m}  u^T\sum_{i=1}^m(\boldsymbol{x}_i \boldsymbol{x}_i^T)\boldsymbol{u} - \lambda (\boldsymbol{u}^T \boldsymbol{u} -1) \\
+      \\& = & \frac{1}{m} \boldsymbol{u}^T \boldsymbol{\Sigma} \boldsymbol{u} - \lambda (\boldsymbol{u}^T \boldsymbol{u} -1) \\
+    \end{array}
+  \end{equation}
+
+Here, $\boldsymbol{\Sigma} = \sum_{i = 1}^m \boldsymbol{x}_i
+\boldsymbol{x}_i^T$ is the covariance matrix. Setting the gradient of
+\ref{pca_lagrangian} equal to zero yields Equation \ref{pca_gradient}:
+
+
+\begin{equation}
+  \label{pca_gradient}
+  \nabla_u \mathcal{L}(\boldsymbol{u}, \lambda) = \boldsymbol{\Sigma} \boldsymbol{u} - \lambda \boldsymbol{u} = 0
+\end{equation}
+
+Equation \ref{pca_gradient} shows that the direction of maximum
+variance $u$, which we will refer to as the first principal component,
+is the first eigenvector of the covariance matrix of the dataset. By
+similar means it can be shown that the second eigenvector points in
+the direction of largest variance \emph{orthogonal} to the first
+eigenvector and so forth. Finally it is worth noting that the portion
+of the total variance explained by a principal component is
+proportional to its associated eigenvalue.
+
+
+\subsection{Singular Value Decomposition}
+
+For a high dimensional dataset (e.g. $n = 10,000$), which is
+frequently the case working with for instance image or video data, the
+covariance matrix will have $10,000\times 10,000 = 100,000,000$
+entries, which is computationally untractable. Hence, PCA is usually
+implemented in terms of \emph{singular value decomposition} (SVD). For
+an $m\times n$ matrix $\boldsymbol{X}$, the SVD is a factorization
+such that:
+
+
+\begin{equation}
+  X = US V^{T}
+\end{equation}
+
+
+Here, $U \in \mathbf{R}^{m\times m}$, $S \in \mathbf{R}^{m\times n}$,
+and $U \in \mathbf{R}^{n\times n}$. The SVD relates to the eigenvalue
+problem (Equation \ref{pca_gradient}) as follows:
+
+
+\begin{itemize}
+\item The columns of $U$ form the projections of $X$ onto the
+  eigenvectors $V$.
+  \item The entries $s_{ii}$ on the leading diagonal of $S$ are the
+    eigenvalues of $\Sigma = X^TX$.
+  \item The top $k$ columns of $V$ are the top $k$ eigenvectors of
+    $\Sigma = X^T X$
+\end{itemize}
+
+
+Most statistics libraries provide SVD functionalities that are highly
+optimized, hence we will not cover algorithms for computing the SVD
+here\footnote{In \textsc{Matlab}, we can perform SVD using the
+  \texttt{svd}
+statement: \texttt{[u,S,v] = svd(X)}.}.
+
+
+We will not go into the derivation of this result as SVD is covered
+in most textbooks on linear algebra or basic numerical
+mathematics (see for instance REF). Rather, we will proceed to show how PCA can be applied to
+BSS, and what assumptions it requires us to make about the data.
+
+
+
+\section{PCA Application to Blind Source Separation}\label{pca_bss}
+
+We have so far looked at PCA as a method of transforming data from
+$N$-dimensional Euclidean space onto a set of \emph{principal components}
+which is the basis of a new vector space $V$. A key property of $V$ is
+that the data is now linearly uncorrelated. This is in turn the key
+idea to take into account in blind source separation - for 
+
+The top graph of Figure \ref{pca_time_series} shows two periodic
+signals $s_1$ and $s_2$ contaminated by an additive Gaussian white
+noise with standard deviation $\sigma = .2$.
+
+
+\begin{equation}
+      \begin{array}{lll}
+        s_1 = & \sin(\pi x) & 0<x<5\\
+        s_2 = & \cos(7 \pi x) & 0<x<5\\
+    \end{array}
+\end{equation}
+
+The signals are subsequently mixed, as shown in the middle part of
+Figure \ref{pca_time_series} by the matrix:
+
+
+\begin{equation}
+  A = \begin{bmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{bmatrix}
+\end{equation}
+
+where $\alpha = \pi/4$. Here the mixing matrix $A$ corresponds to a
+rotation operator that will rotate the data by $\alpha$ radians in
+counterclockwise direction. 
+
+
+The lower part of Figure \ref{pca_time_series} shows the recovered
+signal\footnote{The estimated unmixing matrix here is $\hat{W} =
+  \hat{A}^{-1} = \begin{bmatrix} .7071 & .7071 \\ -.7071 &
+    .7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for
+  the value of $\alpha$ above.}.
+
+
+\begin{itemize}
+  \item Example where it works - why
+  \item Example where it fails - why
+\end{itemize}
+
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca_signal_time_series}
+  \hrule
+  \caption{PCA Source Separation.}
+  \label{pca_time_series}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca_data_eigs}
+  \hrule
+  \caption{Standardized data points vs eigenvectors.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/pca_eig_projection}
+  \hrule
+  \caption{Standardized data projected onto eigenvectors.}
+\end{figure}
+
+
+\chapter{Independent Component Analysis}\label{ica}
+
+
+PCA finds the basis of a subspace in which the variance is
+maximized in the direction of the basis vectors and the covariance
+between the data is zero. ICA seeks to find basis
+vectors that are statistically independent, which is a stronger
+property than simply being uncorrelated as independence implies
+uncorrelatedness, while the opposite is not true. 
+Like PCA, we can interpret ICA as an optimization problem, but in
+contrast to PCA, ICA does not have a general closed form solution, 
+so a numerical optimization method is usually applied in
+computing the ICA transform.
+
+This chapter is structured as follows. First we give a brief overview
+over different approcahes to ICA in Section \ref{equiv_ica}. We then 
+consider some limitations of the ICA model in Section \ref{ICA_restrictions}, 
+with particular emphasis on the non-gaussianity constraint, which is 
+important with respect to the types of data we can analyze using ICA. Section 
+\ref{linear_model_ica} goes into the maximum likelihood approach to ICA in 
+further detail, and derives a gradient descent learning rule for independent
+components analysis. As it turns out, this gradient rule is similar to the 
+learning rules proposed under the different frameworks discussed in 
+Section \ref{equiv_ica}. Finally, Section \ref{bss_ica} illustrated ICA 
+with a few blind source separation problems.
+
+
+\section{Equivalent Statements of ICA}\label{equiv_ica}
+
+ICA can be derived by several different approaches representing slightly
+different interpretations of the same problem. Among these are maximum 
+differential entropy (REFFFF), maximum kurtosis (REF) and maximum likelihood. 
+In this section we will give a brief overview over these methods and how
+they relate.
+
+
+
+
+\section{Limitations of the ICA Model}\label{ICA_restrictions}
+
+ICA imposes a few critical assumptions about the nature of the sources
+and the extentent to which they can be recovered. In short, these are:
+
+
+\begin{itemize}
+  \item \emph{Signal ordering}: We cannot recover the correct order of
+    the signals.
+  \item \emph{Scaling}. Recovered signals may be scaled arbitrarily.
+  \item \emph{Gaussianity}. We cannot recover Gaussian sources.
+\end{itemize}
+
+
+As in PCA, we cannot
+recover the original ordering of the signals; i.e. the rows of the
+source matrix $\boldsymbol{S}$ may be swapped in the resulting
+$\hat{\boldsymbol{S}}$. Furthermore, the correct scaling of the source
+compents, including their sign cannot be recovered. This can be seen
+in that $\boldsymbol{X} = \boldsymbol{A}\boldsymbol{S} = (.5
+\boldsymbol{A})(2 \boldsymbol{S})$.
+
+The final limitation of ICA is that the source signals must be
+non-Gaussian. To see why this must hold, we rely on the fact that the
+multivariate gaussian distribution is rotationally symmetric. Furthermore,
+to fully recover the sources, we must be able to ``undo'' any rotation
+caused by applying the mixing operator. To see the effect of an
+applying a rotation operator to a sine wave, consider the example in
+Section \ref{pca_bss}.
+
+Consider a single observation
+$\boldsymbol{x} = \boldsymbol{x}(t) =\boldsymbol{A}\boldsymbol{s}(t) =
+\boldsymbol{A}\boldsymbol{s}$. The covariance matrix of
+$\boldsymbol{x} = \boldsymbol{A}\boldsymbol{s}$ is:
+
+
+    \begin{equation}
+      \mathbb{E}(\boldsymbol{x}\boldsymbol{x}^T) 
+      = \mathbb{E}((\boldsymbol{A}\boldsymbol{s})(\boldsymbol{A}\boldsymbol{s})^T) = \mathbb{E}(\boldsymbol{A}\boldsymbol{s}\boldsymbol{s}^T\boldsymbol{A}^T)=\boldsymbol{A}\boldsymbol{A}^T      
+    \end{equation}
+
+Now, let $\boldsymbol{R}$ be a rotation operator and $\boldsymbol{A}'
+= \boldsymbol{AR}$. We consider mixing $\boldsymbol{s}$ by
+$\boldsymbol{A}'$ instead. The covariance matrix of  
+$\boldsymbol{x}' = \boldsymbol{A}'\boldsymbol{s}$ is:
+
+
+\begin{equation}
+  \begin{array}{lcl}
+    \mathbb{E}(\boldsymbol{x}'\boldsymbol{x}'^T) & = &
+    \mathbb{E}((\boldsymbol{A}'\boldsymbol{s})(\boldsymbol{A}'\boldsymbol{s})^T) \\
+    \\& = & \mathbb{E}(\boldsymbol{A}'\boldsymbol{s}\boldsymbol{s}^T\boldsymbol{A}'^T) \\
+    \\& = & \mathbb{E}(\boldsymbol{A}\boldsymbol{R}\boldsymbol{s}\boldsymbol{s}^T(\boldsymbol{A}\boldsymbol{R})^T) \\
+    \\& = & \boldsymbol{A}\boldsymbol{R}\boldsymbol{R}^T\boldsymbol{A}^T
+    \\& = & \boldsymbol{A}\boldsymbol{A}^T
+  \end{array}
+\end{equation}
+
+Hence, we see that both $\boldsymbol{s}$ and $\boldsymbol{s}'$ come
+from the same Gaussian distribution $\boldsymbol{\Phi}(0,
+\boldsymbol{A}\boldsymbol{A}^T$). This means that the recovered data
+may be rotated by an arbitrary rotation matrix $\boldsymbol{R}$, which
+as discussed above, provides little information about the sources. 
+
+
+\section{Maximum Likelihood ICA in the Linear Mixing Model}\label{linear_model_ica}
+
+INTRO BS....
+
+Consider the value of a single source $s_i$ at a given instant in time, and
+let $p_s(s_i)$ be the probability density function for source $i$. Assuming the 
+sources are independent the joint distribution of all the $n$ sources is given 
+by the product of the marginal distributions of each source:
+
+\begin{equation}
+  p_s(s) = \Pi_{i=1}^n p_s(s_i)
+  \label{ica_prob}
+\end{equation}
+
+Recalling our notation for the unmixing model:
+
+\begin{equation}
+  \boldsymbol{A}^{-1} = \boldsymbol{W} = 
+  \begin{bmatrix} 
+    \boldsymbol{w}_1^T\\ \boldsymbol{w}_2^T\\ ...\\ \boldsymbol{w}_n^T\\
+  \end{bmatrix}
+\end{equation}
+
+We can substitute for $s_i$ in (Equation \ref{ica_prob}), to obtain the following
+expression for the joint distribution\footnote{TODO: Determinant -- Linear transformation of pdf.}:
+
+\begin{equation}
+  p(s) = \Pi_{i=1}^n p_s(\boldsymbol{w}_i^T \boldsymbol{x}) \cdot |\boldsymbol{W}|
+\end{equation}
+
+
+Under maximum likelihood estimation, we want to find the $\boldsymbol{W}$ that is most likely given our 
+dataset $\boldsymbol{X} = [\boldsymbol{x}_1,\boldsymbol{x}_2,...,\boldsymbol{x}_T]$, ie.
+
+
+\begin{equation}
+  \label{max_likelihood}
+  \boldsymbol{W}^* = \arg \max_{\boldsymbol{W}} \mathbb{P}(\boldsymbol{W}|\boldsymbol{X})
+\end{equation}
+
+By straight forward application of Bayes' rule, we can rewrite the probability in (Equation \ref{max_likelihood}) as:
+
+\begin{equation}
+  \label{bayes}
+  \mathbb{P}(\boldsymbol{W}|\boldsymbol{X}) 
+  = \frac{\mathbb{P}(\boldsymbol{X}|\boldsymbol{W}) \mathbb{P}(\boldsymbol{W})}{\mathbb{P}(\boldsymbol{X})}
+  \propto \mathbb{P}(\boldsymbol{X}|\boldsymbol{W})
+\end{equation}
+
+From (Equation \ref{bayes}), we can set up the maximum likelohood function:
+
+\begin{equation}\label{ica_loglikelihood}
+  l(W) =\log \mathbb{P}(\boldsymbol{X}|\boldsymbol{W}) 
+  = \Sigma_{t=1}^T \log p_s(\boldsymbol{W}\boldsymbol{X})+\log |\boldsymbol{W}|
+\end{equation}
+
+The final step is to determine the marginal distributions $p_s$ of the sources. 
+A common, but not necessary assumption is to let all the sources have the same distribution.
+As the ICA is incompatible with a Gaussian source distribution, common choices for specifying 
+$P_s$ include the sigmoid $p_s(s) = \frac{1}{1+e^{-s}}$ and hyperbolic tangent ($\tanh(s)$). 
+
+\subsection{A Stochastic Gradient Descent Rule for ICA}
+
+Given the log likelihood function of Equation \ref{ica_loglikelihood},
+we will now show how this can be maxmimized by stochastic gradient
+descent. This derivation leads directly to a working \textsc{Matlab}
+implementation shown in Figure \ref{ica_listing}.
+
+
+\begin{figure}[!htpb]\label{ica_listing}
+  \begin{lstlisting}[frame=single]
+for i = 1:Niter
+  x=x(:,perm);
+  t=1;
+  noblocks=fix(P/Blocks);
+  BlocksI=Blocks*Id;
+  for t=t:Blocks:t-1+noblocks*Blocks,
+   u=w*x(:,t:t+Blocks-1); 
+   w=w+alpha * ( BlocksI + ...
+     (1-2*(1./(1+exp(-u))))*u') * w;
+end
+  \end{lstlisting}
+  \caption{\textsc{Matlab} code for ML ICA by stochastic block gradient descent.}
+  \label{mlica_code}
+\end{figure}
+
+
+
+\subsection{Preprocessing}\label{ica_preprocessing}
+
+Whitening transform...
+
+STFT?
+
+\section{BSS by ICA}\label{BSS_ICA}
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/ica_simple}
+  \hrule
+  \caption{ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the 
+    blue sine wave (cf. Section \ref{ICA_restrictions}).}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/ica_music_speech}
+  \hrule
+  \caption{Separating a speech signal (top left) from background music (top right) by ICA. 
+    Here we also observe that the sign of the original speech signal is reversed in the 
+    bottom right recovered signal. }
+\end{figure}
+
+
+
+
+\section{Limitations and Comparison with PCA}\label{ica_conclusions}
+
+Refer to section \ref{pca_bss} in discussion.
+
+
+\chapter{Single Sensor Blind Source Separation}\label{ssbss_chap}
+
+Single sensor BSS\footnote{Also called single channel BSS.} is a
+particularly importnat case of the BSS problem where the observed
+signal consists of only a scalar value at any point in time as if the
+source signals were recorded a sole microphone. This presents us with
+particular challenges, and we often need to make further assumptions
+about the data generating process -- i.e. we need a more complex
+generative model.
+
+In this chapter we present  a solution to the single sensor BSS
+problem proposed by Roweis (XXXX)\cite{roweis} that relies on a
+latent variable model (mixture of gaussians). This metod has two 
+phases; a training phase where the mixture models are estimated
+one clean recordings of each source. The subsequent inference 
+phase where mixed signals are separated rely on two important ideas: an
+approximation for determining which source is active at a given time,
+and an efficient pruning method to reduce the computational cost
+of the model.
+
+
+% TODO!!
+This chapter is structured as follows. Section \ref{timeFreqRep}
+provides an introduction to the time-frequency domain signal
+representation which is common in most single channel audio separation
+models. 
+
+
+
+\section{Time Frequency Signal Representation}\label{timeFreqRep}
+
+
+A time frequency representation (TFR) is a redundant signal
+representation in comparison to a simple time domain representation that
+contains only the amplitude values at given point in time. As seen in
+for instance Figure REF, sound signals are often non-stationary,
+which indicates that a windowed or short-term analysis is
+appropriate. 
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .8\textwidth]{Figures/time_signal}
+  \caption{Time domain representation of a male voice counting from
+    one to ten.}
+  \hrule
+\end{figure}
+
+
+
+In working with underdetermined blind source separation, we
+rely on a redundant signal representation in the time-frequency
+domain, rather than the standard representations in the time
+domain. Time-frequency representation is advantageous in comparison with a
+pure spectral representation as the latter contains no information on
+when different components of a signal occur in time. While many
+different time-frequency representations exist, our presentation
+relies on the \emph{short-term Fourier transform} (STFT).
+
+The time-frequency representation, often called a \emph{spectrogram} produced by the STFT maps the
+energies in various parts of the spectrum over the timespan of the
+signal. For a low amplitude portion of the signal will have its energy
+concentrated in the upper part of the spectrogram and vice versa. This
+is illustrated in Figure XX.
+
+Equation \ref{stft} defines the discrete time STFT for the $n$th
+segment (which is centered around $m$):
+
+\begin{equation}\label{stft}
+  \text{STFT}\{x[n]\}(m,\omega)= X(m,\omega) =\sum_{n = -\infty}^{\infty}
+  x[n]\omega[n-m]e^{-i\omega n}
+\end{equation}
+
+Here, $\omega$ is a zero centered window function, typically uniform
+or gaussian. The window determines which part of the signal $x$ is to
+be included in the spectrogram near $m$. In practice, the STFT is
+computed using the fast fourier transform (FFT). To better allow for
+visualization of the STFT, which is a complex number, the spectrogram
+is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
+
+\begin{equation}\label{spectrogram}
+  \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
+\end{equation}
+
+
+\section{Log Max Approximation}
+
+An important observation underlying the inference model discussed in this chapter is the following.
+If two signals $s_1(t)$ and $s_2(t)$ are mixed \emph{additively} in the time domain so that 
+$x(t) = s_1(t) + s_2(t)$, then the mixture log spectrogram $\log F(x)$ is almost equal to the 
+element-wise maximum of the source log spectrograms, that is 
+$\log (F(s_1) + F(s_2)) \simeq \max(\log (F(s_1)) + \log (F(s_2))$. The relationship is illustrated in Figure
+\ref{logmax_fig}.
+
+\begin{figure}[h!]
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/logmax}
+  \hrule
+  \label{logmax_fig}
+  \caption{Log-max approximation.}
+\end{figure}
+
+There is a simple intuition behind this approximation; in the spectral domain, a signal is characterized
+by how energy is distributed over different frequency bands, and particular sounds have a ``signature''
+according to which frequencies have the highest energies. Hence, if we allow for the assumption that
+the signals are more or less independent, \emph{different} signals are likely to have different energy 
+distributions at a given point in time. We should also not that the use of logarithms is important here as 
+it accentuates the differences between signals.
+
+
+\section{Latent Variable BSS}
+
+While we are essentially dealing with a \emph{two-level latent variable model}, we follow
+Roweis' terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for 
+this class of models. This will also provide a ground for discussing the complexity issues
+of traditional inference methods as pertains to factorial BSS models, and a proposed solution
+to these problems.
+
+We start by looking at gaussian mxiture models in general terms in Section \ref{gmm_general}. 
+We then turn to specifying the latent variable model of BSS and briefly describe the estimation 
+procedure for this model in Section \ref{generative_model} before we conclude the theoretical
+part of this chapter by looking at inference, first by standard methods, and subsequently by a more 
+efficient pruning algorithm.
+
+\subsection{Gaussian Mixture Models}\label{gmm_general}
+A gaussian mixture model (GMM) is latent variable model that gives a
+tractable representation of high-dimensional probability
+distribution. Let $Z$ be a multinomial random variable taking on
+values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
+be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
+har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
+has a gaussian mixture distribution:
+
+\begin{equation}\label{gaussmix_eqn}
+  \mathbb{P}(X,Z) = \mathbb{P}(X|Z)P(Z) = \sum_{i = 1}^N
+  \Phi(X_i,\mathbf{\mu}_i, \mathbf{\Sigma}_i)Mn_N(Z)
+\end{equation}
+ 
+Here, $\Phi(X,\mathbf{\mu}, \mathbf{\Sigma})$ denotes $X$ having a
+gaussian distribution with expectation vector $\mathbf{\mu}$ and
+covariance matrix $\mathbf{\Sigma})$, and $Mn_N(Z)$ denotes $Z$ having
+an $N$-valued multinomial distribution.
+
+A common interpretretation of the gaussian mixture model is for $Z$ to
+represent a latent or hidden variable describing the state of a
+system, while $X$ is some observable quantity depending on the state
+of the system. 
+
+
+\subsection{Generative Model and Estimation}\label{generative_model}
+
+Let $\mathcal{Q} = \{q_1, q_2, .. , q_M\}$ denote the set of speakers\footnote{For simplicity, we assume $M=2$.}, and $Q$ be a multinomial random variable over $\mathcal{Q}$, $\mathcal{Z}_m  = \{z_1^m, z_2^m, .. , z_N^m\}$ be the set of states for the latent variable $Z^m$ for source $m$. Finally, we let $\mathbb{x} = (x_1,x_2,...,x_D)$ be an \emph{observed} $D$-dimensional frequency vector. The generative model for a given frequency band $d$ is then:
+
+\begin{equation}
+  \label{maxvq_eqn}
+  \begin{array}{lcl}
+    \mathbf{P}(q)   = Mn_M(q) \\
+    \mathbf{P}(z|q) = Mn_N^q(z) \\ 
+    z^d_{max} = \max_mz_{md} \\
+    \mathbf{P}(x_d|z) = \Phi(x^d|z^d_{max},\sigma) \\
+  \end{array}
+\end{equation}
+
+where $Mn_M(\cdot)$ refers to an $M$-valued multinomial distribution,
+and $\Phi(\cdot|\mu,\Sigma)$ the normal distribution. The idea can be
+expressed as follows: \emph{Each source $m$ selects a latent variable
+  $z$ which in turn produces an intensity vector $\mathbf{x}_m$
+  according to the distribution $\mathbb{P}(\mathbf{x}|z)$. The final
+  output $\mathbf{x}$ is the elementwise maximum over all vectors
+  $\{\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_M\}$}.
+
+
+The model is trained in an unsupervised manner by estimating a
+gaussian mixture to a training dataset where sources are
+separated. More recently, attempts have been made at estimation
+directly on mixed signals [REFERANSE]. The canonical training method
+used in these models is the expectation maximization (EM) algorithm as
+described in appendix [[[REF]]]. 
+
+
+\subsection{A Generic Inference Procedure}
+
+Having estimated the gaussian mixture models $(\boldsymbol{\Phi}_1, \boldsymbol{\Phi}_2$
+for each of our sources, we now turn to the problem of recovering the set of orignial signals
+from the spectrogram 
+
+
+\subsection{An Improved Pruning Method for MAXVQ Inference}
+
+The purpose of the inference part of the model is computing the most
+likely sequence of source/gmm component combinations given the
+observed data. By the log-max principle, we assume that only one
+source is active at a given point in time, and for each source, we
+assume there is a single maximum likelihood component. In 
+principle, this problem could be solved by straight
+forward application of the EM algorithm. This, however, is not the
+preferred approach in practice because of the large state space; hence
+we apply a pruning algorithm instead.
+
+Since computing joint probabilities over the latent variables given the
+observed $x$ is clearly  untractable, we look to the issue of
+computing the maximum aposteriori probability (MAP) estimate of the
+latent variables given the observed. To reduce the model complexity,
+Roweis [[xxx]] describes a branch-and-bound procedure based on
+estimating an upper ound on the log likelihood of the latent variables
+given the observed data.
+
+For source/latent variable combination $(m,k)$, given each observation
+vector, $\mathbf{x}$, we compute the following bound.
+
+\begin{equation}\label{bound}
+  B_{m,k} = -\frac{1}{2}\sum_d \max(x^d - v_m^d,0)^2 - \frac{D}{2}\log|D|-\log \pi_m
+\end{equation}
+
+Next, let $z_m^{*} = \arg \min B_{m,k}$, and let $l^{*}$ be
+the log likelihood associated with $z_m^{*}$. For all sources $m$, we
+eliminate latent variables $k$ such that $B_{mk}<l^{*}$. For the
+remaining source/latent variable combinations, we evalutate the log
+likelihood by the model specified in \ref{maxvq_eqn}. If a new lower
+bound is discovered, we reiterate the pruning procedure, otherwise, we
+compute log likelihoods until all remaining are evaluated.
+
+
+
+\begin{figure}[!htpb]
+  \begin{lstlisting}[frame=single]
+    
+% Variables:
+gmms = list()          % holds GMMs 
+spectrogram = matrix() % d x T matrix
+
+for (t = 1:T)
+  
+  X = spectrogram(:,t)
+
+  % initial bound estimate
+  bounds = list()
+  for m = 1:length(gmms)
+    for k = 1:NComponents(gmms{m})
+      bounds{m}{k} = computeBound(X, gmms{m}{k})
+    end
+  end
+
+  % max log likelihood for each source
+  for m = 1:length(gmms)
+    l0{m} = logLikelihood(argmin(bounds{m}))
+  
+  % reduction
+  while(remaining > 0)
+    for m = 1:length(gmms)
+      for k = 1:NComponents(gmms{m})
+        if B{m}{k} < l0
+          
+        else if 
+          
+        end
+      end
+    end
+  
+  end
+ 
+
+
+end
+    
+  \end{lstlisting}
+  \caption{Pseudocode for MAXVQ algorithm.}
+  \label{maxvq_pseudo}
+\end{figure}
+
+
+
+\section{Factorial Hidden Markov Model for BSS}\label{fhmm}
+
+We will now describe the factoral HMM for blind source separation as
+put forward by Roweis in a two signal setting. We adopt the following
+notation: for each timestep $t \in \{1,2,3,...,T\}$, $\mathbf{X}_t$
+denotes the $M$-dimensional spectral vector of power spectral
+intensities over the finite set of frequency values $\mathcal{F}$. We
+note that while the set of frequencies are discrete, the intensities
+$x_{it}$ are real-valued, hence we adopt a real valued emission
+model, as discussed later. 
+
+
+\begin{figure}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/spectrogram_count}
+  \hrule
+  \caption{Spectrogram of male voice counting from one to ten.}
+\end{figure}
+
+
+The FHMM is essentially a supervised learning method, and the learning
+process consists in estimating a separate HMM based on separate (clean) recordings of the
+particular source. That is to say, the learning part consists entirely
+in learning a probability model of each source. 
+
+For a given source, the training phase then consists in
+training a HMM with a discrete (latent) state space $\mathcal{Z}$, and
+a continuous emission distribution $\mathbf{P(X|Z)}$. The emissions
+model will produce intensity vectors $\mathbf{X}_t$ as described in
+the preceding paragraph.
+
+
+
+\subsection{Initialization}
+
+The factoral hidden markov model consists of one HMM per speaker which
+is trained on separate non-mixed training data for each source. 
+
+The initialization of the FHMM training consists in estimating the
+emission probabilities $P(X|Z)$ (see figure, lag figur). While Roweis
+operates with a finite state model for the latent variables, the
+observable variables are real valued intensities. This indicates that
+a mixture model may be appropriate in the inital estimate of the
+emission model (vis til andre artikler med samme greier ). 
+
+We follow Roweis in estimating a Gaussian mixture model with a single
+shared covariance matrix $\mathbf{\Sigma}$. For a spectrogram with $N$ frequency bands,
+our approach is to estimate a GMM with $k$ $N$-dimensional components
+or latent variables. The mean vector $\mathbf{\mu}_i\in\mathbb{R}^N$ for
+each component $i$ represents the expected intensity (power spectral
+density value) in each frequency band given that the system is in
+state $i$. The pair $(\{\mathbf{\mu}_i\}, \Sigma)$ then forms the initial
+parametrization of the emissions model.
+
+
+
+
+\subsection{Separation}
+
+Next, consider the problem of recovering the orignial
+sources\footnote{For simplicity, we will here frame the problem in
+  terms of two sources.} $\mathbf{S} =
+\{S_1, S_2\}$ given the observed sequence $\{\mathbf{Y}(t)\}$, $t \in \{1,2,3,...,T\}$ which we
+take to be spectral vectors as discussed above. As before, we let
+$z_k(t)$, $i \in \{1,2\}$ denote the value of the latent variable for
+each HMM. 
+
+A key question in the separation process is how the observable signal
+generated by full FHMM relates to the observable values for each of
+the underlying HMMs. This question adresses a property of the
+\emph{data generating model}, and must reflect properties of the
+physical system we are trying to model. In the case of auditory
+signals, Roweis argues for model whereby the observed value equals the
+maximum value of the observable values $\mathbf{X}_k(t)$ of the
+underlying HMMs with an additive gaussian noise:
+
+
+\begin{equation}
+  \mathbf{Y}(t) = \Phi(\{\mathbf{X}_1(t), \mathbf{X}_2(t)\}^{+}, \Sigma)
+\end{equation}
+
+For a further discussion on the rationale behind the log-max
+approximation, see [REFERANSER].
+
+
+
+
+\section{Results}
+
+
+
+\chapter{Conclusion}
+
+todo.
+
+\appendix
+
+\chapter{Literature Review}
+%SLR
+\input{./LiteratureReview/SLR.tex}
+
+\chapter{Mathematical Concepts}
+
+In this appendix we will provide a brief background on some of the mathematical notions that are central to understanding the methods used in this report. 
+
+\section{Linear Algebra}
+
+% the easy stuff
+In this section we will define a few important concepts that are
+necessary. These concepts are particularly important for understanding
+PCA, but are also relevant in the analysis of markov models. With
+stationary transition probabilities, the steady state distribution of
+the system is the solution to the eigenvector-eigenvalue problem.
+
+\subsubsection{The Eigenvector - Eigenvalue Problem}
+
+\subsubsection{Singular Value Decomposition}
+
+
+\section{Statistics and Optimization}
+
+% ML-estimation + gradient descent
+A large portion of machine learning relies on statistical
+methods; the methods considered in this report being no exception. As the learning problems having relevance in practical life are often
+far too complex to describe by analytic formulae, we therefore often
+need mathematical methods to find models that have the best fit to the
+observed data. 
+
+In this section, we therefore consider one very
+important method for finding ``optimal'' parameters in a given model;
+the maximum likelihood method which is presented in Section
+\ref{ml-estimation}. We then proceed to show how to actually solve
+the resulting maximzation in Section \ref{optimization}.
+
+
+\subsection{Maximum Likelihood Estimation}\label{ml-estimation}
+
+ML estimation is a method for determining the parameters of a
+statistical model by setting the parameters so as to maximize the
+\emph{likelihood} of observing the actual data under the given
+model. Denoting $f(\boldsymbol{X}|\boldsymbol{\Theta})$ the
+probability distribution of $\boldsymbol{X} = \{x_1,x_2,...,x_n\}$
+with parameters $\boldsymbol{\Theta} = \{\theta_1, \theta_2, ...,
+\theta_m\}$, the maximum likelihood estimate of $\Theta$ solves Equation\ref{ml-generic}
+
+\begin{equation}
+  \label{ml-generic}
+  \arg \max_\Theta f(\boldsymbol{X}|\boldsymbol{\Theta})
+\end{equation}
+
+An important case is if the $x_i$ are i.i.d., where the joint density
+is the product of the marginal densities. This means we can write the
+likelihood function $f$ as Equation \ref{ml-iid}.
+
+\begin{equation}  
+  \label{ml-iid}
+  f(\boldsymbol{X}|\boldsymbol{\Theta}) = \prod_{i = 1}^n f(x_i|\Theta)
+\end{equation}
+
+The solution to an optimzation problem is the same under any monotone transformation. Therefore it is often times useful to deal with the log-likelihood function instead of $f$ directly.
+
+
+\subsection{Mathematical Optimization}\label{optimization}
+
+
+\subsubsection{Gradient Descent}
+
+
+\section{Spectral Analysis}
+
+
+
+
+
+
+
+%% \section{Hidden Markov Models}\label{hmm_appendix}
+%% %% Ref Norvig
+%% A hidden markov model (HMM) is a probabilistic model relating two sequences of
+%% discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
+%% $\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
+%% $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
+%% $\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
+%% is some causal relationship whereby the hidden variable affects the
+%% observable, but this does not need be the case. 
+
+%% A HMM consists of two probabilistic statement; the \emph{transition}
+%% model:
+
+%% \begin{equation}
+%% \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
+%% \end{equation}
+
+
+%% and the \emph{sensor} or \emph{observation} model:
+
+%% \begin{equation}
+%% \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+%% S_1, X_1)
+%% \end{equation}
+
+
+%%  The order of a markov model is the number of realizations
+%% of $\mathcal{S}$ conditioned on in the transition model. In order to
+%% make HMMs computationally tractable, we often operate with 1st order
+%% markov models:
+
+%% \begin{equation}\label{1st_order_markov}
+%%   \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
+%% \end{equation}
+
+%% This can be stated as as ``the future being conditionally independent of
+%% the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
+
+
+%% \begin{equation}
+%%   \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+%%   S_1, X_1) = \mathbb{P}(X_t|S_t)  
+%% \end{equation}
+
+%% The sensor markov assumption states that the sensor is independent of
+%% everything else given the current value of the hidden variable.
+
+\input{./LiteratureReview/bibl.tex}
+
+
+\end{document}
+

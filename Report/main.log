@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  9 DEC 2012 12:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  9 DEC 2012 13:14
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -599,7 +599,7 @@ l.52 \end{abstract}
 same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...{\numberline {5}Conclusion}{28}{chapter.5}
+l.31 ...line {A}Literature Review}{29}{appendix.A}
                                                    [1
 
 ])
@@ -631,10 +631,10 @@ Overfull \hbox (22.06299pt too wide) in paragraph at lines 223--231
 
 [8
 
-] <Figures/pca1.png, id=369, 449.5194pt x 338.2236pt>
+] <Figures/pca1.png, id=364, 449.5194pt x 338.2236pt>
 File: Figures/pca1.png Graphic file (type png)
  <use Figures/pca1.png>
-[9 <./Figures/pca1.png>] <Figures/pca2.png, id=379, 449.5194pt x 338.2236pt>
+[9 <./Figures/pca1.png>] <Figures/pca2.png, id=374, 449.5194pt x 338.2236pt>
 File: Figures/pca2.png Graphic file (type png)
 
 <use Figures/pca2.png> [10 <./Figures/pca2.png>]
@@ -647,15 +647,15 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 395.
  [11]
-<Figures/pca_signal_time_series.png, id=404, 449.68pt x 337.26pt>
+<Figures/pca_signal_time_series.png, id=399, 449.68pt x 337.26pt>
 File: Figures/pca_signal_time_series.png Graphic file (type png)
 
 <use Figures/pca_signal_time_series.png>
-<Figures/pca_data_eigs.png, id=405, 449.68pt x 337.26pt>
+<Figures/pca_data_eigs.png, id=400, 449.68pt x 337.26pt>
 File: Figures/pca_data_eigs.png Graphic file (type png)
 
 <use Figures/pca_data_eigs.png>
-<Figures/pca_eig_projection.png, id=406, 449.68pt x 337.26pt>
+<Figures/pca_eig_projection.png, id=401, 449.68pt x 337.26pt>
 File: Figures/pca_eig_projection.png Graphic file (type png)
 
 <use Figures/pca_eig_projection.png> [12] [13 <./Figures/pca_signal_time_series
@@ -669,43 +669,43 @@ LaTeX Warning: Reference `bss_ica' on page 15 undefined on input line 514.
 
 ] [16]
 
-Package caption Warning: \label before \caption on input line 644.
+Package caption Warning: \label before \caption on input line 657.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `ica_listing' on page 17 undefined on input line 641.
+LaTeX Warning: Reference `ica_listing' on page 17 undefined on input line 655.
 
-<Figures/ica_simple.png, id=447, 1497.595pt x 803.803pt>
+[17] <Figures/ica_simple.png, id=457, 1497.595pt x 803.803pt>
 File: Figures/ica_simple.png Graphic file (type png)
 
-<use Figures/ica_simple.png> [17]
-<Figures/ica_music_speech.png, id=461, 1497.595pt x 803.803pt>
+<use Figures/ica_simple.png>
+<Figures/ica_music_speech.png, id=460, 1497.595pt x 803.803pt>
 File: Figures/ica_music_speech.png Graphic file (type png)
 
 <use Figures/ica_music_speech.png> [18 <./Figures/ica_simple.png (PNG copy)>]
 [19 <./Figures/ica_music_speech.png (PNG copy)>]
 Chapter 4.
 
-LaTeX Warning: Citation `roweis' on page 20 undefined on input line 710.
+LaTeX Warning: Citation `roweis' on page 20 undefined on input line 724.
 
-<Figures/time_signal.png, id=485, 449.68pt x 337.26pt>
+<Figures/time_signal.png, id=484, 449.68pt x 337.26pt>
 File: Figures/time_signal.png Graphic file (type png)
 
 <use Figures/time_signal.png> [20
 
 ] [21 <./Figures/time_signal.png (PNG copy)>]
 
-Package caption Warning: \label before \caption on input line 799.
+Package caption Warning: \label before \caption on input line 812.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `logmax_fig' on page 22 undefined on input line 792.
+LaTeX Warning: Reference `logmax_fig' on page 22 undefined on input line 806.
 
-<Figures/logmax.png, id=500, 964.403pt x 560.494pt>
+<Figures/logmax.png, id=499, 964.403pt x 560.494pt>
 File: Figures/logmax.png Graphic file (type png)
  <use Figures/logmax.png>
 [22 <./Figures/logmax.png (PNG copy)>] [23]
-<Figures/spectrogram_count.png, id=516, 578.16pt x 433.62pt>
+<Figures/spectrogram_count.png, id=515, 578.16pt x 433.62pt>
 File: Figures/spectrogram_count.png Graphic file (type png)
 
 <use Figures/spectrogram_count.png> [24] [25] [26 <./Figures/spectrogram_count.
@@ -778,10 +778,10 @@ Overfull \hbox (6.26776pt too wide) in paragraph at lines 194--195
  1960s. Roweis[[]]
  []
 
-<Figures/hmm.jpg, id=643, 490.83376pt x 236.38312pt>
+<Figures/hmm.jpg, id=642, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
  <use Figures/hmm.jpg>
-<Figures/f_hmm.png, id=645, 510.40688pt x 328.97906pt>
+<Figures/f_hmm.png, id=644, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
  <use Figures/f_hmm.png>
 
@@ -792,26 +792,26 @@ xt4): destination with the same identifier (name{appendix.A}) has been already
 used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1063 \chapter{Mathematical Concepts}
+l.1077 \chapter{Mathematical Concepts}
                                       
 Appendix A.
 pdfTeX warning (ext4): destination with the same identifier (name{section.A.1})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1067 \section{Linear Algebra}
+l.1081 \section{Linear Algebra}
                                pdfTeX warning (ext4): destination with the same
  identifier (name{section.A.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1081 \section{Statistics and Optimization}
+l.1095 \section{Statistics and Optimization}
                                              [39
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{section.A.3}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1130 \section{Spectral Analysis}
+l.1144 \section{Spectral Analysis}
                                    (./LiteratureReview/bibl.tex [40]
 Underfull \hbox (badness 1038) in paragraph at lines 36--39
 []\OT1/cmr/m/n/10.95 Cardoso, J. L.(1998), ``Mul-ti-di-men-sional In-de-pen-den
@@ -830,9 +830,9 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  8443 strings out of 495061
- 119017 string characters out of 1182621
- 242601 words of memory out of 3000000
- 11222 multiletter control sequences out of 15000+50000
+ 119019 string characters out of 1182621
+ 242640 words of memory out of 3000000
+ 11221 multiletter control sequences out of 15000+50000
  19116 words of font info for 71 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,11n,40p,884b,1232s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -849,20 +849,21 @@ nts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi
 share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/font
 s/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-sy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (44 pages, 1014512 bytes).
+blic/amsfonts/cmextra/cmmib8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (44 pages, 1022620 bytes).
 PDF statistics:
- 850 PDF objects out of 1000 (max. 8388607)
- 237 named destinations out of 1000 (max. 500000)
- 453 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 852 PDF objects out of 1000 (max. 8388607)
+ 238 named destinations out of 1000 (max. 500000)
+ 445 words of extra memory for PDF output out of 10000 (max. 10000000)
 
