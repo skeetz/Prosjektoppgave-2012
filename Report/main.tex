@@ -21,6 +21,9 @@
 \usepackage{subcaption}
 \usepackage{standalone}
 
+% TOCs
+\usepackage{minitoc}
+
 \graphicspath{{Figures/}}
 
 \begin{document}
@@ -55,6 +58,7 @@
 \listoffigures
 
 \chapter{Introduction}
+
 
 One of the many truly remarkable facet of human intelligence is our
 ability to \emph{sub-conciously} process the enormous amounts
@@ -899,10 +903,50 @@ described in appendix [[[REF]]].
 
 \subsection{A Generic Inference Procedure}
 
-Having estimated the gaussian mixture models $(\boldsymbol{\Phi}_1, \boldsymbol{\Phi}_2$
-for each of our sources, we now turn to the problem of recovering the set of orignial signals
-from the mixed spectrogram 
+Having estimated the gaussian mixture models 
+corresponding to each one of our sources, we turn to the problem of recovering the set of
+orignial signals from the mixture spectrogram $\boldsymbol{S}_{mix}$. Our algorithm in this section
+is based on Roweis (REF MAXVQ), but in this step we will ignore the branch-and-bound procedure,
+and instead do the inference steps based only on the GMMs.
 
+The approach is an iterative method. Since we make no assumptions on the temporal dynamics of
+our signals, we can perform a inference step-by-step, considering each column of the spectrogram
+independently. We adopt the following notation: let $\boldsymbol{\Phi}_1 = \{ \mu_1^1,...,\mu_1^N, \Sigma_1 \}$
+and $\boldsymbol{\Phi}_2 = \{ \mu_2^1,...,\mu_2^M, \Sigma_2 \} $ denote the GMMs (assuming equal covariance
+matrices for all components of each GMM).
+
+Given a single column vector $\boldsymbol{X}$ of the spectrogram, we find the 
+most likely component for each GMM:
+
+
+\begin{equation*}
+  \begin{array}{lcl}
+    \mu_1^* & = & \arg\max_i \mathbb{P}(\mu_1^i | \boldsymbol{X},\Sigma_1)\\
+    \mu_2^* & = & \arg\max_i \mathbb{P}(\mu_2^i | \boldsymbol{X},\Sigma_2)\\
+  \end{array}
+\end{equation}
+
+As usual, we apply Bayes' rule in estimating the probabilities:
+
+\begin{equation}
+  \label{bayes_eqn1}
+  \mathbb{P}(\mu_k^i | \boldsymbol{X},\Sigma_k) \propto \mathbb{P}(\boldsymbol{X} | \mu_k^i,\Sigma_k)  
+\end{equation}
+
+for each GMM component $k$. Given that the all our mixture components have a multivariate
+normal distribution, we it is simple to show that the following holds true for the right hand
+side of (Equation \ref{bayes_eqn1}).
+
+
+\begin{equation}
+  \mathbb{P}(\boldsymbol{X} | \mu_k^i,\Sigma_1) \propto 
+  (\boldsymbol{X} - \mu_k^i)^T\Sigma_k^{-1}(\boldsymbol{X} - \mu_k^i)
+\end{equation}
+
+Knowing most likely components of each source given the observed data, we subsequently turn to 
+computing the \emph{masking signal} for each frequency band, ie. for each element of $\boldsymbol{X}$. 
+This masking signal is computed for every source $i$, and takes the value $1$ if source $i$ is the
+maximum over all sources. 
 
 \subsection{An Improved Pruning Method for MAXVQ Inference}
 

@@ -12,7 +12,7 @@
 \BOOKMARK [1][-]{section.3.1}{Equivalent Statements of ICA}{chapter.3}
 \BOOKMARK [1][-]{section.3.2}{Limitations of the ICA Model}{chapter.3}
 \BOOKMARK [1][-]{section.3.3}{Maximum Likelihood ICA in the Linear Mixing Model}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.3.1}{Derivation of Stochastic Gradient Descent for ICA}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{A Stochastic Gradient Descent Rule for ICA}{section.3.3}
 \BOOKMARK [2][-]{subsection.3.3.2}{Preprocessing}{section.3.3}
 \BOOKMARK [1][-]{section.3.4}{BSS by ICA}{chapter.3}
 \BOOKMARK [1][-]{section.3.5}{Limitations and Comparison with PCA}{chapter.3}
@@ -20,13 +20,14 @@
 \BOOKMARK [1][-]{section.4.1}{Time Frequency Signal Representation}{chapter.4}
 \BOOKMARK [1][-]{section.4.2}{Log Max Approximation}{chapter.4}
 \BOOKMARK [1][-]{section.4.3}{Latent Variable BSS}{chapter.4}
-\BOOKMARK [1][-]{section.4.4}{Gaussian Mixture Models}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.4.1}{Generative Model and Estimation}{section.4.4}
-\BOOKMARK [2][-]{subsection.4.4.2}{Inference}{section.4.4}
-\BOOKMARK [1][-]{section.4.5}{Factorial Hidden Markov Model for BSS}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.5.1}{Initialization}{section.4.5}
-\BOOKMARK [2][-]{subsection.4.5.2}{Separation}{section.4.5}
-\BOOKMARK [1][-]{section.4.6}{Results}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{Gaussian Mixture Models}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{Generative Model and Estimation}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.3}{A Generic Inference Procedure}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.4}{An Improved Pruning Method for MAXVQ Inference}{section.4.3}
+\BOOKMARK [1][-]{section.4.4}{Factorial Hidden Markov Model for BSS}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.4.1}{Initialization}{section.4.4}
+\BOOKMARK [2][-]{subsection.4.4.2}{Separation}{section.4.4}
+\BOOKMARK [1][-]{section.4.5}{Results}{chapter.4}
 \BOOKMARK [0][-]{chapter.5}{Conclusion}{}
 \BOOKMARK [0][-]{appendix.A}{Literature Review}{}
 \BOOKMARK [1][-]{section.A.1}{Introduction}{appendix.A}

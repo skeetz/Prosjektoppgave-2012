@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  9 DEC 2012 13:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  9 DEC 2012 21:09
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -521,69 +521,143 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
 
 Enter file name: 
-(./main.aux
+(/usr/share/texmf-texlive/tex/latex/minitoc/minitoc.sty
+Package: minitoc 2008/07/16 v60 Package minitoc (JPFD)
+
+(/usr/share/texmf-texlive/tex/latex/minitoc/mtcmess.sty
+Package: mtcmess 2006/03/14
+)
+Package minitoc Info: I0001
+(minitoc)             *** minitoc package, version 60 ***.
+\tf@mtc=\write3
+\mtcindent=\skip49
+\mtcskipamount=\skip50
+Package minitoc Info: I0005
+(minitoc)             compatible with hyperref.
+Package minitoc Info: I0023
+(minitoc)             part level macros available.
+Package minitoc Info: I0003
+(minitoc)             chapter level macros available.
+\mtc@toks=\toks30
+\mtc@strutbox=\box30
+\mtc@hstrutbox=\box31
+Package minitoc Info: I0002
+(minitoc)             Autoconfiguration of extensions.
+\openout3 = `main.mtc0'.
+
+\openout3 = `main.mtc'.
+
+ (./main.mtc0)
+Package minitoc Info: I0012
+(minitoc)             Long extensions (Unix-like) will be used.
+Package minitoc Info: I0031
+(minitoc)             ==> this version is configured for UNIX-like 
+(minitoc)                 (long extensions) file names.
+\openout3 = `main.mtc'.
+
+\openout3 = `main.mtc0'.
+
+\c@mtc=\count119
+\c@minitocdepth=\count120
+\c@ptc=\count121
+\c@parttocdepth=\count122
+\ptcindent=\skip51
+Package minitoc Info: I0010
+(minitoc)             The english language is selected.
+(minitoc)              on input line 4910.
+
+(/usr/share/texmf-texlive/tex/latex/minitoc/english.mld
+File: english.mld 2006/01/13
+)
+(/usr/share/texmf-texlive/tex/latex/minitoc/english.mld
+File: english.mld 2006/01/13
+)) (./main.aux
 
 LaTeX Warning: Label `pca_time_series' multiply defined.
 
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-Package hyperref Info: Link coloring OFF on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+Package hyperref Info: Link coloring OFF on input line 29.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count119
+\c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \ref on input line 29.
+LaTeX Info: Redefining \pageref on input line 29.
  (./main.out)
 (./main.out)
-\@outlinefile=\write3
-\openout3 = `main.out'.
+\@outlinefile=\write4
+\openout4 = `main.out'.
 
-\AtBeginShipoutBox=\box30
+\AtBeginShipoutBox=\box32
  (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
+\scratchcounter=\count124
 \scratchdimen=\dimen127
-\scratchbox=\box31
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count123
+\scratchbox=\box33
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count127
 \MPscratchDim=\dimen128
-\MPnumerator=\count124
-\everyMPtoPDFconversion=\toks31
+\MPnumerator=\count128
+\everyMPtoPDFconversion=\toks32
 )
-\c@lstlisting=\count125
+\c@lstlisting=\count129
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+Package minitoc(hints) Info: I0049
+(minitoc(hints))             ==> You requested the hints option. 
+(minitoc(hints))             Some hints are eventually given below.
+
+
+Package minitoc(hints) Warning: W0030
+(minitoc(hints))                --- The \part command is altered 
+(minitoc(hints))                after minitoc.
+
+
+Package minitoc(hints) Warning: W0023
+(minitoc(hints))                --- It may be the consequence 
+(minitoc(hints))                of loading the ``hyperref'' package.
+
+
+Package minitoc(hints) Warning: W0028
+(minitoc(hints))                --- The \chapter command is altered 
+(minitoc(hints))                after minitoc.
+
+
+Package minitoc(hints) Warning: W0023
+(minitoc(hints))                --- It may be the consequence 
+(minitoc(hints))                of loading the ``hyperref'' package.
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+LaTeX Font Info:    Try loading font information for U+msa on input line 52.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -594,21 +668,21 @@ ination with the same identifier (name{page.1}) has been already used, duplicat
 e ignored
 <to be read again> 
                    \relax 
-l.52 \end{abstract}
+l.55 \end{abstract}
                     [1] (./main.tocpdfTeX warning (ext4): destination with the 
 same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...line {A}Literature Review}{29}{appendix.A}
+l.31 ...{\numberline {5}Conclusion}{29}{chapter.5}
                                                    [1
 
 ])
-\tf@toc=\write4
-\openout4 = `main.toc'.
+\tf@toc=\write5
+\openout5 = `main.toc'.
 
  [2] (./main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
+\tf@lof=\write6
+\openout6 = `main.lof'.
 
 
 [3
@@ -619,43 +693,43 @@ Chapter 1.
 
 ]
 
-LaTeX Warning: Reference `ss_bss' on page 5 undefined on input line 112.
+LaTeX Warning: Reference `ss_bss' on page 5 undefined on input line 116.
 
 [5] [6] [7]
 Chapter 2.
 
-Overfull \hbox (22.06299pt too wide) in paragraph at lines 223--231
+Overfull \hbox (22.06299pt too wide) in paragraph at lines 227--235
 \OT1/cmr/m/n/10.95 Principal com-po-nent anal-y-sis [[]] (PCA) is a eigenvector
 -based, non-probabilistic
  []
 
 [8
 
-] <Figures/pca1.png, id=364, 449.5194pt x 338.2236pt>
+] <Figures/pca1.png, id=369, 449.5194pt x 338.2236pt>
 File: Figures/pca1.png Graphic file (type png)
  <use Figures/pca1.png>
-[9 <./Figures/pca1.png>] <Figures/pca2.png, id=374, 449.5194pt x 338.2236pt>
+[9 <./Figures/pca1.png>] <Figures/pca2.png, id=379, 449.5194pt x 338.2236pt>
 File: Figures/pca2.png Graphic file (type png)
 
 <use Figures/pca2.png> [10 <./Figures/pca2.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 395.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 399.
 
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 395.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 399.
  [11]
-<Figures/pca_signal_time_series.png, id=399, 449.68pt x 337.26pt>
+<Figures/pca_signal_time_series.png, id=404, 449.68pt x 337.26pt>
 File: Figures/pca_signal_time_series.png Graphic file (type png)
 
 <use Figures/pca_signal_time_series.png>
-<Figures/pca_data_eigs.png, id=400, 449.68pt x 337.26pt>
+<Figures/pca_data_eigs.png, id=405, 449.68pt x 337.26pt>
 File: Figures/pca_data_eigs.png Graphic file (type png)
 
 <use Figures/pca_data_eigs.png>
-<Figures/pca_eig_projection.png, id=401, 449.68pt x 337.26pt>
+<Figures/pca_eig_projection.png, id=406, 449.68pt x 337.26pt>
 File: Figures/pca_eig_projection.png Graphic file (type png)
 
 <use Figures/pca_eig_projection.png> [12] [13 <./Figures/pca_signal_time_series
@@ -663,61 +737,71 @@ File: Figures/pca_eig_projection.png Graphic file (type png)
 ig_projection.png (PNG copy)>]
 Chapter 3.
 
-LaTeX Warning: Reference `bss_ica' on page 15 undefined on input line 514.
+LaTeX Warning: Reference `bss_ica' on page 15 undefined on input line 518.
 
 [15
 
 ] [16]
 
-Package caption Warning: \label before \caption on input line 657.
+Package caption Warning: \label before \caption on input line 667.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `ica_listing' on page 17 undefined on input line 655.
+LaTeX Warning: Reference `ica_listing' on page 17 undefined on input line 664.
 
-[17] <Figures/ica_simple.png, id=457, 1497.595pt x 803.803pt>
+[17] <Figures/ica_simple.png, id=463, 1497.595pt x 803.803pt>
 File: Figures/ica_simple.png Graphic file (type png)
 
 <use Figures/ica_simple.png>
-<Figures/ica_music_speech.png, id=460, 1497.595pt x 803.803pt>
+<Figures/ica_music_speech.png, id=466, 1497.595pt x 803.803pt>
 File: Figures/ica_music_speech.png Graphic file (type png)
 
-<use Figures/ica_music_speech.png> [18 <./Figures/ica_simple.png (PNG copy)>]
-[19 <./Figures/ica_music_speech.png (PNG copy)>]
+<use Figures/ica_music_speech.png> [18] [19 <./Figures/ica_simple.png (PNG copy
+)> <./Figures/ica_music_speech.png (PNG copy)>]
 Chapter 4.
 
-LaTeX Warning: Citation `roweis' on page 20 undefined on input line 724.
+LaTeX Warning: Citation `roweis' on page 20 undefined on input line 733.
 
-<Figures/time_signal.png, id=484, 449.68pt x 337.26pt>
+<Figures/time_signal.png, id=490, 449.68pt x 337.26pt>
 File: Figures/time_signal.png Graphic file (type png)
 
 <use Figures/time_signal.png> [20
 
 ] [21 <./Figures/time_signal.png (PNG copy)>]
 
-Package caption Warning: \label before \caption on input line 812.
+Package caption Warning: \label before \caption on input line 822.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `logmax_fig' on page 22 undefined on input line 806.
+LaTeX Warning: Reference `logmax_fig' on page 22 undefined on input line 815.
 
-<Figures/logmax.png, id=499, 964.403pt x 560.494pt>
+<Figures/logmax.png, id=505, 964.403pt x 560.494pt>
 File: Figures/logmax.png Graphic file (type png)
  <use Figures/logmax.png>
 [22 <./Figures/logmax.png (PNG copy)>] [23]
-<Figures/spectrogram_count.png, id=515, 578.16pt x 433.62pt>
+
+! LaTeX Error: \begin{equation*} on input line 922 ended by \end{equation}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.927 \end{equation}
+                    
+? 
+[24] <Figures/spectrogram_count.png, id=530, 578.16pt x 433.62pt>
 File: Figures/spectrogram_count.png Graphic file (type png)
 
-<use Figures/spectrogram_count.png> [24] [25] [26 <./Figures/spectrogram_count.
-png (PNG copy)>] [27]
+<use Figures/spectrogram_count.png> [25] [26] [27 <./Figures/spectrogram_count.
+png (PNG copy)>] [28]
 Chapter 5.
-[28
+[29
 
 ]
 Appendix A.
 (./LiteratureReview/SLR.tex
 File: Figures/ica_simple.png Graphic file (type png)
- <use Figures/ica_simple.png> [29
+ <use Figures/ica_simple.png> [30
 
 ]
 Overfull \hbox (80.31306pt too wide) in paragraph at lines 54--63
@@ -754,9 +838,9 @@ Overfull \hbox (17.43304pt too wide) in paragraph at lines 70--86
 [][] 
  []
 
-[30] [31] [32
+[31] [32] [33
 
-] [33]
+] [34]
 Underfull \hbox (badness 10000) in paragraph at lines 170--172
 
  []
@@ -766,7 +850,7 @@ Overfull \hbox (70.99615pt too wide) detected at line 185
 [][]
  []
 
-[34pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
+[35pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
 16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -778,49 +862,61 @@ Overfull \hbox (6.26776pt too wide) in paragraph at lines 194--195
  1960s. Roweis[[]]
  []
 
-<Figures/hmm.jpg, id=642, 490.83376pt x 236.38312pt>
+<Figures/hmm.jpg, id=658, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
  <use Figures/hmm.jpg>
-<Figures/f_hmm.png, id=644, 510.40688pt x 328.97906pt>
+<Figures/f_hmm.png, id=660, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
  <use Figures/f_hmm.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35 <./Figures/hmm.jpg>] [36 <./Figures/f_hmm.png>] [37]) [38]pdfTeX warning (e
+[36 <./Figures/hmm.jpg>] [37 <./Figures/f_hmm.png>] [38]) [39]pdfTeX warning (e
 xt4): destination with the same identifier (name{appendix.A}) has been already 
 used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1077 \chapter{Mathematical Concepts}
+l.1135 \chapter{Mathematical Concepts}
                                       
 Appendix A.
 pdfTeX warning (ext4): destination with the same identifier (name{section.A.1})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1081 \section{Linear Algebra}
+l.1139 \section{Linear Algebra}
                                pdfTeX warning (ext4): destination with the same
  identifier (name{section.A.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1095 \section{Statistics and Optimization}
-                                             [39
+l.1153 \section{Statistics and Optimization}
+                                             [40
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{section.A.3}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1144 \section{Spectral Analysis}
-                                   (./LiteratureReview/bibl.tex [40]
+l.1202 \section{Spectral Analysis}
+                                   (./LiteratureReview/bibl.tex [41]
 Underfull \hbox (badness 1038) in paragraph at lines 36--39
 []\OT1/cmr/m/n/10.95 Cardoso, J. L.(1998), ``Mul-ti-di-men-sional In-de-pen-den
 t Com-po-nent
  []
 
-[41
+[42
 
-]) [42] (./main.aux)
+]) [43]
+Package minitoc Info: I0009
+(minitoc)             Listing minitoc auxiliary files. 
+(minitoc)             Creating the main.maf file.
+\openout3 = `main.maf'.
+
+
+
+Package minitoc(hints) Warning: W0024
+(minitoc(hints))                Some hints have been written 
+(minitoc(hints))                in the main.log file.
+
+(./main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -829,10 +925,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8443 strings out of 495061
- 119019 string characters out of 1182621
- 242640 words of memory out of 3000000
- 11221 multiletter control sequences out of 15000+50000
+ 9990 strings out of 495061
+ 139839 string characters out of 1182621
+ 277373 words of memory out of 3000000
+ 12535 multiletter control sequences out of 15000+50000
  19116 words of font info for 71 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,11n,40p,884b,1232s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -861,9 +957,9 @@ b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (44 pages, 1022620 bytes).
+Output written on main.pdf (45 pages, 1027433 bytes).
 PDF statistics:
- 852 PDF objects out of 1000 (max. 8388607)
- 238 named destinations out of 1000 (max. 500000)
- 445 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 868 PDF objects out of 1000 (max. 8388607)
+ 242 named destinations out of 1000 (max. 500000)
+ 453 words of extra memory for PDF output out of 10000 (max. 10000000)
 
