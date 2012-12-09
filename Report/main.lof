@@ -6,17 +6,17 @@
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{13}{figure.caption.6}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{14}{figure.caption.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{17}{figure.caption.8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{18}{figure.caption.8}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{18}{figure.caption.9}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. \relax }}{18}{figure.caption.10}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. \relax }}{19}{figure.caption.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{20}{figure.caption.11}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Log-max approximation.\relax }}{21}{figure.caption.12}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{24}{figure.caption.13}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{25}{figure.caption.14}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{21}{figure.caption.11}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Log-max approximation.\relax }}{22}{figure.caption.12}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{25}{figure.caption.13}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{26}{figure.caption.14}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{29}{figure.caption.15}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Hidden Markov Model\relax }}{34}{figure.caption.18}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{35}{figure.caption.19}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{30}{figure.caption.15}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Hidden Markov Model\relax }}{35}{figure.caption.18}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{36}{figure.caption.19}
 \addvspace {10\p@ }

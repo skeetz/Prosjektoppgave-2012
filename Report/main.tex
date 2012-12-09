@@ -487,6 +487,7 @@ signal\footnote{The estimated unmixing matrix here is $\hat{W} =
   \caption{Standardized data projected onto eigenvectors.}
 \end{figure}
 
+
 \chapter{Independent Component Analysis}\label{ica}
 
 
@@ -496,9 +497,31 @@ between the data is zero. ICA seeks to find basis
 vectors that are statistically independent, which is a stronger
 property than simply being uncorrelated as independence implies
 uncorrelatedness, while the opposite is not true. 
-ICA in contrast to PCA does not have analytic solutions in the general
-case, so a numerical optimization method is usually applied in
+Like PCA, we can interpret ICA as an optimization problem, but in
+contrast to PCA, ICA does not have a general closed form solution, 
+so a numerical optimization method is usually applied in
 computing the ICA transform.
+
+This chapter is structured as follows. First we give a brief overview
+over different approcahes to ICA in Section \ref{equiv_ica}. We then 
+consider some limitations of the ICA model in Section \ref{ICA_restrictions}, 
+with particular emphasis on the non-gaussianity constraint, which is 
+important with respect to the types of data we can analyze using ICA. Section 
+\ref{linear_model_ica} goes into the maximum likelihood approach to ICA in 
+further detail, and derives a gradient descent learning rule for independent
+components analysis. As it turns out, this gradient rule is similar to the 
+learning rules proposed under the different frameworks discussed in 
+Section \ref{equiv_ica}. Finally, Section \ref{bss_ica} illustrated ICA 
+with a few blind source separation problems.
+
+
+\section{Equivalent Statements of ICA}\label{equiv_ica}
+
+ICA can be derived by several different approaches representing slightly
+different interpretations of the same problem. Among these are maximum 
+differential entropy (REFFFF), maximum kurtosis (REF) and maximum likelihood. 
+In this section we will give a brief overview over these methods and how
+they relate.
 
 
 
@@ -564,49 +587,45 @@ $\boldsymbol{x}' = \boldsymbol{A}'\boldsymbol{s}$ is:
 Hence, we see that both $\boldsymbol{s}$ and $\boldsymbol{s}'$ come
 from the same Gaussian distribution $\boldsymbol{\Phi}(0,
 \boldsymbol{A}\boldsymbol{A}^T$). This means that the recovered data
-may be rotated by an arbitrary rotation matrix $\boldsymbol{R}$. 
-
-% \begin{itemize}
-%   \item Non-Gaussian..
-%   \item Ordering of signals..
-%   \item ``Sign reversal'' (rotational invariance??)..
-%   \item Blabla..
-% \end{itemize}
+may be rotated by an arbitrary rotation matrix $\boldsymbol{R}$, which
+as discussed above, provides little information about the sources. 
 
 
-\section{ICA in the Linear Mixing Model}
-
-
-
-
-
-\subsection{Equivalent Specifications of ICA}
-
-ICA can be derived by several different approaches:
-\begin{itemize}
-  \item Maximum likelihood
-  \item Kurtosis maximization
-  \item Maximum differential entropy
-  \item Blabla..
-\end{itemize}
+\section{ICA in the Linear Mixing Model}\label{linear_model_ica}
 
 
 
 \subsection{Derivation of ICA Log Likelihood Function}\label{ml_ica}
 
-Let $p_s(\boldsymbol{s}_i)$ be the probability density function for source $i$, then, assuming the sources are independent the joint distribution of all the $n$ sources is given by the product of the marginals:
+Consider the value of a single source $s_i$ at a given instant in time, and
+let $p_s(s_i)$ be the probability density function for source $i$. Assuming the 
+sources are independent the joint distribution of all the $n$ sources is given 
+by the product of the marginal distributions of each source:
 
 \begin{equation}
-  p(\boldsymbol{s}) = \Pi_{i=1}^n p_s(\boldsymbol{s}_i)
+  p_s(s) = \Pi_{i=1}^n p_s(s_i)
+  \label{ica_prob}
 \end{equation}
 
-We now substitute in the unmixing model (Equation \ref{linear_unmixing_model}) and obtain:
+Recalling our notation for the unmixing model:
 
 \begin{equation}
-  p(\boldsymbol{s}) = \Pi_{i=1}^n p_s(\boldsymbol{A}^{-1}\boldsymbol{x}) \cdot |W|
+  \boldsymbol{A}^{-1} = \boldsymbol{W} = 
+  \begin{bmatrix} 
+    \boldsymbol{w}_1^T\\ \boldsymbol{w}_2^T\\ ...\\ \boldsymbol{w}_n^T\\
+  \end{bmatrix}
 \end{equation}
 
-The unmixing matrix is the target parameter of our maximum likelihood approach. That is, we seek set the coefficients of the unmixing matrix so as to maximize the likelihood of observing the actual data. If our dataset consists of $T$ observations $X = \{x_1,x_2,...,x_T\}$, the log-likehliood function is:
+We can substitute for $s_i$ in (Equation \ref{ica_prob}), to obtain the following
+expression for the joint distribution\footnote{Linear transformation of pdf.}:
+
+\begin{equation}
+  p(s) = \Pi_{i=1}^n p_s(\boldsymbol{w}_i^T \boldsymbol{x}) \cdot |\boldsymbol{W}|
+\end{equation}
+
+The unmixing matrix is the target parameter of our maximum likelihood approach. That is, we seek set 
+the coefficients of the unmixing matrix so as to maximize the likelihood of observing the actual data. 
+If our dataset consists of $T$ observations $\boldsymbol{X} = [\boldsymbol{x}_1,\boldsymbol{x}_2,...,\boldsymbol{x}_T]$, the log-likehliood function is:
 
 \begin{equation}\label{ica_loglikelihood}
   l(W) =\log Prob(X|W)= \Sigma_{t=1}^T \log p_s(WX)+\log |W|
@@ -655,7 +674,8 @@ STFT?
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/ica_simple}
   \hrule
-  \caption{ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref{ICA_restrictions}).}
+  \caption{ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the 
+    blue sine wave (cf. Section \ref{ICA_restrictions}).}
 \end{figure}
 
 \begin{figure}
@@ -663,7 +683,9 @@ STFT?
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/ica_music_speech}
   \hrule
-  \caption{Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. }
+  \caption{Separating a speech signal (top left) from background music (top right) by ICA. 
+    Here we also observe that the sign of the original speech signal is reversed in the 
+    bottom right recovered signal. }
 \end{figure}
 
 
@@ -759,19 +781,6 @@ is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
   \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
 \end{equation}
 
-
-
-%% \begin{figure}[!htpb]\label{matlab_stft}
-%%   \begin{lstlisting}[frame=single]
-%% window = 256; noverlap=250; nfft=256; Freq = 16000;
-%% [S,F,T,P] = spectrogram(s1,window,noverlap,nfft,Freq);
-%%   \end{lstlisting}
-%%   \caption{\textsc{Matlab} code for computing the short term Fourier
-%%     transform of a signal sampled at $16$kHz with given
-%%     parameter. P is here the power spectral density (PSD) of
-%%     the signal.}
-%%   \label{mlica_code}
-%% \end{figure}
 
 \section{Log Max Approximation}
 
