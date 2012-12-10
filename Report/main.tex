@@ -888,9 +888,45 @@ means of kurtosis, which leads to the definition of \emph{excess
   kurtosis}, $\gamma = \beta - 3$, where the $-3$ term is necessary to
 make the kurtosis of the normal distribution zero. 
 
-% http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/node13.html
+We now consider the problem $\boldsymbol{x}=\boldsymbol{A}\boldsymbol{x}$ 
+and let $\boldsymbol{W} = \boldsymbol{A}^{-1}$. Setting 
+$\hat{\boldsymbol{s}} = \boldsymbol{W}^T\boldsymbol{x}$, and
+$\boldsymbol{z} = \boldsymbol{A}^T\boldsymbol{W}$, we can substitute into
+the equation for $\hat{\boldsymbol{s}}$:
 
-\section{Maximum Mutual Information}
+
+\begin{equation}
+  \hat{\boldsymbol{s}} = \boldsymbol{W}^T\boldsymbol{x} = \boldsymbol{W}^T\boldsymbol{A}\boldsymbol{s}
+  =\boldsymbol{z}\boldsymbol{s}
+\end{equation}
+
+We now rely on the following property of kurtosis 
+$\gamma(ax_1+bx_2) = a^4\gamma(x_1) + b^4\gamma(x_2)$, and note that as 
+$\boldsymbol{z}$ is a square matrix of the same dimension as the mixing 
+matrix\footnote{We assume that there is an equal number of sources as observables.},
+$\boldsymbol{z}\boldsymbol{s}$ is of the same dimension as the as the input. 
+The kurtosis of the estimate $\hat{\boldsymbol{s}}$ is the weighted product
+of the columns of $\boldsymbol{z}\boldsymbol{s}$:
+
+
+\begin{equation}
+  \label{kurtosis_eqn}
+  \gamma(\hat{\boldsymbol{s}}) = \gamma(\boldsymbol{z}\boldsymbol{s})
+  = \sum_{i=1}^N \boldsymbol{z}_i^4\gamma(\boldsymbol{s}_i)
+\end{equation}
+
+(Equation \ref{kurtosis_eqn}) lends itself easily to standard optimization
+procedures to maximize kurtosis so as to produce the independent components:
+
+\begin{equation}
+  \boldsymbol{s}_i = \arg \max_{s_i} \sum_{i=1}^N \boldsymbol{z}_i^4\gamma(\boldsymbol{s}_i)  
+\end{equation}
+
+Kurtosis maximization is of the most common approaches to ICA and is discussed
+in greater detail in REFERANSER!!!.
+
+
+\subsection{Maximum Mutual Information}
 
 
 
