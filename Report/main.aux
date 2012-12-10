@@ -1,16 +1,19 @@
 \relax 
-\ifx\hyper@anchor\@undefined
-\global \let \oldcontentsline\contentsline
-\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
-\global \let \oldnewlabel\newlabel
-\gdef \newlabel#1#2{\newlabelxx{#1}#2}
-\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\let \contentsline\oldcontentsline
-\let \newlabel\oldnewlabel}
-\else
-\global \let \hyper@last\relax 
-\fi
-
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
 \@writefile{@@@}{\chapterbegin }
 \@writefile{@@@}{\chapterbegin }
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}}
@@ -57,16 +60,17 @@
 \newlabel{ica}{{3}{15}{Independent Component Analysis\relax }{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Equivalent Statements of ICA}{15}{section.3.1}}
 \newlabel{equiv_ica}{{3.1}{15}{Equivalent Statements of ICA\relax }{section.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Kurtosis Maximization}{16}{subsection.3.1.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Limitations of the ICA Model}{16}{section.3.2}}
 \newlabel{ICA_restrictions}{{3.2}{16}{Limitations of the ICA Model\relax }{section.3.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Maximum Likelihood ICA in the Linear Mixing Model}{17}{section.3.3}}
 \newlabel{linear_model_ica}{{3.3}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{section.3.3}{}}
-\newlabel{ica_prob}{{3.3}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.3}{}}
-\newlabel{max_likelihood}{{3.6}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.6}{}}
-\newlabel{bayes}{{3.7}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.7}{}}
-\newlabel{ica_loglikelihood}{{3.8}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.8}{}}
+\newlabel{ica_prob}{{3.4}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.4}{}}
+\newlabel{max_likelihood}{{3.7}{17}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.7}{}}
+\newlabel{bayes}{{3.8}{18}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.8}{}}
+\newlabel{ica_loglikelihood}{{3.9}{18}{Maximum Likelihood ICA in the Linear Mixing Model\relax }{equation.3.3.9}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}A Stochastic Gradient Descent Rule for ICA}{18}{subsection.3.3.1}}
-\newlabel{ica_listing}{{\caption@xref {ica_listing}{ on input line 667}}{18}{A Stochastic Gradient Descent Rule for ICA\relax }{figure.caption.8}{}}
+\newlabel{ica_listing}{{\caption@xref {ica_listing}{ on input line 684}}{18}{A Stochastic Gradient Descent Rule for ICA\relax }{figure.caption.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces \textsc  {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{18}{figure.caption.8}}
 \newlabel{mlica_code}{{3.1}{18}{\textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax \relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Preprocessing}{18}{subsection.3.3.2}}
@@ -90,7 +94,7 @@
 \newlabel{stft}{{4.1}{21}{Time Frequency Signal Representation\relax }{equation.4.1.1}{}}
 \newlabel{spectrogram}{{4.2}{22}{Time Frequency Signal Representation\relax }{equation.4.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Log Max Approximation}{22}{section.4.2}}
-\newlabel{logmax_fig}{{\caption@xref {logmax_fig}{ on input line 822}}{22}{Log Max Approximation\relax }{figure.caption.12}{}}
+\newlabel{logmax_fig}{{\caption@xref {logmax_fig}{ on input line 839}}{22}{Log Max Approximation\relax }{figure.caption.12}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Log-max approximation.\relax }}{22}{figure.caption.12}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Latent Variable BSS}{22}{section.4.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Gaussian Mixture Models}{23}{subsection.4.3.1}}
@@ -101,14 +105,14 @@
 \newlabel{maxvq_eqn}{{4.4}{23}{Generative Model and Estimation\relax }{equation.4.3.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}A Generic Inference Procedure}{24}{subsection.4.3.3}}
 \newlabel{bayes_eqn1}{{4.5}{24}{A Generic Inference Procedure\relax }{equation.4.3.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}An Improved Pruning Method for MAXVQ Inference}{24}{subsection.4.3.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}An Improved Pruning Method for MAXVQ Inference}{25}{subsection.4.3.4}}
 \newlabel{bound}{{4.7}{25}{An Improved Pruning Method for MAXVQ Inference\relax }{equation.4.3.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Factorial Hidden Markov Model for BSS}{25}{section.4.4}}
 \newlabel{fhmm}{{4.4}{25}{Factorial Hidden Markov Model for BSS\relax }{section.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Initialization}{25}{subsection.4.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{26}{figure.caption.13}}
 \newlabel{maxvq_pseudo}{{4.3}{26}{Pseudocode for MAXVQ algorithm.\relax \relax }{figure.caption.13}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{27}{figure.caption.14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Initialization}{27}{subsection.4.4.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Separation}{27}{subsection.4.4.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Results}{28}{section.4.5}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{29}{chapter.5}}

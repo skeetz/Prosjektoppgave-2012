@@ -527,8 +527,24 @@ differential entropy (REFFFF), maximum kurtosis (REF) and maximum likelihood.
 In this section we will give a brief overview over these methods and how
 they relate.
 
+\subsection{Kurtosis Maximization}
+
+The kurtosis $\beta_X$ of a random variable $X$ is defined as the fourth
+moment around the mean $\mu_X$:
 
 
+\begin{equation}
+  \beta_X = \frac{\mathbb{E}[(X-\mu_X)^4]}{\mathbb{E}[(X-\mu_X)^2]^2} 
+\end{equation}
+
+If we standardize our data to zero mean and unit variance, we see that
+the above simplifies to $\mathbb{E}(X^4)$. Often times, we are
+interested in comparing a distributions to the normal distribution by
+means of kurtosis, which leads to the definition of \emph{excess
+  kurtosis}, $\gamma = \beta - 3$, where the $-3$ term is necessary to
+make the kurtosis of the normal distribution zero. 
+
+% http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/node13.html
 
 \section{Limitations of the ICA Model}\label{ICA_restrictions}
 
