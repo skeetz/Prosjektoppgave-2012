@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  10 DEC 2012 21:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  10 DEC 2012 23:49
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -666,7 +666,7 @@ l.55 \end{abstract}
 same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 ...or Blind Source Separation}{30}{chapter.5}
+l.33 ...or Blind Source Separation}{30}{chapter.5}
                                                    [1
 
 ])
@@ -690,7 +690,7 @@ LaTeX Warning: Reference `ss_bss' on page 5 undefined on input line 116.
 
 [5] [6] [7]
 Chapter 2.
-<Figures/ica_simple.png, id=358, 1497.595pt x 803.803pt>
+<Figures/ica_simple.png, id=356, 1497.595pt x 803.803pt>
 File: Figures/ica_simple.png Graphic file (type png)
 
 <use Figures/ica_simple.png> [8
@@ -747,10 +747,10 @@ Overfull \hbox (6.26776pt too wide) in paragraph at lines 429--430
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.430 
-      ] <Figures/hmm.jpg, id=430, 490.83376pt x 236.38312pt>
+      ] <Figures/hmm.jpg, id=428, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
 
-<use Figures/hmm.jpg> <Figures/f_hmm.png, id=432, 510.40688pt x 328.97906pt>
+<use Figures/hmm.jpg> <Figures/f_hmm.png, id=430, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
 
 <use Figures/f_hmm.png>
@@ -776,23 +776,23 @@ Overfull \hbox (22.06299pt too wide) in paragraph at lines 564--572
 
 [17
 
-] <Figures/pca1.png, id=495, 449.5194pt x 338.2236pt>
+] <Figures/pca1.png, id=493, 449.5194pt x 338.2236pt>
 File: Figures/pca1.png Graphic file (type png)
 
 <use Figures/pca1.png> [18 <./Figures/pca1.png>]
-<Figures/pca2.png, id=504, 449.5194pt x 338.2236pt>
+<Figures/pca2.png, id=502, 449.5194pt x 338.2236pt>
 File: Figures/pca2.png Graphic file (type png)
  <use Figures/pca2.png>
 [19 <./Figures/pca2.png>] [20]
-<Figures/pca_signal_time_series.png, id=528, 449.68pt x 337.26pt>
+<Figures/pca_signal_time_series.png, id=526, 449.68pt x 337.26pt>
 File: Figures/pca_signal_time_series.png Graphic file (type png)
 
 <use Figures/pca_signal_time_series.png>
-<Figures/pca_data_eigs.png, id=529, 449.68pt x 337.26pt>
+<Figures/pca_data_eigs.png, id=527, 449.68pt x 337.26pt>
 File: Figures/pca_data_eigs.png Graphic file (type png)
 
 <use Figures/pca_data_eigs.png>
-<Figures/pca_eig_projection.png, id=530, 449.68pt x 337.26pt>
+<Figures/pca_eig_projection.png, id=528, 449.68pt x 337.26pt>
 File: Figures/pca_eig_projection.png Graphic file (type png)
 
 <use Figures/pca_eig_projection.png> [21] [22 <./Figures/pca_signal_time_series
@@ -824,29 +824,37 @@ LaTeX Warning: Reference `ica_listing' on page 27 undefined on input line 1073.
 [27]
 File: Figures/ica_simple.png Graphic file (type png)
  <use Figures/ica_simple.png>
-<Figures/ica_music_speech.png, id=604, 1497.595pt x 803.803pt>
+<Figures/ica_music_speech.png, id=602, 1497.595pt x 803.803pt>
 File: Figures/ica_music_speech.png Graphic file (type png)
 
 <use Figures/ica_music_speech.png> [28] [29 <./Figures/ica_music_speech.png (PN
 G copy)>]
 Chapter 5.
 
-LaTeX Warning: Citation `roweis' on page 30 undefined on input line 1168.
+LaTeX Warning: Citation `roweis' on page 30 undefined on input line 1162.
 
-<Figures/time_signal.png, id=630, 449.68pt x 337.26pt>
+[30
+
+] <Figures/time_signal.png, id=634, 449.68pt x 337.26pt>
 File: Figures/time_signal.png Graphic file (type png)
 
-<use Figures/time_signal.png> [30
+<use Figures/time_signal.png> [31 <./Figures/time_signal.png (PNG copy)>]
 
-] [31 <./Figures/time_signal.png (PNG copy)>]
-
-Package caption Warning: \label before \caption on input line 1260.
+Package caption Warning: \label before \caption on input line 1521.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `logmax_fig' on page 32 undefined on input line 1250.
+LaTeX Warning: Reference `count_spectrogram' on page 32 undefined on input line
+ 1242.
 
-<Figures/logmax.png, id=645, 964.403pt x 560.494pt>
+
+Package caption Warning: \label before \caption on input line 1262.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `logmax_fig' on page 32 undefined on input line 1255.
+
+<Figures/logmax.png, id=644, 964.403pt x 560.494pt>
 File: Figures/logmax.png Graphic file (type png)
  <use Figures/logmax.png>
 [32 <./Figures/logmax.png (PNG copy)>]
@@ -855,16 +863,16 @@ File: Figures/gaussmix.png Graphic file (type png)
  <use Figures/gaussmix.png>
 [33] [34 <./Figures/gaussmix.png (PNG copy)>]
 
-! LaTeX Error: \begin{equation*} on input line 1378 ended by \end{equation}.
+! LaTeX Error: \begin{equation*} on input line 1398 ended by \end{equation}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1383 \end{equation}
+l.1403 \end{equation}
                      
 ? 
-[35] <Figures/spectrogram_count.png, id=676, 578.16pt x 433.62pt>
+[35] <Figures/spectrogram_count.png, id=680, 578.16pt x 433.62pt>
 File: Figures/spectrogram_count.png Graphic file (type png)
 
 <use Figures/spectrogram_count.png> [36] [37] [38 <./Figures/spectrogram_count.
@@ -905,13 +913,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10000 strings out of 495061
- 140010 string characters out of 1182621
- 277536 words of memory out of 3000000
- 12535 multiletter control sequences out of 15000+50000
- 18815 words of font info for 70 fonts, out of 3000000 for 9000
+ 10013 strings out of 495061
+ 140164 string characters out of 1182621
+ 293895 words of memory out of 3000000
+ 12545 multiletter control sequences out of 15000+50000
+ 19160 words of font info for 71 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,11n,40p,849b,1232s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,11n,40p,849b,1222s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -934,12 +942,13 @@ s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/pub
 lic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy9.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (46 pages, 1053121 bytes).
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (46 pages, 1066426 bytes).
 PDF statistics:
- 904 PDF objects out of 1000 (max. 8388607)
- 255 named destinations out of 1000 (max. 500000)
+ 913 PDF objects out of 1000 (max. 8388607)
+ 257 named destinations out of 1000 (max. 500000)
  458 words of extra memory for PDF output out of 10000 (max. 10000000)
 

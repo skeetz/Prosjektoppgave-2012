@@ -27,15 +27,15 @@
 \BOOKMARK [1][-]{section.4.3}{Maximum Likelihood ICA in the Linear Mixing Model}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.3.1}{A Gradient Descent Rule for ICA}{section.4.3}
 \BOOKMARK [1][-]{section.4.4}{BSS by ICA}{chapter.4}
-\BOOKMARK [1][-]{section.4.5}{Limitations and Comparison with PCA}{chapter.4}
 \BOOKMARK [0][-]{chapter.5}{Single Sensor Blind Source Separation}{}
 \BOOKMARK [1][-]{section.5.1}{Time Frequency Signal Representation}{chapter.5}
 \BOOKMARK [1][-]{section.5.2}{Log Max Approximation}{chapter.5}
 \BOOKMARK [1][-]{section.5.3}{Latent Variable BSS}{chapter.5}
 \BOOKMARK [2][-]{subsection.5.3.1}{Gaussian Mixture Models}{section.5.3}
-\BOOKMARK [2][-]{subsection.5.3.2}{Generative Model and Estimation}{section.5.3}
-\BOOKMARK [2][-]{subsection.5.3.3}{A Generic Inference Procedure}{section.5.3}
-\BOOKMARK [2][-]{subsection.5.3.4}{An Improved Pruning Method for MAXVQ Inference}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.2}{Generative Model}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.3}{Estimation Procedure - The EM Algorithm}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.4}{A Generic Inference Procedure}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.5}{An Improved Pruning Method for MAXVQ Inference}{section.5.3}
 \BOOKMARK [1][-]{section.5.4}{Factorial Hidden Markov Model for BSS}{chapter.5}
 \BOOKMARK [2][-]{subsection.5.4.1}{Initialization}{section.5.4}
 \BOOKMARK [2][-]{subsection.5.4.2}{Separation}{section.5.4}

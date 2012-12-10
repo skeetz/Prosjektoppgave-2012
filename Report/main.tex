@@ -1106,7 +1106,6 @@ w % unmixing matrix
 for i = 1:nIter
   s = randomSubset(X)
   w = w + a*(1-2*(1/exp(-s))*s')*w;  
-end
   \end{lstlisting}
   \caption{Pseudocode for ML ICA by stochastic block gradient descent.}
   \label{mlica_code}
@@ -1152,7 +1151,7 @@ bottom right recovered signal
 \chapter{Single Sensor Blind Source Separation}\label{ssbss_chap}
 
 Single sensor BSS\footnote{Also called single channel BSS.} is a
-particularly importnat case of the BSS problem where the observed
+particularly important case of the underdetermined BSS problem where the observed
 signal consists of only a scalar value at any point in time as if the
 source signals were recorded a sole microphone. This presents us with
 particular challenges, and we often need to make further assumptions
@@ -1174,7 +1173,13 @@ of the model.
 This chapter is structured as follows. Section \ref{timeFreqRep}
 provides an introduction to the time-frequency domain signal
 representation which is common in most single channel audio separation
-models. 
+models. Section \ref{logmaxapprox} discusses the logmax property
+that is fundamental to the inference algorithm. Section \ref{latent_bss}
+introduces the key ideas of this chapter. First we review mixture models
+in general terms before we look at estimating and doing inference in the 
+particular latent variable model at hand. Finally, we briefly discuss an
+extended hidden markov model proposed by Roweis, before we illustrate the
+method with a few simple examples in Section \ref{ssbss_results}.
 
 
 
@@ -1234,8 +1239,13 @@ is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
   \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
 \end{equation}
 
+Figure \ref{count_spectrogram} shows a spectrogram represented as a colormap. Here, the abscissa and
+ordinate of a point represent time and frequency respectively, while the spectral intensity at the is
+color coded with red representing high energy.
 
-\section{Log Max Approximation}
+%% ANDERS: SKRIV NOE OM TYPISK VINDULENGDE / BROAD vs NARROWBAND SPECTROGRAM
+
+\section{Log Max Approximation}\label{logmaxapprox}
 
 An important observation underlying the inference model discussed in this chapter is the following.
 If two signals $s_1(t)$ and $s_2(t)$ are mixed \emph{additively} in the time domain so that 
@@ -1261,7 +1271,7 @@ distributions at a given point in time. We should also not that the use of logar
 it accentuates the differences between signals.
 
 
-\section{Latent Variable BSS}
+\section{Latent Variable BSS}\label{latent_bss}
 
 While we are essentially dealing with a \emph{two-level latent variable model}, we follow
 Roweis' terminology, adopting the term \emph{factoral-max vector quantizer} or MAXVQ for 
@@ -1315,15 +1325,23 @@ two components where the component an observation is drawn from is marked
 by red circles and blue crosses. Here the two components represent two different 
 bivariate distributions with separate means and covariance matrices. A common 
 assumption reducing the computational complexity is to estimate a shared covariance
-matrix for all components.
+matrix for all components. 
+
+When speaking of a \emph{latent} variable, we refer to the fact that we as observers of
+a stochastic process do not know 
+whether an observation $x$ is generated from the ``red'' or the ``blue'' distribution. 
+It is as if an ``invisible hand'' selects one of the two distributions and then generates
+a random number accordingly. 
 
 
 
+\subsection{Generative Model}\label{generative_model}
 
-
-\subsection{Generative Model and Estimation}\label{generative_model}
-
-Let $\mathcal{Q} = \{q_1, q_2, .. , q_M\}$ denote the set of speakers\footnote{For simplicity, we assume $M=2$.}, and $Q$ be a multinomial random variable over $\mathcal{Q}$, $\mathcal{Z}_m  = \{z_1^m, z_2^m, .. , z_N^m\}$ be the set of states for the latent variable $Z^m$ for source $m$. Finally, we let $\mathbb{x} = (x_1,x_2,...,x_D)$ be an \emph{observed} $D$-dimensional frequency vector. The generative model for a given frequency band $d$ is then:
+Let $\mathcal{Q} = \{q_1, q_2, .. , q_M\}$ denote the set of speakers\footnote{For 
+simplicity, we assume $M=2$.}, and $Q$ be a multinomial random variable over $\mathcal{Q}$, 
+$\mathcal{Z}_m  = \{z_1^m, z_2^m, .. , z_N^m\}$ be the set of states for the latent variable 
+$Z^m$ for source $m$. Finally, we let $\boldsymbol{X}(t) = (x_1,x_2,...,x_D)$ be an \emph{observed} 
+$D$-dimensional frequency vector. The generative model for a given frequency band $d$ is then:
 
 \begin{equation}
   \label{maxvq_eqn}
@@ -1350,6 +1368,13 @@ separated. More recently, attempts have been made at estimation
 directly on mixed signals [REFERANSE]. The canonical training method
 used in these models is the expectation maximization (EM) algorithm as
 described in appendix [[[REF]]]. 
+
+
+\subsection{Estimation Procedure - The EM Algorithm}
+
+TODO!
+%%%% GENERELT BS OM HVORFOR DET ER VANSKELIG A ESTIMERE MED LATENTE VARIABLER
+% + ALGORITME
 
 
 \subsection{A Generic Inference Procedure}
@@ -1385,11 +1410,11 @@ As usual, we apply Bayes' rule in estimating the probabilities:
 \end{equation}
 
 for each GMM component $k$. Given that the all our mixture components have a multivariate
-normal distribution, we it is simple to show that the following holds true for the right hand
-side of (Equation \ref{bayes_eqn1}).
+normal distribution, it is simple to show that the following\footnote{We can interpret (Equation \ref{mahala})
+geometrically as selecting the nearest component to the observed data under the \emph{Mahalanobis} 
+metric.} holds true for the right hand side of (Equation \ref{bayes_eqn1}).
 
-
-\begin{equation}
+\begin{equation}\label{mahala}
   \mathbb{P}(\boldsymbol{X} | \mu_k^i,\Sigma_1) \propto 
   (\boldsymbol{X} - \mu_k^i)^T\Sigma_k^{-1}(\boldsymbol{X} - \mu_k^i)
 \end{equation}
@@ -1397,26 +1422,22 @@ side of (Equation \ref{bayes_eqn1}).
 Knowing most likely components of each source given the observed data, we subsequently turn to 
 computing the \emph{masking signal} for each frequency band, ie. for each element of $\boldsymbol{X}$. 
 This masking signal is computed for every source $i$, and takes the value $1$ if source $i$ is the
-maximum over all sources. 
+maximum over all sources at the given frequency band/timestep pair and zero otherwise. 
+
+
 
 \subsection{An Improved Pruning Method for MAXVQ Inference}
 
 The purpose of the inference part of the model is computing the most
 likely sequence of source/gmm component combinations given the
-observed data. By the log-max principle, we assume that only one
-source is active at a given point in time, and for each source, we
-assume there is a single maximum likelihood component. In 
-principle, this problem could be solved by straight
-forward application of the EM algorithm. This, however, is not the
-preferred approach in practice because of the large state space; hence
-we apply a pruning algorithm instead.
+observed data. In the previous section we discussed a naïve method
+for doing this that applies standard machine learning principles.
+For large datasets, this method quickly becomes computationally
+intractible.
 
-Since computing joint probabilities over the latent variables given the
-observed $x$ is clearly  untractable, we look to the issue of
-computing the maximum aposteriori probability (MAP) estimate of the
-latent variables given the observed. To reduce the model complexity,
-Roweis [[xxx]] describes a branch-and-bound procedure based on
-estimating an upper ound on the log likelihood of the latent variables
+To amend this problem reducing time complexity of the inference procedure,
+Roweis [[xxx]] describes a branch-and-bound methodbased on
+estimating an upper bound on the log likelihood of the latent variables
 given the observed data.
 
 For source/latent variable combination $(m,k)$, given each observation
@@ -1431,52 +1452,55 @@ the log likelihood associated with $z_m^{*}$. For all sources $m$, we
 eliminate latent variables $k$ such that $B_{mk}<l^{*}$. For the
 remaining source/latent variable combinations, we evalutate the log
 likelihood by the model specified in \ref{maxvq_eqn}. If a new lower
-bound is discovered, we reiterate the pruning procedure, otherwise, we
-compute log likelihoods until all remaining are evaluated.
+bound is discovered, we reiterate the pruning procedure over the remaining
+source/component combinations with the new
+bound, otherwise, we compute log likelihoods until all remaining are 
+evaluated.
 
 
 
 \begin{figure}[!htpb]
   \begin{lstlisting}[frame=single]
-    
 % Variables:
-gmms = list()          % holds GMMs 
-spectrogram = matrix() % d x T matrix
+gmms        % List of GMM(comp_1,...,comp_N)
+spectrogram % d x T matrix
+bounds      % List of best bound for 
+            % (source m / speaker k)
+masks       % Mask matrix of dimension d x T x 2. 
+            % Entry corresponds to active 
+            % (source/component)
+minIdx      % index of best component
+            % for each source
+for t = 1:T
+  X = spectrogram(t)
 
-for (t = 1:T)
-  
-  X = spectrogram(:,t)
-
-  % initial bound estimate
+  % Initial bound estimate
   bounds = list()
   for m = 1:length(gmms)
-    for k = 1:NComponents(gmms{m})
-      bounds{m}{k} = computeBound(X, gmms{m}{k})
-    end
-  end
+    for k = 1:NComponents(gmms(m))
+      bounds(m,k) = computeBound(X, gmms(m,k))
 
-  % max log likelihood for each source
+  % Max log likelihood for each source
   for m = 1:length(gmms)
-    l0{m} = logLikelihood(argmin(bounds{m}))
+    minIdx(m) = argmin(bounds(m))
+    l0(m) = logLikelihood(bounds(m,minIdx(m)))
   
-  % reduction
-  while(remaining > 0)
+  % Reduction
+  while length(bounds) > 0
     for m = 1:length(gmms)
       for k = 1:NComponents(gmms{m})
-        if B{m}{k} < l0
-          
-        else if 
-          
-        end
-      end
-    end
+        if bounds(m,k) < l0
+          % Delete observation from list
+          bounds = bounds - bounds(m,k)
+        else
+          l1 = logLikelihood(bounds(m,k))
+          if l1 < l0
+          l0 = l1
   
-  end
- 
-
-
-end
-    
+  % Set masks   
+  for i = 1:d
+    sourceIdx = argmin(l0(d))
+    masks(d,t) = (sourceIdx, minIdx(sourceIdx))
   \end{lstlisting}
   \caption{Pseudocode for MAXVQ algorithm.}
   \label{maxvq_pseudo}
@@ -1496,7 +1520,7 @@ $x_{it}$ are real-valued, hence we adopt a real valued emission
 model, as discussed later. 
 
 
-\begin{figure}
+\begin{figure}\label{count_spectrogram}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/spectrogram_count}
@@ -1572,7 +1596,7 @@ approximation, see [REFERANSER].
 
 
 
-\section{Results}
+\section{Results}\label{ssbss_results}
 
 
 
