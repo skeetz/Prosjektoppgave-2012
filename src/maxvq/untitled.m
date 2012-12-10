@@ -85,9 +85,10 @@ end
 
 rec1 = log10(Pmix).*masks{1};
 rec2 = log10(Pmix).*masks{2};
+
 for i = 1:size(rec1, 2)
-    rec1(masks(:,i) == 0,i) = gmms{1}.mu(maxidx(1,i),:);
-    rec2(masks(:,i) == 0,i) = gmms{2}.mu(maxidx(2,i),:);
+    rec1(masks{1}(:,i) == 0,i) = gmms{1}.mu(maxidx(1,i), masks{1}(:,i) == 0);
+    rec2(masks{2}(:,i) == 0,i) = gmms{2}.mu(maxidx(2,i), masks{2}(:,i) == 0);
 end
 
 

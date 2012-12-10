@@ -1,17 +1,17 @@
 \addvspace {10\p@ }
 \contentsline {xchapter}{Introduction}{4}{chapter.1}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Principal Component Analysis}{8}{chapter.2}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces After projecting the data onto the dark line, little variation left in the dataset.\relax }}{9}{figure.caption.3}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax }}{10}{figure.caption.4}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces PCA Source Separation.\relax }}{13}{figure.caption.5}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{13}{figure.caption.6}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{14}{figure.caption.7}
+\contentsline {xchapter}{Literature Review}{8}{chapter.2}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{9}{figure.caption.3}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Hidden Markov Model\relax }}{13}{figure.caption.6}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{14}{figure.caption.7}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Literature Review}{15}{chapter.3}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Stationary linear mixing process and separation.\relax }}{16}{figure.caption.8}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Hidden Markov Model\relax }}{20}{figure.caption.11}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Factorial Hidden Markov Model\relax }}{21}{figure.caption.12}
+\contentsline {xchapter}{Principal Component Analysis}{17}{chapter.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces After projecting the data onto the dark line, little variation left in the dataset.\relax }}{18}{figure.caption.11}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax }}{19}{figure.caption.12}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces PCA Source Separation.\relax }}{22}{figure.caption.13}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{22}{figure.caption.14}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{23}{figure.caption.15}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Independent Component Analysis}{24}{chapter.4}
 \contentsline {figure}{\numberline {4.1}{\ignorespaces \textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{27}{figure.caption.16}
@@ -21,9 +21,10 @@
 \contentsline {xchapter}{Single Sensor Blind Source Separation}{29}{chapter.5}
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{30}{figure.caption.19}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Log-max approximation.\relax }}{31}{figure.caption.20}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{35}{figure.caption.21}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{36}{figure.caption.22}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A mixture of gaussians distribution with two components.\relax }}{33}{figure.caption.21}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{36}{figure.caption.22}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{37}{figure.caption.23}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusion}{38}{chapter.6}
+\contentsline {xchapter}{Conclusion}{39}{chapter.6}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Mathematical Concepts}{39}{appendix.A}
+\contentsline {xchapter}{Mathematical Concepts}{40}{appendix.A}

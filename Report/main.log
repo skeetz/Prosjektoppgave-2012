@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  10 DEC 2012 16:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.10)  10 DEC 2012 17:19
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -690,187 +690,192 @@ LaTeX Warning: Reference `ss_bss' on page 5 undefined on input line 116.
 
 [5] [6] [7]
 Chapter 2.
-
-Overfull \hbox (22.06299pt too wide) in paragraph at lines 227--235
-\OT1/cmr/m/n/10.95 Principal com-po-nent anal-y-sis [[]] (PCA) is a eigenvector
--based, non-probabilistic
- []
-
-[8
-
-] <Figures/pca1.png, id=373, 449.5194pt x 338.2236pt>
-File: Figures/pca1.png Graphic file (type png)
- <use Figures/pca1.png>
-[9 <./Figures/pca1.png>] <Figures/pca2.png, id=383, 449.5194pt x 338.2236pt>
-File: Figures/pca2.png Graphic file (type png)
-
-<use Figures/pca2.png> [10 <./Figures/pca2.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 399.
-
-
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 399.
- [11]
-<Figures/pca_signal_time_series.png, id=408, 449.68pt x 337.26pt>
-File: Figures/pca_signal_time_series.png Graphic file (type png)
-
-<use Figures/pca_signal_time_series.png>
-<Figures/pca_data_eigs.png, id=409, 449.68pt x 337.26pt>
-File: Figures/pca_data_eigs.png Graphic file (type png)
-
-<use Figures/pca_data_eigs.png>
-<Figures/pca_eig_projection.png, id=410, 449.68pt x 337.26pt>
-File: Figures/pca_eig_projection.png Graphic file (type png)
-
-<use Figures/pca_eig_projection.png> [12] [13 <./Figures/pca_signal_time_series
-.png (PNG copy)> <./Figures/pca_data_eigs.png (PNG copy)>] [14 <./Figures/pca_e
-ig_projection.png (PNG copy)>]
-Chapter 3.
-<Figures/ica_simple.png, id=435, 1497.595pt x 803.803pt>
+<Figures/ica_simple.png, id=359, 1497.595pt x 803.803pt>
 File: Figures/ica_simple.png Graphic file (type png)
 
-<use Figures/ica_simple.png> [15
+<use Figures/ica_simple.png> [8
 
 ]
-Overfull \hbox (80.31306pt too wide) in paragraph at lines 554--563
+Overfull \hbox (80.31306pt too wide) in paragraph at lines 282--291
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 580--580
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
 []\OT1/cmr/m/n/10.95 Bell, A.J. and Se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 586--586
+Underfull \hbox (badness 10000) in paragraph at lines 314--314
 []\OT1/cmr/m/n/10.95 Davies, M.E. and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 587--587
+Underfull \hbox (badness 10000) in paragraph at lines 315--315
 []\OT1/cmr/m/n/10.95 Multidimensional In-de-pen-dent
  []
 
 
-Underfull \hbox (badness 4582) in paragraph at lines 588--588
+Underfull \hbox (badness 4582) in paragraph at lines 316--316
 []\OT1/cmr/m/n/10.95 Source Sep-a-ra-tion From Single-
  []
 
 
-Underfull \hbox (badness 3229) in paragraph at lines 588--588
+Underfull \hbox (badness 3229) in paragraph at lines 316--316
 \OT1/cmr/m/n/10.95 Glig-ori-je-vic, I., Tael-
  []
 
 
-Overfull \hbox (17.43304pt too wide) in paragraph at lines 576--592
+Overfull \hbox (17.43304pt too wide) in paragraph at lines 304--320
 [][] 
  []
 
-[16 <./Figures/ica_simple.png (PNG copy)>] [17] [18]
-Overfull \hbox (70.99615pt too wide) detected at line 692
+[9 <./Figures/ica_simple.png (PNG copy)>] [10] [11]
+Overfull \hbox (70.99615pt too wide) detected at line 420
 [][]
  []
 
 
-Overfull \hbox (6.26776pt too wide) in paragraph at lines 701--702
+Overfull \hbox (6.26776pt too wide) in paragraph at lines 429--430
 \OT1/cmr/m/n/10.95 The Hid-den Markov mod-elling has been around since the late
  1960s. Roweis[[]]
  []
 
-[19pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
-12}) has been already used, duplicate ignored
+[12pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
+8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.702 
-      ] <Figures/hmm.jpg, id=505, 490.83376pt x 236.38312pt>
+l.430 
+      ] <Figures/hmm.jpg, id=431, 490.83376pt x 236.38312pt>
 File: Figures/hmm.jpg Graphic file (type jpg)
 
-<use Figures/hmm.jpg> <Figures/f_hmm.png, id=507, 510.40688pt x 328.97906pt>
+<use Figures/hmm.jpg> <Figures/f_hmm.png, id=433, 510.40688pt x 328.97906pt>
 File: Figures/f_hmm.png Graphic file (type png)
 
 <use Figures/f_hmm.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20 <./Figures/hmm.jpg>] [21 <./Figures/f_hmm.png>] [22] [23]
+[13 <./Figures/hmm.jpg>] [14 <./Figures/f_hmm.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 518.
+
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 518.
+ [15] [16]
+Chapter 3.
+
+Overfull \hbox (22.06299pt too wide) in paragraph at lines 564--572
+\OT1/cmr/m/n/10.95 Principal com-po-nent anal-y-sis [[]] (PCA) is a eigenvector
+-based, non-probabilistic
+ []
+
+[17
+
+] <Figures/pca1.png, id=496, 449.5194pt x 338.2236pt>
+File: Figures/pca1.png Graphic file (type png)
+
+<use Figures/pca1.png> [18 <./Figures/pca1.png>]
+<Figures/pca2.png, id=505, 449.5194pt x 338.2236pt>
+File: Figures/pca2.png Graphic file (type png)
+ <use Figures/pca2.png>
+[19 <./Figures/pca2.png>] [20]
+<Figures/pca_signal_time_series.png, id=529, 449.68pt x 337.26pt>
+File: Figures/pca_signal_time_series.png Graphic file (type png)
+
+<use Figures/pca_signal_time_series.png>
+<Figures/pca_data_eigs.png, id=530, 449.68pt x 337.26pt>
+File: Figures/pca_data_eigs.png Graphic file (type png)
+
+<use Figures/pca_data_eigs.png>
+<Figures/pca_eig_projection.png, id=531, 449.68pt x 337.26pt>
+File: Figures/pca_eig_projection.png Graphic file (type png)
+
+<use Figures/pca_eig_projection.png> [21] [22 <./Figures/pca_signal_time_series
+.png (PNG copy)> <./Figures/pca_data_eigs.png (PNG copy)>] [23 <./Figures/pca_e
+ig_projection.png (PNG copy)>]
 Chapter 4.
 
-LaTeX Warning: Reference `bss_ica' on page 24 undefined on input line 855.
+LaTeX Warning: Reference `bss_ica' on page 24 undefined on input line 862.
 
 [24
 
 ] [25] [26]
 
-Package caption Warning: \label before \caption on input line 1020.
+Package caption Warning: \label before \caption on input line 1027.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `ica_listing' on page 27 undefined on input line 1017.
+LaTeX Warning: Reference `ica_listing' on page 27 undefined on input line 1024.
 
 
 File: Figures/ica_simple.png Graphic file (type png)
 <use Figures/ica_simple.png>
-<Figures/ica_music_speech.png, id=589, 1497.595pt x 803.803pt>
+<Figures/ica_music_speech.png, id=586, 1497.595pt x 803.803pt>
 File: Figures/ica_music_speech.png Graphic file (type png)
 
 <use Figures/ica_music_speech.png> [27] [28 <./Figures/ica_music_speech.png (PN
 G copy)>]
 Chapter 5.
 
-LaTeX Warning: Citation `roweis' on page 29 undefined on input line 1086.
+LaTeX Warning: Citation `roweis' on page 29 undefined on input line 1093.
 
-<Figures/time_signal.png, id=615, 449.68pt x 337.26pt>
+<Figures/time_signal.png, id=612, 449.68pt x 337.26pt>
 File: Figures/time_signal.png Graphic file (type png)
 
 <use Figures/time_signal.png> [29
 
 ] [30 <./Figures/time_signal.png (PNG copy)>]
 
-Package caption Warning: \label before \caption on input line 1175.
+Package caption Warning: \label before \caption on input line 1182.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `logmax_fig' on page 31 undefined on input line 1168.
+LaTeX Warning: Reference `logmax_fig' on page 31 undefined on input line 1175.
 
-<Figures/logmax.png, id=631, 964.403pt x 560.494pt>
+<Figures/logmax.png, id=628, 964.403pt x 560.494pt>
 File: Figures/logmax.png Graphic file (type png)
  <use Figures/logmax.png>
-[31 <./Figures/logmax.png (PNG copy)>] [32]
+[31 <./Figures/logmax.png (PNG copy)>]
+<Figures/gaussmix.png, id=636, 449.68pt x 337.26pt>
+File: Figures/gaussmix.png Graphic file (type png)
+ <use Figures/gaussmix.png>
+[32] [33 <./Figures/gaussmix.png (PNG copy)>]
 
-! LaTeX Error: \begin{equation*} on input line 1275 ended by \end{equation}.
+! LaTeX Error: \begin{equation*} on input line 1303 ended by \end{equation}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1280 \end{equation}
+l.1308 \end{equation}
                      
 ? 
-[33] <Figures/spectrogram_count.png, id=655, 578.16pt x 433.62pt>
+[34] <Figures/spectrogram_count.png, id=658, 578.16pt x 433.62pt>
 File: Figures/spectrogram_count.png Graphic file (type png)
 
-<use Figures/spectrogram_count.png> [34] [35] [36 <./Figures/spectrogram_count.
-png (PNG copy)>] [37]
+<use Figures/spectrogram_count.png> [35] [36] [37 <./Figures/spectrogram_count.
+png (PNG copy)>] [38]
 Chapter 6.
-[38
+[39
 
 ]
 Appendix A.
-[39
+[40
 
-] (./LiteratureReview/bibl.tex [40]
+] (./LiteratureReview/bibl.tex [41]
 Underfull \hbox (badness 1038) in paragraph at lines 36--39
 []\OT1/cmr/m/n/10.95 Cardoso, J. L.(1998), ``Mul-ti-di-men-sional In-de-pen-den
 t Com-po-nent
  []
 
-[41
+[42
 
-]) [42]
+]) [43]
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the main.maf file.
@@ -891,30 +896,15 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9996 strings out of 495061
- 139914 string characters out of 1182621
- 277354 words of memory out of 3000000
- 12536 multiletter control sequences out of 15000+50000
+ 9999 strings out of 495061
+ 139980 string characters out of 1182621
+ 276449 words of memory out of 3000000
+ 12541 multiletter control sequences out of 15000+50000
  19116 words of font info for 71 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,11n,40p,849b,1232s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.15} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.14} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.13} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.9} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.3.5} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exi
+st, replaced by a fixed one
 
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texl
@@ -938,9 +928,9 @@ b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (44 pages, 1032701 bytes).
+Output written on main.pdf (45 pages, 1046029 bytes).
 PDF statistics:
- 882 PDF objects out of 1000 (max. 8388607)
- 251 named destinations out of 1000 (max. 500000)
- 453 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 885 PDF objects out of 1000 (max. 8388607)
+ 248 named destinations out of 1000 (max. 500000)
+ 458 words of extra memory for PDF output out of 10000 (max. 10000000)
 
