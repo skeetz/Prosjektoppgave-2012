@@ -28,10 +28,9 @@
 \contentsline {subsection}{\numberline {4.1.2}Maximum Mutual Information}{25}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Limitations of the ICA Model}{25}{section.4.2}
 \contentsline {section}{\numberline {4.3}Maximum Likelihood ICA in the Linear Mixing Model}{26}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}A Stochastic Gradient Descent Rule for ICA}{27}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Preprocessing}{27}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}BSS by ICA}{29}{section.4.4}
-\contentsline {section}{\numberline {4.5}Limitations and Comparison with PCA}{29}{section.4.5}
+\contentsline {subsection}{\numberline {4.3.1}A Gradient Descent Rule for ICA}{27}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}BSS by ICA}{28}{section.4.4}
+\contentsline {section}{\numberline {4.5}Limitations and Comparison with PCA}{28}{section.4.5}
 \contentsline {chapter}{\numberline {5}Single Sensor Blind Source Separation}{30}{chapter.5}
 \contentsline {section}{\numberline {5.1}Time Frequency Signal Representation}{30}{section.5.1}
 \contentsline {section}{\numberline {5.2}Log Max Approximation}{32}{section.5.2}

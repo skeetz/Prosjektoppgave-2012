@@ -14,8 +14,8 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{23}{figure.caption.15}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Independent Component Analysis}{24}{chapter.4}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \textsc {Matlab} code for ML ICA by stochastic block gradient descent.\relax }}{28}{figure.caption.16}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{28}{figure.caption.17}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Pseudocode for ML ICA by stochastic block gradient descent.\relax }}{28}{figure.caption.16}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{29}{figure.caption.17}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. Here we also observe that the sign of the original speech signal is reversed in the bottom right recovered signal. \relax }}{29}{figure.caption.18}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Single Sensor Blind Source Separation}{30}{chapter.5}

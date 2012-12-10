@@ -723,22 +723,22 @@ such that:
 
 
 \begin{equation}
-  X = US V^{T}
+  \boldsymbol{X} = \boldsymbol{USV}^{T}
 \end{equation}
 
 
-Here, $U \in \mathbf{R}^{m\times m}$, $S \in \mathbf{R}^{m\times n}$,
-and $U \in \mathbf{R}^{n\times n}$. The SVD relates to the eigenvalue
+Here, $\boldsymbol{U} \in \mathbb{R}^{m\times m}$, $\boldsymbol{S} \in \mathbb{R}^{m\times n}$,
+and $\boldsymbol{U} \in \mathbb{R}^{n\times n}$. The SVD relates to the eigenvalue
 problem (Equation \ref{pca_gradient}) as follows:
 
 
 \begin{itemize}
-\item The columns of $U$ form the projections of $X$ onto the
-  eigenvectors $V$.
-  \item The entries $s_{ii}$ on the leading diagonal of $S$ are the
-    eigenvalues of $\Sigma = X^TX$.
-  \item The top $k$ columns of $V$ are the top $k$ eigenvectors of
-    $\Sigma = X^T X$
+\item The columns of $\boldsymbol{U}$ form the projections of $\boldsymbol{X}$ onto the
+  eigenvectors $\boldsymbol{V}$.
+  \item The entries $s_{ii}$ on the leading diagonal of $\boldsymbol{S}$ are the
+    eigenvalues of $\boldsymbol{\Sigma} = \boldsymbol{X}^T\boldsymbol{X}$.
+  \item The top $k$ columns of $\boldsymbol{V}$ are the top $k$ eigenvectors of
+    $\Sigma = \boldsymbol{X}^T \boldsymbol{X}$
 \end{itemize}
 
 
@@ -764,9 +764,9 @@ BSS, and what assumptions it requires us to make about the data.
 
 We have so far looked at PCA as a method of transforming data from
 $N$-dimensional Euclidean space onto a set of \emph{principal components}
-which is the basis of a new vector space $V$. A key property of $V$ is
+which is the basis of a new vector space $\boldsymbol{V}$. A key property of $\boldsymbol{V}$ is
 that the data is now linearly uncorrelated. This is in turn the key
-idea to take into account in blind source separation - for 
+idea to take into account in blind source separation.
 
 The top graph of Figure \ref{pca_time_series} shows two periodic
 signals $s_1$ and $s_2$ contaminated by an additive Gaussian white
@@ -785,10 +785,10 @@ Figure \ref{pca_time_series} by the matrix:
 
 
 \begin{equation}
-  A = \begin{bmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{bmatrix}
+  \boldsymbol{A} = \begin{bmatrix} \cos \alpha & -\sin \alpha \\ \sin \alpha & \cos \alpha \end{bmatrix}
 \end{equation}
 
-where $\alpha = \pi/4$. Here the mixing matrix $A$ corresponds to a
+where $\alpha = \pi/4$. Here the mixing matrix $\boldsymbol{A}$ corresponds to a
 rotation operator that will rotate the data by $\alpha$ radians in
 counterclockwise direction. 
 
@@ -867,9 +867,10 @@ with a few blind source separation problems.
 
 ICA can be derived by several different approaches representing slightly
 different interpretations of the same problem. Among these are maximum 
-differential entropy (REFFFF), maximum kurtosis (REF) and maximum likelihood. 
-In this section we will give a brief overview over these methods and how
-they relate.
+differential entropy (REFFFF), maximum kurtosis (REF) and 
+maximum likelihood (\cite{Pham}). 
+In this section we provide a brief overview over the two first, while we
+go in more detail on the maximum likelihood method in subsequent sections.
 
 \subsection{Kurtosis Maximization}
 
@@ -1020,10 +1021,11 @@ Recalling our notation for the unmixing model:
 \end{equation}
 
 We can substitute for $s_i$ in (Equation \ref{ica_prob}), to obtain the following
-expression for the joint distribution\footnote{TODO: Determinant -- Linear transformation of pdf.}:
+expression for the joint distribution\footnote{Here the determinant term results from
+the rule for linear transformations of probability densities.}.
 
 \begin{equation}
-  p(s) = \Pi_{i=1}^n p_s(\boldsymbol{w}_i^T \boldsymbol{x}) \cdot |\boldsymbol{W}|
+    p(s) = \Pi_{i=1}^n p_s(\boldsymbol{w}_i^T \boldsymbol{x}) \cdot |\boldsymbol{W}|    
 \end{equation}
 
 
@@ -1048,52 +1050,87 @@ By straight forward application of Bayes' rule, we can rewrite the probability i
 From (Equation \ref{bayes}), we can set up the maximum likelohood function:
 
 \begin{equation}\label{ica_loglikelihood}
-  l(W) =\log \mathbb{P}(\boldsymbol{X}|\boldsymbol{W}) 
-  = \Sigma_{t=1}^T \log p_s(\boldsymbol{W}\boldsymbol{X})+\log |\boldsymbol{W}|
+  \begin{array}{lll}
+    l(W) & = &\log \mathbb{P}(\boldsymbol{X}|\boldsymbol{W}) \\
+    & = & \Sigma_{t=1}^T \log p_s(\boldsymbol{W}\boldsymbol{X})+\log |\boldsymbol{W}|\\
+    & = & \Sigma_{t=1}^T\Sigma_{i=1}^N\log p_s(\boldsymbol{w}_i^T\boldsymbol{x}(t)+\log |\boldsymbol{W}|
+  \end{array}
 \end{equation}
 
 The final step is to determine the marginal distributions $p_s$ of the sources. 
 A common, but not necessary assumption is to let all the sources have the same distribution.
-As the ICA is incompatible with a Gaussian source distribution, common choices for specifying 
-$P_s$ include the sigmoid $p_s(s) = \frac{1}{1+e^{-s}}$ and hyperbolic tangent ($\tanh(s)$). 
+As gaussian marginals are precluded by the assumptions of our model, we need to choose an
+alternative distribution for $s$. Typically, the distribution is specified in terms of the 
+cumulative density function $P_s(s)$. Standard choices here include the sigmoid 
+$P_s(s) = \frac{1}{1+e^{-s}}$ and hyperbolic tangent ($P_s(s) = \tanh(s)$). 
 
-\subsection{A Stochastic Gradient Descent Rule for ICA}
+\subsection{A Gradient Descent Rule for ICA}
 
 Given the log likelihood function of Equation \ref{ica_loglikelihood},
-we will now show how this can be maxmimized by stochastic gradient
-descent. This derivation leads directly to a working \textsc{Matlab}
-implementation shown in Figure \ref{ica_listing}.
+we will now discuss how this can be maxmimized by gradient descent. 
+The gradient descent method has an intuitive appeal, and  
+lends itself easily to a computer implementation along the lines of
+the pseudocode Figure \ref{ica_listing}. 
 
+Gradient descent is an iterative optimization method where local extrema are found
+by taking steps proportional to the gradient of the function at a given point. 
+The algorithm may be seeded randomly or initialized by domain knowledge of the 
+optimization problem at hand. Normally, the step size of the algorithm is decremented
+as the algorithm converges, which is expressed through the learning rate $\alpha(n)$
+which is a function of the current of iteration count $n$. We can state this as the following
+update rule:
+
+
+\begin{equation}
+  \label{gradient_descent}
+  x_{n+} = x_n + \alpha(n)\nabla F(x_n)
+\end{equation}
+
+The rule in (Equation \ref{gradient_descent} is iterated until convergence is reached.
+This is typically measured by the difference $|x_{n+1}-x_n$ or in terms of the number of
+iterations passed as in Figure \ref{mlica_code}.
+
+In the particular case of objective functions that are the sum of a large number
+of terms it is often convenient to apply a modified version of gradient descent
+known as stochastic gradient descent, where only a randomly selected subset of the 
+terms are computed in evalutating the gradient. Of the most important applications of this
+rule is of course the maximization of log likelihood functions.
 
 \begin{figure}[!htpb]\label{ica_listing}
   \begin{lstlisting}[frame=single]
-for i = 1:Niter
-  x=x(:,perm);
-  t=1;
-  noblocks=fix(P/Blocks);
-  BlocksI=Blocks*Id;
-  for t=t:Blocks:t-1+noblocks*Blocks,
-   u=w*x(:,t:t+Blocks-1); 
-   w=w+alpha * ( BlocksI + ...
-     (1-2*(1./(1+exp(-u))))*u') * w;
+% Variables:
+X % Mixed sources
+a % learning rate
+w % unmixing matrix
+
+for i = 1:nIter
+  s = randomSubset(X)
+  w = w + a*(1-2*(1/exp(-s))*s')*w;  
 end
   \end{lstlisting}
-  \caption{\textsc{Matlab} code for ML ICA by stochastic block gradient descent.}
+  \caption{Pseudocode for ML ICA by stochastic block gradient descent.}
   \label{mlica_code}
 \end{figure}
 
+To conclude this section, we review the gradient descent algorithm of Figure \ref{mlica_code}.
+Here, we assume the data is distributed according to a sigmoid cdf $f$. By inserting substituting
+this into (Equation \ref{ica_loglikelihood}) and differentiating, we get the following update rule:
 
 
-\subsection{Preprocessing}\label{ica_preprocessing}
+\begin{equation}
+  \mathbf{W}_{n+1} = \mathbf{W}_{n} + \alpha(1-2*f(\mathbf{W}\mathbf{X})\mathbf{X}^T + (\mathbf{W}^T)^{-1})
+\end{equation}
 
-Whitening transform...
+For a more sophisticated ICA algorithm, we refer to Hyvarinen's FastICA [REF].
 
-STFT?
 
 \section{BSS by ICA}\label{BSS_ICA}
 
+Here we also observe that the sign of the original speech signal is reversed in the 
+bottom right recovered signal
 
-\begin{figure}
+
+\begin{figure}\label{ica_fig1}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/ica_simple}
@@ -1102,22 +1139,14 @@ STFT?
     blue sine wave (cf. Section \ref{ICA_restrictions}).}
 \end{figure}
 
-\begin{figure}
+\begin{figure}\label{ica_fig2}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/ica_music_speech}
   \hrule
-  \caption{Separating a speech signal (top left) from background music (top right) by ICA. 
-    Here we also observe that the sign of the original speech signal is reversed in the 
-    bottom right recovered signal. }
+  \caption{Separating a speech signal (top left) from background music (top right) by ICA. }
 \end{figure}
 
-
-
-
-\section{Limitations and Comparison with PCA}\label{ica_conclusions}
-
-Refer to section \ref{pca_bss} in discussion.
 
 
 \chapter{Single Sensor Blind Source Separation}\label{ssbss_chap}

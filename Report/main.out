@@ -25,8 +25,7 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{Maximum Mutual Information}{section.4.1}
 \BOOKMARK [1][-]{section.4.2}{Limitations of the ICA Model}{chapter.4}
 \BOOKMARK [1][-]{section.4.3}{Maximum Likelihood ICA in the Linear Mixing Model}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.3.1}{A Stochastic Gradient Descent Rule for ICA}{section.4.3}
-\BOOKMARK [2][-]{subsection.4.3.2}{Preprocessing}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.1}{A Gradient Descent Rule for ICA}{section.4.3}
 \BOOKMARK [1][-]{section.4.4}{BSS by ICA}{chapter.4}
 \BOOKMARK [1][-]{section.4.5}{Limitations and Comparison with PCA}{chapter.4}
 \BOOKMARK [0][-]{chapter.5}{Single Sensor Blind Source Separation}{}
