@@ -24,6 +24,11 @@
 % TOCs
 \usepackage{minitoc}
 
+% Line space
+\linespread{1.2}
+
+
+
 \graphicspath{{Figures/}}
 
 \begin{document}
@@ -51,7 +56,10 @@
 \maketitle
 
 \begin{abstract}
-
+  This report is an overview over blind source separation (BSS) algorithms and principles. BSS
+  is the process of recovering individual signals from a mixture without precise knowledge of 
+  the mixing process. We start by a review of the ``standard'' PCA and ICA algorithms and proceed
+  to look at factoral models which is an area of active research.
 \end{abstract}
 
 \tableofcontents
@@ -211,16 +219,19 @@ the ICA framework have been proposed, notable among them are
 short-term and spectral domain ICA which allow for separating
 underdetermined systems (fewer observed signals than sources). 
 
-In single source or single sensor we review two approaches proposed by
-Roweis (REF). The common denominator behind these methods is the use
-of latent variables representing the sources. The first approach uses
+In single channel BSS (Chapter \ref{ss_bss}) we review two approaches proposed by
+Roweis. The common denominator behind these methods is the use
+of latent variables representing the sources. The first approach (REF) uses
 represents each sources by a Gaussian mixture model (GMM) where each component
 of the GMM is an multi-dimensional Gaussian distribution over a
-discretized short-term spectrum. A theoretical weakness of this
-approach is that it does not account for the time-dynamics of the
-signals. Roweis therefore proposes an extended hidden markov approach
-to this model where the latent variables follow a stochastic process. 
+discretized short-term spectrum. 
 
+A theoretical weakness of this
+approach is that it does not account for the time-dynamics of the
+signals. Roweis (REF) therefore proposes an extended hidden markov approach
+to this model where the latent variables follow a stochastic process. 
+The final part of Chapter \ref{ss_bss} provides a brief \emph{theoretical} introduction
+to Hidden Markov Models and how it can be applied to blind source separation.
 
 
 
@@ -269,6 +280,82 @@ The organization of this study is as follows. Section
 process, which is further documented by the underlying research
 protocol given in Appendix \ref{protocol}. Section \ref{overview} is
 a short description of the different techniques and methodologies found, summarised in section \ref{conclusion}.
+
+
+
+
+\section{Review Protocol}
+
+\subsection{Research Agenda}\label{protocol}
+The aim of this study is to systematically review current technology
+for blind source separation (BSS), with particular emphasis on the
+particular subproblem of single channel blind source separation
+(SCBSS); that is, the recovery of several source signals from one observed signals.
+
+
+\subsection{Background}
+The blind source separation problem consists transforming a set of observed signals that has undergone some particular mixing process back to the original unobserved signals. The “blind” part of the problem refers to the fact that the nature of the mixing process is unknown. From original research on the blind source separation problem, focus has shifted from the case where with as many, or more recording channels than original sources, to the case of fewer channels than original sources. An important subproblem that we wish to focus on is where we have only one recording and attempt to recover multiple sources.
+
+Our approach is two-fold: firstly we wish to look at studies about the performance of current single channel separation methods. Secondly, we wish to gain a broader overview over the state of research on BSS.
+
+\subsection{Research Questions}
+\begin{enumerate}
+  \item What are the different variations on the blind source
+    separation problem, in particular as pertains to audio data.
+  \item Which methodologies and algorithms are applied to the
+    different variations of the blind source separation problem as identified in Question 1.
+  \item What are the theoretical properties of the techniques
+    identified in Question 2, and  what assumptions do they make about the nature of the sources and the mixing process?
+  \item What empirical evidence is there to document the performance
+    of the techniques identified in Question 2 as applied to the
+    problems identified in Question 1?
+\end{enumerate}
+
+
+
+\subsection{Search Strategy}
+In reviewing the BSS literature we conduct a search of the below databases based on a set of keywords listed below. To filter the results we introduce a set of criteria to judge the relevance and quality of the results.
+
+\subsubsection{Databases}
+
+\begin{itemize}
+ \item \href{www.springerlink.com}{SpringerLink}
+ \item \href {www.citeseerx}{CiteSeerX}
+ \item \href{scholar.google.com}{Google Scholar}
+\end{itemize}
+
+\subsubsection{List of Search Terms}
+
+\emph{blind source separation, single channel blind source separation, single mixture blind source separation, hidden markov blind source, single microphone blind source separation, blind source separation review, blind source separation survey, pca blind source separation, ica blind source separation, principal component analysis blind source separation, independent component analysis blind source separation}.
+
+
+
+\subsubsection{Inclusion and Quality Criteria}
+We wish to study how various methods and/or approaches by which blind source problem is solved, which constraints are imposed by these methods, and how well a BSS system based on these ideas perform on real-life data. To filter out the most important studies to this end, we adopt the following criteria.
+
+\begin{description}
+\item Inclusion Criteria
+  \begin{enumerate}
+  \item The main concern of the study is the BSS
+    problem.
+  \item The algorithmic design decisions in the study must be justified.
+  \item The study describes a reproducible algorithm/method.
+  \item The study focuses on blind source separation of auditory signals.
+  \end{enumerate}
+\item Quality Criteria
+  \begin{enumerate}
+  \item The study presents empirical results.
+  \item More recent studies are preferred.
+  \item The described test data set is
+    reproducible.
+  \item The study should present novel
+    theoretical approaches/methodologies OR
+    empirical results about previously known methods. 
+  \item Literature reviews should discuss single channel blind source separation.
+  \item The study should describe which other algorithms/methods the proposed solution can be compared with and the performance measure used in comparison.
+  \end{enumerate}
+\end{description}
+
 
 
 \section{Literature Review Process}\label{reviewProcess} % Anders
@@ -495,78 +582,6 @@ algorithms; one important example here being hidden markov models
 (HMMs). This is a very flexible approach to BSS as it allows for
 non-stationary mixing, and relaxes many of the stringent assumptions
 of classical ICA. 
-
-
-
-\section{Research Agenda}\label{protocol}
-The aim of this study is to systematically review current technology
-for blind source separation (BSS), with particular emphasis on the
-particular subproblem of single channel blind source separation
-(SCBSS); that is, the recovery of several source signals from one observed signals.
-
-
-\subsection{Background}
-The blind source separation problem consists transforming a set of observed signals that has undergone some particular mixing process back to the original unobserved signals. The “blind” part of the problem refers to the fact that the nature of the mixing process is unknown. From original research on the blind source separation problem, focus has shifted from the case where with as many, or more recording channels than original sources, to the case of fewer channels than original sources. An important subproblem that we wish to focus on is where we have only one recording and attempt to recover multiple sources.
-
-Our approach is two-fold: firstly we wish to look at studies about the performance of current single channel separation methods. Secondly, we wish to gain a broader overview over the state of research on BSS.
-
-\subsection{Research Questions}
-\begin{enumerate}
-  \item What are the different variations on the blind source
-    separation problem, in particular as pertains to audio data.
-  \item Which methodologies and algorithms are applied to the
-    different variations of the blind source separation problem as identified in Question 1.
-  \item What are the theoretical properties of the techniques
-    identified in Question 2, and  what assumptions do they make about the nature of the sources and the mixing process?
-  \item What empirical evidence is there to document the performance
-    of the techniques identified in Question 2 as applied to the
-    problems identified in Question 1?
-\end{enumerate}
-
-
-
-\subsection{Search Strategy}
-In reviewing the BSS literature we conduct a search of the below databases based on a set of keywords listed below. To filter the results we introduce a set of criteria to judge the relevance and quality of the results.
-
-\subsubsection{Databases}
-
-\begin{itemize}
- \item \href{www.springerlink.com}{SpringerLink}
- \item \href {www.citeseerx}{CiteSeerX}
- \item \href{scholar.google.com}{Google Scholar}
-\end{itemize}
-
-\subsubsection{List of Search Terms}
-
-\emph{blind source separation, single channel blind source separation, single mixture blind source separation, hidden markov blind source, single microphone blind source separation, blind source separation review, blind source separation survey, pca blind source separation, ica blind source separation, principal component analysis blind source separation, independent component analysis blind source separation}.
-
-
-
-\subsubsection{Inclusion and Quality Criteria}
-We wish to study how various methods and/or approaches by which blind source problem is solved, which constraints are imposed by these methods, and how well a BSS system based on these ideas perform on real-life data. To filter out the most important studies to this end, we adopt the following criteria.
-
-\begin{description}
-\item Inclusion Criteria
-  \begin{enumerate}
-  \item The main concern of the study is the BSS
-    problem.
-  \item The algorithmic design decisions in the study must be justified.
-  \item The study describes a reproducible algorithm/method.
-  \item The study focuses on blind source separation of auditory signals.
-  \end{enumerate}
-\item Quality Criteria
-  \begin{enumerate}
-  \item The study presents empirical results.
-  \item More recent studies are preferred.
-  \item The described test data set is
-    reproducible.
-  \item The study should present novel
-    theoretical approaches/methodologies OR
-    empirical results about previously known methods. 
-  \item Literature reviews should discuss single channel blind source separation.
-  \item The study should describe which other algorithms/methods the proposed solution can be compared with and the performance measure used in comparison.
-  \end{enumerate}
-\end{description}
 
 
 
@@ -807,15 +822,11 @@ counterclockwise direction.
 
 The lower part of Figure \ref{pca_time_series} shows the recovered
 signal\footnote{The estimated unmixing matrix here is $\hat{W} =
-  \hat{A}^{-1} = \begin{bmatrix} .7071 & .7071 \\ -.7071 &
-    .7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for
-  the value of $\alpha$ above.}.
-
-
-\begin{itemize}
-  \item Example where it works - why
-  \item Example where it fails - why
-\end{itemize}
+\hat{A}^{-1} = \begin{bmatrix} .7071 & .7071 \\ -.7071 &
+.7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for
+the value of $\alpha$ above.}. The sequence of Figures \ref{pca_time_series} - \ref{pca_project}
+illustrates this example where we are able to successfully recover the
+mixing matrix using PCA.
 
 
 
@@ -828,7 +839,7 @@ signal\footnote{The estimated unmixing matrix here is $\hat{W} =
   \label{pca_time_series}
 \end{figure}
 
-\begin{figure}
+\begin{figure}  \label{pca_eigs}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/pca_data_eigs}
@@ -836,16 +847,13 @@ signal\footnote{The estimated unmixing matrix here is $\hat{W} =
   \caption{Standardized data points vs eigenvectors.}
 \end{figure}
 
-\begin{figure}
+\begin{figure}\label{pca_project}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/pca_eig_projection}
   \hrule
   \caption{Standardized data projected onto eigenvectors.}
 \end{figure}
-
-
-
 
 
 \chapter{Independent Component Analysis}\label{ica}
@@ -1038,8 +1046,6 @@ as discussed above, provides little information about the sources.
 
 \section{Maximum Likelihood ICA in the Linear Mixing Model}\label{linear_model_ica}
 
-INTRO BS....
-
 Consider the value of a single source $s_i$ at a given instant in time, and
 let $p_s(s_i)$ be the probability density function for source $i$. Assuming the 
 sources are independent the joint distribution of all the $n$ sources is given 
@@ -1164,8 +1170,16 @@ For a more sophisticated ICA algorithm, we refer to Hyvarinen's FastICA [REF].
 
 \section{BSS by ICA}\label{BSS_ICA}
 
-Here we also observe that the sign of the original speech signal is reversed in the 
-bottom right recovered signal
+Before concluding this section we consider a simple demonstration of ICA as applied to the toy problem
+of separating sine waves of different frequencies as studied in the PCA section, and subsequently a more 
+realistic example of separating a speach signal from a music track.
+
+Figure \ref{ica_fig1} illustrates the first problem. We see that ICA is able to successfully recover each source
+from the mixture (middle graph). This figure also shows the sign reversal issue mentioned earlier as the sign
+of the blue wave is clearly reversed. Figure \ref{ica_fig2} shows the mixing of the voice signal (a voice
+counting from one to ten) and the music track. The mixing here is a time-independent superposition in the
+time domain. We see that while the sign is also reversed in this case, ICA is able to acheive a good recovery
+of the original signal.
 
 
 \begin{figure}\label{ica_fig1}
@@ -1411,10 +1425,32 @@ described in appendix [[[REF]]].
 
 \subsection{Estimation Procedure - The EM Algorithm}
 
-TODO!
-%%%% GENERELT BS OM HVORFOR DET ER VANSKELIG A ESTIMERE MED LATENTE VARIABLER
-% + ALGORITME
+REFERER TIL RUSSEL/NORVIG
 
+Each source is modeled as a gaussian mixture model where the model consists of different components. 
+These components attempt to capture statistical properties of the different sounds the source is able 
+to produce. However, we do not know these latent components, hence we cannot apply the standard maximum
+likelihood approach. Instead we assume a given \emph{structure} in terms of the number of latent variables
+in our model and then iteratively seek the best parameters by the following steps which are repeated until
+convergence.
+
+The expectation (E) step computes the expected log likelihood under the current parameter estimate $\theta_n$ given the observed data $X$ and the conditional distribution of the latent variable $Z$ given our current estimates
+and the observed variables.
+
+\begin{equation}
+  E = \mathbb{E}l(\theta_n,X, Z)
+\end{equation}
+
+The maximization step subsequently computes the parameter to maximize the quantity $E$:
+
+\begin{equation}
+  \theta_{n+1} = \arg \max_\theta E(\theta|Z,X)
+\end{equation}
+
+In our model, the observed variable of course corresponds to columns of the spectrogram, and each source
+is represented by a single GMM. The parameters we are interested in estimating are the parameters of the
+multinomial distribution selecting between the components of a given GMM and the parameters of each of
+the gaussians corresponding to the components.
 
 \subsection{A Generic Inference Procedure}
 
@@ -1549,6 +1585,62 @@ for t = 1:T
 
 \section{Factorial Hidden Markov Model for BSS}\label{fhmm}
 
+In this section we discuss how we can account for the temporal dynamics of 
+auditory signals by means of a factoral hidden markov model (FHMM). The FHMM framework is similar
+to the latent variable model discussed earlier in that we can view the latent variable
+model as a special case of a FHMM where transition probabilities are uniform between all states.
+
+\section{Hidden Markov Models}\label{hmm_appendix}
+(REF Russel/Norvig)
+A hidden markov model (HMM) is a probabilistic model relating two sequences of
+discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
+$\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
+$\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
+$\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
+is some causal relationship whereby the hidden variable affects the
+observable, but this does not need be the case. 
+
+A HMM consists of two probabilistic statement; the \emph{transition}
+model:
+
+\begin{equation}
+\mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
+\end{equation}
+
+
+and the \emph{sensor} or \emph{observation} model:
+
+\begin{equation}
+\mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+S_1, X_1)
+\end{equation}
+
+
+ The order of a markov model is the number of realizations
+of $\mathcal{S}$ conditioned on in the transition model. In order to
+make HMMs computationally tractable, we often operate with 1st order
+markov models:
+
+\begin{equation}\label{1st_order_markov}
+  \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
+\end{equation}
+
+This can be stated as as ``the future being conditionally independent of
+the past given the present''. Another common simplification is known as the 
+\emph{markov sensor model assumption}:
+
+
+\begin{equation}
+  \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
+  S_1, X_1) = \mathbb{P}(X_t|S_t)  
+\end{equation}
+
+The sensor markov assumption states that the sensor is independent of
+everything else given the current value of the hidden variable.
+
+
+\subsection{A HMM Blind Source Separation Framework}
+
 We will now describe the factoral HMM for blind source separation as
 put forward by Roweis in a two signal setting. We adopt the following
 notation: for each timestep $t \in \{1,2,3,...,T\}$, $\mathbf{X}_t$
@@ -1603,8 +1695,6 @@ state $i$. The pair $(\{\mathbf{\mu}_i\}, \Sigma)$ then forms the initial
 parametrization of the emissions model.
 
 
-
-
 \subsection{Separation}
 
 Next, consider the problem of recovering the orignial
@@ -1629,15 +1719,14 @@ underlying HMMs with an additive gaussian noise:
   \mathbf{Y}(t) = \Phi(\{\mathbf{X}_1(t), \mathbf{X}_2(t)\}^{+}, \Sigma)
 \end{equation}
 
-For a further discussion on the rationale behind the log-max
-approximation, see [REFERANSER].
-
-
+We recognize this as the logmax approximation discussed in Section \ref{logmax}.
+The key augmentation to the the latent variable MAXVQ model is therefore the addition
+of a transition model. 
 
 
 \section{Results}\label{ssbss_results}
 
-To illustrate the methods outlined in this chapter, we return to our base case signals consisting
+To illustrate the MAXVQ method discussed in this chapter, we return to our base case signals consisting
 of a voice counting from one to ten in English, and a music clip, both lasting approximately 8 seconds as
 seen in figure \ref{music_count}. The sampling frequency for both signals is $16,000$Hz.
 
@@ -1743,52 +1832,7 @@ differentiate between different methods will in practice require \emph{listening
 actual implementations on a given test set. A challenge to future research would therefore be to construct
 a framework for doing comparative studies to rigorously determine the relative merits of different methods.
 
-%% \section{Hidden Markov Models}\label{hmm_appendix}
-%% %% Ref Norvig
-%% A hidden markov model (HMM) is a probabilistic model relating two sequences of
-%% discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
-%% $\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
-%% $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
-%% $\mathcal{X}$ as the \emph{observed} variable. Often, we assume there
-%% is some causal relationship whereby the hidden variable affects the
-%% observable, but this does not need be the case. 
 
-%% A HMM consists of two probabilistic statement; the \emph{transition}
-%% model:
-
-%% \begin{equation}
-%% \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)
-%% \end{equation}
-
-
-%% and the \emph{sensor} or \emph{observation} model:
-
-%% \begin{equation}
-%% \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
-%% S_1, X_1)
-%% \end{equation}
-
-
-%%  The order of a markov model is the number of realizations
-%% of $\mathcal{S}$ conditioned on in the transition model. In order to
-%% make HMMs computationally tractable, we often operate with 1st order
-%% markov models:
-
-%% \begin{equation}\label{1st_order_markov}
-%%   \mathbb{P}(S_t|S_{t-1}, S_{t-2},...,S_1)  =  \mathbb{P}(S_t|S_{t-1})
-%% \end{equation}
-
-%% This can be stated as as ``the future being conditionally independent of
-%% the past given the present''. Another common simplification is known as the \emph{markov sensor model assumption}:
-
-
-%% \begin{equation}
-%%   \mathbb{P}(X_t|S_t, S_{t-1}, X_{t-1}, ...,
-%%   S_1, X_1) = \mathbb{P}(X_t|S_t)  
-%% \end{equation}
-
-%% The sensor markov assumption states that the sensor is independent of
-%% everything else given the current value of the hidden variable.
 
 \input{./LiteratureReview/bibl.tex}
 
