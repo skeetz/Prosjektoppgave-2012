@@ -22,7 +22,7 @@
 \BOOKMARK [0][-]{chapter.4}{Independent Component Analysis}{}
 \BOOKMARK [1][-]{section.4.1}{Equivalent Statements of ICA}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.1.1}{Kurtosis Maximization}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.2}{Maximum Mutual Information}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{Minimum Mutual Information}{section.4.1}
 \BOOKMARK [1][-]{section.4.2}{Limitations of the ICA Model}{chapter.4}
 \BOOKMARK [1][-]{section.4.3}{Maximum Likelihood ICA in the Linear Mixing Model}{chapter.4}
 \BOOKMARK [2][-]{subsection.4.3.1}{A Gradient Descent Rule for ICA}{section.4.3}
@@ -40,10 +40,4 @@
 \BOOKMARK [2][-]{subsection.5.4.1}{Initialization}{section.5.4}
 \BOOKMARK [2][-]{subsection.5.4.2}{Separation}{section.5.4}
 \BOOKMARK [1][-]{section.5.5}{Results}{chapter.5}
-\BOOKMARK [0][-]{chapter.6}{Conclusion}{}
-\BOOKMARK [0][-]{appendix.A}{Mathematical Concepts}{}
-\BOOKMARK [1][-]{section.A.1}{Linear Algebra}{appendix.A}
-\BOOKMARK [1][-]{section.A.2}{Statistics and Optimization}{appendix.A}
-\BOOKMARK [2][-]{subsection.A.2.1}{Maximum Likelihood Estimation}{section.A.2}
-\BOOKMARK [2][-]{subsection.A.2.2}{Mathematical Optimization}{section.A.2}
-\BOOKMARK [1][-]{section.A.3}{Spectral Analysis}{appendix.A}
+\BOOKMARK [0][-]{chapter.6}{Conclusion and Further Study}{}

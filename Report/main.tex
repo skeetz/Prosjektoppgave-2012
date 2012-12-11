@@ -100,14 +100,15 @@ different classification algorithms you are able to follow along that
 conversation because you know what type of information content such a
 discussion should have. By  means of knowing such content, the brain
 complements the auditory system in two ways. Firstly, you
-can effortlessly ignore those behind you talking about the last
-episode of Paradise Hotel, and secondly, the brain assists the
+can effortlessly ignore those behind you talking something completely
+different, and secondly, the brain assists the
 auditory system by filling in ``blanks'' if there is some word you
 don't hear. Finally, we also use visual clues as a complement to
-auditory functions\footnote{The best example of this is those with
-  hearing impairments being able to read lips.}. 
+auditory functions\footnote{The good example of this is how people
+ with hearing impairments are able follow conversations by ``reading'' lips.}. 
 
-Given the vast amount of information we adopt as complements to the auditory system, it is perhaps no wonder that implementing this
+Given the vast amount of information we adopt as complements to the auditory system, 
+it is perhaps no wonder that implementing this
 iltering operation separately in a computer system is challenging. In
 this report we will look at some approaches to this problem. In the
 remainder of this chapter, we will state the blind source separation
@@ -219,9 +220,6 @@ discretized short-term spectrum. A theoretical weakness of this
 approach is that it does not account for the time-dynamics of the
 signals. Roweis therefore proposes an extended hidden markov approach
 to this model where the latent variables follow a stochastic process. 
-
-
-
 
 
 
@@ -394,14 +392,21 @@ as common onset, pitch, timbre and so forth.
 
 
 \subsection{Hidden Markov Model Decomposition of Speech and Noise}
-One of the earlier examples of using hidden Markov models for speech separation, are presented by A.P. Varga and R.K. Moore \cite{VargaHMMDecomp}. 
-The approach described in this paper attempts to obtain the best estimate likelihood of an input observation conditioned on a particular state of the model and given the knowledge available about the contaminating noise. This is achieved with the use of parallel hidden Markov models, one for each of the components in the mixture signal to be decomposed. Given a two-component signal, the output generated from the model can be modelled as:
+One of the earlier examples of using hidden Markov models for speech separation,
+ are presented by A.P. Varga and R.K. Moore \cite{VargaHMMDecomp}. 
+The approach described in this paper attempts to obtain the best estimate 
+likelihood of an input observation conditioned on a particular state of the 
+model and given the knowledge available about the contaminating noise. This 
+is achieved with the use of parallel hidden Markov models, one for each of 
+the components in the mixture signal to be decomposed. Given a two-component 
+signal, the output generated from the model can be modelled as:
 
 \begin{equation}\label{vargasEqn1}
 Observational Probability = P(Observation|Hmm_1 \otimes Hmm_2)
 \end{equation}
 
-Recognition is carried out by extending the normal Viterbi equation to include the components desired to be decomposed:
+Recognition is carried out by extending the normal Viterbi equation to include 
+the components desired to be decomposed:
 
 
 \begin{equation}\label{vargasEqn2}
@@ -409,8 +414,11 @@ P_t(i,j) = \max_{u,v} P_{t-1} (u, v) a1_{u,i} a2_{v,j} b1_i \otimes b2_j (O_t)  
 \end{equation}
 
 
-By using this form of the Viterbi algorithm, this framework is able to simultaneously recognise different components of a mixture. It should be noted that this approach may be computationally difficult as the state search space grows in dimension for each component added.
-Utilizing the fact that components rarely overlap in a certain frequency band, evaluation of the observation probability is approximated by:
+By using this form of the Viterbi algorithm, this framework is able to simultaneously 
+recognise different components of a mixture. It should be noted that this approach may 
+be computationally difficult as the state search space grows in dimension for each component added.
+Utilizing the fact that components rarely overlap in a certain frequency band, evaluation 
+of the observation probability is approximated by:
 
 \begin{equation}\label{vargasEqn3}
 \begin{array}{lcl}
@@ -420,9 +428,17 @@ b1_i \otimes b2_j(O_t) &=&  P(max(O1_t, O2_t|i,j)) \\
 \end{equation}
 
 
-Initialization of the system consisted of supervised training on components, here being spoken numbers and noise. Utilizing a previously published algorithm for connected word recognition, the system was able to correctly classify speech contaminated with noise in the range -21 to + 15 dB. 
-\footnotetext{$P_t(i, j)$ is the probability at time $t$ of the first component being in state $i$ and the second component in state $j$. $a1_{u,i}$ is the tranitional probability for the first component, likewise $a2_{v,j}$ is the transitional probability for the second component. $b1_i \otimes b2_j (O_t)$ is the observation probability}
-\footnotetext{$C(O_t, \mu, \sigma)$ is the cumulative probability of all observation levels less than $O_t$ coming from a Normal distribution with mean $\mu$ and variance $\sigma^2$. Similarly $N(O_t, \mu, \sigma^2)$ is the probability of observation $O_t$ coming from a Normal distribution with mean $\mu$ and variance $\sigma^2$.}
+Initialization of the system consisted of supervised training on components, here being 
+spoken numbers and noise. Utilizing a previously published algorithm for connected word recognition, 
+the system was able to correctly classify speech contaminated with noise in the range -21 to + 15 dB. 
+\footnotetext{$P_t(i, j)$ is the probability at time $t$ of the first component being in state $i$ and 
+the second component in state $j$. $a1_{u,i}$ is the tranitional probability for the first component, 
+likewise $a2_{v,j}$ is the transitional probability for the second component. $b1_i \otimes b2_j (O_t)$ 
+is the observation probability}
+\footnotetext{$C(O_t, \mu, \sigma)$ is the cumulative probability of all observation levels less than $O_t$ 
+coming from a Normal distribution with mean $\mu$ and variance $\sigma^2$. Similarly $N(O_t, \mu, \sigma^2)$ 
+is the probability of observation $O_t$ coming from a Normal distribution with mean $\mu$ and variance 
+$\sigma^2$.}
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
@@ -927,7 +943,34 @@ Kurtosis maximization is of the most common approaches to ICA and is discussed
 in greater detail in REFERANSER!!!.
 
 
-\subsection{Maximum Mutual Information}
+\subsection{Minimum Mutual Information}
+
+The differential entropy $H$ of a random variable $Y$ with density $g(y)$ is given by:
+\begin{equation}
+  H(Y) = - \int g(y) \log g(y) dy
+\end{equation}
+
+The mutual information, $I(Y)$, between the components of the the random vector $Y$ is a natural measure of dependence:
+
+\begin{equation}
+  I(Y) = \sum_{j=1}^{p} H(Y_{j}) - H(Y)
+\end{equation}
+
+The sum $I(Y)$ is the \emph{Kullback-Leibler distance} between the density $g(y)$ of $Y$ and its independence 
+version $\prod_{j=1}^{p} g_{j}(y_{j})$, where $g_{j}(y_{j})$ is the marginal density of $Y_{j}$. The ICA of a random 
+vector $\mathbf x$ can be defined as a invertible transformation where the matrix $\mathbf A$ is determined 
+so that the mutual information of the transformed components $s_i$ is minimized.
+An important property of mutual information is that if we have an invertible linear transformation 
+$y = \mathbf Ax$ then:
+
+\begin{equation}\label{determinant}
+I(Y) = \sum_{j=1}^{p} H(y_{j}) - H(x) - \log | det \mathbf A |
+\end{equation}
+
+Determining an $\mathbf A$ to minimize $I(Y) = I(\mathbf A^T \mathbf x)$ is the looks for the orthogonal 
+transformation that maximizes independence between its components $s_i$. With respect to 
+(Equation \ref{determinant}), this is equivalent to minimizing the sum of entropies of the seperate 
+components of $Y$ which maximizes their depature from Gaussianity.
 
 
 
@@ -1426,7 +1469,7 @@ maximum over all sources at the given frequency band/timestep pair and zero othe
 
 
 
-\subsection{An Improved Pruning Method for MAXVQ Inference}
+\subsection{An Improved Pruning Method for MAXVQ Inference}\label{prune}
 
 The purpose of the inference part of the model is computing the most
 likely sequence of source/gmm component combinations given the
@@ -1598,89 +1641,112 @@ approximation, see [REFERANSER].
 
 \section{Results}\label{ssbss_results}
 
+To illustrate the methods outlined in this chapter, we return to our base case signals consisting
+of a voice counting from one to ten in English, and a music clip, both lasting approximately 8 seconds as
+seen in figure \ref{music_count}. The sampling frequency for both signals is $16,000$Hz.
+
+\begin{figure}\label{music_count}
+  \centering
+  \hrule
+  \includegraphics[width = .8\textwidth]{Figures/music_count}
+  \hrule
+  \caption{Time domain plot of speech (top) and music (bottom).}
+\end{figure}
+
+In our experiment in this section we have split the data in half (one training and one test set) 
+The is are preprocessed by constructing
+one spectrogram per source with Hamming windows of length 512 so that the final matrix of spectral intensities
+has $257$ frequency bands, with $4539$ observations each.
+
+From visual inspection of the spectrograms and the temporal plots, it seems that the voice signal is ``richer''
+than the music, and that it probably needs more GMM components to be represented properly. We therefore fitted
+a model with $256$ components for the voice signal and $128$ for the music\footnote{In Roweis, an experiment is 
+conducted where a speech GMM is trained with $512$ components and a ``noise'' GMM has only $32$.}. 
 
 
-\chapter{Conclusion}
+\begin{figure}\label{spect_testset}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/spectrograms_test}
+  \hrule
+  \caption{Spectrograms for test data.}
+\end{figure}
 
-todo.
+Top to bottom, Figure \ref{spect_testset} shows spectrograms of the two sources of test set prior to mixing,
+and the spectrogram of the mixture from a linear time domain superposition of the two sources in 
+the lower spectrogram. 
+We see that the second and third utteance in the lowermost spectrogram has is almost ``gone'' due to the 
+contamination from the music, whereas we would expect the algorithm to perform reasonably well in recovering
+the other utterances which are still quite visible in the mixtures. 
 
-\appendix
+Figures \ref{voice_result}-\ref{spec} shows the recovered voice and music signals for the mixture in 
+the lowermost plot in Figure \ref{spect_testset}. While it is hard to appreciate the performance of the 
+of the algorithm juding from just a set of spectrograms, we can distinguish some important features that 
+are apparent. 
 
-
-\chapter{Mathematical Concepts}
-
-In this appendix we will provide a brief background on some of the mathematical notions that are central to understanding the methods used in this report. 
-
-\section{Linear Algebra}
-
-% the easy stuff
-In this section we will define a few important concepts that are
-necessary. These concepts are particularly important for understanding
-PCA, but are also relevant in the analysis of markov models. With
-stationary transition probabilities, the steady state distribution of
-the system is the solution to the eigenvector-eigenvalue problem.
-
-\subsubsection{The Eigenvector - Eigenvalue Problem}
-
-\subsubsection{Singular Value Decomposition}
-
-
-\section{Statistics and Optimization}
-
-% ML-estimation + gradient descent
-A large portion of machine learning relies on statistical
-methods; the methods considered in this report being no exception. As the learning problems having relevance in practical life are often
-far too complex to describe by analytic formulae, we therefore often
-need mathematical methods to find models that have the best fit to the
-observed data. 
-
-In this section, we therefore consider one very
-important method for finding ``optimal'' parameters in a given model;
-the maximum likelihood method which is presented in Section
-\ref{ml-estimation}. We then proceed to show how to actually solve
-the resulting maximzation in Section \ref{optimization}.
+\begin{itemize}
+\item The second and third utterance of the speaker which was close to invisible in the mixture spectrogram is now visible in Figure \ref{recovered_voice}.
+\item In the recovered voice spectrogram, we still see the markings of the most distinct utterances (1,3,5).  
+\end{itemize}
 
 
-\subsection{Maximum Likelihood Estimation}\label{ml-estimation}
-
-ML estimation is a method for determining the parameters of a
-statistical model by setting the parameters so as to maximize the
-\emph{likelihood} of observing the actual data under the given
-model. Denoting $f(\boldsymbol{X}|\boldsymbol{\Theta})$ the
-probability distribution of $\boldsymbol{X} = \{x_1,x_2,...,x_n\}$
-with parameters $\boldsymbol{\Theta} = \{\theta_1, \theta_2, ...,
-\theta_m\}$, the maximum likelihood estimate of $\Theta$ solves Equation\ref{ml-generic}
-
-\begin{equation}
-  \label{ml-generic}
-  \arg \max_\Theta f(\boldsymbol{X}|\boldsymbol{\Theta})
-\end{equation}
-
-An important case is if the $x_i$ are i.i.d., where the joint density
-is the product of the marginal densities. This means we can write the
-likelihood function $f$ as Equation \ref{ml-iid}.
-
-\begin{equation}  
-  \label{ml-iid}
-  f(\boldsymbol{X}|\boldsymbol{\Theta}) = \prod_{i = 1}^n f(x_i|\Theta)
-\end{equation}
-
-The solution to an optimzation problem is the same under any monotone transformation. Therefore it is often times useful to deal with the log-likelihood function instead of $f$ directly.
 
 
-\subsection{Mathematical Optimization}\label{optimization}
+\begin{figure}\label{voice_result}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/recovered_voice}
+  \hrule
+  \caption{Spectrogram for recovered voice signal.}
+\end{figure}
+
+\begin{figure}\label{music_result}
+  \centering
+  \hrule
+  \includegraphics[width = .9\textwidth]{Figures/recovered_music}
+  \hrule
+  \caption{Spectrogram for recovered music signal.}
+\end{figure}
 
 
-\subsubsection{Gradient Descent}
 
 
-\section{Spectral Analysis}
+
+Another point worthwhile mentioning is the complexity of this method. Whereas ICA on the same signals completes
+in a matter of seconds, the MAXVQ algorithm takes several minutes. That being said, there is a clear potential
+for increasing MAXVQ performance through parallelization as each time step of the inference algorithm is 
+processed independently.
 
 
 
 
 
 
+\chapter{Conclusion and Further Study}
+
+This report has studied three conceptually different approaches to blind source separation. While conventional 
+\emph{principal component analysis} is arguably the simplest and most well-understood method, it is also a useful
+background in understanding \emph{independent component analysis} as both these algorithms perform separation
+through a de-correlating projection. ICA is also a well-established technique, but there is still on-going
+research in developing new ICA-based methods, for instance in handling underdetermined BSS. 
+
+Factoral blind source separation models are a much less developed research area than ICA. An important reason 
+for this has been computational complexity. However, improvements made to these methods such as the pruning
+method discussed in Section \ref{prune} along with hardware improvements make these models more tractable. 
+
+
+This report has attention to the assumptions behind the methods discussed in this paper, and how
+one would expect these assumptions to impact performance in actual separation tasks. An important extension
+of this would be constructing precise measures of such performance. The common format for reporting results 
+on separation tasks is through visual representations, either spectrograms or time domain visualizations. This
+does of course provide some information but, it is still hard to determine quality through visually inspecting
+the differences between an unmixed and a recovered signal - in particular if we are to compare different 
+methods using different test data.
+
+Since so little research has been done in constructing appropriate performance measures, to be able to 
+differentiate between different methods will in practice require \emph{listening} to the results of 
+actual implementations on a given test set. A challenge to future research would therefore be to construct
+a framework for doing comparative studies to rigorously determine the relative merits of different methods.
 
 %% \section{Hidden Markov Models}\label{hmm_appendix}
 %% %% Ref Norvig

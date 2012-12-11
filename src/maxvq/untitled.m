@@ -5,7 +5,7 @@
 x1 =x1(1:109936/2); % set vectors to equal length
 x2 =x2(1:109936/2);
 
-mix = .7*x1 + .3*x2;
+mix = .5*x1 + .5*x2;
 
 
 window = 512;
@@ -37,8 +37,8 @@ xlabel('Time (Seconds)'); ylabel('Hz'); title('mixed signal')
 
 %% gmm estimation
 % Roweis 512 components for voice, 32 for noise
-gmm1 = gmdistribution.fit(-log(P1)', 128, 'SharedCov', true, 'CovType', 'diagonal', 'Regularize', 1);
-gmm2 = gmdistribution.fit(-log(P2)', 32, 'SharedCov', true, 'CovType', 'diagonal', 'Regularize', 1);
+gmm1 = gmdistribution.fit(-log(P1)', 256, 'SharedCov', true, 'CovType', 'diagonal', 'Regularize', 1);
+gmm2 = gmdistribution.fit(-log(P2)', 128, 'SharedCov', true, 'CovType', 'diagonal', 'Regularize', 1);
 
 gmms = cell(2,1);
 gmms{1} = gmm1;
@@ -86,17 +86,23 @@ end
 rec1 = log10(Pmix).*masks{1};
 rec2 = log10(Pmix).*masks{2};
 
-for i = 1:size(rec1, 2)
-    rec1(masks{1}(:,i) == 0,i) = gmms{1}.mu(maxidx(1,i), masks{1}(:,i) == 0);
-    rec2(masks{2}(:,i) == 0,i) = gmms{2}.mu(maxidx(2,i), masks{2}(:,i) == 0);
-end
+% for i = 1:size(rec1, 2)
+%     rec1(masks{1}(:,i) == 0,i) = gmms{1}.mu(maxidx(1,i), masks{1}(:,i) == 0);
+%     rec2(masks{2}(:,i) == 0,i) = gmms{2}.mu(maxidx(2,i), masks{2}(:,i) == 0);
+% end
 
 
 
 
-figure; surf(Tmix, Fmix, rec1, 'edgecolor', 'none'); axis tight;shading interp
+figure; surf(Tmix, Fmix, (log10(Pmix)-rec1), 'edgecolor', 'none'); axis tight;shading interp
 view(0,90);
 xlabel('Time (Seconds)'); ylabel('Hz'); title('recovered 1')
-figure; surf(Tmix, Fmix, rec2, 'edgecolor', 'none'); axis tight;shading interp
+
+figure; surf(Tmix, Fmix, (log10(Pmix)-rec2), 'edgecolor', 'none'); axis tight;shading interp
+view(0,90);
+xlabel('Time (Seconds)'); ylabel('Hz'); title('recovered 2')
+
+%%
+figure; surf(Tmix, Fmix, log10(Pmix), 'edgecolor', 'none'); axis tight;shading interp
 view(0,90);
 xlabel('Time (Seconds)'); ylabel('Hz'); title('recovered 2')
