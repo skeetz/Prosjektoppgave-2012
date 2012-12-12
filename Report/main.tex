@@ -802,8 +802,8 @@ statement: \texttt{[u,S,v] = svd(X)}.}.
 
 We will not go into the derivation of this result as SVD is covered
 in most textbooks on linear algebra or basic numerical
-mathematics (see for instance \cite{ESL}). Rather, we will proceed to show how PCA can be applied to
-BSS, and what assumptions it requires us to make about the data.
+mathematics (see for instance \cite{ESL}). Rather, we will proceed to illustrate an
+application of PCA to BSS.
 
 
 
@@ -850,7 +850,10 @@ signal\footnote{The estimated unmixing matrix here is $\hat{W} =
 .7071 \end{bmatrix}$ which is, as expected, the inverse of $A$ for
 the value of $\alpha$ above.}. The sequence of Figures \ref{pca_time_series} - \ref{pca_project}
 illustrates this example where we are able to successfully recover the
-mixing matrix using PCA.
+mixing matrix using PCA. Figure \ref{pca_data_eigs} shows the original
+data plottet against the two first eigenvectors, and looking at figure
+\ref{pca_eig_projection} we see that after PCA, the datapoints have been
+rotated by projection onto these eigenvectors.
 
 
 
