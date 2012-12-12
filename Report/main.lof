@@ -15,7 +15,7 @@
 \addvspace {10\p@ }
 \contentsline {xchapter}{Independent Component Analysis}{26}{chapter.4}
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Pseudocode for ML ICA by stochastic block gradient descent.\relax }}{31}{figure.caption.16}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{32}{figure.caption.17}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{33}{figure.caption.17}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. \relax }}{33}{figure.caption.18}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Single Sensor Blind Source Separation}{34}{chapter.5}
@@ -29,4 +29,4 @@
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Spectrogram for recovered voice signal.\relax }}{48}{figure.caption.26}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Spectrogram for recovered music signal.\relax }}{48}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusion and Further Study}{50}{chapter.6}
+\contentsline {xchapter}{Conclusion and Further Study}{49}{chapter.6}

@@ -467,9 +467,9 @@ interpretations and computational models.
 \cite{bellSejnowski95} proposes minimizing mutual information between
 sources, as measured by \emph{differential entropy}. In this
 implementation a feed-forward neural network structure is proposed.
-Other approaches include conventional maximum likelihood (\cite{pearlmutterParra}) and maximization of
+Other approaches include conventional maximum likelihood\cite{pearlmutterParra} and maximization of
 non-gausianity as measured by excess kurtosis. A popular approach is
-the  FastICA algorithm (\cite{fastICA}) that minimizes mutual
+the  FastICA algorithm\cite{fastICA} that minimizes mutual
 information expressed by \emph{negentropy} by a fixed point method. 
 
 The classic studies on ICA focus to a large extent on developing the
@@ -780,7 +780,7 @@ such that:
 
 Here, $\boldsymbol{U} \in \mathbb{R}^{m\times m}$, $\boldsymbol{S} \in \mathbb{R}^{m\times n}$,
 and $\boldsymbol{U} \in \mathbb{R}^{n\times n}$. The SVD relates to the eigenvalue
-problem (Equation \ref{pca_gradient}) as follows:
+problem Equation \ref{pca_gradient} as follows:
 
 
 \begin{itemize}
@@ -863,20 +863,22 @@ mixing matrix using PCA.
   \label{pca_time_series}
 \end{figure}
 
-\begin{figure}  \label{pca_eigs}
+\begin{figure} 
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/pca_data_eigs}
   \hrule
   \caption{Standardized data points vs eigenvectors.}
+ \label{pca_eigs}
 \end{figure}
 
-\begin{figure}\label{pca_project}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/pca_eig_projection}
   \hrule
   \caption{Standardized data projected onto eigenvectors.}
+\label{pca_project}
 \end{figure}
 
 
@@ -1089,7 +1091,7 @@ Recalling our notation for the unmixing model:
   \end{bmatrix}
 \end{equation}
 
-We can substitute for $s_i$ in (Equation \ref{ica_prob}), to obtain the following
+We can substitute for $s_i$ in Equation \ref{ica_prob}, to obtain the following
 expression for the joint distribution\footnote{Here the determinant term results from
 the rule for linear transformations of probability densities.}.
 
@@ -1116,7 +1118,7 @@ By straight forward application of Bayes' rule, we can rewrite the probability i
   \propto \mathbb{P}(\boldsymbol{X}|\boldsymbol{W})
 \end{equation}
 
-From Equation \ref{bayes}, we can set up the maximum likelohood function:
+From Equation \ref{bayes}, we can set up the maximum likelihood function:
 
 \begin{equation}\label{ica_loglikelihood}
   \begin{array}{lll}
@@ -1139,7 +1141,7 @@ Given the log likelihood function of Equation \ref{ica_loglikelihood},
 we will now discuss how this can be maxmimized by gradient descent. 
 The gradient descent method has an intuitive appeal, and  
 lends itself easily to a computer implementation along the lines of
-the pseudocode Figure \ref{ica_listing}. 
+the pseudocode Figure \ref{mlica_code}. 
 
 Gradient descent is an iterative optimization method where local extrema are found
 by taking steps proportional to the gradient of the function at a given point. 
@@ -1179,7 +1181,7 @@ for i = 1:nIter
   \caption{Pseudocode for ML ICA by stochastic block gradient descent.}
  \label{mlica_code}
 \end{figure}
-
+\newpage
 To conclude this section, we review the gradient descent algorithm of Figure \ref{mlica_code}.
 Here, we assume the data is distributed according to a sigmoid cdf $f$. By inserting substituting
 this into Equation \ref{ica_loglikelihood} and differentiating, we get the following update rule:
@@ -1206,21 +1208,23 @@ time domain. We see that while the sign is also reversed in this case, ICA is ab
 of the original signal.
 
 
-\begin{figure}\label{ica_fig1}
+\begin{figure}[b]
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/ica_simple}
   \hrule
   \caption{ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the 
     blue sine wave (cf. Section \ref{ICA_restrictions}).}
+\label{ica_fig1}
 \end{figure}
 
-\begin{figure}\label{ica_fig2}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/ica_music_speech}
   \hrule
   \caption{Separating a speech signal (top left) from background music (top right) by ICA. }
+\label{ica_fig2}
 \end{figure}
 
 
@@ -1255,7 +1259,7 @@ that is fundamental to the inference algorithm. Section \ref{latent_bss}
 introduces the key ideas of this chapter. First we review mixture models
 in general terms before we look at estimating and doing inference in the 
 particular latent variable model at hand. Finally, we briefly discuss an
-extended hidden markov model proposed by Roweis, before we illustrate the
+extended hidden markov model proposed by Roweis\cite{roweisOneMic}, before we illustrate the
 method with a few simple examples in Section \ref{ssbss_results}.
 
 
@@ -1271,7 +1275,7 @@ which indicates that a windowed or short-term analysis is
 appropriate. 
 
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \hrule
   \includegraphics[width = .8\textwidth]{Figures/time_signal}
@@ -1762,14 +1766,14 @@ seen in figure \ref{music_count}. The sampling frequency for both signals is $16
 \label{music_count}
 \end{figure}
 
-In our experiment in this section we have split the data in half (one training and one test set) 
-The is are preprocessed by constructing
+In our experiment in this section we have split the data in half, one training set and one test set. 
+The set is preprocessed by constructing
 one spectrogram per source with Hamming windows of length 512 so that the final matrix of spectral intensities
 has $257$ frequency bands, with $4539$ observations each.
 
 From visual inspection of the spectrograms and the temporal plots, it seems that the voice signal is ``richer''
 than the music, and that it probably needs more GMM components to be represented properly. We therefore fitted
-a model with $256$ components for the voice signal and $128$ for the music\footnote{In Roweis, an experiment is 
+a model with $256$ components for the voice signal and $128$ for the music\footnote{In Roweis\cite{roweisMaxVQ}, an experiment is 
 conducted where a speech GMM is trained with $512$ components and a ``noise'' GMM has only $32$.}. 
 
 
@@ -1799,10 +1803,10 @@ are apparent.
 \item In the recovered voice spectrogram, we still see the markings of the most distinct utterances (1,3,5).  
 \end{itemize}
 
+\newpage
 
 
-
-\begin{figure}
+\begin{figure}[h]
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/recovered_voice}
@@ -1811,7 +1815,7 @@ are apparent.
 \label{voice_result}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/recovered_music}
