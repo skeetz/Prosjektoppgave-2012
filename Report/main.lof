@@ -9,24 +9,24 @@
 \contentsline {xchapter}{Principal Component Analysis}{19}{chapter.3}
 \contentsline {figure}{\numberline {3.1}{\ignorespaces After projecting the data onto the dark line, little variation left in the dataset.\relax }}{21}{figure.caption.11}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Projecting the data onto the dark line we reduce dimensionality while keeping a large portion of the variation characterizing the data.\relax }}{21}{figure.caption.12}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces PCA Source Separation.\relax }}{24}{figure.caption.13}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces PCA Source Separation.\relax }}{25}{figure.caption.13}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Standardized data points vs eigenvectors.\relax }}{25}{figure.caption.14}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{25}{figure.caption.15}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Standardized data projected onto eigenvectors.\relax }}{26}{figure.caption.15}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Independent Component Analysis}{26}{chapter.4}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Pseudocode for ML ICA by stochastic block gradient descent.\relax }}{31}{figure.caption.16}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{33}{figure.caption.17}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. \relax }}{33}{figure.caption.18}
+\contentsline {xchapter}{Independent Component Analysis}{27}{chapter.4}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Pseudocode for ML ICA by stochastic block gradient descent.\relax }}{32}{figure.caption.16}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces ICA on a $2\times 2$ BSS problem. Note the ``sign reversal'' for the blue sine wave (cf. Section \ref {ICA_restrictions}).\relax }}{34}{figure.caption.17}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Separating a speech signal (top left) from background music (top right) by ICA. \relax }}{34}{figure.caption.18}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Single Sensor Blind Source Separation}{34}{chapter.5}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{35}{figure.caption.19}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Log-max approximation.\relax }}{37}{figure.caption.20}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces A mixture of gaussians distribution with two components.\relax }}{38}{figure.caption.21}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{42}{figure.caption.22}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{44}{figure.caption.23}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Time domain plot of speech (top) and music (bottom).\relax }}{46}{figure.caption.24}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Spectrograms for test data.\relax }}{47}{figure.caption.25}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Spectrogram for recovered voice signal.\relax }}{48}{figure.caption.26}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Spectrogram for recovered music signal.\relax }}{48}{figure.caption.27}
+\contentsline {xchapter}{Single Sensor Blind Source Separation}{35}{chapter.5}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Time domain representation of a male voice counting from one to ten.\relax }}{36}{figure.caption.19}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Log-max approximation.\relax }}{38}{figure.caption.20}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A mixture of gaussians distribution with two components.\relax }}{39}{figure.caption.21}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Pseudocode for MAXVQ algorithm.\relax }}{43}{figure.caption.22}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Spectrogram of male voice counting from one to ten.\relax }}{45}{figure.caption.23}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Time domain plot of speech (top) and music (bottom).\relax }}{47}{figure.caption.24}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Spectrograms for test data.\relax }}{48}{figure.caption.25}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Spectrogram for recovered voice signal.\relax }}{49}{figure.caption.26}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Spectrogram for recovered music signal.\relax }}{49}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusion and Further Study}{49}{chapter.6}
+\contentsline {xchapter}{Conclusion and Further Study}{50}{chapter.6}
