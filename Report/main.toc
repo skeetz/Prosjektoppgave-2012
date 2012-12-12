@@ -40,8 +40,8 @@
 \contentsline {subsection}{\numberline {5.3.3}Estimation Procedure - The EM Algorithm}{39}{subsection.5.3.3}
 \contentsline {subsection}{\numberline {5.3.4}A Generic Inference Procedure}{40}{subsection.5.3.4}
 \contentsline {subsection}{\numberline {5.3.5}An Improved Pruning Method for MAXVQ Inference}{41}{subsection.5.3.5}
-\contentsline {section}{\numberline {5.4}Factorial Hidden Markov Model for BSS}{42}{section.5.4}
-\contentsline {section}{\numberline {5.5}Hidden Markov Models}{42}{section.5.5}
+\contentsline {section}{\numberline {5.4}Factorial Hidden Markov Model for BSS}{43}{section.5.4}
+\contentsline {section}{\numberline {5.5}Hidden Markov Models}{43}{section.5.5}
 \contentsline {subsection}{\numberline {5.5.1}A HMM Blind Source Separation Framework}{44}{subsection.5.5.1}
 \contentsline {subsection}{\numberline {5.5.2}Initialization}{45}{subsection.5.5.2}
 \contentsline {subsection}{\numberline {5.5.3}Separation}{45}{subsection.5.5.3}

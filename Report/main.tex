@@ -27,7 +27,12 @@
 % Line space
 \linespread{1.2}
 
-
+% Author
+% Fill in here, and use commands in the text. 
+\newcommand{\thesisAuthor}{Ulf Nore, Anders Røsæg Pedersen}
+\newcommand{\thesisTitle}{Blind Soure Separation}
+\newcommand{\thesisType}{Specialisation project}
+\newcommand{\thesisDate}{fall 2012}
 
 \graphicspath{{Figures/}}
 
@@ -50,10 +55,26 @@
    showspaces=false,
    showstringspaces=false}
 
-\title{Blind Source Separation}
-\author{}
-\date{}    % type date between braces
-\maketitle
+\begin{document}
+
+%Title page (This is generate automatically from the commands above)
+\begin{titlepage}
+\noindent {\large \textbf{\thesisAuthor}}
+\vspace{2cm}
+
+\noindent {\Huge \thesisTitle}
+\vspace{2cm}
+
+\noindent \thesisType, \thesisDate 
+\vspace{2cm}
+
+\noindent Artificial Intelligence Group\\ Department of Computer and Information Science\\ Faculty of Information Technology, Mathematics and Electrical Engineering\\
+
+\vfill
+\begin{center}
+\includegraphics[width=4cm]{Figures/Ntnu-logo.png}
+\end{center}
+\end{titlepage}
 
 \begin{abstract}
   This report is an overview over blind source separation (BSS) algorithms and principles. BSS
@@ -155,7 +176,7 @@ attention. In the SSBSS problem, we have one or more source signals,
 but the observed signal $\boldsymbol{X}(t)$ is a scalar. This
 introduces problems as this instance does not lend itself to solutions
 by means of the ``standard'' methods we consider in the standard BSS
-problem. Chapter \ref{ssbss_chap} is devoted to the SSBSS problem.
+problem. Chapter \ref{ss_bss} is devoted to the SSBSS problem.
 
 
 \subsection{A Linear Mixing Model}
@@ -221,14 +242,14 @@ underdetermined systems (fewer observed signals than sources).
 
 In single channel BSS (Chapter \ref{ss_bss}) we review two approaches proposed by
 Roweis. The common denominator behind these methods is the use
-of latent variables representing the sources. The first approach (REF) uses
-represents each sources by a Gaussian mixture model (GMM) where each component
+of latent variables representing the sources. The first approach\cite{roweisMaxVQ} 
+represents each of sources by a Gaussian mixture model (GMM) where each component
 of the GMM is an multi-dimensional Gaussian distribution over a
 discretized short-term spectrum. 
 
 A theoretical weakness of this
 approach is that it does not account for the time-dynamics of the
-signals. Roweis (REF) therefore proposes an extended hidden markov approach
+signals. Roweis \cite{roweisOneMic} therefore proposes an extended hidden markov approach
 to this model where the latent variables follow a stochastic process. 
 The final part of Chapter \ref{ss_bss} provides a brief \emph{theoretical} introduction
 to Hidden Markov Models and how it can be applied to blind source separation.
@@ -326,7 +347,7 @@ In reviewing the BSS literature we conduct a search of the below databases based
 
 \subsubsection{List of Search Terms}
 
-\emph{blind source separation, single channel blind source separation, single mixture blind source separation, hidden markov blind source, single microphone blind source separation, blind source separation review, blind source separation survey, pca blind source separation, ica blind source separation, principal component analysis blind source separation, independent component analysis blind source separation}.
+\emph{blind source separation, single channel blind source separation, single mixture blind source separation, hidden markov blind source, single microphone blind source separation, factorial source separation, blind source separation review, blind source separation survey, pca blind source separation, ica blind source separation, principal component analysis blind source separation, independent component analysis blind source separation}.
 
 
 
@@ -383,9 +404,10 @@ Using the search term \emph{hidden markov source separation} on the Google Schol
 
 
 
-After screening the results against the different criteria set in appendix \ref{protocol}, these papers were brought on for further consideration.
+After screening the results against the different criteria set in appendix \ref{protocol}, the papers that were brought on for further consideration are shown in table \ref{tab:2.2} at the end of this chapter.
 
-\begin{table} [ht]
+
+\begin{table}[ht]
     \begin{tabular}{|p{6cm}|p{4cm}|p{2cm}|}
         \hline
         \textbf{Title} & \textbf{Author} & \textbf{Published} \\ \hline
@@ -399,9 +421,11 @@ After screening the results against the different criteria set in appendix \ref{
         Source separation using single channel ICA & Davies, M.E. and James, C.J. & 2007 \\ \hline
         Multidimensional Independent Component Analysis& Cardoso, J. L. & 1998\\ \hline
         Source Separation From Single-Channel Recordings by Combining Empirical-Mode Decomposition and Independent Component Analysis & Mijovic, B. De Vos, M., Gligorijevic, I., Taelman, J. and Van Huffel, S. & 2010\\ \hline
-        Hidden Markov model decomposition of speech and noise & Varga, A. P., and R. K. Moore & 1990\\
-        \hline
+        Hidden Markov model decomposition of speech and noise & Varga, A. P., and R. K. Moore & 1990\\ \hline
+        Factorial models and refiltering for speech separation and denoising & Roweis, Sam T. & 2003\\ \hline
     \end{tabular}
+\caption{Papers that satisfied the criteria}
+\label{tab:selectedPapers}
 \end{table}
 
 
@@ -529,7 +553,7 @@ $\sigma^2$.}
 
 
 \subsection{Factoral Hidden Markov Models} %% Anders
-The Hidden Markov modelling has been around since the late 1960s. Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset. 
+Roweis\cite{roweisOneMic} proposes a technique called refiltering, where the idea is to separate sources in a mixed or corrupted recording. This is achieved through non stationary masking of the different frequency sub-bands from the target recording. Different sources may be isolated in the recording by changing the masking parameters. Using regularities in the spectrogram produced by a recording, it is possible to set the masking parameters, eg. common onset and offset. 
 
 \begin{figure}[h]
   \centering
@@ -778,7 +802,7 @@ statement: \texttt{[u,S,v] = svd(X)}.}.
 
 We will not go into the derivation of this result as SVD is covered
 in most textbooks on linear algebra or basic numerical
-mathematics (see for instance REF). Rather, we will proceed to show how PCA can be applied to
+mathematics (see for instance \cite{ESL}). Rather, we will proceed to show how PCA can be applied to
 BSS, and what assumptions it requires us to make about the data.
 
 
@@ -856,8 +880,8 @@ mixing matrix using PCA.
 \end{figure}
 
 
-\chapter{Independent Component Analysis}\label{ica}
 
+\chapter{Independent Component Analysis}\label{ica}
 
 PCA finds the basis of a subspace in which the variance is
 maximized in the direction of the basis vectors and the covariance
@@ -887,8 +911,8 @@ with a few blind source separation problems.
 
 ICA can be derived by several different approaches representing slightly
 different interpretations of the same problem. Among these are maximum 
-differential entropy (REFFFF), maximum kurtosis (REF) and 
-maximum likelihood (\cite{Pham}). 
+differential entropy \cite{ESL}, maximum kurtosis \cite{ESL} and 
+maximum likelihood \cite{Pham}. 
 In this section we provide a brief overview over the two first, while we
 go in more detail on the maximum likelihood method in subsequent sections.
 
@@ -936,7 +960,7 @@ of the columns of $\boldsymbol{z}\boldsymbol{s}$:
   = \sum_{i=1}^N \boldsymbol{z}_i^4\gamma(\boldsymbol{s}_i)
 \end{equation}
 
-(Equation \ref{kurtosis_eqn}) lends itself easily to standard optimization
+Equation \ref{kurtosis_eqn} lends itself easily to standard optimization
 procedures to maximize kurtosis so as to produce the independent components:
 
 \begin{equation}
@@ -944,7 +968,7 @@ procedures to maximize kurtosis so as to produce the independent components:
 \end{equation}
 
 Kurtosis maximization is of the most common approaches to ICA and is discussed
-in greater detail in REFERANSER!!!.
+in greater detail in \cite{comon94} \cite{hyvarinen2001}.
 
 
 \subsection{Minimum Mutual Information}
@@ -973,7 +997,7 @@ I(Y) = \sum_{j=1}^{p} H(y_{j}) - H(x) - \log | det \mathbf A |
 
 Determining an $\mathbf A$ to minimize $I(Y) = I(\mathbf A^T \mathbf x)$ is the looks for the orthogonal 
 transformation that maximizes independence between its components $s_i$. With respect to 
-(Equation \ref{determinant}), this is equivalent to minimizing the sum of entropies of the seperate 
+Equation \ref{determinant}, this is equivalent to minimizing the sum of entropies of the seperate 
 components of $Y$ which maximizes their depature from Gaussianity.
 
 
@@ -1083,7 +1107,7 @@ dataset $\boldsymbol{X} = [\boldsymbol{x}_1,\boldsymbol{x}_2,...,\boldsymbol{x}_
   \boldsymbol{W}^* = \arg \max_{\boldsymbol{W}} \mathbb{P}(\boldsymbol{W}|\boldsymbol{X})
 \end{equation}
 
-By straight forward application of Bayes' rule, we can rewrite the probability in (Equation \ref{max_likelihood}) as:
+By straight forward application of Bayes' rule, we can rewrite the probability in Equation \ref{max_likelihood} as:
 
 \begin{equation}
   \label{bayes}
@@ -1092,7 +1116,7 @@ By straight forward application of Bayes' rule, we can rewrite the probability i
   \propto \mathbb{P}(\boldsymbol{X}|\boldsymbol{W})
 \end{equation}
 
-From (Equation \ref{bayes}), we can set up the maximum likelohood function:
+From Equation \ref{bayes}, we can set up the maximum likelohood function:
 
 \begin{equation}\label{ica_loglikelihood}
   \begin{array}{lll}
@@ -1131,7 +1155,7 @@ update rule:
   x_{n+} = x_n + \alpha(n)\nabla F(x_n)
 \end{equation}
 
-The rule in (Equation \ref{gradient_descent} is iterated until convergence is reached.
+The rule in Equation \ref{gradient_descent} is iterated until convergence is reached.
 This is typically measured by the difference $|x_{n+1}-x_n$ or in terms of the number of
 iterations passed as in Figure \ref{mlica_code}.
 
@@ -1153,22 +1177,22 @@ for i = 1:nIter
   w = w + a*(1-2*(1/exp(-s))*s')*w;  
   \end{lstlisting}
   \caption{Pseudocode for ML ICA by stochastic block gradient descent.}
-  \label{mlica_code}
+ \label{mlica_code}
 \end{figure}
 
 To conclude this section, we review the gradient descent algorithm of Figure \ref{mlica_code}.
 Here, we assume the data is distributed according to a sigmoid cdf $f$. By inserting substituting
-this into (Equation \ref{ica_loglikelihood}) and differentiating, we get the following update rule:
+this into Equation \ref{ica_loglikelihood} and differentiating, we get the following update rule:
 
 
 \begin{equation}
   \mathbf{W}_{n+1} = \mathbf{W}_{n} + \alpha(1-2*f(\mathbf{W}\mathbf{X})\mathbf{X}^T + (\mathbf{W}^T)^{-1})
 \end{equation}
 
-For a more sophisticated ICA algorithm, we refer to Hyvarinen's FastICA [REF].
+For a more sophisticated ICA algorithm, we refer to Hyvarinen's FastICA\cite{fastICA}.
 
 
-\section{BSS by ICA}\label{BSS_ICA}
+\section{BSS by ICA}\label{bss_ica}
 
 Before concluding this section we consider a simple demonstration of ICA as applied to the toy problem
 of separating sine waves of different frequencies as studied in the PCA section, and subsequently a more 
@@ -1201,7 +1225,7 @@ of the original signal.
 
 
 
-\chapter{Single Sensor Blind Source Separation}\label{ssbss_chap}
+\chapter{Single Sensor Blind Source Separation}\label{ss_bss}
 
 Single sensor BSS\footnote{Also called single channel BSS.} is a
 particularly important case of the underdetermined BSS problem where the observed
@@ -1212,7 +1236,7 @@ about the data generating process -- i.e. we need a more complex
 generative model.
 
 In this chapter we present  a solution to the single sensor BSS
-problem proposed by Roweis (XXXX)\cite{roweis} that relies on a
+problem proposed by Roweis \cite{roweisMaxVQ} that relies on a
 latent variable model (mixture of gaussians). This metod has two 
 phases; a training phase where the mixture models are estimated
 one clean recordings of each source. The subsequent inference 
@@ -1242,7 +1266,7 @@ method with a few simple examples in Section \ref{ssbss_results}.
 A time frequency representation (TFR) is a redundant signal
 representation in comparison to a simple time domain representation that
 contains only the amplitude values at given point in time. As seen in
-for instance Figure REF, sound signals are often non-stationary,
+for instance Figure \ref{fig:timeFreqRep}, sound signals are often non-stationary,
 which indicates that a windowed or short-term analysis is
 appropriate. 
 
@@ -1254,6 +1278,7 @@ appropriate.
   \caption{Time domain representation of a male voice counting from
     one to ten.}
   \hrule
+\label{fig:timeFreqRep}
 \end{figure}
 
 
@@ -1286,7 +1311,7 @@ or gaussian. The window determines which part of the signal $x$ is to
 be included in the spectrogram near $m$. In practice, the STFT is
 computed using the fast fourier transform (FFT). To better allow for
 visualization of the STFT, which is a complex number, the spectrogram
-is defined as the squared magnitude of the STFD (Equation \ref{spectrogram}).
+is defined as the squared magnitude of the STFD Equation \ref{spectrogram}.
 
 \begin{equation}\label{spectrogram}
   \text{spectrogram}\{x[n]\}(m,\omega) = |X(m,\omega)|^2 
@@ -1312,8 +1337,8 @@ $\log (F(s_1) + F(s_2)) \simeq \max(\log (F(s_1)) + \log (F(s_2))$. The relation
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/logmax}
   \hrule
-  \label{logmax_fig}
   \caption{Log-max approximation.}
+  \label{logmax_fig}
 \end{figure}
 
 There is a simple intuition behind this approximation; in the spectral domain, a signal is characterized
@@ -1344,7 +1369,7 @@ tractable representation of high-dimensional probability
 distribution. Let $Z$ be a multinomial random variable taking on
 values $z \in \{1,2,3,...,N\}$ and $\{X_i\}$, $i \in \{1,2,3,...,N\}$
 be a set of (multivariate) Gaussian random variables. If $X$ and $Z$
-har the joint distribution (\ref{gaussmix_eqn}) then we say $X$ and $Z$
+har the joint distribution (Figure \ref{gaussmix_eqn}) then we say $X$ and $Z$
 has a gaussian mixture distribution:
 
 \begin{equation}\label{gaussmix_eqn}
@@ -1419,20 +1444,17 @@ The model is trained in an unsupervised manner by estimating a
 gaussian mixture to a training dataset where sources are
 separated. More recently, attempts have been made at estimation
 directly on mixed signals [REFERANSE]. The canonical training method
-used in these models is the expectation maximization (EM) algorithm as
-described in appendix [[[REF]]]. 
+used in these models is the expectation maximization (EM) algorithm. 
 
 
 \subsection{Estimation Procedure - The EM Algorithm}
-
-REFERER TIL RUSSEL/NORVIG
 
 Each source is modeled as a gaussian mixture model where the model consists of different components. 
 These components attempt to capture statistical properties of the different sounds the source is able 
 to produce. However, we do not know these latent components, hence we cannot apply the standard maximum
 likelihood approach. Instead we assume a given \emph{structure} in terms of the number of latent variables
 in our model and then iteratively seek the best parameters by the following steps which are repeated until
-convergence.
+convergence as described in Russel and Norvig\cite{norvig_russel}.
 
 The expectation (E) step computes the expected log likelihood under the current parameter estimate $\theta_n$ given the observed data $X$ and the conditional distribution of the latent variable $Z$ given our current estimates
 and the observed variables.
@@ -1457,7 +1479,7 @@ the gaussians corresponding to the components.
 Having estimated the gaussian mixture models 
 corresponding to each one of our sources, we turn to the problem of recovering the set of
 orignial signals from the mixture spectrogram $\boldsymbol{S}_{mix}$. Our algorithm in this section
-is based on Roweis (REF MAXVQ), but in this step we will ignore the branch-and-bound procedure,
+is based on Roweis\cite{roweisMaxVQ}, but in this step we will ignore the branch-and-bound procedure,
 and instead do the inference steps based only on the GMMs.
 
 The approach is an iterative method. Since we make no assumptions on the temporal dynamics of
@@ -1470,7 +1492,7 @@ Given a single column vector $\boldsymbol{X}$ of the spectrogram, we find the
 most likely component for each GMM:
 
 
-\begin{equation*}
+\begin{equation}
   \begin{array}{lcl}
     \mu_1^* & = & \arg\max_i \mathbb{P}(\mu_1^i | \boldsymbol{X},\Sigma_1)\\
     \mu_2^* & = & \arg\max_i \mathbb{P}(\mu_2^i | \boldsymbol{X},\Sigma_2)\\
@@ -1485,9 +1507,9 @@ As usual, we apply Bayes' rule in estimating the probabilities:
 \end{equation}
 
 for each GMM component $k$. Given that the all our mixture components have a multivariate
-normal distribution, it is simple to show that the following\footnote{We can interpret (Equation \ref{mahala})
+normal distribution, it is simple to show that the following\footnote{We can interpret Equation \ref{mahala}
 geometrically as selecting the nearest component to the observed data under the \emph{Mahalanobis} 
-metric.} holds true for the right hand side of (Equation \ref{bayes_eqn1}).
+metric.} holds true for the right hand side of Equation \ref{bayes_eqn1}.
 
 \begin{equation}\label{mahala}
   \mathbb{P}(\boldsymbol{X} | \mu_k^i,\Sigma_1) \propto 
@@ -1511,7 +1533,7 @@ For large datasets, this method quickly becomes computationally
 intractible.
 
 To amend this problem reducing time complexity of the inference procedure,
-Roweis [[xxx]] describes a branch-and-bound methodbased on
+Roweis\cite{roweisMaxVQ} describes a branch-and-bound methodbased on
 estimating an upper bound on the log likelihood of the latent variables
 given the observed data.
 
@@ -1591,8 +1613,8 @@ to the latent variable model discussed earlier in that we can view the latent va
 model as a special case of a FHMM where transition probabilities are uniform between all states.
 
 \section{Hidden Markov Models}\label{hmm_appendix}
-(REF Russel/Norvig)
-A hidden markov model (HMM) is a probabilistic model relating two sequences of
+
+A hidden markov model (HMM), described in \cite{norvig_russel}, is a probabilistic model relating two sequences of
 discrete random variables $\mathcal{S} = \{S_1, S_2, ..., S_T\}$ and
 $\mathcal{X} = \{X_1, X_2, ..., X_T\}$. We will refer to
 $\mathcal{S}$ as the \emph{source} or \emph{hidden} variable, and
@@ -1642,7 +1664,7 @@ everything else given the current value of the hidden variable.
 \subsection{A HMM Blind Source Separation Framework}
 
 We will now describe the factoral HMM for blind source separation as
-put forward by Roweis in a two signal setting. We adopt the following
+put forward by Roweis\cite{roweisOneMic} in a two signal setting. We adopt the following
 notation: for each timestep $t \in \{1,2,3,...,T\}$, $\mathbf{X}_t$
 denotes the $M$-dimensional spectral vector of power spectral
 intensities over the finite set of frequency values $\mathcal{F}$. We
@@ -1651,12 +1673,13 @@ $x_{it}$ are real-valued, hence we adopt a real valued emission
 model, as discussed later. 
 
 
-\begin{figure}\label{count_spectrogram}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/spectrogram_count}
   \hrule
   \caption{Spectrogram of male voice counting from one to ten.}
+  \label{count_spectrogram}
 \end{figure}
 
 
@@ -1719,7 +1742,7 @@ underlying HMMs with an additive gaussian noise:
   \mathbf{Y}(t) = \Phi(\{\mathbf{X}_1(t), \mathbf{X}_2(t)\}^{+}, \Sigma)
 \end{equation}
 
-We recognize this as the logmax approximation discussed in Section \ref{logmax}.
+We recognize this as the logmax approximation discussed in Section \ref{logmaxapprox}.
 The key augmentation to the the latent variable MAXVQ model is therefore the addition
 of a transition model. 
 
@@ -1730,12 +1753,13 @@ To illustrate the MAXVQ method discussed in this chapter, we return to our base 
 of a voice counting from one to ten in English, and a music clip, both lasting approximately 8 seconds as
 seen in figure \ref{music_count}. The sampling frequency for both signals is $16,000$Hz.
 
-\begin{figure}\label{music_count}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .8\textwidth]{Figures/music_count}
   \hrule
   \caption{Time domain plot of speech (top) and music (bottom).}
+\label{music_count}
 \end{figure}
 
 In our experiment in this section we have split the data in half (one training and one test set) 
@@ -1749,12 +1773,13 @@ a model with $256$ components for the voice signal and $128$ for the music\footn
 conducted where a speech GMM is trained with $512$ components and a ``noise'' GMM has only $32$.}. 
 
 
-\begin{figure}\label{spect_testset}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/spectrograms_test}
   \hrule
   \caption{Spectrograms for test data.}
+\label{spect_testset}
 \end{figure}
 
 Top to bottom, Figure \ref{spect_testset} shows spectrograms of the two sources of test set prior to mixing,
@@ -1764,33 +1789,35 @@ We see that the second and third utteance in the lowermost spectrogram has is al
 contamination from the music, whereas we would expect the algorithm to perform reasonably well in recovering
 the other utterances which are still quite visible in the mixtures. 
 
-Figures \ref{voice_result}-\ref{spec} shows the recovered voice and music signals for the mixture in 
+Figures \ref{voice_result}-\ref{music_result} shows the recovered voice and music signals for the mixture in 
 the lowermost plot in Figure \ref{spect_testset}. While it is hard to appreciate the performance of the 
-of the algorithm juding from just a set of spectrograms, we can distinguish some important features that 
+of the algorithm judging from just a set of spectrograms, we can distinguish some important features that 
 are apparent. 
 
 \begin{itemize}
-\item The second and third utterance of the speaker which was close to invisible in the mixture spectrogram is now visible in Figure \ref{recovered_voice}.
+\item The second and third utterance of the speaker which was close to invisible in the mixture spectrogram is now visible in Figure \ref{voice_result}.
 \item In the recovered voice spectrogram, we still see the markings of the most distinct utterances (1,3,5).  
 \end{itemize}
 
 
 
 
-\begin{figure}\label{voice_result}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/recovered_voice}
   \hrule
   \caption{Spectrogram for recovered voice signal.}
+\label{voice_result}
 \end{figure}
 
-\begin{figure}\label{music_result}
+\begin{figure}
   \centering
   \hrule
   \includegraphics[width = .9\textwidth]{Figures/recovered_music}
   \hrule
   \caption{Spectrogram for recovered music signal.}
+\label{music_result}
 \end{figure}
 
 
